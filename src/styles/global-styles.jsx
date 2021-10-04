@@ -7,20 +7,26 @@ import FiraGoBold from "../fonts/FiraGO-Bold.ttf";
 
 const GlobalStyles = createGlobalStyle`
     ${normalize}
+    body {
+        font-family: firago;
+    }
 
     @font-face {
-        font-family: firago-regular;
+        font-family: firago;
         src: url(${FiraGoRegular});
+        font-weight:400;
     }
 
     @font-face {
-        font-family: firago-medium;
-        src: url(${FiraGoMedium})
+        font-family: firago;
+        src: url(${FiraGoMedium});
+        font-weight:500;
     }
 
     @font-face {
-        font-family: firago-bold;
-        src: url(${FiraGoBold})
+        font-family: firago;
+        src: url(${FiraGoBold});
+        font-weight:600;
     }
 `;
 
