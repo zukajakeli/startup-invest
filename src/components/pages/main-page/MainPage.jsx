@@ -1,14 +1,13 @@
 import * as S from "./main-page-component";
 import Header from "../../components/header/Header";
 import LandingSection from "../../components/landing-section/LandingSection";
+import BusinessSection from "../../components/business-section/BusinessSection";
 
 const MainPage = () => {
   return (
     <S.Wrapper>
-      {/* <S.HeaderWrapper> */}
-      {/* <Header /> */}
-      {/* </S.HeaderWrapper> */}
       <LandingSection />
+      <BusinessSection />
     </S.Wrapper>
   );
 };

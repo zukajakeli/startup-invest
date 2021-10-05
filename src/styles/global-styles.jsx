@@ -7,9 +7,28 @@ import FiraGoBold from "../fonts/FiraGO-Bold.ttf";
 
 const GlobalStyles = createGlobalStyle`
     ${normalize}
-    html {
-        font-size: 62.5%;
-    }
+    a {
+    text-decoration: none;
+    color: unset;
+  }
+  h1, h2, h3, h4, h5 {
+    font-size: unset;
+    margin: 0rem;
+    font-weight: normal;
+    
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+ 
+  html {
+    font-size: 62.5%;
+  }
+  ul {
+    list-style-type: none;
+  }
 
     body {
         font-family: firago;
