@@ -1,9 +1,15 @@
+import * as S from "./main-page-component";
+import Header from "../../components/header/Header";
+import LandingSection from "../../components/landing-section/LandingSection";
+
 const MainPage = () => {
   return (
-    <>
-      ნოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-      ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…
-    </>
+    <S.Wrapper>
+      {/* <S.HeaderWrapper> */}
+      {/* <Header /> */}
+      {/* </S.HeaderWrapper> */}
+      <LandingSection />
+    </S.Wrapper>
   );
 };
 

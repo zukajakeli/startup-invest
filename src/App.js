@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import * as S from "./app-components";
 
 import AboutUsPage from "./components/pages/about-us-page/AboutUsPage";
 import BlogsPage from "./components/pages/blogs-page/BlogsPage";
@@ -13,14 +12,12 @@ function App() {
     <>
       <Router>
         <Switch>
-          <S.Wrapper>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/startups" component={StartupPage} />
-            <Route exact path="/blogs" component={BlogsPage} />
-            <Route exact path="/about-us" component={AboutUsPage} />
-            <Route exact path="/FAQ" component={FAQPage} />
-            <Route exact path="/contact-us" component={ContactPage} />
-          </S.Wrapper>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/startups" component={StartupPage} />
+          <Route exact path="/blogs" component={BlogsPage} />
+          <Route exact path="/about-us" component={AboutUsPage} />
+          <Route exact path="/FAQ" component={FAQPage} />
+          <Route exact path="/contact-us" component={ContactPage} />
         </Switch>
       </Router>
     </>
