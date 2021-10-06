@@ -51,6 +51,15 @@ const BusinessSection = () => {
       image: "https://live.staticflickr.com/4859/45540461915_9b0f6d1114_b.jpg",
       logo: "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg",
     },
+    {
+      startupName: "სტარტაპ ინვესტ",
+      goal: "$200,000",
+      raised: "50%",
+      startupInfo: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
+                   მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…`,
+      image: "https://live.staticflickr.com/4859/45540461915_9b0f6d1114_b.jpg",
+      logo: "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg",
+    },
   ];
 
   return (
@@ -69,10 +78,8 @@ const BusinessSection = () => {
 
       <S.Body>
         <Swiper
-          spaceBetween={16}
+          spaceBetween={20}
           slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
           direction="horizontal"
           pagination
         >

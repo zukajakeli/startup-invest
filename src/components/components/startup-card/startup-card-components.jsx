@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   box-shadow: 0.3rem 0.3rem 0.8rem #00000029;
+  margin: 0 auto;
 `;
 
 export const Image = styled.img`
