@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
 
-import FiraGoRegular from "../fonts/FiraGO-Regular.ttf";
+import FiraGoRegular from "../fonts/FiraGO-Book.ttf";
 import FiraGoMedium from "../fonts/FiraGO-Medium.otf";
 import FiraGoBold from "../fonts/FiraGO-Bold.otf";
 

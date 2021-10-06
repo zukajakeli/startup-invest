@@ -23,6 +23,7 @@ export const Header = styled.div`
   width: 100%;
   justify-content: space-between;
   z-index: 1;
+  margin-bottom: 5.5rem;
 `;
 
 export const Body = styled.div`

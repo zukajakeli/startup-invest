@@ -26,6 +26,8 @@ export const Logo = styled.img`
   top: 45%;
   left: 1.8rem;
   box-shadow: 0.3rem 0.3rem 0.8rem #00000029;
+  object-fit: cover;
+  background: #ffffff;
 `;
 
 export const ContentHeader = styled.div`
