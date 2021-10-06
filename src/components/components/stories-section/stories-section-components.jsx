@@ -95,6 +95,6 @@ export const PinkBackground = styled.img`
 export const GreenBackground = styled.img`
   position: absolute;
   z-index: -1;
-  right: -15rem;
-  transform: rotate(30deg);
+  right: -10%;
+  transform: rotate(-84deg);
 `;
