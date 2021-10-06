@@ -14,14 +14,19 @@ export const HeaderWrapper = styled.div`
   position: absolute;
   width: 79%;
   top: 0.1rem;
+  z-index: 1;
 `;
 
 export const BackgroundImage = styled.img`
   height: 100%;
+  position: absolute;
+  right: 0;
+  z-index: 0;
 `;
 
 export const Content = styled.div`
-  width: 100%;
+  width: 50%;
+  z-index: 1;
 `;
 
 export const Heading = styled.h2`
@@ -55,7 +60,6 @@ export const LearnMore = styled.div`
   font-weight: 600;
   background-image: url("../../../assets/icons/circle-blue.svg");
   position: relative;
-  z-index: 1;
 `;
 
 export const CircleImage = styled.img`

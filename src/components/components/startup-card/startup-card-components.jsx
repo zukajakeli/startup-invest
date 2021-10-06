@@ -75,7 +75,11 @@ export const StartupInfo = styled.p`
   color: #767c8b;
   font-size: 1.6rem;
   font-weight: 400;
-  padding: 2rem;
+  padding: 0rem 2rem;
+  margin-top: 2rem;
+  height: 7.5rem;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const AboutButton = styled.button`
@@ -93,7 +97,7 @@ export const AboutButton = styled.button`
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
-  /* padding: 1.2rem 2.4rem; */
+  margin-top: 3rem;
 
   &:hover {
     background-position: left bottom;

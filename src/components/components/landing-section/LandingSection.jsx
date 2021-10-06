@@ -1,10 +1,8 @@
-import Button from "../../common-components/Button";
-
 import backgroundImage from "../../../assets/images/landing-background.png";
 import circleBlue from "../../../assets/icons/circle-blue.svg";
+import Header from "../header/Header.jsx";
 
 import * as S from "./landing-section-components";
-import Header from "../header/Header.jsx";
 
 const LandingSection = () => {
   return (
