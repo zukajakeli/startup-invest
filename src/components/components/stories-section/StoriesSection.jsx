@@ -1,6 +1,9 @@
-import circle from "../../../assets/images/circle-yellow.svg";
 import LargeStory from "../large-story/LargeStory";
 import SmallStory from "../small-story/SmallStory";
+
+import circle from "../../../assets/images/circle-yellow.svg";
+import archGreen from "../../../assets/images/arch-green.svg";
+import archPink from "../../../assets/images/arch-pink.svg";
 
 import * as S from "./stories-section-components";
 
@@ -43,7 +46,10 @@ const StoriesSection = () => {
           მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…"
           />
         </S.SmallStoriesWrapper>
+        <S.GreenBackground src={archGreen} />
       </S.Body>
+
+      <S.PinkBackground src={archPink} />
     </S.Wrapper>
   );
 };

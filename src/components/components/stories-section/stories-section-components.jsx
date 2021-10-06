@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   height: 76.6rem;
   background-color: #ffffff;
   padding: 0rem 10%;
+  position: relative;
 `;
 
 export const Header = styled.div`
@@ -72,6 +73,8 @@ export const Body = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 1.6rem;
+  position: relative;
+  z-index: 1;
 `;
 
 export const SmallStoriesWrapper = styled.div`
@@ -80,4 +83,18 @@ export const SmallStoriesWrapper = styled.div`
   gap: 2rem;
   flex: 1 35rem;
   max-width: 53.6rem;
+`;
+
+export const PinkBackground = styled.img`
+  position: absolute;
+  bottom: 4rem;
+  z-index: 0;
+  left: 36.3%;
+`;
+
+export const GreenBackground = styled.img`
+  position: absolute;
+  z-index: -1;
+  right: -15rem;
+  transform: rotate(30deg);
 `;
