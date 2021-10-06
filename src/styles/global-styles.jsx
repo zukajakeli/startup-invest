@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
 
 import FiraGoRegular from "../fonts/FiraGO-Regular.ttf";
-import FiraGoMedium from "../fonts/FiraGO-Medium.ttf";
-import FiraGoBold from "../fonts/FiraGO-Bold.ttf";
+import FiraGoMedium from "../fonts/FiraGO-Medium.otf";
+import FiraGoBold from "../fonts/FiraGO-Bold.otf";
 
 const GlobalStyles = createGlobalStyle`
     ${normalize}
