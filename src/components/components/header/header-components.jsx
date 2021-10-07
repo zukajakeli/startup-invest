@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import Button from '../../common-components/Button';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 9.8rem;
-  /* padding: 0rem 10%; */
   box-sizing: border-box;
 `;
 
