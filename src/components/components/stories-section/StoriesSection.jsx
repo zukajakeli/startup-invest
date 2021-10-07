@@ -1,11 +1,12 @@
-import LargeStory from "../large-story/LargeStory";
-import SmallStory from "../small-story/SmallStory";
+import LargeStory from '../large-story/LargeStory';
+import SmallStory from '../small-story/SmallStory';
 
-import circle from "../../../assets/images/circle-yellow.svg";
-import archGreen from "../../../assets/images/arch-green.svg";
-import archPink from "../../../assets/images/arch-pink.svg";
+import circle from '../../../assets/images/circle-yellow.svg';
+import archGreen from '../../../assets/images/arch-green.svg';
+import archPink from '../../../assets/images/arch-pink.svg';
+import { ReactComponent as Arrow } from '../../../assets/images/arrow.svg';
 
-import * as S from "./stories-section-components";
+import * as S from './stories-section-components';
 
 const StoriesSection = () => {
   return (
@@ -19,7 +20,10 @@ const StoriesSection = () => {
             მოყვა, ერთ ღონისძიებას მეორე
           </S.SubHeading>
         </S.TextsWrapper>
-        <S.AllStoriesButton>ყველა ისტორია</S.AllStoriesButton>
+        <S.AllStoriesButton>
+          ყველა ისტორია
+          <Arrow />
+        </S.AllStoriesButton>
       </S.Header>
 
       <S.Body>

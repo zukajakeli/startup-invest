@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Button from "../../common-components/Button";
+import styled from 'styled-components';
+import Button from '../../common-components/Button';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -71,7 +71,7 @@ export const LoginButton = styled.button`
   border-radius: 5.2rem;
   border: 0.4rem solid #ffca10;
   color: #ffca10;
-  background-color: #13182b;
+
   background: linear-gradient(to right, #ffca10 50%, #13182b 50%);
   font-size: 1.6rem;
   font-weight: 600;
@@ -80,9 +80,25 @@ export const LoginButton = styled.button`
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.4s ease-out;
+  background-color: #13182b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  & svg {
+    fill: #ffca10;
+    stroke: #ffca10;
+  }
 
   &:hover {
     background-position: left bottom;
     color: #13182b;
+    svg {
+      fill: #13182b;
+      stroke: #13182b;
+    }
   }
 `;
+
+export const ButtonImage = styled.img``;

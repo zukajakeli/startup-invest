@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: 76.6rem;
@@ -61,10 +61,21 @@ export const AllStoriesButton = styled.button`
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  & svg {
+    stroke: #55aa79;
+  }
 
   &:hover {
     background-position: left bottom;
     color: #13182b;
+    & svg {
+      stroke: #13182b;
+    }
   }
 `;
 

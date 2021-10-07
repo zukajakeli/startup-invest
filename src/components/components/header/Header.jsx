@@ -1,6 +1,7 @@
-import logo from "../../../assets/images/main-logo.png";
+import logo from '../../../assets/images/main-logo.png';
+import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg';
 
-import * as S from "./header-components";
+import * as S from './header-components';
 
 const Header = () => {
   return (
@@ -9,7 +10,10 @@ const Header = () => {
       <S.ButtonsWrapper>
         <S.InvestmentsButton>საინვესტიციო შესაძლებლობები</S.InvestmentsButton>
         <S.BlogsButton>ბლოგი</S.BlogsButton>
-        <S.LoginButton>შესვლა</S.LoginButton>
+        <S.LoginButton>
+          <UserIcon />
+          შესვლა
+        </S.LoginButton>
       </S.ButtonsWrapper>
     </S.Wrapper>
   );
