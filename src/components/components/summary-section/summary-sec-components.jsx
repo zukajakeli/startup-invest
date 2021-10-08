@@ -70,6 +70,7 @@ export const ArrowImage = styled.img`
   bottom: 6rem;
   right: 47%;
   cursor: pointer;
+  transition: all 0.2s ease-out;
   &:hover {
     transform: rotate(30deg);
   }
