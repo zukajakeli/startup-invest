@@ -5,8 +5,12 @@ import { startupsDummy } from '../../common-components/StartupsDummyArray';
 import StartupCard from '../../components/startup-card/StartupCard';
 import Footer from '../../components/footer/Footer';
 import SubscribeOffer from '../../common-components/subscribe-offer/SubscribeOffer';
-
+import ovalBlue from '../../../assets/icons/oval-blue.svg';
+import ovalPink from '../../../assets/icons/oval-pink.svg';
+import { ReactComponent as Arch } from '../../../assets/icons/arch.svg';
 import BlurredStartups from '../../components/blurred-startups/BlurredStatups';
+import { OvalBlueWrapper } from './startup-page-components';
+import { OvalPinkWrapper } from './startup-page-components';
 
 const StartupPage = () => {
   return (
@@ -42,14 +46,23 @@ const StartupPage = () => {
             },
           )}
         </S.StartupsWrapper>
-        <BlurredStartups />
+        <S.BlurredWrapper>
+          <BlurredStartups />
+        </S.BlurredWrapper>
+
         <SubscribeOffer
           inputColor="#9AB7FF"
           arrowColor="#FE7760"
           cicrcleColor="#FE7760"
         />
-      </S.Body>
 
+        {/* position absolute elements */}
+        <OvalBlueWrapper src={ovalBlue} alt="oval" />
+        <OvalPinkWrapper src={ovalPink} alt="oval" />
+        <S.ArchWrapper>
+          <Arch fill="#FFCA0F" />
+        </S.ArchWrapper>
+      </S.Body>
       <Footer />
     </S.Wrapper>
   );

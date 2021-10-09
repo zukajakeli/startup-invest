@@ -19,12 +19,15 @@ const BlogsPage = () => {
           storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
           მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს "
         />
-        <SubscribeOffer
-          inputColor="#55AA79"
-          arrowColor="#FDB8B7"
-          cicrcleColor="#FDB8B7"
-        />
+        <S.SubscriptionWrapper>
+          <SubscribeOffer
+            inputColor="#55AA79"
+            arrowColor="#FDB8B7"
+            cicrcleColor="#FDB8B7"
+          />
+        </S.SubscriptionWrapper>
       </S.Body>
+
       <Footer />
     </S.Wrapper>
   );

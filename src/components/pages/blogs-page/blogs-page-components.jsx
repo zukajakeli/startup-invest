@@ -14,6 +14,11 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Body = styled.div`
-  padding: 9.8rem 0rem 4rem 0rem;
+  padding: 9.8rem 0rem 2rem 0rem;
   background-color: #f2f1f1;
+`;
+
+export const SubscriptionWrapper = styled.div`
+  background: #fff;
+  padding: 10rem 0rem;
 `;

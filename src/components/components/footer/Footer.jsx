@@ -12,7 +12,6 @@ import * as S from './footer-components';
 const Footer = () => {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
-  console.log(isMainPage);
 
   return (
     <S.Wrapper>
