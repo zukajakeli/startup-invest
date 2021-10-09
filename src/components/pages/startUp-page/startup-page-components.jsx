@@ -38,7 +38,8 @@ export const HeadingsWrapper = styled.div`
 
 export const StartupsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr)); */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.6rem;
   row-gap: 3.2rem;
   margin-bottom: 4.5rem;

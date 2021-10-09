@@ -32,7 +32,7 @@ const BusinessSection = () => {
 
       <S.Body>
         <Swiper
-          spaceBetween={20}
+          spaceBetween={100}
           slidesPerView={3}
           direction="horizontal"
           pagination
@@ -43,7 +43,7 @@ const BusinessSection = () => {
               index,
             ) => {
               return (
-                <SwiperSlide key={`startup${index}`} style={{ width: '300px' }}>
+                <SwiperSlide key={`startup${index}`}>
                   <StartupCard
                     startupName={startupName}
                     goal={goal}

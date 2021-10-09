@@ -1,16 +1,15 @@
 import Header from '../../components/header/Header';
-import * as S from './startup-page-components';
-
-import { startupsDummy } from '../../common-components/StartupsDummyArray';
 import StartupCard from '../../components/startup-card/StartupCard';
 import Footer from '../../components/footer/Footer';
+import BlurredStartups from '../../components/blurred-startups/BlurredStatups';
 import SubscribeOffer from '../../common-components/subscribe-offer/SubscribeOffer';
+
+import { startupsDummy } from '../../common-components/StartupsDummyArray';
 import ovalBlue from '../../../assets/icons/oval-blue.svg';
 import ovalPink from '../../../assets/icons/oval-pink.svg';
 import { ReactComponent as Arch } from '../../../assets/icons/arch.svg';
-import BlurredStartups from '../../components/blurred-startups/BlurredStatups';
-import { OvalBlueWrapper } from './startup-page-components';
-import { OvalPinkWrapper } from './startup-page-components';
+
+import * as S from './startup-page-components';
 
 const StartupPage = () => {
   return (
@@ -57,8 +56,8 @@ const StartupPage = () => {
         />
 
         {/* position absolute elements */}
-        <OvalBlueWrapper src={ovalBlue} alt="oval" />
-        <OvalPinkWrapper src={ovalPink} alt="oval" />
+        <S.OvalBlueWrapper src={ovalBlue} alt="oval" />
+        <S.OvalPinkWrapper src={ovalPink} alt="oval" />
         <S.ArchWrapper>
           <Arch fill="#FFCA0F" />
         </S.ArchWrapper>
