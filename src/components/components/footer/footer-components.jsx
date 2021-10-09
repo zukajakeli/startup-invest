@@ -58,37 +58,3 @@ export const Subscription = styled.div`
   color: #ffca0f;
   margin-left: -2rem;
 `;
-
-export const Input = styled.input`
-  height: 5.5rem;
-  outline: none;
-  border-radius: 4rem 0rem 0rem 4rem;
-  border: 0.4rem solid #ffca0f;
-  padding-left: 2.2rem;
-  font-size: 1.6rem;
-  color: #ffca0f;
-  box-sizing: border-box;
-  background: none;
-  width: 19rem;
-`;
-
-export const Button = styled.button`
-  height: 5.5rem;
-  background: #ffca0f;
-  color: #ffca0f;
-  outline: none;
-  border: none;
-  color: #13182b;
-  padding: 2rem 4rem 2rem 1.5rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  border-radius: 0rem 4rem 4rem 0rem;
-  cursor: pointer;
-`;
-
-export const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0rem;
-  justify-content: center;
-`;

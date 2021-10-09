@@ -9,11 +9,12 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   gap: 1.5rem;
+  padding: 5.5rem 0rem;
 `;
 
 export const CircleWrapper = styled.div`
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 9rem;
   left: 15rem;
 
@@ -25,7 +26,7 @@ export const CircleWrapper = styled.div`
 export const ArrowWrapper = styled.div`
   position: absolute;
   top: -2rem;
-  z-index: -1;
+  z-index: 0;
   left: 40rem;
   & svg {
     fill: ${({ arrowColor }) => arrowColor};
@@ -37,4 +38,5 @@ export const SubscribeText = styled.p`
   color: #13182b;
   max-width: 44.4rem;
   font-weight: 400;
+  z-index: 1;
 `;

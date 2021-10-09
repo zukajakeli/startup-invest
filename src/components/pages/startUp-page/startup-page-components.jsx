@@ -10,10 +10,11 @@ export const HeaderWrapper = styled.div`
   background: #fff;
   width: 100%;
   padding: 0rem 10%;
+  z-index: 10;
 `;
 
 export const Body = styled.div`
-  padding: 9.8rem 10% 5rem 10%;
+  padding: 9.8rem 10% 4rem 10%;
   background-color: #f2f1f1;
 `;
 
@@ -40,4 +41,5 @@ export const StartupsWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
   gap: 1.6rem;
   row-gap: 3.2rem;
+  margin-bottom: 4.5rem;
 `;
