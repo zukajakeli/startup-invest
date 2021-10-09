@@ -54,7 +54,7 @@ export const InvestmentsButton = styled.button`
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.4s ease-out;
-  padding: 0rem 0.5rem;
+  padding: 0rem 2.5rem;
 
   &:hover {
     background-position: left bottom;

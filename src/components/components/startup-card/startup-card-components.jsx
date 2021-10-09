@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: 57rem;
@@ -10,6 +10,15 @@ export const Wrapper = styled.div`
   position: relative;
   box-shadow: 0.3rem 0.3rem 0.8rem #00000029;
   margin: 0 auto;
+
+  ${({ isBlurred }) =>
+    isBlurred &&
+    `-webkit-filter: blur(9px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
+  filter: blur(9px);
+  pointer-events: none;]`}
 `;
 
 export const Image = styled.img`

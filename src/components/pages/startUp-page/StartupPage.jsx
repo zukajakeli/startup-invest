@@ -6,6 +6,8 @@ import StartupCard from '../../components/startup-card/StartupCard';
 import Footer from '../../components/footer/Footer';
 import SubscribeOffer from '../../common-components/subscribe-offer/SubscribeOffer';
 
+import BlurredStartups from '../../components/blurred-startups/BlurredStatups';
+
 const StartupPage = () => {
   return (
     <S.Wrapper>
@@ -40,7 +42,7 @@ const StartupPage = () => {
             },
           )}
         </S.StartupsWrapper>
-
+        <BlurredStartups />
         <SubscribeOffer
           inputColor="#9AB7FF"
           arrowColor="#FE7760"

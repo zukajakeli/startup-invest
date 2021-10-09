@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   gap: 1.5rem;
   padding: 5.5rem 0rem;
+  margin-top: 5rem;
 `;
 
 export const CircleWrapper = styled.div`

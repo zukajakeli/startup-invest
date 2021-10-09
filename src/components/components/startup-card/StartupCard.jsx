@@ -1,4 +1,4 @@
-import * as S from "./startup-card-components";
+import * as S from './startup-card-components';
 
 const StartupCard = ({
   startupName,
@@ -7,9 +7,10 @@ const StartupCard = ({
   startupInfo,
   image,
   logo,
+  isBlurred,
 }) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper isBlurred={isBlurred}>
       <S.Logo src={logo} />
       <S.Image src={image} alt="startup photo" />
 
