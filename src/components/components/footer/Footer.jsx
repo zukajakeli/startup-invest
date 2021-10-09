@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router';
 
+import SubscribeInput from '../../common-components/subscribe-input/SubscribeInput';
 import logo from '../../../assets/images/main-logo-white.svg';
 import { ReactComponent as LinkedinIcon } from '../../../assets/icons/linkedin-icon.svg';
 import { ReactComponent as InstagramIcon } from '../../../assets/icons/instagram-icon.svg';
@@ -38,10 +39,7 @@ const Footer = () => {
       {isMainPage && (
         <S.Subscription>
           <S.Title>გამოიწერე სიახლეები</S.Title>
-          <S.InputWrapper>
-            <S.Input type="text" placeholder="ელ.ფოსტა"></S.Input>
-            <S.Button>გაგზავნა</S.Button>
-          </S.InputWrapper>
+          <SubscribeInput color="#ffca0f" />
         </S.Subscription>
       )}
     </S.Wrapper>

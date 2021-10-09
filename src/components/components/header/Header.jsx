@@ -8,7 +8,7 @@ const Header = () => {
     <S.Wrapper>
       <S.Logo src={logo} />
       <S.ButtonsWrapper>
-        <S.InvestmentsButton>საინვესტიციო შესაძლებლობები</S.InvestmentsButton>
+        <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
         <S.BlogsButton>ბლოგი</S.BlogsButton>
         <S.LoginButton>
           <UserIcon />
