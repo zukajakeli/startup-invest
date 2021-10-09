@@ -50,7 +50,6 @@ const BlurredStartups = () => {
               startupName={startupName}
               startupInfo={startupInfo}
               goal={goal}
-              raised={raised}
               image={image}
               logo={logo}
               isBlurred
