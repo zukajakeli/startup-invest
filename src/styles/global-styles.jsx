@@ -1,9 +1,9 @@
-import { createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
-import FiraGoRegular from "../fonts/FiraGO-Book.ttf";
-import FiraGoMedium from "../fonts/FiraGO-Medium.otf";
-import FiraGoBold from "../fonts/FiraGO-Bold.otf";
+import FiraGoRegular from '../fonts/FiraGO-Book.ttf';
+import FiraGoMedium from '../fonts/FiraGO-Medium.otf';
+import FiraGoBold from '../fonts/FiraGO-Bold.otf';
 
 const GlobalStyles = createGlobalStyle`
     ${normalize}
@@ -22,6 +22,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  textarea {
+    width: unset;
+  }
  
   html {
     font-size: 62.5%;
@@ -32,6 +36,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: firago;
+        overflow-x: hidden;
     }
 
     @font-face {
