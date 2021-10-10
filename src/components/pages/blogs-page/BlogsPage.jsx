@@ -71,23 +71,25 @@ const BlogsPage = () => {
         <S.BlogsContent>
           <S.Heading>ახალი ისტორიები</S.Heading>
 
-          <Swiper
-            spaceBetween={5}
-            slidesPerView={4}
-            direction="horizontal"
-            autoplay={{ delay: 3500 }}
-          >
-            {dummy.map(({ readingTime, storyPreview }, index) => {
-              return (
-                <SwiperSlide key={`caroussel${index}`}>
-                  <CarousselStory
-                    readingTime={readingTime}
-                    storyPreview={storyPreview}
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          <S.SwiperWrapper>
+            <Swiper
+              spaceBetween={5}
+              slidesPerView={4}
+              direction="horizontal"
+              autoplay={{ delay: 3500 }}
+            >
+              {dummy.map(({ readingTime, storyPreview }, index) => {
+                return (
+                  <SwiperSlide key={`caroussel${index}`}>
+                    <CarousselStory
+                      readingTime={readingTime}
+                      storyPreview={storyPreview}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </S.SwiperWrapper>
 
           <S.LargeStoriesWrapper>
             <S.ZindexTop>

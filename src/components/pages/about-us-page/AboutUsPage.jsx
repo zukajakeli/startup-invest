@@ -1,5 +1,10 @@
 const AboutUsPage = () => {
-  return <> About Us Page </>;
+  return (
+    <div style={{ backgroundColor: 'red', height: '100rem' }}>
+      {' '}
+      About Us Page{' '}
+    </div>
+  );
 };
 
 export default AboutUsPage;

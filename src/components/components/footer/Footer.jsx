@@ -1,4 +1,5 @@
-import { useLocation } from 'react-router';
+import { useLocation, useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import SubscribeInput from '../../common-components/subscribe-input/SubscribeInput';
 import logo from '../../../assets/images/main-logo-white.svg';
@@ -10,22 +11,33 @@ import { ReactComponent as TiktokIcon } from '../../../assets/icons/tiktok-icon.
 import * as S from './footer-components';
 
 const Footer = () => {
+  const history = useHistory();
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
   return (
     <S.Wrapper>
       <S.Logo src={logo} alt="logo" />
+
       <S.Pages>
         <S.Title>გვერდები</S.Title>
-        <S.SinglePage>
-          საინვესტიციო <br /> შესაძლებლობები
-        </S.SinglePage>
-        <S.SinglePage>ბლოგი</S.SinglePage>
-        <S.SinglePage>ჩვენს შესახებ</S.SinglePage>
-        <S.SinglePage>კონტაქტი</S.SinglePage>
-        <S.SinglePage>FAQ</S.SinglePage>
+        <Link to="/startups">
+          <S.SinglePage>სტარტაპები</S.SinglePage>
+        </Link>
+        <Link to="/blogs">
+          <S.SinglePage>ბლოგი</S.SinglePage>{' '}
+        </Link>
+        <Link to="/about-us">
+          <S.SinglePage>ჩვენს შესახებ</S.SinglePage>
+        </Link>
+        <Link to="/contact-us">
+          <S.SinglePage>კონტაქტი</S.SinglePage>
+        </Link>
+        <Link to="faq">
+          <S.SinglePage>FAQ</S.SinglePage>
+        </Link>
       </S.Pages>
+
       <S.SocialWrapper>
         <S.Title>გამოგვყევი</S.Title>
         <S.SocialButtonsWrapper>

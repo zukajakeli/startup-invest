@@ -58,6 +58,7 @@ export const LargeStoriesWrapper = styled.div`
   position: relative;
   margin-top: 13rem;
   padding-bottom: 10rem;
+  justify-content: center;
 `;
 
 export const ArchBlueWrapper = styled.div`
@@ -94,4 +95,10 @@ export const ArchYellowWrapper = styled.div`
   right: 1rem;
   top: 122rem;
   transform: rotate(-90deg);
+`;
+
+export const SwiperWrapper = styled.div`
+  max-width: 110rem;
+  display: flex;
+  justify-content: center;
 `;

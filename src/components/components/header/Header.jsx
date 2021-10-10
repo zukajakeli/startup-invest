@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import logo from '../../../assets/images/main-logo.png';
 import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg';
 
@@ -8,8 +10,12 @@ const Header = () => {
     <S.Wrapper>
       <S.Logo src={logo} />
       <S.ButtonsWrapper>
-        <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
-        <S.BlogsButton>ბლოგი</S.BlogsButton>
+        <Link to="/startups">
+          <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
+        </Link>
+        <Link to="/blogs">
+          <S.BlogsButton>ბლოგი</S.BlogsButton>
+        </Link>
         <S.LoginButton>
           <UserIcon />
           შესვლა
