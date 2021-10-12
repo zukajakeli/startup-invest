@@ -1,4 +1,4 @@
-import { useLocation, useHistory } from 'react-router';
+import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import SubscribeInput from '../../common-components/subscribe-input/SubscribeInput';
@@ -11,7 +11,6 @@ import { ReactComponent as TiktokIcon } from '../../../assets/icons/tiktok-icon.
 import * as S from './footer-components';
 
 const Footer = () => {
-  const history = useHistory();
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
