@@ -1,9 +1,13 @@
+import * as Scroll from 'react-scroll';
+
 import * as S from './summary-sec-components';
 
 import backgroundImage from '../../../assets/images/summary-background.svg';
 import arrow from '../../../assets/icons/arrow-curly-pink.svg';
 
 const SummarySection = () => {
+  console.log(Scroll);
+
   return (
     <S.Wrapper>
       <S.BackgroundWrapper>
