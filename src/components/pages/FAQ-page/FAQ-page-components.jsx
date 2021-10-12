@@ -27,7 +27,7 @@ export const Test = styled.div`
 
 export const Body = styled.div`
   background-color: #f2f1f1;
-  height: 100rem;
+  height: 77rem;
   padding: 10rem 10%;
   display: flex;
   flex-direction: column;
@@ -105,4 +105,24 @@ export const FaqBox = styled.div`
   height: 48.8rem;
   border-radius: 4rem;
   background-color: #ffffff;
+  padding: 3.2rem 2rem;
+  padding-right: 4.4rem;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: pink;
+    width: 0.1rem;
+    border-radius: 1rem;
+    max-height: 2rem;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: pink;
+  }
 `;
