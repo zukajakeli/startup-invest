@@ -7,6 +7,7 @@ export const Wrapper = styled.header`
   width: 100%;
   height: 9.8rem;
   box-sizing: border-box;
+  position: relative;
 `;
 
 export const Logo = styled.img`
@@ -100,3 +101,10 @@ export const LoginButton = styled.button`
 `;
 
 export const ButtonImage = styled.img``;
+
+export const AuthWrapper = styled.div`
+  position: absolute;
+  z-index: 11;
+  right: 0rem;
+  top: 10rem;
+`;

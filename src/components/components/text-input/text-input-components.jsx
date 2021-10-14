@@ -36,3 +36,12 @@ export const UploadIcon = styled.img`
   left: 2rem;
   top: 1rem;
 `;
+
+export const EyeIcon = styled.img`
+  position: absolute;
+  right: 2.3rem;
+  top: 1.3rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+`;
