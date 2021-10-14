@@ -5,8 +5,6 @@ import TextareaInput from 'components/components/text-area/TextareaInput';
 import Footer from 'components/components/footer/Footer';
 import Header from 'components/components/header/Header';
 
-import backgroundImage from 'assets/images/faq-background.svg';
-
 import * as S from './FAQ-page-components';
 import SingleFaq from 'components/components/single-faq/SingleFaq';
 
@@ -23,8 +21,6 @@ const FAQPage = () => {
 
   return (
     <S.Wrapper>
-      <S.BackgroundImage src={backgroundImage} alt="background" />
-
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import backgroundImage from 'assets/images/faq-background.svg';
+
 export const Wrapper = styled.div`
   position: relative;
 `;
@@ -33,6 +35,9 @@ export const Body = styled.div`
   flex-direction: column;
   align-items: center;
   padding-left: 17%;
+  background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-position: 55% 80%;
 `;
 
 export const Heading = styled.h5`
