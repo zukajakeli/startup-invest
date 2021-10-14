@@ -51,9 +51,9 @@ export const Content = styled.div`
 `;
 
 export const Heading = styled.h2`
-  max-width: 53.4rem;
+  max-width: 54.4rem;
   color: #13182b;
-  font-size: 4.6rem;
+  font-size: 4rem;
   font-weight: 500;
   margin-bottom: 2.8rem;
 `;
@@ -61,7 +61,7 @@ export const Heading = styled.h2`
 export const SubHeading = styled.h3`
   color: #767c8b;
   max-width: 44.2rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 9.4rem;
 `;
@@ -69,7 +69,7 @@ export const SubHeading = styled.h3`
 export const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
-  max-width: 35.2rem;
+  max-width: 30.2rem;
   justify-content: space-between;
 `;
 
@@ -94,7 +94,7 @@ export const LearnMoreWrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 22.9rem;
+  width: 17.6rem;
   height: 6rem;
   outline: none;
   border-radius: 3rem;

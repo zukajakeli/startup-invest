@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router';
+
 import backgroundImage from '../../../assets/images/landing-background.png';
 import circleBlue from '../../../assets/icons/circle-blue.svg';
 import Header from '../header/Header.jsx';
@@ -15,6 +17,11 @@ const LandingSection = () => {
     });
   };
 
+  const history = useHistory();
+  const goToStartups = () => {
+    history.push('/startups');
+  };
+
   return (
     <S.Wrapper>
       <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
@@ -23,13 +30,15 @@ const LandingSection = () => {
         <Header />
       </S.HeaderWrapper>
       <S.Content>
-        <S.Heading>შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში</S.Heading>
+        <S.Heading>
+          გახდი სტარტაპის მეწილე - დააბანდე ფული სწრაფად მზარდ ბიზნესში
+        </S.Heading>
         <S.SubHeading>
-          ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…
+          იპოვე შენთვის საინტერესო წინადადება და აქციე შესაძლებლობა - გონივრულ
+          ინვესტიციად
         </S.SubHeading>
         <S.ButtonsWrapper>
-          <S.Button>დაიწყე ინვესტირება</S.Button>
+          <S.Button onClick={goToStartups}>შეიძინე წილი</S.Button>
           <S.LearnMoreWrapper>
             <S.CircleImage src={circleBlue} />
             <S.LearnMore>გაიგე მეტი</S.LearnMore>

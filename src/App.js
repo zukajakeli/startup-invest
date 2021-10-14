@@ -8,6 +8,7 @@ import FAQPage from './components/pages/FAQ-page/FAQPage';
 import MainPage from './components/pages/main-page/MainPage';
 import StartupPage from './components/pages/startUp-page/StartupPage';
 import { useEffect } from 'react';
+import SingleStartup from 'components/single-startup/SingleStartup';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/about-us" component={AboutUsPage} />
         <Route exact path="/FAQ" component={FAQPage} />
         <Route exact path="/contact-us" component={ContactPage} />
+        <Route exact path="/test" component={SingleStartup} />
       </Switch>
     </>
   );

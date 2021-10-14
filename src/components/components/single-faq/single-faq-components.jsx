@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SingleFaq = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 0.1rem solid #767c8b;
+  border-bottom: 0.1rem solid #b5b9c2;
 `;
 
 export const TitleAndDropdown = styled.div`
@@ -30,6 +30,7 @@ export const FaqAnswer = styled.p`
   line-height: 2.2rem;
   font-weight: 400;
   margin-bottom: 2.35rem;
+  transition: all 0.2s ease-in-out;
 
   ::-webkit-scrollbar {
     display: none;

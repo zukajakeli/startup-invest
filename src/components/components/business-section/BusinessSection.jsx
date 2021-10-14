@@ -3,6 +3,8 @@ import SwiperCore, { Pagination } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import './swiper.css';
 
+import { useHistory } from 'react-router';
+
 import StartupCard from '../startup-card/StartupCard';
 
 import * as S from './business-section-components';
@@ -13,19 +15,23 @@ import { startupsDummy } from '../../common-components/StartupsDummyArray';
 const BusinessSection = () => {
   SwiperCore.use([Pagination]);
 
+  const history = useHistory();
+  const goToStartups = () => {
+    history.push('/startups');
+  };
+
   return (
     <S.Wrapper>
       <S.BackgroundImage src={backgroundImage} />
       <S.Header>
         <S.TextsWrapper>
-          <S.Heading>ბიზნესი ინვესტორებისთვის</S.Heading>
+          <S.Heading>სტარტაპ შეთავაზებები</S.Heading>
           <S.SubHeading>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე
+            შეიძინე წილი სტარტაპ შეთავაზებების ყველაზე დიდ პლატფორმაზე
           </S.SubHeading>
         </S.TextsWrapper>
-        <S.AllCompanyButton>
-          ყველა კომპანია
+        <S.AllCompanyButton onClick={goToStartups}>
+          ყველა შეთავაზება
           <Arrow />
         </S.AllCompanyButton>
       </S.Header>

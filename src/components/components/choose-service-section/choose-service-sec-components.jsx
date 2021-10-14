@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: 52rem;
@@ -8,4 +8,19 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   gap: 1.6rem;
   background-color: #f2f1f1;
+`;
+
+export const CardWrapper = styled.div`
+  position: relative;
+`;
+
+export const BlueImage = styled.img`
+  position: absolute;
+`;
+
+export const PinkImage = styled.img`
+  position: absolute;
+  top: -5rem;
+  left: -5rem;
+  z-index: 1;
 `;

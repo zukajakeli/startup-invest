@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -11,12 +11,14 @@ export const Wrapper = styled.div`
   padding: 4rem 4.4rem 2.6rem 3.5rem;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
+  position: relative;
 `;
 
 export const Title = styled.h4`
   font-size: 2.2rem;
   font-weight: 600;
-  color: ${({ forInvestors }) => (forInvestors ? "#55AA79" : "#FE7760")};
+  color: ${({ forInvestors }) => (forInvestors ? '#55AA79' : '#FE7760')};
 `;
 
 export const Info = styled.p`

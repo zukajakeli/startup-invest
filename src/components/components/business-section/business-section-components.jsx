@@ -47,7 +47,7 @@ export const SubHeading = styled.h3`
   color: #767c8b;
   font-size: 1.6rem;
   font-weight: 400;
-  max-width: 44rem;
+  max-width: 37rem;
   margin-top: 2.4rem;
 `;
 

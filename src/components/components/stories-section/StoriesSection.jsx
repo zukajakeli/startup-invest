@@ -7,20 +7,21 @@ import archPink from '../../../assets/images/arch-pink.svg';
 import { ReactComponent as Arrow } from '../../../assets/images/arrow.svg';
 
 import * as S from './stories-section-components';
+import { useHistory } from 'react-router';
 
 const StoriesSection = () => {
+  const history = useHistory();
+  const goToBlogs = () => {
+    history.push('/blogs');
+  };
   return (
     <S.Wrapper>
       <S.Header>
         <S.CircleImage src={circle} />
         <S.TextsWrapper>
           <S.Heading>ბიზნეს ისტორიები</S.Heading>
-          <S.SubHeading>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე
-          </S.SubHeading>
         </S.TextsWrapper>
-        <S.AllStoriesButton>
+        <S.AllStoriesButton onClick={goToBlogs}>
           ყველა ისტორია
           <Arrow />
         </S.AllStoriesButton>

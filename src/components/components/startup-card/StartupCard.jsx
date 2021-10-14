@@ -31,7 +31,7 @@ const StartupCard = ({
         </S.ContentHeader>
 
         <S.StartupInfo>{startupInfo}</S.StartupInfo>
-        <S.AboutButton>პროექტის შესახებ</S.AboutButton>
+        <S.AboutButton>დეტალურად</S.AboutButton>
       </S.ContentWrapper>
     </S.Wrapper>
   );
