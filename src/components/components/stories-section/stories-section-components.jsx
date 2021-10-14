@@ -82,7 +82,7 @@ export const AllStoriesButton = styled.button`
 export const Body = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1.6rem;
   position: relative;
   z-index: 1;

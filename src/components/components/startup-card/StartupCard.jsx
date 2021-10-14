@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router';
 import * as S from './startup-card-components';
 
 const StartupCard = ({
@@ -9,6 +10,11 @@ const StartupCard = ({
   logo,
   isBlurred,
 }) => {
+  const history = useHistory();
+  const openStartup = () => {
+    history.push('/test');
+  };
+
   return (
     <S.Wrapper isBlurred={isBlurred}>
       <S.Logo src={logo} />
@@ -31,7 +37,7 @@ const StartupCard = ({
         </S.ContentHeader>
 
         <S.StartupInfo>{startupInfo}</S.StartupInfo>
-        <S.AboutButton>დეტალურად</S.AboutButton>
+        <S.AboutButton onClick={openStartup}>დეტალურად</S.AboutButton>
       </S.ContentWrapper>
     </S.Wrapper>
   );
