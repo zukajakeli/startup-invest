@@ -8,7 +8,7 @@ import exitIcon from 'assets/icons/exit-icon.svg';
 
 import * as S from './authorization-components';
 
-const Authorization = () => {
+const Authorization = ({ setIsAuthOpen }) => {
   const formik = useFormik({
     initialValues: {
       authEmail: '',
@@ -20,7 +20,13 @@ const Authorization = () => {
   });
   return (
     <S.Wrapper onSubmit={formik.handleSubmit}>
-      <S.ExitButton src={exitIcon} alt="exit" />
+      <S.ExitButton
+        src={exitIcon}
+        alt="exit"
+        onClick={() => {
+          setIsAuthOpen(false);
+        }}
+      />
 
       <S.Heading>ავტორიზაცია</S.Heading>
       <S.Text style={{ marginBottom: 20 }}>შეიყვანე მონაცემები</S.Text>

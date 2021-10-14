@@ -5,8 +5,13 @@ import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg'
 
 import * as S from './header-components';
 import Authorization from 'components/authorization/Authorization';
+import { useState } from 'react';
 
 const Header = () => {
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const AuthDropdownToggler = () => {
+    setIsAuthOpen((prev) => !prev);
+  };
   return (
     <>
       <S.Wrapper>
@@ -18,14 +23,16 @@ const Header = () => {
           <Link to="/blogs">
             <S.BlogsButton>ბლოგი</S.BlogsButton>
           </Link>
-          <S.LoginButton>
+          <S.LoginButton onClick={AuthDropdownToggler}>
             <UserIcon />
             შესვლა
           </S.LoginButton>
         </S.ButtonsWrapper>
-        <S.AuthWrapper>
-          <Authorization />
-        </S.AuthWrapper>
+        {isAuthOpen && (
+          <S.AuthWrapper>
+            <Authorization setIsAuthOpen={setIsAuthOpen} />
+          </S.AuthWrapper>
+        )}
       </S.Wrapper>
     </>
   );
