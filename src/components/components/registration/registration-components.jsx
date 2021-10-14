@@ -38,14 +38,6 @@ export const InputWrapper = styled.div`
   margin-bottom: 1.6rem;
 `;
 
-export const Hyperlink = styled.span`
-  color: #fdb8b7;
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-left: 0.2rem;
-  cursor: pointer;
-`;
-
 export const Button = styled.button`
   height: 4.6rem;
   width: 35.2rem;
@@ -61,6 +53,7 @@ export const Button = styled.button`
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
+  margin-top: 1.5rem;
 
   &:hover {
     background-position: left bottom;
@@ -68,35 +61,14 @@ export const Button = styled.button`
   }
 `;
 
-export const HorizontalLine = styled.div`
-  height: 0.1rem;
-  width: 35.2rem;
-  background-color: #b8c3de;
-  margin-top: 3.2rem;
+export const BackButton = styled.img`
+  position: absolute;
+  left: 1.9rem;
+  cursor: pointer;
 `;
 
-export const SocialAuthWrapper = styled.div`
+export const FlexWrapper = styled.div`
   display: flex;
   gap: 1.6rem;
-  margin-top: 1.4rem;
-`;
-
-export const SocialButton = styled.button`
-  width: 16.8rem;
-  height: 4.6rem;
-  border-radius: 3rem;
-  color: #13182b;
-  font-size: 1.6rem;
-  font-weight: 600;
-  background-color: ${({ google }) => (google ? '#FE7760' : '#5D80D1')};
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SocialIcon = styled.img`
-  margin-right: 1.5rem;
+  justify-content: space-between;
 `;

@@ -6,12 +6,18 @@ import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg'
 import * as S from './header-components';
 import Authorization from 'components/authorization/Authorization';
 import { useState } from 'react';
+import Registration from '../registration/Registration';
+import ResetPassword from '../reset-password/ResetPassword';
 
 const Header = () => {
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(false);
   const AuthDropdownToggler = () => {
-    setIsAuthOpen((prev) => !prev);
+    setIsAuthDropdownOpen((prev) => !prev);
   };
+
+  const [isAuthorizationOpen, setIsAuthorizationOpen] = useState(true);
+  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
+  const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
   return (
     <>
       <S.Wrapper>
@@ -28,9 +34,33 @@ const Header = () => {
             შესვლა
           </S.LoginButton>
         </S.ButtonsWrapper>
-        {isAuthOpen && (
+        {isAuthDropdownOpen && (
           <S.AuthWrapper>
-            <Authorization setIsAuthOpen={setIsAuthOpen} />
+            {isAuthorizationOpen && (
+              <Authorization
+                setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+                setIsAuthorizationOpen={setIsAuthorizationOpen}
+                setIsRegistrationOpen={setIsRegistrationOpen}
+                setIsResetPasswordOpen={setIsResetPasswordOpen}
+              />
+            )}
+
+            {isRegistrationOpen && (
+              <Registration
+                setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+                setIsAuthorizationOpen={setIsAuthorizationOpen}
+                setIsRegistrationOpen={setIsRegistrationOpen}
+                setIsResetPasswordOpen={setIsResetPasswordOpen}
+              />
+            )}
+            {isResetPasswordOpen && (
+              <ResetPassword
+                setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+                setIsAuthorizationOpen={setIsAuthorizationOpen}
+                setIsResetPasswordOpen={setIsResetPasswordOpen}
+                setIsRegistrationOpen={setIsRegistrationOpen}
+              />
+            )}
           </S.AuthWrapper>
         )}
       </S.Wrapper>

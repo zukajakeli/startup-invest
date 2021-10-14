@@ -1,6 +1,7 @@
 import requiredIcon from 'assets/icons/required-icon.svg';
 import uploadIcon from 'assets/icons/upload-icon.svg';
-import eyeIcon from 'assets/icons/eye-icon-hidden.svg';
+import eyeIconHidden from 'assets/icons/eye-icon-hidden.svg';
+import eyeIcon from 'assets/icons/eye-icon.svg';
 
 import * as S from './text-input-components';
 import { useState } from 'react';
@@ -41,7 +42,11 @@ const TextInput = ({
       {required && <S.RequiredIcon src={requiredIcon} alt="required" />}
       {isUploadInput && <S.UploadIcon src={uploadIcon} alt="upload" />}
       {isPasswordInput && (
-        <S.EyeIcon src={eyeIcon} alt="password" onClick={HideShowPassword} />
+        <S.EyeIcon
+          src={isPasswordVisible ? eyeIconHidden : eyeIcon}
+          alt="password"
+          onClick={HideShowPassword}
+        />
       )}
     </S.Wrapper>
   );

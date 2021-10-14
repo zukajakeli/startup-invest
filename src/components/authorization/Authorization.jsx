@@ -8,7 +8,12 @@ import exitIcon from 'assets/icons/exit-icon.svg';
 
 import * as S from './authorization-components';
 
-const Authorization = ({ setIsAuthOpen }) => {
+const Authorization = ({
+  setIsAuthDropdownOpen,
+  setIsRegistrationOpen,
+  setIsResetPasswordOpen,
+  setIsAuthorizationOpen,
+}) => {
   const formik = useFormik({
     initialValues: {
       authEmail: '',
@@ -18,13 +23,25 @@ const Authorization = ({ setIsAuthOpen }) => {
       console.log(JSON.stringify(values));
     },
   });
+
+  const openResetPassword = () => {
+    setIsResetPasswordOpen(true);
+    setIsAuthorizationOpen(false);
+    setIsRegistrationOpen(false);
+  };
+
+  const openRegistration = () => {
+    setIsRegistrationOpen(true);
+    setIsResetPasswordOpen(false);
+    setIsAuthorizationOpen(false);
+  };
   return (
     <S.Wrapper onSubmit={formik.handleSubmit}>
       <S.ExitButton
         src={exitIcon}
         alt="exit"
         onClick={() => {
-          setIsAuthOpen(false);
+          setIsAuthDropdownOpen(false);
         }}
       />
 
@@ -52,10 +69,12 @@ const Authorization = ({ setIsAuthOpen }) => {
         />
       </S.InputWrapper>
       <S.Text style={{ marginBottom: 6 }}>
-        დაგავიწყდა პაროლი?<S.Hyperlink> აღადგინე აქ </S.Hyperlink>
+        დაგავიწყდა პაროლი?
+        <S.Hyperlink onClick={openResetPassword}> აღადგინე აქ </S.Hyperlink>
       </S.Text>
       <S.Text style={{ marginBottom: 30 }}>
-        არ ხარ რეგისტრირებული? <S.Hyperlink> დააჭირე აქ </S.Hyperlink>
+        არ ხარ რეგისტრირებული?{' '}
+        <S.Hyperlink onClick={openRegistration}> დააჭირე აქ </S.Hyperlink>
       </S.Text>
       <S.Button type="submit">შესვლა</S.Button>
       <S.HorizontalLine />

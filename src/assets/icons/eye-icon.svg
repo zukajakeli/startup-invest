@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20.828" height="20.828" viewBox="0 0 20.828 20.828">
-  <g id="Icon_feather-eye-off" data-name="Icon feather-eye-off" transform="translate(-0.086 -0.086)" opacity="0">
-    <path id="Path_193" data-name="Path 193" d="M15.36,17.326A8.276,8.276,0,0,1,10.5,19c-5.727,0-9-6.5-9-6.5A15.019,15.019,0,0,1,5.64,7.674M8.782,6.195A7.512,7.512,0,0,1,10.5,6c5.727,0,9,6.5,9,6.5a15.026,15.026,0,0,1-1.767,2.592m-5.5-.869a2.461,2.461,0,0,1-4.174-1.059,2.427,2.427,0,0,1,.7-2.386" transform="translate(-0.29 -2.07)" fill="none" stroke="#b8c3de" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <path id="Path_194" data-name="Path 194" d="M1.5,1.5l18,18" fill="none" stroke="#b8c3de" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="19.82" height="14.96" viewBox="0 0 19.82 14.96">
+  <g id="Icon_feather-eye" data-name="Icon feather-eye" transform="translate(-0.5 -5)">
+    <path id="Path_191" data-name="Path 191" d="M1.5,12.48S4.74,6,10.41,6s8.91,6.48,8.91,6.48-3.24,6.48-8.91,6.48S1.5,12.48,1.5,12.48Z" fill="none" stroke="#b8c3de" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_192" data-name="Path 192" d="M18.36,15.93a2.43,2.43,0,1,1-2.43-2.43A2.43,2.43,0,0,1,18.36,15.93Z" transform="translate(-5.52 -3.45)" fill="none" stroke="#b8c3de" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
   </g>
 </svg>
