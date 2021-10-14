@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   height: 76.8rem;
@@ -22,6 +22,27 @@ export const BackgroundImage = styled.img`
   position: absolute;
   right: 0;
   z-index: 0;
+`;
+
+export const Arrow = styled.img`
+  position: absolute;
+  z-index: 5;
+  right: 21rem;
+  bottom: 3rem;
+  transform: rotate(170deg);
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    transform: rotate(200deg);
+  }
+`;
+
+export const Circle = styled.img`
+  position: absolute;
+  z-index: 1;
+  right: 18.5rem;
+  bottom: 0rem;
 `;
 
 export const Content = styled.div`
@@ -58,7 +79,7 @@ export const LearnMore = styled.div`
   color: #13182b;
   font-size: 1.6rem;
   font-weight: 600;
-  background-image: url("../../../assets/icons/circle-blue.svg");
+  background-image: url('../../../assets/icons/circle-blue.svg');
   position: relative;
 `;
 

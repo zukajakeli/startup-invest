@@ -2,11 +2,23 @@ import backgroundImage from '../../../assets/images/landing-background.png';
 import circleBlue from '../../../assets/icons/circle-blue.svg';
 import Header from '../header/Header.jsx';
 
+import arrow from 'assets/icons/arrow-curly-pink.svg';
+import circleGreen from 'assets/icons/circle-green.svg';
+
 import * as S from './landing-section-components';
 
 const LandingSection = () => {
+  const scrollDown = () => {
+    window.scrollTo({
+      top: 768,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <S.Wrapper>
+      <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
+      <S.Circle src={circleGreen} alt="circle" />
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
