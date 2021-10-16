@@ -13,6 +13,7 @@ export const Wrapper = styled.header`
 export const Logo = styled.img`
   width: 16.6rem;
   height: 3.4rem;
+  cursor: pointer;
 `;
 
 export const ButtonsWrapper = styled.div`

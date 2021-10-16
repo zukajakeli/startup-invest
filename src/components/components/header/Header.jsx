@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import logo from '../../../assets/images/main-logo.png';
 import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg';
@@ -15,13 +15,18 @@ const Header = () => {
     setIsAuthDropdownOpen((prev) => !prev);
   };
 
+  const history = useHistory();
+  const goToMain = () => {
+    history.push('/');
+  };
+
   const [isAuthorizationOpen, setIsAuthorizationOpen] = useState(true);
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
   return (
     <>
       <S.Wrapper>
-        <S.Logo src={logo} />
+        <S.Logo src={logo} onClick={goToMain} />
         <S.ButtonsWrapper>
           <Link to="/startups">
             <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
