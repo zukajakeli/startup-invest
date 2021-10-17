@@ -13,12 +13,22 @@ export const Wrapper = styled.div`
   align-items: center;
   z-index: 2;
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+    width: 34.2rem;
+    height: 22rem;
+    padding: 2.4rem 2.1rem 2.4rem 3rem;
+  `}
 `;
 
 export const Title = styled.h4`
   font-size: 2.2rem;
   font-weight: 600;
   color: ${({ forInvestors }) => (forInvestors ? '#55AA79' : '#FE7760')};
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.6rem
+  `}
 `;
 
 export const Info = styled.p`
@@ -26,6 +36,12 @@ export const Info = styled.p`
   font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
+  line-height: 2.2rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.4rem;
+    max-width: 27rem;
+  `}
 `;
 
 export const Button = styled.button`
@@ -48,4 +64,8 @@ export const Button = styled.button`
     background-position: left bottom;
     color: #ffffff;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 20.4rem;
+  `}
 `;

@@ -21,6 +21,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    ${({ theme }) => theme.mobile`
+      gap: 0rem;
+    `}
   }
 
   textarea {

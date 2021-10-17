@@ -19,6 +19,11 @@ export const Wrapper = styled.div`
   -ms-filter: blur(8px);
   filter: blur(9px);
   pointer-events: none;]`}
+
+  ${({ theme }) => theme.mobile`
+    width: 34rem;
+    height: 53.7rem;
+  `}
 `;
 
 export const Image = styled.img`

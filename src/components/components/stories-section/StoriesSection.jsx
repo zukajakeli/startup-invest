@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import LargeStory from '../large-story/LargeStory';
 import SmallStory from '../small-story/SmallStory';
 
@@ -14,6 +16,9 @@ const StoriesSection = () => {
   const goToBlogs = () => {
     history.push('/blogs');
   };
+
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
   return (
     <S.Wrapper>
       <S.Header>
@@ -21,10 +26,12 @@ const StoriesSection = () => {
         <S.TextsWrapper>
           <S.Heading>ბიზნეს ისტორიები</S.Heading>
         </S.TextsWrapper>
-        <S.AllStoriesButton onClick={goToBlogs}>
-          ყველა ისტორია
-          <Arrow />
-        </S.AllStoriesButton>
+        {!isMobile && (
+          <S.AllStoriesButton onClick={goToBlogs}>
+            ყველა ისტორია
+            <Arrow />
+          </S.AllStoriesButton>
+        )}
       </S.Header>
 
       <S.Body>
@@ -53,6 +60,13 @@ const StoriesSection = () => {
         </S.SmallStoriesWrapper>
         <S.GreenBackground src={archGreen} />
       </S.Body>
+
+      {isMobile && (
+        <S.AllStoriesButton onClick={goToBlogs}>
+          ყველა ისტორია
+          <Arrow />
+        </S.AllStoriesButton>
+      )}
 
       <S.PinkBackground src={archPink} />
     </S.Wrapper>

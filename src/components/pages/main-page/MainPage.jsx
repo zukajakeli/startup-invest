@@ -14,8 +14,8 @@ const MainPage = () => {
       <BusinessSection />
       <ChooseServiceSection />
       <StoriesSection />
-      <SummarySection />
-      <Footer />
+      {/* <SummarySection />
+      <Footer /> */}
     </S.Wrapper>
   );
 };

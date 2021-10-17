@@ -18,7 +18,7 @@ const ChooseServiceSection = () => {
 
   return (
     <S.Wrapper>
-      <S.CardWrapper>
+      <S.CardWrapper mobile>
         <ChooseServiceCard
           handleButtonClick={goToStartups}
           title="იყიდე წილი"
