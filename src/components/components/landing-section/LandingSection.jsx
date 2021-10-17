@@ -36,7 +36,7 @@ const LandingSection = () => {
         <Header />
       </S.HeaderWrapper>
       <S.Content>
-        <S.LogoMobile src={logo} alt="logo" />
+        {/* <S.LogoMobile src={logo} alt="logo" /> */}
         <S.Heading>
           გახდი სტარტაპის მეწილე - დააბანდე ფული სწრაფად მზარდ ბიზნესში
         </S.Heading>

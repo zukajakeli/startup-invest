@@ -20,6 +20,11 @@ export const Heading = styled.p`
   font-size: 2.6rem;
   color: #13182b;
   margin-bottom: 1.7rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.6rem;
+    
+  `}
 `;
 
 export const SubHeading = styled.p`
@@ -28,6 +33,11 @@ export const SubHeading = styled.p`
   font-weight: 400;
   text-align: center;
   margin-bottom: 4.2rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.2rem;
+    
+  `}
 `;
 
 export const CircleWrapper = styled.div`
@@ -46,6 +56,10 @@ export const ArrowWrapper = styled.div`
   position: absolute;
   bottom: -2.5rem;
   left: 1rem;
+
+  ${({ theme }) => theme.mobile`
+    left: -11rem;
+  `}
 `;
 
 export const Button = styled.button`
@@ -68,4 +82,10 @@ export const Button = styled.button`
     background-position: left bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    height: 5.2rem;
+    width: 15.2rem;
+    font-size: 1.4rem;
+  `}
 `;

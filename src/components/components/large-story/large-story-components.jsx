@@ -9,7 +9,7 @@ export const LargeStory = styled.div`
   align-items: flex-end;
 
   ${({ theme }) => theme.mobile`
-   height: 27.8rem;
+   max-height: 27.8rem;
    max-width: 34.2rem;
   `}
 `;

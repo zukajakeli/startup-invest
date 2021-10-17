@@ -19,6 +19,18 @@ export const Logo = styled.img`
 export const ButtonsWrapper = styled.div`
   gap: 1.6rem;
   display: flex;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+    z-index: 12;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    & > * {
+      margin-bottom: 2rem;
+    }
+  `}
 `;
 
 export const BlogsButton = styled.button`
@@ -41,6 +53,10 @@ export const BlogsButton = styled.button`
     background-position: left bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 10.6rem;
+  `}
 `;
 
 export const InvestmentsButton = styled.button`
@@ -62,6 +78,10 @@ export const InvestmentsButton = styled.button`
     background-position: left bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 15.1rem;
+  `}
 `;
 
 export const LoginButton = styled.button`
@@ -99,6 +119,10 @@ export const LoginButton = styled.button`
       stroke: #13182b;
     }
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 13.7rem;
+  `}
 `;
 
 export const ButtonImage = styled.img``;
@@ -108,4 +132,36 @@ export const AuthWrapper = styled.div`
   z-index: 11;
   right: 0rem;
   top: 10rem;
+`;
+
+export const BurgerMenu = styled.img`
+  width: 5rem;
+  height: 4rem;
+  cursor: pointer;
+`;
+
+export const SideMenu = styled.div`
+  width: 21.2rem;
+  height: 200vh;
+  position: absolute;
+  right: -4rem;
+  z-index: 1;
+  background-color: #13182b;
+  display: flex;
+  padding-right: 3.6rem;
+  top: 0rem;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 0.2s ease-in-out;
+
+  ${({ isSideMenuOpen }) =>
+    isSideMenuOpen && 'transform: translate(50%, -100%);'}
+`;
+
+export const Exit = styled.img`
+  width: 5rem;
+  height: 4rem;
+  margin-bottom: 8.4rem;
+  margin-top: 3.6rem;
+  cursor: pointer;
 `;

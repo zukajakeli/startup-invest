@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { Link, useHistory } from 'react-router-dom';
 
 import logo from '../../../assets/images/main-logo.png';
@@ -20,25 +21,67 @@ const Header = () => {
     history.push('/');
   };
 
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
   const [isAuthorizationOpen, setIsAuthorizationOpen] = useState(true);
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
+
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(true);
+  const openSideMenu = () => {
+    setIsSideMenuOpen(false);
+  };
+  const closeSideMenu = () => {
+    setIsSideMenuOpen(true);
+  };
+
   return (
     <>
       <S.Wrapper>
         <S.Logo src={logo} onClick={goToMain} />
-        <S.ButtonsWrapper>
-          <Link to="/startups">
-            <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
-          </Link>
-          <Link to="/blogs">
-            <S.BlogsButton>ბლოგი</S.BlogsButton>
-          </Link>
-          <S.LoginButton onClick={AuthDropdownToggler}>
-            <UserIcon />
-            შესვლა
-          </S.LoginButton>
-        </S.ButtonsWrapper>
+        {!isMobile ? (
+          <S.ButtonsWrapper>
+            <Link to="/startups">
+              <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
+            </Link>
+            <Link to="/blogs">
+              <S.BlogsButton>ბლოგი</S.BlogsButton>
+            </Link>
+            <S.LoginButton onClick={AuthDropdownToggler}>
+              <UserIcon />
+              შესვლა
+            </S.LoginButton>
+          </S.ButtonsWrapper>
+        ) : (
+          <S.BurgerMenu
+            onClick={openSideMenu}
+            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/burger-1855836-1574002.png"
+            alt="menu"
+          />
+        )}
+
+        {isMobile && (
+          <S.SideMenu isSideMenuOpen={isSideMenuOpen}>
+            <S.Exit
+              onClick={closeSideMenu}
+              src="https://www.nicepng.com/png/full/291-2912053_big-image-clip-art-railroad-sign.png"
+              alt="exit"
+            />
+            <S.ButtonsWrapper>
+              <Link to="/startups">
+                <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>
+              </Link>
+              <Link to="/blogs">
+                <S.BlogsButton>ბლოგი</S.BlogsButton>
+              </Link>
+              <S.LoginButton onClick={AuthDropdownToggler}>
+                <UserIcon />
+                შესვლა
+              </S.LoginButton>
+            </S.ButtonsWrapper>
+          </S.SideMenu>
+        )}
+
         {isAuthDropdownOpen && (
           <S.AuthWrapper>
             {isAuthorizationOpen && (

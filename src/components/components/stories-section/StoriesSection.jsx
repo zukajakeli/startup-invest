@@ -57,7 +57,9 @@ const StoriesSection = () => {
             storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
           მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…"
           />
+          {isMobile && <S.PinkBackground src={archPink} />}
         </S.SmallStoriesWrapper>
+
         <S.GreenBackground src={archGreen} />
       </S.Body>
 
@@ -67,8 +69,7 @@ const StoriesSection = () => {
           <Arrow />
         </S.AllStoriesButton>
       )}
-
-      <S.PinkBackground src={archPink} />
+      {!isMobile && <S.PinkBackground src={archPink} />}
     </S.Wrapper>
   );
 };

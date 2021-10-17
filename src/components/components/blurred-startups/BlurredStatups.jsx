@@ -4,6 +4,7 @@ import { ReactComponent as Binocular } from '../../../assets/icons/binocular.svg
 import { ReactComponent as Circle } from '../../../assets/icons/circle.svg';
 import { ReactComponent as Arrow } from '../../../assets/icons/arrow-curly-backwards.svg';
 import * as S from './blurred-startups-components';
+import { useMediaQuery } from 'react-responsive';
 
 export const dummy = [
   {
@@ -39,11 +40,26 @@ export const dummy = [
 ];
 
 const BlurredStartups = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
   return (
     <S.Wrapper>
       {dummy.map(
         ({ startupName, goal, raised, startupInfo, image, logo }, index) => {
-          return (
+          return isMobile ? (
+            index < 1 && (
+              <StartupCard
+                key={`blurred${index}`}
+                raised={raised}
+                startupName={startupName}
+                startupInfo={startupInfo}
+                goal={goal}
+                image={image}
+                logo={logo}
+                isBlurred
+              />
+            )
+          ) : (
             <StartupCard
               key={`blurred${index}`}
               raised={raised}

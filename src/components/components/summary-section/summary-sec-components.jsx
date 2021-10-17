@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
 `;
 
 export const BackgroundImage = styled.img`
-  /* width: 100%; */
+  ${({ theme }) => theme.mobile`
+    display: none;
+ `}
 `;
 
 export const PinkButton = styled.button`
@@ -32,6 +34,13 @@ export const PinkButton = styled.button`
     background-position: right bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 20.7rem;
+    height: 20.7rem;
+     position: unset;
+     font-size: 1.4rem;
+  `}
 `;
 
 export const BackgroundWrapper = styled.div`
@@ -39,6 +48,15 @@ export const BackgroundWrapper = styled.div`
   height: 40.7rem;
   right: 10%;
   bottom: -8.7rem;
+
+  ${({ theme }) => theme.mobile`
+    position: unset;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+  `}
 `;
 
 export const GreenButton = styled.button`
@@ -63,6 +81,15 @@ export const GreenButton = styled.button`
     background-position: left bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 21.2rem;
+    height: 8.4rem;
+    position: unset;
+    font-size: 1.4rem;
+    margin-top: 11rem;
+    margin-right: -1rem;
+  `}
 `;
 
 export const ArrowImage = styled.img`
@@ -74,4 +101,8 @@ export const ArrowImage = styled.img`
   &:hover {
     transform: rotate(30deg);
   }
+
+  ${({ theme }) => theme.mobile`
+    display: none;
+  `}
 `;

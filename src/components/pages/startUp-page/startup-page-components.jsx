@@ -11,6 +11,10 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   padding: 0rem 10%;
   z-index: 10;
+
+  ${({ theme }) => theme.mobile`
+    background-color: #F2F1F1;
+  `}
 `;
 
 export const Body = styled.div`
@@ -23,12 +27,21 @@ export const Heading = styled.h2`
   font-weight: 600;
   color: #13182b;
   margin-bottom: 1.6rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.8rem;
+    margin-bottom: 2.3rem;
+  `}
 `;
 
 export const SubHeading = styled.h3`
   color: #13182b;
   font-size: 1.6rem;
   font-weight: 400;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.4rem;
+  `}
 `;
 
 export const HeadingsWrapper = styled.div`
@@ -38,13 +51,17 @@ export const HeadingsWrapper = styled.div`
 
 export const StartupsWrapper = styled.div`
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr)); */
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.6rem;
   row-gap: 3.2rem;
   margin-bottom: 4.5rem;
   z-index: 1;
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+    display: flex;
+    flex-direction: column;
+  `}
 `;
 
 export const OvalBlueWrapper = styled.img`

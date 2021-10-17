@@ -7,8 +7,9 @@ export const Wrapper = styled.div`
   position: relative;
 
   ${({ theme }) => theme.mobile`
-    height: 83.6rem;
+    min-height: 83.6rem;
     padding: 0rem 7%;
+    padding-bottom: 2rem;
   `}
 `;
 
@@ -143,8 +144,8 @@ export const PinkBackground = styled.img`
   ${({ theme }) => theme.mobile`
     width: 13.5rem;
     height: 7.7rem;
-    bottom: -2rem;
-    left: 10%;
+    bottom: -3rem;
+    left: 1rem;
   `}
 `;
 
@@ -155,6 +156,6 @@ export const GreenBackground = styled.img`
   transform: rotate(-84deg);
 
   ${({ theme }) => theme.mobile`
-    right: -23%;
+    right: -6rem;
   `}
 `;

@@ -6,16 +6,20 @@ import StoriesSection from '../../components/stories-section/StoriesSection';
 import * as S from './main-page-component';
 import SummarySection from '../../components/summary-section/SummarySection';
 import Footer from '../../components/footer/Footer';
+import Header from 'components/components/header/Header';
 
 const MainPage = () => {
   return (
     <S.Wrapper>
+      <S.HeaderWrapper>
+        <Header />
+      </S.HeaderWrapper>
       <LandingSection />
       <BusinessSection />
       <ChooseServiceSection />
       <StoriesSection />
-      {/* <SummarySection />
-      <Footer /> */}
+      <SummarySection />
+      <Footer />
     </S.Wrapper>
   );
 };

@@ -1,8 +1,9 @@
+import { useHistory } from 'react-router';
+
 import * as S from './summary-sec-components';
 
 import backgroundImage from '../../../assets/images/summary-background.svg';
 import arrow from '../../../assets/icons/arrow-curly-pink.svg';
-import { useHistory } from 'react-router';
 
 const SummarySection = () => {
   const scrollToTop = () => {

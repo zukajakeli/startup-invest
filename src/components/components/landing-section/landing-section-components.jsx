@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     padding-left: 0rem;
-`}
+   `}
 `;
 
 export const LogoMobile = styled.img`
@@ -32,7 +32,7 @@ export const HeaderWrapper = styled.div`
   position: absolute;
   width: 79%;
   top: 0.1rem;
-  z-index: 1;
+  z-index: 10;
 
   ${({ theme }) => theme.mobile`
     display: none;
@@ -88,7 +88,7 @@ export const Content = styled.div`
      height: 59.6rem;
      background-color: #ffffff;
      border-radius: 0rem 0rem 6rem 0rem;
-     padding: 3.9rem 2.8rem 3.9rem 3.6rem;
+     padding: 10rem 2.8rem 3.9rem 3.6rem;
   `}
 `;
 

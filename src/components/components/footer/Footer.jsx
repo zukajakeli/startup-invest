@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import SubscribeInput from '../../common-components/subscribe-input/SubscribeInput';
 import logo from '../../../assets/images/main-logo-white.svg';
@@ -14,9 +15,11 @@ const Footer = () => {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
 
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
   return (
     <S.Wrapper>
-      <S.Logo src={logo} alt="logo" />
+      {!isMobile && <S.Logo src={logo} alt="logo" />}
 
       <S.Pages>
         <S.Title>გვერდები</S.Title>
@@ -43,10 +46,11 @@ const Footer = () => {
           <InstagramIcon />
           <FacebookIcon />
           <LinkedinIcon />
-          <TiktokIcon />
+          {!isMobile && <TiktokIcon />}
         </S.SocialButtonsWrapper>
       </S.SocialWrapper>
-      {isMainPage && (
+
+      {isMainPage && !isMobile && (
         <S.Subscription>
           <S.Title>გამოიწერე სიახლეები</S.Title>
           <SubscribeInput color="#ffca0f" />
