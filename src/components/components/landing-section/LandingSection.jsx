@@ -1,11 +1,14 @@
 import { useHistory } from 'react-router';
+import { useMediaQuery } from 'react-responsive';
 
 import backgroundImage from '../../../assets/images/landing-background.png';
+import backgroundImageMobile from 'assets/images/landing-background-mobile.svg';
 import circleBlue from '../../../assets/icons/circle-blue.svg';
 import Header from '../header/Header.jsx';
 
 import arrow from 'assets/icons/arrow-curly-pink.svg';
 import circleGreen from 'assets/icons/circle-green.svg';
+import logo from 'assets/images/main-logo.png';
 
 import * as S from './landing-section-components';
 
@@ -22,14 +25,18 @@ const LandingSection = () => {
     history.push('/startups');
   };
 
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
   return (
     <S.Wrapper>
       <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
       <S.Circle src={circleGreen} alt="circle" />
+
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
       <S.Content>
+        <S.LogoMobile src={logo} alt="logo" />
         <S.Heading>
           გახდი სტარტაპის მეწილე - დააბანდე ფული სწრაფად მზარდ ბიზნესში
         </S.Heading>
@@ -46,7 +53,9 @@ const LandingSection = () => {
         </S.ButtonsWrapper>
       </S.Content>
 
-      <S.BackgroundImage src={backgroundImage} />
+      <S.BackgroundImage
+        src={isMobile ? backgroundImageMobile : backgroundImage}
+      />
     </S.Wrapper>
   );
 };

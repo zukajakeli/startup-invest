@@ -8,6 +8,24 @@ export const Wrapper = styled.div`
   align-items: center;
   padding-left: 10%;
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+    height: 73.6rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 0rem;
+`}
+`;
+
+export const LogoMobile = styled.img`
+  display: none;
+  width: 16.6rem;
+  height: 3.38rem;
+  margin-bottom: 6.8rem;
+
+  ${({ theme }) => theme.mobile`
+    display: block;
+  `}
 `;
 
 export const HeaderWrapper = styled.div`
@@ -15,6 +33,10 @@ export const HeaderWrapper = styled.div`
   width: 79%;
   top: 0.1rem;
   z-index: 1;
+
+  ${({ theme }) => theme.mobile`
+    display: none;
+  `}
 `;
 
 export const BackgroundImage = styled.img`
@@ -36,6 +58,12 @@ export const Arrow = styled.img`
   &:hover {
     transform: rotate(200deg);
   }
+
+  ${({ theme }) => theme.mobile`
+    right: 20rem;
+    width: 7.2rem;
+    height: 4.4rem;
+  `}
 `;
 
 export const Circle = styled.img`
@@ -43,11 +71,25 @@ export const Circle = styled.img`
   z-index: 1;
   right: 18.5rem;
   bottom: 0rem;
+
+  ${({ theme }) => theme.mobile`
+    right: 17.4rem;
+    width: 11.7rem;
+    height: 10.7rem;
+  `}
 `;
 
 export const Content = styled.div`
   width: 50%;
   z-index: 1;
+
+  ${({ theme }) => theme.mobile`
+     width: 77%;
+     height: 59.6rem;
+     background-color: #ffffff;
+     border-radius: 0rem 0rem 6rem 0rem;
+     padding: 3.9rem 2.8rem 3.9rem 3.6rem;
+  `}
 `;
 
 export const Heading = styled.h2`
@@ -56,6 +98,11 @@ export const Heading = styled.h2`
   font-size: 4rem;
   font-weight: 500;
   margin-bottom: 2.8rem;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 2.4rem;
+     line-height: 3.7rem;
+  `}
 `;
 
 export const SubHeading = styled.h3`
@@ -64,6 +111,12 @@ export const SubHeading = styled.h3`
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 9.4rem;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 1.6rem;
+     line-height: 2.2rem;
+     margin-bottom: 7.2rem;
+  `}
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -81,12 +134,23 @@ export const LearnMore = styled.div`
   font-weight: 600;
   background-image: url('../../../assets/icons/circle-blue.svg');
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 1.4rem;
+  `}
 `;
 
 export const CircleImage = styled.img`
   position: absolute;
   top: -3.3rem;
   right: -2.4rem;
+
+  ${({ theme }) => theme.mobile`
+     width: 5.3rem;
+     height: 5.3rem;
+     top: -2.3rem;
+     right: 3rem;
+  `}
 `;
 
 export const LearnMoreWrapper = styled.div`
@@ -118,4 +182,10 @@ export const Button = styled.button`
     background-position: left bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 15.1rem;
+    font-size: 1.4rem;
+    margin-right: 1.4rem;
+  `}
 `;

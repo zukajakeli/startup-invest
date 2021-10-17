@@ -5,13 +5,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './styles/global-styles';
+import { ThemeProvider } from 'styled-components';
+import theme from 'styles/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <Router>
-      <App />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Router>
+        <App />
+      </Router>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
