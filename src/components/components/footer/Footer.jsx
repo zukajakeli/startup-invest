@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
@@ -17,9 +17,14 @@ const Footer = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
+  const history = useHistory();
+  const goToMain = () => {
+    history.push('/');
+  };
+
   return (
     <S.Wrapper>
-      {!isMobile && <S.Logo src={logo} alt="logo" />}
+      {!isMobile && <S.Logo src={logo} alt="logo" onClick={goToMain} />}
 
       <S.Pages>
         <S.Title>გვერდები</S.Title>

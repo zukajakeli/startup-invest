@@ -4,6 +4,12 @@ export const Wrapper = styled.div`
   display: flex;
   gap: 1.6rem;
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+    justify-content: center;
+
+ 
+  `}
 `;
 
 export const Content = styled.div`
@@ -13,6 +19,12 @@ export const Content = styled.div`
   align-items: center;
   left: 31%;
   top: 13.2rem;
+
+  ${({ theme }) => theme.mobile`
+    left: 0;
+    right: 0;
+    margin: auto
+  `}
 `;
 
 export const Heading = styled.p`
@@ -20,6 +32,7 @@ export const Heading = styled.p`
   font-size: 2.6rem;
   color: #13182b;
   margin-bottom: 1.7rem;
+  text-align: center;
 
   ${({ theme }) => theme.mobile`
     font-size: 1.6rem;
@@ -33,11 +46,13 @@ export const SubHeading = styled.p`
   font-weight: 400;
   text-align: center;
   margin-bottom: 4.2rem;
-
+  max-width: 53.6rem;
+  line-height: 2.2rem;
+  text-align: center;
   ${({ theme }) => theme.mobile`
     font-size: 1.2rem;
     
-  `}
+  `};
 `;
 
 export const CircleWrapper = styled.div`
@@ -58,7 +73,8 @@ export const ArrowWrapper = styled.div`
   left: 1rem;
 
   ${({ theme }) => theme.mobile`
-    left: -11rem;
+    left: 4rem;
+    bottom: 1rem;
   `}
 `;
 

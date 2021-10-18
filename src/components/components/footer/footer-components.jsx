@@ -19,6 +19,7 @@ export const Wrapper = styled.footer`
 export const Logo = styled.img`
   width: 16.6rem;
   height: 3.4rem;
+  cursor: pointer;
 
   ${({ theme }) => theme.mobile`
     display: none;

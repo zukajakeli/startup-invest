@@ -3,6 +3,7 @@ import StartupCard from '../startup-card/StartupCard';
 import { ReactComponent as Binocular } from '../../../assets/icons/binocular.svg';
 import { ReactComponent as Circle } from '../../../assets/icons/circle.svg';
 import { ReactComponent as Arrow } from '../../../assets/icons/arrow-curly-backwards.svg';
+import { ReactComponent as ArrowMobile } from 'assets/icons/arrow-yellow-mobile.svg';
 import * as S from './blurred-startups-components';
 import { useMediaQuery } from 'react-responsive';
 
@@ -80,7 +81,7 @@ const BlurredStartups = () => {
         </S.CircleWrapper>
 
         <S.ArrowWrapper>
-          <Arrow fill="#FFCA0F" />
+          {isMobile ? <ArrowMobile /> : <Arrow fill="#FFCA0F" />}
         </S.ArrowWrapper>
 
         <S.BinocularWrapper>
@@ -89,7 +90,8 @@ const BlurredStartups = () => {
 
         <S.Heading>მეტის სანახავად გაიარე ავტორიზაცია</S.Heading>
         <S.SubHeading>
-          და ერთ სივრცეში იხილე სწრაფად მზარდი ბიზნესები <br /> საქართველოში
+          ფინანსური რეგულაციებიდან გამომდინარე, შენი ავტორიზაცია აუცილებლია მეტი
+          ინფორმაციის სანახავად.
         </S.SubHeading>
         <S.Button>ავტორიზაცია</S.Button>
       </S.Content>

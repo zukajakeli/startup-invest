@@ -14,12 +14,17 @@ export const HeaderWrapper = styled.div`
 
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;
+    padding-left: 8%;
   `}
 `;
 
 export const Body = styled.div`
   padding: 9.8rem 10% 4rem 10%;
   background-color: #f2f1f1;
+
+  ${({ theme }) => theme.mobile`
+    padding: 9.8rem 0%;
+  `}
 `;
 
 export const Heading = styled.h2`
@@ -47,6 +52,10 @@ export const SubHeading = styled.h3`
 export const HeadingsWrapper = styled.div`
   margin-top: 3.4rem;
   margin-bottom: 6.3rem;
+
+  ${({ theme }) => theme.mobile`
+    margin-left: 8%;
+  `}
 `;
 
 export const StartupsWrapper = styled.div`
@@ -61,6 +70,11 @@ export const StartupsWrapper = styled.div`
   ${({ theme }) => theme.mobile`
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    & > * {
+      margin-bottom: 1.6rem;
+    }
   `}
 `;
 
