@@ -8,6 +8,10 @@ export const Wrapper = styled.header`
   height: 9.8rem;
   box-sizing: border-box;
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+    height: 8.7rem;
+  `}
 `;
 
 export const Logo = styled.img`

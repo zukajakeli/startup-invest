@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import logo from '../../../assets/images/main-logo.png';
 import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg';
+import burgerMenu from 'assets/icons/burger-menu.svg';
 
 import * as S from './header-components';
 import Authorization from 'components/authorization/Authorization';
@@ -53,11 +54,7 @@ const Header = () => {
             </S.LoginButton>
           </S.ButtonsWrapper>
         ) : (
-          <S.BurgerMenu
-            onClick={openSideMenu}
-            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/burger-1855836-1574002.png"
-            alt="menu"
-          />
+          <S.BurgerMenu onClick={openSideMenu} src={burgerMenu} alt="menu" />
         )}
 
         {isMobile && (

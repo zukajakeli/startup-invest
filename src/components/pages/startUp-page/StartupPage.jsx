@@ -49,11 +49,11 @@ const StartupPage = () => {
           <BlurredStartups />
         </S.BlurredWrapper>
 
-        {/* <SubscribeOffer
+        <SubscribeOffer
           inputColor="#9AB7FF"
           arrowColor="#FE7760"
           cicrcleColor="#FE7760"
-        /> */}
+        />
 
         {/* position absolute elements */}
         <S.OvalBlueWrapper src={ovalBlue} alt="oval" />

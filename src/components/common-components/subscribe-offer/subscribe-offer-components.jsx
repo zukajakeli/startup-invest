@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
   gap: 1.5rem;
   padding: 5.5rem 0rem;
   margin-top: 5rem;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+    padding: 0rem 8%;
+  `}
 `;
 
 export const CircleWrapper = styled.div`
@@ -22,6 +27,12 @@ export const CircleWrapper = styled.div`
   & svg {
     fill: ${({ cicrcleColor }) => cicrcleColor};
   }
+
+  ${({ theme }) => theme.mobile`
+    z-index: 0;
+    top: 0rem;
+    left: 11rem;
+  `}
 `;
 
 export const ArrowWrapper = styled.div`
@@ -32,6 +43,12 @@ export const ArrowWrapper = styled.div`
   & svg {
     fill: ${({ arrowColor }) => arrowColor};
   }
+
+  ${({ theme }) => theme.mobile`
+    top: 5rem;
+    left: unset;
+    right: 2.2rem;
+  `}
 `;
 
 export const SubscribeText = styled.p`
@@ -40,4 +57,11 @@ export const SubscribeText = styled.p`
   max-width: 44.4rem;
   font-weight: 400;
   z-index: 1;
+  line-height: 2.2rem;
+
+  ${({ theme }) => theme.mobile`
+      font-size: 1.4rem;
+      margin-bottom: 3.7rem;
+      z-index: 1;
+  `}
 `;

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import mobileBackground from 'assets/icons/contact-background-mobile.svg';
+
 export const Wrapper = styled.div`
   background-color: #f2f1f1;
   position: relative;
@@ -11,11 +13,21 @@ export const HeaderWrapper = styled.div`
   padding: 0rem 10%;
   background-color: #fff;
   z-index: 10;
+
+  ${({ theme }) => theme.mobile`
+    background-color: #F2F1F1;
+    padding: 0rem 7%;
+  `}
 `;
 
 export const Body = styled.div`
   display: flex;
   padding-top: 9.8rem;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+    
+  `}
 `;
 
 export const LeftWrapper = styled.div`
@@ -26,6 +38,10 @@ export const LeftWrapper = styled.div`
   align-items: flex-end;
   justify-content: center;
   height: 66rem;
+
+  ${({ theme }) => theme.mobile`
+    align-items: center;
+  `}
 `;
 
 export const RightWrapper = styled.div`
@@ -34,6 +50,14 @@ export const RightWrapper = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10rem;
+
+  ${({ theme }) => theme.mobile`
+    height: 35.5rem;
+    padding: 2rem 0rem;
+    justify-content: center;
+    background-image: url(${mobileBackground});
+    background-repeat: no-repeat;
+    `}
 `;
 
 export const BackgroundImage = styled.img`
@@ -41,6 +65,10 @@ export const BackgroundImage = styled.img`
   z-index: 0;
   top: 13rem;
   left: 1%;
+
+  ${({ theme }) => theme.mobile`
+    display: none;
+  `}
 `;
 
 export const Heading = styled.h5`
@@ -48,6 +76,11 @@ export const Heading = styled.h5`
   font-size: 3.2rem;
   font-weight: 600;
   margin-bottom: 3.1rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 2.2rem;
+    white-space: nowrap;
+  `}
 `;
 
 export const FormWrapper = styled.form`
@@ -57,16 +90,32 @@ export const FormWrapper = styled.form`
   gap: 1.6rem;
   padding-right: 1rem;
   justify-content: space-between;
+
+  ${({ theme }) => theme.mobile`
+    & > * {
+      margin-bottom: 1.4rem;
+    }
+  `}
 `;
 
 export const TitleAndFormWrapper = styled.div`
   margin-right: 10rem;
+
+  ${({ theme }) => theme.mobile`
+    margin: unset;
+    padding: 0rem 7%;
+  `}
 `;
 
 export const ShareText = styled.p`
   color: #767c8b;
   font-size: 1.4rem;
   font-weight: 400;
+
+  ${({ theme }) => theme.mobile`
+      font-size: 1.2rem;
+      white-space: nowrap;
+  `}
 `;
 
 export const SubmitButton = styled.button`

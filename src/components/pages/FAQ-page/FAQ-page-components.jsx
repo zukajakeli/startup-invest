@@ -19,6 +19,10 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   z-index: 10;
   background-color: #fff;
+
+  ${({ theme }) => theme.mobile`
+    background-color: #F2F1F1;
+  `}
 `;
 
 export const Test = styled.div`
@@ -38,6 +42,13 @@ export const Body = styled.div`
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-position: 55% 80%;
+
+  ${({ theme }) => theme.mobile`
+    height: unset;
+    padding: 10rem 7%;
+    // background-repeat: repeat;
+    background-position: 90% 70%;
+  `}
 `;
 
 export const Heading = styled.h5`
@@ -49,6 +60,12 @@ export const Heading = styled.h5`
   z-index: 1;
   position: relative;
   width: 100%;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 2rem;
+    width: 100%;
+    white-space: nowrap;
+  `}
 `;
 
 export const ContainersWrapper = styled.div`
@@ -58,6 +75,10 @@ export const ContainersWrapper = styled.div`
   position: relative;
   width: 100%;
   display: flex;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+  `}
 `;
 
 export const GetInfoBox = styled.div`
@@ -66,6 +87,13 @@ export const GetInfoBox = styled.div`
   border-radius: 4rem;
   background-color: #ffffff;
   padding: 3.2rem 7rem;
+
+  ${({ theme }) => theme.mobile`
+      width: 100%;
+      padding: 2rem 1.8rem;
+      height: 39.6rem;
+      
+    `}
 `;
 
 export const GetInfoHeading = styled.p`
@@ -73,6 +101,10 @@ export const GetInfoHeading = styled.p`
   font-size: 2rem;
   font-weight: 600;
   line-height: 3rem;
+
+  ${({ theme }) => theme.mobile`
+      padding-left: 2rem 1.8rem;
+    `}
 `;
 
 export const Form = styled.form`
@@ -80,6 +112,12 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 1.6rem;
   margin-top: 1.5rem;
+
+  ${({ theme }) => theme.mobile`
+      & > * {
+        margin-bottom: 1.6rem;
+      }
+  `}
 `;
 
 export const Button = styled.button`
@@ -103,6 +141,11 @@ export const Button = styled.button`
     background-position: left bottom;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    width: 100%;
+    margin-top: 0.4rem;
+  `}
 `;
 
 export const FaqBox = styled.div`
@@ -113,6 +156,16 @@ export const FaqBox = styled.div`
   padding: 3.2rem 2rem;
   padding-right: 4.4rem;
   overflow-y: auto;
+  scroll-padding: 50px 0 0 50px;
+
+  & > :last-child {
+    margin-bottom: 3em;
+  }
+
+  ${({ theme }) => theme.mobile`
+      width: 100%;
+      margin-bottom: 9.7rem;
+    `}
 
   ::-webkit-scrollbar {
     width: 0.7rem;
