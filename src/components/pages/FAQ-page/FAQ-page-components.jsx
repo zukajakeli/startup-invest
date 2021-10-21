@@ -148,10 +148,23 @@ export const Button = styled.button`
   `}
 `;
 
-export const FaqBox = styled.div`
+export const FaqBoxWrapper = styled.div`
   width: 44.4rem;
   height: 48.8rem;
+  padding: 2.4rem;
+  background-color: #ffffff;
   border-radius: 4rem;
+
+  ${({ theme }) => theme.mobile`
+      width: 100%;
+      margin-bottom: 9.7rem;
+      padding: 0rem;
+    `}
+`;
+
+export const FaqBox = styled.div`
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
   padding: 3.2rem 2rem;
   padding-right: 4.4rem;
@@ -165,6 +178,8 @@ export const FaqBox = styled.div`
   ${({ theme }) => theme.mobile`
       width: 100%;
       margin-bottom: 9.7rem;
+      border-radius: 4rem;
+      padding-right: 3.2rem;
     `}
 
   ::-webkit-scrollbar {

@@ -18,6 +18,12 @@ export const Body = styled.div`
   display: flex;
   justify-content: center;
   padding: 2.5rem 0rem 6rem 0rem;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+    padding: 0rem 10%;
+    padding-bottom: 4rem;
+  `}
 `;
 
 export const TextsWrapper = styled.div`
@@ -25,6 +31,10 @@ export const TextsWrapper = styled.div`
   flex-direction: column;
   margin-right: 3rem;
   max-width: 54rem;
+
+  ${({ theme }) => theme.mobile`
+     margin-right: unset;
+  `}
 `;
 
 export const ImagesWrapper = styled.div`
@@ -47,6 +57,11 @@ export const Image = styled.img`
   margin-bottom: 1.6rem;
   border-radius: 4rem;
   object-fit: cover;
+
+  ${({ theme }) => theme.mobile`
+    width: 100%;
+    height: 19.2rem;
+  `}
 `;
 
 export const Heading = styled.h5`
@@ -55,6 +70,10 @@ export const Heading = styled.h5`
   font-weight: 600;
   margin-bottom: 3.5rem;
   line-height: 3rem;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 2rem;
+  `}
 `;
 
 export const SubHeading = styled.p`
@@ -63,6 +82,10 @@ export const SubHeading = styled.p`
   font-weight: 600;
   margin-bottom: 2.5rem;
   line-height: 3rem;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 1.6rem;
+  `}
 `;
 
 export const Text = styled.p`
@@ -71,6 +94,10 @@ export const Text = styled.p`
   font-weight: 400;
   margin-bottom: 2.5rem;
   line-height: 2.2rem;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 1.4rem;
+  `}
 `;
 
 export const FollowWrapper = styled.div`
@@ -88,9 +115,9 @@ export const FollowText = styled.p`
 
 export const FollowIcons = styled.div`
   display: flex;
-  gap: 1.6rem;
 
   & > * {
     cursor: pointer;
+    margin-right: 1.6rem;
   }
 `;

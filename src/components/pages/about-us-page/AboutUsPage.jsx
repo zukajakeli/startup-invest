@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import SubscribeOffer from 'components/common-components/subscribe-offer/SubscribeOffer';
 import Footer from 'components/components/footer/Footer';
 import Header from 'components/components/header/Header';
@@ -10,6 +12,7 @@ import { ReactComponent as TiktokIcon } from '../../../assets/icons/tiktok-icon.
 import * as S from './about-us-page-components';
 
 const AboutUsPage = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   return (
     <>
       <S.HeaderWrapper>
@@ -30,6 +33,13 @@ const AboutUsPage = () => {
               მიზნით, ექსკლუზიურად სთავაზობენ ჩვენს მომხმარებლებს წილს საკუთარ
               ბიზნესში.
             </S.SubHeading>
+            {isMobile && (
+              <S.Image
+                src="https://www.bbva.com/wp-content/uploads/2018/04/equipo-startup-bbva-1-e1524492124593-1024x521.jpg"
+                alt="about-us"
+              />
+            )}
+
             <S.Text>
               <strong>
                 სტარტაპ ეკოსისტემა საქართველოში დღითიდღე უფრო ვითარდება, არაერთი
@@ -46,10 +56,13 @@ const AboutUsPage = () => {
             </S.Text>
           </S.TextsWrapper>
           <S.ImagesWrapper>
-            <S.Image
-              src="https://www.bbva.com/wp-content/uploads/2018/04/equipo-startup-bbva-1-e1524492124593-1024x521.jpg"
-              alt="about-us"
-            />
+            {!isMobile && (
+              <S.Image
+                src="https://www.bbva.com/wp-content/uploads/2018/04/equipo-startup-bbva-1-e1524492124593-1024x521.jpg"
+                alt="about-us"
+              />
+            )}
+
             <S.Image
               src="https://www.bbva.com/wp-content/uploads/2018/04/equipo-startup-bbva-1-e1524492124593-1024x521.jpg"
               alt="about-us"

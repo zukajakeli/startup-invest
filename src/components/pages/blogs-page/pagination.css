@@ -1,0 +1,41 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  grid-column: 2/3;
+}
+
+.paginationWrapper > * {
+  margin-right: 1.6rem;
+  cursor: pointer;
+}
+
+.paginationPage {
+  color: pink;
+  width: 3.8rem;
+  height: 3.8rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 50%;
+  border: 0.2rem solid pink;
+}
+
+.paginationPage:hover {
+  background-color: pink;
+  color: #13182b;
+}
+
+.paginationActive a {
+  background-color: pink;
+  color: #13182b;
+  outline: none;
+}
+
+/* .paginationActive {
+  border: 0.2rem solid #ffca0f;
+  color: #ffca0f;
+} */

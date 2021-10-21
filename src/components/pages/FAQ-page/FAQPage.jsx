@@ -55,17 +55,19 @@ const FAQPage = () => {
       <S.Body>
         <S.Heading>ხშირად დასმული კითხვები</S.Heading>
         <S.ContainersWrapper>
-          <S.FaqBox>
-            {FAQs?.map(({ question, answer }, index) => {
-              return (
-                <SingleFaq
-                  key={`faq${index}`}
-                  question={question}
-                  answer={answer}
-                />
-              );
-            })}
-          </S.FaqBox>
+          <S.FaqBoxWrapper>
+            <S.FaqBox>
+              {FAQs?.map(({ question, answer }, index) => {
+                return (
+                  <SingleFaq
+                    key={`faq${index}`}
+                    question={question}
+                    answer={answer}
+                  />
+                );
+              })}
+            </S.FaqBox>
+          </S.FaqBoxWrapper>
 
           <S.GetInfoBox>
             <S.GetInfoHeading>
