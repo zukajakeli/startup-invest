@@ -374,7 +374,9 @@ const BlogsPage = () => {
                 marginPagesDisplayed={0}
                 breakLabel={<EllipsisButton />}
                 onPageChange={changePage}
-                containerClassName={'paginationWrapper'}
+                containerClassName={
+                  isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
+                }
                 disabledClassName={'paginationDisabled'}
                 activeClassName={'paginationActive'}
                 pageLinkClassName={'paginationPage'}

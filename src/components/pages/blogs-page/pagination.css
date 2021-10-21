@@ -5,7 +5,18 @@
   grid-column: 2/3;
 }
 
+.paginationWrapperMobile {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
 .paginationWrapper > * {
+  margin-right: 1.6rem;
+  cursor: pointer;
+}
+
+.paginationWrapperMobile > * {
   margin-right: 1.6rem;
   cursor: pointer;
 }
