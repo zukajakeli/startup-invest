@@ -7,6 +7,9 @@ export const Wrapper = styled.div``;
 
 export const HeaderWrapper = styled.div`
   padding: 0rem 10%;
+  ${({ theme }) => theme.mobile`
+    background-color: #F2F1F1;
+  `}
 `;
 
 export const Body = styled.div`
@@ -109,6 +112,10 @@ export const SubContent = styled.div`
   padding: 0rem 9.3rem;
   margin-top: 3.3rem;
   gap: 2rem;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column-reverse;
+  `}
 `;
 
 export const TextsWrapper = styled.div`

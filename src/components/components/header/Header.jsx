@@ -1,9 +1,10 @@
 import { useMediaQuery } from 'react-responsive';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import logo from '../../../assets/images/main-logo.png';
 import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg';
 import burgerMenu from 'assets/icons/burger-menu.svg';
+import exitIcon from 'assets/icons/exit-yellow.svg';
 
 import * as S from './header-components';
 import Authorization from 'components/authorization/Authorization';
@@ -36,6 +37,8 @@ const Header = () => {
     setIsSideMenuOpen(true);
   };
 
+  const isMainPage = history.location.pathname === '/';
+
   return (
     <>
       <S.Wrapper>
@@ -58,12 +61,8 @@ const Header = () => {
         )}
 
         {isMobile && (
-          <S.SideMenu isSideMenuOpen={isSideMenuOpen}>
-            <S.Exit
-              onClick={closeSideMenu}
-              src="https://www.nicepng.com/png/full/291-2912053_big-image-clip-art-railroad-sign.png"
-              alt="exit"
-            />
+          <S.SideMenu isSideMenuOpen={isSideMenuOpen} isMainPage={isMainPage}>
+            <S.Exit onClick={closeSideMenu} src={exitIcon} alt="exit" />
             <S.ButtonsWrapper>
               <Link to="/startups">
                 <S.InvestmentsButton>სტარტაპები</S.InvestmentsButton>

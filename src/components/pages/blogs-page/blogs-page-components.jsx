@@ -25,6 +25,10 @@ export const Body = styled.div`
 export const SubscriptionWrapper = styled.div`
   background: #fff;
   padding: 5rem 0rem;
+
+  ${({ theme }) => theme.mobile`
+    background-color: #F2F1F1;
+  `}
 `;
 
 export const OvalPinkWrapper = styled.img`
@@ -32,6 +36,10 @@ export const OvalPinkWrapper = styled.img`
   top: 9.7rem;
   right: 20%;
   z-index: 0;
+
+  ${({ theme }) => theme.mobile`
+    display: none;
+`}
 `;
 
 export const ArchWrapper = styled.div`
@@ -47,6 +55,10 @@ export const BlogsContent = styled.div`
   background: #f2f1f1;
   padding: 0rem 10%;
   padding-top: 10rem;
+
+  ${({ theme }) => theme.mobile`
+      padding: 3.4rem 3.6rem;
+  `}
 `;
 
 export const Heading = styled.h4`
@@ -54,6 +66,10 @@ export const Heading = styled.h4`
   font-size: 2.6rem;
   color: #13182b;
   margin-bottom: 3rem;
+
+  ${({ theme }) => theme.mobile`
+      font-size: 1.8rem;
+  `}
 `;
 
 export const LargeStoriesWrapper = styled.div`
@@ -63,6 +79,14 @@ export const LargeStoriesWrapper = styled.div`
   margin-top: 13rem;
   padding-bottom: 10rem;
   justify-content: center;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+
+    & > :first-child {
+    margin-bottom: 1.4rem;
+  }
+`}
 `;
 
 export const ArchBlueWrapper = styled.div`
@@ -71,6 +95,16 @@ export const ArchBlueWrapper = styled.div`
   z-index: 0;
   top: -9rem;
   left: 40%;
+
+  ${({ theme }) => theme.mobile`
+    top: -5rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    transform: rotate(0deg);
+  `}
 `;
 
 export const ZindexTop = styled.div`
@@ -85,6 +119,12 @@ export const SmallStoriesWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.6rem;
   padding-bottom: 15rem;
+
+  ${({ theme }) => theme.mobile`
+     grid-template-columns: 1fr;
+     margin-top: unset;
+     padding-bottom: unset;
+  `}
 `;
 
 export const CircleRedWrapper = styled.img`
@@ -92,6 +132,10 @@ export const CircleRedWrapper = styled.img`
   left: 40%;
   bottom: 1rem;
   z-index: 0;
+
+  ${({ theme }) => theme.mobile`
+    display: none;
+  `}
 `;
 
 export const ArchYellowWrapper = styled.div`
@@ -99,6 +143,10 @@ export const ArchYellowWrapper = styled.div`
   right: 1rem;
   top: 122rem;
   transform: rotate(-90deg);
+
+  ${({ theme }) => theme.mobile`
+     right: -4rem;
+  `}
 `;
 
 export const SwiperWrapper = styled.div`

@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
+import { useMediaQuery } from 'react-responsive';
 
 import MainStory from '../../components/main-story/MainStory';
 import Header from '../../components/header/Header';
@@ -13,6 +14,7 @@ import SmallStory from '../../components/small-story/SmallStory';
 import ovalPink from '../../../assets/icons/oval-pink.svg';
 import redCircle from '../../../assets/icons/circle-red-big.svg';
 import { ReactComponent as Arch } from '../../../assets/icons/arch.svg';
+import { ReactComponent as ArchMobile } from 'assets/icons/arch-blue-mobile.svg';
 
 import * as S from './blogs-page-components';
 
@@ -51,6 +53,8 @@ const dummy = [
 
 const BlogsPage = () => {
   SwiperCore.use([Autoplay]);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   return (
     <S.Wrapper>
       <S.HeaderWrapper>
@@ -71,7 +75,7 @@ const BlogsPage = () => {
 
           <Swiper
             spaceBetween={5}
-            slidesPerView={4}
+            slidesPerView={isMobile ? 1.1 : 4}
             direction="horizontal"
             autoplay={{ delay: 3500 }}
           >
@@ -107,12 +111,12 @@ const BlogsPage = () => {
               />
             </S.ZindexTop>
             <S.ArchBlueWrapper>
-              <Arch fill="#9AB7FF" />
+              {isMobile ? <ArchMobile /> : <Arch fill="#9AB7FF" />}
             </S.ArchBlueWrapper>
           </S.LargeStoriesWrapper>
 
           <S.AllStoriesWrapper>
-            <S.Heading>ყველა ისტორია</S.Heading>
+            <S.Heading>სხვა ისტორიები</S.Heading>
             <S.SmallStoriesWrapper>
               <S.ZindexTop>
                 <SmallStory

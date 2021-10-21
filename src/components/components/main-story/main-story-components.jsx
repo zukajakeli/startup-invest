@@ -7,12 +7,26 @@ export const MainStory = styled.div`
   margin-top: 1.6rem;
   gap: 1.6rem;
   justify-content: space-between;
+
+  ${({ theme }) => theme.mobile`
+    flex-direction: column;
+    border-radius: 4.1rem;
+    padding: 0rem;
+    height: 48.4rem;
+    justify-content: flex-start;
+  `}
 `;
 
 export const MainImage = styled.img`
   height: 33.2rem;
   max-width: 62.8rem;
   border-radius: 4rem;
+
+  ${({ theme }) => theme.mobile`
+    width: 100%;
+    height: 25.2rem;
+    margin-bottom: 2rem;
+  `}
 `;
 
 export const TextsWrapper = styled.div`
@@ -20,6 +34,10 @@ export const TextsWrapper = styled.div`
   flex-direction: column;
   padding-top: 0.5rem;
   max-width: 45rem;
+
+  ${({ theme }) => theme.mobile`
+      padding: 0rem 3.6rem 3.8rem 3.6rem;
+  `}
 `;
 
 export const StoryTitle = styled.h3`
@@ -27,6 +45,10 @@ export const StoryTitle = styled.h3`
   font-weight: 600;
   color: ${({ white }) => (white ? '#ffffff' : '##13182B')};
   margin-bottom: 1.8rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.4rem;
+  `}
 `;
 
 export const ReadingTime = styled.p`
@@ -34,6 +56,10 @@ export const ReadingTime = styled.p`
   font-weight: 400;
   color: ${({ white }) => (white ? '#ffffff' : '#767C8B')};
   margin-bottom: 1.6rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.4rem;
+  `}
 `;
 
 export const StoryPreview = styled.p`
@@ -44,4 +70,8 @@ export const StoryPreview = styled.p`
   max-height: 9rem;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.4rem;
+  `}
 `;

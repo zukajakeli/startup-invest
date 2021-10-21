@@ -18,6 +18,7 @@ import blueArrow from 'assets/icons/arrow-blue.svg';
 import * as S from './single-startup-components';
 
 import { startupsDummy } from 'components/common-components/StartupsDummyArray';
+import { useMediaQuery } from 'react-responsive';
 
 const SingleStartup = () => {
   SwiperCore.use([Pagination]);
@@ -30,6 +31,8 @@ const SingleStartup = () => {
       console.log(JSON.stringify(values, null, 2));
     },
   });
+
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
   return (
     <S.Wrapper>
@@ -113,25 +116,27 @@ const SingleStartup = () => {
               ></source>
             </video>
             <S.VideoText>ვიდეოს აღწერა</S.VideoText>
-            <S.GetInfoWrapper>
-              <S.GetInfoBox onSubmit={formik.handleSubmit}>
-                <S.BlueArrow src={blueArrow} alt="arrow" />
+            {!isMobile && (
+              <S.GetInfoWrapper>
+                <S.GetInfoBox onSubmit={formik.handleSubmit}>
+                  <S.BlueArrow src={blueArrow} alt="arrow" />
 
-                <S.GetInfoHeading>მოითხოვე ინფორმაცია</S.GetInfoHeading>
-                <S.GetInfoText>
-                  მიიღე დეტალური ინფორმაცია სტარტაპის შესახებ
-                </S.GetInfoText>
-                <label htmlFor="email" />
-                <S.MailInput
-                  placeholder="ელ-ფოსტა"
-                  name="email"
-                  id="email"
-                  onChange={formik.handleChange}
-                  value={formik.values.email}
-                />
-                <S.GetInfoButton type="submit">მოითხოვნა</S.GetInfoButton>
-              </S.GetInfoBox>
-            </S.GetInfoWrapper>
+                  <S.GetInfoHeading>მოითხოვე ინფორმაცია</S.GetInfoHeading>
+                  <S.GetInfoText>
+                    მიიღე დეტალური ინფორმაცია სტარტაპის შესახებ
+                  </S.GetInfoText>
+                  <label htmlFor="email" />
+                  <S.MailInput
+                    placeholder="ელ-ფოსტა"
+                    name="email"
+                    id="email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                  />
+                  <S.GetInfoButton type="submit">მოითხოვნა</S.GetInfoButton>
+                </S.GetInfoBox>
+              </S.GetInfoWrapper>
+            )}
           </S.VideoAndInfoWrapper>
         </S.SubContent>
       </S.Body>

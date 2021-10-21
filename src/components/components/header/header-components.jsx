@@ -150,7 +150,7 @@ export const SideMenu = styled.div`
   position: absolute;
   right: -4rem;
   z-index: 1;
-  background-color: #13182b;
+  background-color: ${({ isMainPage }) => (isMainPage ? '#13182b' : '#FFFFFF')};
   display: flex;
   padding-right: 3.6rem;
   top: 0rem;
@@ -165,7 +165,10 @@ export const SideMenu = styled.div`
 export const Exit = styled.img`
   width: 5rem;
   height: 4rem;
+  padding: 0.7rem 1rem;
   margin-bottom: 8.4rem;
   margin-top: 3.6rem;
   cursor: pointer;
+  border-radius: 5.2rem;
+  border: 0.3rem solid #ffca10;
 `;

@@ -68,6 +68,7 @@ export const StoryPreview = styled.p`
   max-height: 9rem;
   text-overflow: ellipsis;
   overflow: hidden;
+  max-height: 1.9rem;
 
   ${({ theme }) => theme.mobile`
     font-size: 1.2rem;

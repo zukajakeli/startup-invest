@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
+import { GoogleLogin } from 'react-google-login';
 
 import TextInput from 'components/components/text-input/TextInput';
+import { signUpRequest } from 'config/API';
 
 import googleIcon from 'assets/icons/google-icon.svg';
 import fbIcon from 'assets/icons/fb-icon.svg';
@@ -16,11 +18,12 @@ const Authorization = ({
 }) => {
   const formik = useFormik({
     initialValues: {
-      authEmail: '',
-      authPassword: '',
+      email: '',
+      password: '',
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
+      signUpRequest(values);
     },
   });
 
@@ -52,9 +55,9 @@ const Authorization = ({
           fullWidth
           required
           placeholder="ელ-ფოსტა"
-          inputName="authEmail"
+          inputName="email"
           handleChange={formik.handleChange}
-          value={formik.values.authEmail}
+          value={formik.values.email}
         />
       </S.InputWrapper>
       <S.InputWrapper isPasswordInput>
@@ -62,10 +65,10 @@ const Authorization = ({
           fullWidth
           required
           placeholder="პაროლი"
-          inputName="authPassword"
+          inputName="password"
           isPasswordInput
           handleChange={formik.handleChange}
-          value={formik.values.authPassword}
+          value={formik.values.password}
         />
       </S.InputWrapper>
       <S.Text style={{ marginBottom: 6 }}>
@@ -83,9 +86,14 @@ const Authorization = ({
         <S.SocialButton type="button">
           <S.SocialIcon src={fbIcon} alt="fb" /> Facebook-ით
         </S.SocialButton>
-        <S.SocialButton type="button" google>
-          <S.SocialIcon src={googleIcon} alt="fb" /> Google-ით
-        </S.SocialButton>
+        <GoogleLogin
+          clientId="GOOGLE ID"
+          render={(renderProps) => (
+            <S.SocialButton type="button" google>
+              <S.SocialIcon src={googleIcon} alt="fb" /> Google-ით
+            </S.SocialButton>
+          )}
+        />
       </S.SocialAuthWrapper>
     </S.Wrapper>
   );
