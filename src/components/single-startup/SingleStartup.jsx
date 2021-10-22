@@ -4,6 +4,7 @@ import 'swiper/swiper-bundle.css';
 // import './swiper.css';
 
 import { useFormik } from 'formik';
+import ReactPaginate from 'react-paginate';
 
 import SubscribeOffer from 'components/common-components/subscribe-offer/SubscribeOffer';
 import Header from 'components/components/header/Header';
@@ -14,11 +15,15 @@ import { ReactComponent as YellowOval } from 'assets/icons/oval.svg';
 import priceIcon from 'assets/icons/price-icon.svg';
 import percentageIcon from 'assets/icons/percentage-icon.svg';
 import blueArrow from 'assets/icons/arrow-blue.svg';
+import { ReactComponent as PreviousButton } from 'assets/icons/previous-button.svg';
+import { ReactComponent as NextButton } from 'assets/icons/next-button.svg';
+import { ReactComponent as EllipsisButton } from 'assets/icons/ellipsis-button.svg';
 
 import * as S from './single-startup-components';
 
 import { startupsDummy } from 'components/common-components/StartupsDummyArray';
 import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
 
 const SingleStartup = () => {
   SwiperCore.use([Pagination]);
@@ -33,6 +38,29 @@ const SingleStartup = () => {
   });
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const startupsPerPage = 3;
+  const startupsSeen = pageNumber * startupsPerPage;
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+  const displayStartups = startupsDummy
+    .slice(startupsSeen, startupsSeen + startupsPerPage)
+    .map(({ image, startupName, goal, raised, startupInfo, logo }) => {
+      return (
+        <StartupCard
+          startupName={startupName}
+          goal={goal}
+          raised={raised}
+          startupInfo={startupInfo}
+          image={image}
+          logo={logo}
+        />
+      );
+    });
 
   return (
     <S.Wrapper>
@@ -52,7 +80,7 @@ const SingleStartup = () => {
           />
         </S.LogoAndImage>
         <S.Content>
-          <S.Heading>სტარტაპის სახელი</S.Heading>
+          <S.Heading>სტარტაპის სახელი </S.Heading>
           <S.DataWrapper>
             <S.DataImage src={priceIcon} alt="price" />
             <S.SingleData>
@@ -141,39 +169,83 @@ const SingleStartup = () => {
         </S.SubContent>
       </S.Body>
 
-      <S.OtherOffersWrapper>
-        <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={3}
-          direction="horizontal"
-          pagination
-        >
-          {startupsDummy.map(
-            (
-              { startupName, goal, raised, startupInfo, image, logo },
-              index,
-            ) => {
-              return (
-                <SwiperSlide key={`startup${index}`}>
-                  <StartupCard
-                    startupName={startupName}
-                    goal={goal}
-                    raised={raised}
-                    startupInfo={startupInfo}
-                    image={image}
-                    logo={logo}
-                  />
-                </SwiperSlide>
-              );
-            },
-          )}
-        </Swiper>
+      {isMobile && (
+        <S.GetInfoWrapper>
+          <S.GetInfoBox onSubmit={formik.handleSubmit}>
+            <S.BlueArrow src={blueArrow} alt="arrow" />
 
-        <S.OvalWrapper>
-          <YellowOval fill="#FFCA0F" />
-        </S.OvalWrapper>
-      </S.OtherOffersWrapper>
+            <S.GetInfoHeading>მოითხოვე ინფორმაცია</S.GetInfoHeading>
+            <S.GetInfoText>
+              მიიღე დეტალური ინფორმაცია სტარტაპის შესახებ
+            </S.GetInfoText>
+            <label htmlFor="email" />
+            <S.MailInput
+              placeholder="ელ-ფოსტა"
+              name="email"
+              id="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            <S.GetInfoButton type="submit">მოითხოვნა</S.GetInfoButton>
+          </S.GetInfoBox>
+        </S.GetInfoWrapper>
+      )}
+
+      {!isMobile ? (
+        <S.OtherOffersWrapper>
+          <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={3}
+            direction="horizontal"
+            pagination
+          >
+            {startupsDummy.map(
+              (
+                { startupName, goal, raised, startupInfo, image, logo },
+                index,
+              ) => {
+                return (
+                  <SwiperSlide key={`startup${index}`}>
+                    <StartupCard
+                      startupName={startupName}
+                      goal={goal}
+                      raised={raised}
+                      startupInfo={startupInfo}
+                      image={image}
+                      logo={logo}
+                    />
+                  </SwiperSlide>
+                );
+              },
+            )}
+          </Swiper>
+
+          <S.OvalWrapper>
+            <YellowOval fill="#FFCA0F" />
+          </S.OvalWrapper>
+        </S.OtherOffersWrapper>
+      ) : (
+        <S.OtherOffersWrapper>
+          <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
+          {displayStartups}
+          <ReactPaginate
+            previousLabel={<PreviousButton />}
+            nextLabel={<NextButton />}
+            pageCount={Math.ceil(startupsDummy.length / startupsPerPage)}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={0}
+            breakLabel={<EllipsisButton />}
+            onPageChange={changePage}
+            containerClassName={
+              isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
+            }
+            disabledClassName={'paginationDisabled'}
+            activeClassName={'paginationActive'}
+            pageLinkClassName={'paginationPage'}
+          />
+        </S.OtherOffersWrapper>
+      )}
 
       <S.SubscribeWrapper>
         <SubscribeOffer

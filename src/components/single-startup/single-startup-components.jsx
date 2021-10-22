@@ -3,19 +3,34 @@ import styled from 'styled-components';
 import otherOffersBackground from 'assets/icons/other-offers-background.svg';
 import getInfoBackground from 'assets/images/get-info-background.svg';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 100%;
 
-export const HeaderWrapper = styled.div`
-  padding: 0rem 10%;
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;
   `}
 `;
 
+export const HeaderWrapper = styled.div`
+  padding: 0rem 10%;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: #fff;
+
+  ${({ theme }) => theme.mobile`
+    background-color: #F2F1F1;
+    padding: 0rem 7%;
+  `}
+`;
+
 export const Body = styled.div`
   background-color: #f2f1f1;
-  padding: 0rem 10%;
-  padding-bottom: 5rem;
+  padding: 9.8rem 10% 5rem 10%;
+
+  ${({ theme }) => theme.mobile`
+    padding: 0rem;
+  `}
 `;
 
 export const LogoAndImage = styled.div`
@@ -28,6 +43,10 @@ export const MainImage = styled.img`
   height: 38rem;
   margin-top: 1.6rem;
   object-fit: cover;
+
+  ${({ theme }) => theme.mobile`
+    height: 27rem;
+  `}
 `;
 
 export const Logo = styled.img`
@@ -39,23 +58,43 @@ export const Logo = styled.img`
   bottom: -5rem;
   left: 0rem;
   box-shadow: 0.3rem 0.3rem 0.8rem #00000029;
+
+  ${({ theme }) => theme.mobile`
+    width: 5.8rem;
+    height: 5.8rem;
+    left: 3.6rem;
+    bottom: -3rem;
+  `}
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0rem 9.3rem;
+
+  ${({ theme }) => theme.mobile`
+    padding: 0rem 7%;
+  `}
 `;
 
 export const DataWrapper = styled.div`
   display: flex;
   margin-top: 2rem;
+
+  ${({ theme }) => theme.mobile`
+    padding-left: 7.8rem;
+  `}
 `;
 
 export const DataImage = styled.img`
   width: 3.4rem;
   height: 3.6rem;
   margin-right: 1rem;
+
+  ${({ theme }) => theme.mobile`
+     width: 2rem;
+     height: 2.2rem;
+  `}
 `;
 
 export const SingleData = styled.div`
@@ -68,6 +107,10 @@ export const DataName = styled.p`
   color: #767c8b;
   font-size: 2.4rem;
   font-weight: 500;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 1.6rem;
+  `}
 `;
 
 export const DataFigure = styled.p`
@@ -75,6 +118,10 @@ export const DataFigure = styled.p`
   font-size: 2.4rem;
   font-weight: 600;
   margin-top: 1rem;
+
+  ${({ theme }) => theme.mobile`
+     font-size: 1.6rem;
+  `}
 `;
 
 export const PreviewText = styled.p`
@@ -87,6 +134,11 @@ export const PreviewText = styled.p`
   overflow-y: auto;
   margin-top: 2.3rem;
 
+  ${({ theme }) => theme.mobile`
+     font-size: 1.4rem;
+     max-height: 16.1rem;
+  `}
+
   ::-webkit-scrollbar {
     display: none;
   }
@@ -97,6 +149,13 @@ export const Heading = styled.h5`
   font-size: 3.2rem;
   font-weight: 600;
   margin-top: 1.4rem;
+  line-height: 2.4rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.8rem;
+    padding-left: 7.8rem;
+    margin-top: 0.7rem;
+  `}
 `;
 
 export const HorizontalLine = styled.div`
@@ -112,14 +171,20 @@ export const SubContent = styled.div`
   padding: 0rem 9.3rem;
   margin-top: 3.3rem;
   gap: 2rem;
+  padding-right: 0rem;
 
   ${({ theme }) => theme.mobile`
     flex-direction: column-reverse;
+    padding: 0rem;
   `}
 `;
 
 export const TextsWrapper = styled.div`
   max-width: 54rem;
+
+  ${({ theme }) => theme.mobile`
+    padding: 0rem 7%  2.5rem 7%;
+  `}
 `;
 
 export const SubHeading = styled.p`
@@ -133,12 +198,21 @@ export const Text = styled.p`
   font-size: ${({ large }) => (large ? '1.8rem' : '1.6rem')};
   font-weight: ${({ large }) => (large ? '500' : '400')};
   margin-top: 2.5rem;
+  line-height: 2.2rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.4rem;
+  `}
 `;
 
 export const VideoAndInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 44.4rem;
+
+  & video {
+    width: 100%;
+  }
 `;
 
 export const VideoText = styled.p`
@@ -146,6 +220,11 @@ export const VideoText = styled.p`
   font-size: 1.8rem;
   font-weight: 500;
   margin-top: 1.2rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.6rem;
+    padding: 0rem 7%;
+  `}
 `;
 
 export const GetInfoWrapper = styled.div`
@@ -153,6 +232,7 @@ export const GetInfoWrapper = styled.div`
   background-image: url(${getInfoBackground});
   background-repeat: no-repeat;
   background-position: 0% 100%;
+  background-color: #f2f1f1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,6 +314,16 @@ export const OtherOffersWrapper = styled.div`
   background-position: 85% 50%;
   position: relative;
   padding: 4rem 10%;
+
+  ${({ theme }) => theme.mobile`
+    height: unset;
+    background-color: #F2F1F1;
+    padding: 0rem 5%;
+
+    & > * {
+      margin-bottom: 1.4rem;
+    }
+  `}
 `;
 
 export const OtherHeading = styled.p`
@@ -241,6 +331,11 @@ export const OtherHeading = styled.p`
   font-size: 2.4rem;
   font-weight: 600;
   margin-bottom: 5rem;
+
+  ${({ theme }) => theme.mobile`
+    font-size: 1.8rem;
+    margin-bottom: 3.2rem;
+  `}
 `;
 
 export const OvalWrapper = styled.div`

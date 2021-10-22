@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 76.8rem;
+  height: 100vh;
   background-color: #f2f1f1;
   display: flex;
   justify-content: space-between;
@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     padding-left: 0rem;
+   
    `}
 `;
 

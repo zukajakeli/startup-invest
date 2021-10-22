@@ -15,7 +15,7 @@ import * as S from './landing-section-components';
 const LandingSection = () => {
   const scrollDown = () => {
     window.scrollTo({
-      top: 768,
+      top: window.innerHeight,
       behavior: 'smooth',
     });
   };

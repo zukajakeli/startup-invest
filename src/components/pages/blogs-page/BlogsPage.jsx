@@ -276,10 +276,6 @@ const BlogsPage = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
-  const [smallStoriesToShow, setSmallStoriesToShow] = useState(
-    smallStoriesData.slice(0, 6),
-  );
-
   const [pageNumber, setPageNumber] = useState(0);
   const storiesPerPage = 6;
   const storiesSeen = pageNumber * storiesPerPage;
