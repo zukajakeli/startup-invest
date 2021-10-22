@@ -12,7 +12,7 @@ const StartupCard = ({
 }) => {
   const history = useHistory();
   const openStartup = () => {
-    history.push('/test');
+    history.push('/single-startup');
   };
 
   return (

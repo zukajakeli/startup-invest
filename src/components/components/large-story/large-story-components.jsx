@@ -7,6 +7,7 @@ export const LargeStory = styled.div`
   position: relative;
   display: flex;
   align-items: flex-end;
+  cursor: pointer;
 
   ${({ theme }) => theme.mobile`
    max-height: 27.8rem;

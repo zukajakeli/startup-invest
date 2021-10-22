@@ -28,6 +28,7 @@ export const SubscriptionWrapper = styled.div`
 
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;
+    padding-top: 0rem;
   `}
 `;
 
@@ -111,14 +112,20 @@ export const ZindexTop = styled.div`
   z-index: 1;
 `;
 
-export const AllStoriesWrapper = styled.div``;
+export const AllStoriesWrapper = styled.div`
+  padding-bottom: 8rem;
+
+  ${({ theme }) => theme.mobile`
+     padding-bottom: 0rem;
+  `}
+`;
 
 export const SmallStoriesWrapper = styled.div`
   margin-top: 6.4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.6rem;
-  padding-bottom: 15rem;
+  padding-bottom: 2.4rem;
 
   ${({ theme }) => theme.mobile`
      grid-template-columns: 1fr;

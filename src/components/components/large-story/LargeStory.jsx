@@ -1,4 +1,5 @@
-import * as S from "./large-story-components";
+import { useHistory } from 'react-router';
+import * as S from './large-story-components';
 
 const LargeStory = ({
   backgroundImage,
@@ -6,8 +7,13 @@ const LargeStory = ({
   storyTitle,
   storyPreview,
 }) => {
+  const history = useHistory();
+  const openBolg = () => {
+    history.push('/single-blog');
+  };
+
   return (
-    <S.LargeStory>
+    <S.LargeStory onClick={openBolg}>
       <S.LargeStoryBackground src={backgroundImage} />
       <S.StoryTextsWrapper>
         <S.ReadingTime white>

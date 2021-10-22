@@ -9,6 +9,7 @@ export const SmallStory = styled.div`
   width: 100%;
   min-width: 35rem;
   z-index: 1;
+  cursor: pointer;
 
   ${({ theme }) => theme.mobile`
     min-width: unset;

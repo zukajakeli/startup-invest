@@ -12,6 +12,7 @@ import SubscribeOffer from '../../common-components/subscribe-offer/SubscribeOff
 import CarousselStory from '../../components/caroussel-stories/CarousselStory';
 import LargeStory from '../../components/large-story/LargeStory';
 import SmallStory from '../../components/small-story/SmallStory';
+import { smallStoriesData } from 'components/common-components/SmallStoriesDummy';
 
 import ovalPink from '../../../assets/icons/oval-pink.svg';
 import redCircle from '../../../assets/icons/circle-red-big.svg';
@@ -49,225 +50,6 @@ const dummy = [
     readingTime: '6 წუთი',
     storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
 მეწარმეობის`,
-  },
-];
-
-const smallStoriesData = [
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
-  },
-  {
-    image:
-      'https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg',
-    readingTime: '7 წუთი',
-    storyTitle: 'ბიზნეს ისტორიები',
-    storyPreview: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს `,
   },
 ];
 
@@ -362,21 +144,6 @@ const BlogsPage = () => {
             <S.Heading>სხვა ისტორიები</S.Heading>
             <S.SmallStoriesWrapper>
               {displayStories}
-              <ReactPaginate
-                previousLabel={<PreviousButton />}
-                nextLabel={<NextButton />}
-                pageCount={Math.ceil(smallStoriesData.length / storiesPerPage)}
-                pageRangeDisplayed={2}
-                marginPagesDisplayed={0}
-                breakLabel={<EllipsisButton />}
-                onPageChange={changePage}
-                containerClassName={
-                  isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
-                }
-                disabledClassName={'paginationDisabled'}
-                activeClassName={'paginationActive'}
-                pageLinkClassName={'paginationPage'}
-              />
 
               <S.CircleRedWrapper src={redCircle} />
               <S.ArchYellowWrapper>
@@ -384,6 +151,21 @@ const BlogsPage = () => {
               </S.ArchYellowWrapper>
               <S.OvalPinkWrapper src={ovalPink} alt="oval" />
             </S.SmallStoriesWrapper>
+            <ReactPaginate
+              previousLabel={<PreviousButton />}
+              nextLabel={<NextButton />}
+              pageCount={Math.ceil(smallStoriesData.length / storiesPerPage)}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={0}
+              breakLabel={<EllipsisButton />}
+              onPageChange={changePage}
+              containerClassName={
+                isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
+              }
+              disabledClassName={'paginationDisabled'}
+              activeClassName={'paginationActive'}
+              pageLinkClassName={'paginationPage'}
+            />
           </S.AllStoriesWrapper>
         </S.BlogsContent>
 
