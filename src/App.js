@@ -10,6 +10,7 @@ import StartupPage from './components/pages/startUp-page/StartupPage';
 import { useEffect } from 'react';
 import SingleStartup from 'components/single-startup/SingleStartup';
 import SingleBlog from 'components/single-blog/SingleBlog';
+import Admin from './components/pages/admin/Admin';
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/contact-us" component={ContactPage} />
         <Route exact path="/single-blog" component={SingleBlog} />
         <Route exact path="/single-startup" component={SingleStartup} />
+        <Route path="/admin" component={Admin} />
       </Switch>
     </>
   );

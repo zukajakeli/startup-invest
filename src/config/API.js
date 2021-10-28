@@ -11,3 +11,8 @@ export const signUpRequest = async (data) => {
   const response = await axios.post(`${BASE_URL}/user/signup`, data);
   return response;
 };
+
+export const getAllUsers = async () => {
+  const response = await axios.get(`${BASE_URL}/allUsers`);
+  return response;
+};
