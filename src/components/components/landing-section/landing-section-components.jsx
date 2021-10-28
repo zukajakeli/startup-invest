@@ -156,6 +156,7 @@ export const CircleImage = styled.img`
 
 export const LearnMoreWrapper = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 
 export const Button = styled.button`

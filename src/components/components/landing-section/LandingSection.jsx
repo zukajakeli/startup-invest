@@ -25,6 +25,10 @@ const LandingSection = () => {
     history.push('/startups');
   };
 
+  const goToAbout = () => {
+    history.push('/about-us');
+  };
+
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
   return (
@@ -46,7 +50,7 @@ const LandingSection = () => {
         </S.SubHeading>
         <S.ButtonsWrapper>
           <S.Button onClick={goToStartups}>შეიძინე წილი</S.Button>
-          <S.LearnMoreWrapper>
+          <S.LearnMoreWrapper onClick={goToAbout}>
             <S.CircleImage src={circleBlue} />
             <S.LearnMore>გაიგე მეტი</S.LearnMore>
           </S.LearnMoreWrapper>
