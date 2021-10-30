@@ -1,4 +1,3 @@
-import CustomModal from 'components/modal/CustomModal';
 import * as S from './components';
 
 const UserCard = ({ id, email, googleName, role }) => {
@@ -15,7 +14,7 @@ const UserCard = ({ id, email, googleName, role }) => {
           <S.Value>{role}</S.Value>
         </S.Flex>
       </S.InfoWrapper>
-      <CustomModal text={'Edit'} />
+      <S.Button>Edit</S.Button>
     </S.Card>
   );
 };

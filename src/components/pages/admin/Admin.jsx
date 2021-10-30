@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import * as S from './admin-components';
+import Blogs from './blogs/Blogs';
 import Users from './users/Users';
 
 const Admin = () => {
@@ -19,7 +20,7 @@ const Admin = () => {
       </S.Sidebar>
       <S.Content>
         {pathname === '/admin/users' && <Users />}
-        {pathname === '/admin/blogs' && <Users />}
+        {pathname === '/admin/blogs' && <Blogs />}
         {pathname === '/admin/startups' && <Users />}
         {pathname === '/admin/contact' && <Users />}
         {pathname === '/admin/about' && <Users />}
