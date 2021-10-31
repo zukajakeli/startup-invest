@@ -12,7 +12,7 @@ import * as S from './business-section-components';
 import backgroundImage from '../../../assets/images/business-section-background.svg';
 import { ReactComponent as Arrow } from '../../../assets/images/arrow.svg';
 import { ReactComponent as Oval } from 'assets/icons/oval-green.svg';
-import { startupsDummy } from '../../common-components/StartupsDummyArray';
+import { startupsDummy as startupsArray } from '../../common-components/StartupsDummyArray';
 
 const BusinessSection = () => {
   SwiperCore.use([Pagination]);
@@ -43,35 +43,8 @@ const BusinessSection = () => {
       </S.Header>
 
       <S.Body>
-        {!isMobile ? (
-          <Swiper
-            spaceBetween={100}
-            slidesPerView={3}
-            direction="horizontal"
-            pagination
-          >
-            {startupsDummy.map(
-              (
-                { startupName, goal, raised, startupInfo, image, logo },
-                index,
-              ) => {
-                return (
-                  <SwiperSlide key={`startup${index}`}>
-                    <StartupCard
-                      startupName={startupName}
-                      goal={goal}
-                      raised={raised}
-                      startupInfo={startupInfo}
-                      image={image}
-                      logo={logo}
-                    />
-                  </SwiperSlide>
-                );
-              },
-            )}
-          </Swiper>
-        ) : (
-          startupsDummy.map(
+        {isMobile ? (
+          startupsArray.map(
             (
               { startupName, goal, raised, startupInfo, image, logo },
               index,
@@ -91,6 +64,54 @@ const BusinessSection = () => {
               );
             },
           )
+        ) : startupsArray.length <= 3 ? (
+          <S.Flex>
+            {startupsArray.map(
+              (
+                { startupName, goal, raised, startupInfo, image, logo },
+                index,
+              ) => {
+                return (
+                  <StartupCard
+                    key={`startup${index}`}
+                    startupName={startupName}
+                    goal={goal}
+                    raised={raised}
+                    startupInfo={startupInfo}
+                    image={image}
+                    logo={logo}
+                  />
+                );
+              },
+            )}
+          </S.Flex>
+        ) : (
+          <Swiper
+            spaceBetween={100}
+            slidesPerView={3}
+            direction="horizontal"
+            pagination
+          >
+            {startupsArray.map(
+              (
+                { startupName, goal, raised, startupInfo, image, logo },
+                index,
+              ) => {
+                return (
+                  <SwiperSlide key={`startup${index}`}>
+                    <StartupCard
+                      startupName={startupName}
+                      goal={goal}
+                      raised={raised}
+                      startupInfo={startupInfo}
+                      image={image}
+                      logo={logo}
+                    />
+                  </SwiperSlide>
+                );
+              },
+            )}
+          </Swiper>
         )}
       </S.Body>
       {isMobile && (

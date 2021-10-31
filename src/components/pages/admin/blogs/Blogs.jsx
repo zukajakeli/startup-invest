@@ -3,11 +3,8 @@ import { getAllStories } from 'config/API';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import CustomModal from 'components/modal/CustomModal';
-import UserCard from './UserCard';
-import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import AddNewBlog from './AddNewBlog';
-import CustomTable from 'components/table/CustomTable';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';

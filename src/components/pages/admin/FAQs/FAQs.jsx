@@ -1,11 +1,9 @@
 import * as S from './components';
-import { getAllUsers } from 'config/API';
+import { getAllFaqs } from 'config/API';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import CustomModal from 'components/modal/CustomModal';
-import UserCard from './UserCard';
-import EditUser from './EditUser';
-import 'antd/dist/antd.css';
+import AddNewFaq from './AddNewFaq';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,17 +14,23 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-const Users = () => {
+const FAQs = () => {
+  const [addResponse, setAddResponse] = useState(null);
+
   const [allData, setAllData] = useState([]);
   useEffect(() => {
-    getAllUsers().then((res) => setAllData(res.data));
-  }, []);
+    getAllFaqs().then((res) => setAllData(res.data));
+  }, [addResponse]);
 
+  console.log(allData);
   return (
     <S.Wrapper>
       <S.Header>
-        <S.UserTitle>Users</S.UserTitle>
-        <CustomModal text={'Add New User'} body={<EditUser />} />
+        <S.UserTitle>FAQs</S.UserTitle>
+        <CustomModal
+          text={'Add New FAQ'}
+          body={<AddNewFaq setAddResponse={setAddResponse} />}
+        />
       </S.Header>
 
       {!!allData.length && (
@@ -35,37 +39,30 @@ const Users = () => {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <Typography variant={'h4'}>Email</Typography>
+                  <Typography variant={'h4'}>Question</Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant={'h4'}>Google Name</Typography>
+                  <Typography variant={'h4'}>Answer</Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant={'h4'}>Role</Typography>
+                  <Typography variant={'h4'}>Action</Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {allData.map(({ _id, email, googleName, role }, index) => (
+              {allData.map(({ question, answer }, index) => (
                 <TableRow
-                  key={`users${index}`}
+                  key={`story${index}`}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell>
-                    <Typography variant={'h5'}>{email}</Typography>
+                    <Typography variant={'h5'}>{question}</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography variant={'h5'}>{googleName}</Typography>
+                    <Typography variant={'h5'}>{answer}</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography variant={'h5'}>{role}</Typography>
-                  </TableCell>
-
-                  <TableCell>
-                    <CustomModal
-                      text={'Edit Info'}
-                      // body={<AddNewContact setAddResponse={setAddResponse} />}
-                    />
+                    <button>Edit</button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -77,4 +74,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default FAQs;

@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: unset;
     margin: 0rem;
     font-weight: normal;
-    
+    color: unset;
   }
   * {
     box-sizing: border-box;
@@ -40,8 +40,13 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: firago;
+        max-width: 1366px;
+        margin: auto;
         overflow-x: hidden;
+        line-height: unset;
     }
+
+   
 
     @font-face {
         font-family: firago;

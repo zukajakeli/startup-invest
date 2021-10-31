@@ -1,11 +1,9 @@
 import * as S from './components';
-import { getAllUsers } from 'config/API';
+import { getAllAbouts } from 'config/API';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import CustomModal from 'components/modal/CustomModal';
-import UserCard from './UserCard';
-import EditUser from './EditUser';
-import 'antd/dist/antd.css';
+import AddNewFaq from './AddNewAbout';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,18 +13,26 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import AddNewContact from './AddNewAbout';
+import AddNewAbout from './AddNewAbout';
 
-const Users = () => {
+const Contacts = () => {
+  const [addResponse, setAddResponse] = useState(null);
+
   const [allData, setAllData] = useState([]);
   useEffect(() => {
-    getAllUsers().then((res) => setAllData(res.data));
-  }, []);
+    getAllAbouts().then((res) => setAllData(res.data));
+  }, [addResponse]);
 
+  console.log(allData);
   return (
     <S.Wrapper>
       <S.Header>
-        <S.UserTitle>Users</S.UserTitle>
-        <CustomModal text={'Add New User'} body={<EditUser />} />
+        <S.UserTitle>About Info</S.UserTitle>
+        <CustomModal
+          text={'Add About Info'}
+          body={<AddNewAbout setAddResponse={setAddResponse} />}
+        />
       </S.Header>
 
       {!!allData.length && (
@@ -35,36 +41,24 @@ const Users = () => {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <Typography variant={'h4'}>Email</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant={'h4'}>Google Name</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant={'h4'}>Role</Typography>
+                  <Typography variant={'h4'}>About Text</Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {allData.map(({ _id, email, googleName, role }, index) => (
+              {allData.map(({ text }, index) => (
                 <TableRow
-                  key={`users${index}`}
+                  key={`contact${index}`}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell>
-                    <Typography variant={'h5'}>{email}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant={'h5'}>{googleName}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant={'h5'}>{role}</Typography>
+                    <Typography variant={'h5'}>{text}</Typography>
                   </TableCell>
 
                   <TableCell>
                     <CustomModal
                       text={'Edit Info'}
-                      // body={<AddNewContact setAddResponse={setAddResponse} />}
+                      body={<AddNewContact setAddResponse={setAddResponse} />}
                     />
                   </TableCell>
                 </TableRow>
@@ -77,4 +71,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Contacts;

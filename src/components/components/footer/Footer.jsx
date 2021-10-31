@@ -51,7 +51,6 @@ const Footer = () => {
           <InstagramIcon />
           <FacebookIcon />
           <LinkedinIcon />
-          {!isMobile && <TiktokIcon />}
         </S.SocialButtonsWrapper>
       </S.SocialWrapper>
 

@@ -109,13 +109,13 @@ export const AboutButton = styled.button`
   cursor: pointer;
   white-space: nowrap;
   background: linear-gradient(to right, #1d346e 50%, rgba(255, 255, 255, 0) 0%);
-  background-size: 200% 100%;
+  background-size: 200% 200%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #ffffff;
   }
 `;

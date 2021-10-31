@@ -2,41 +2,36 @@ import TextareaInput from 'components/components/text-area/TextareaInput';
 import TextInput from 'components/components/text-input/TextInput';
 import { useFormik } from 'formik';
 import * as S from './components';
-import { addNewStory } from 'config/API';
+import { addNewFaq } from 'config/API';
 
-const AddNewBlog = () => {
+const AddNewFaq = ({ setAddResponse }) => {
   const formik = useFormik({
     initialValues: {
-      mainPhoto: '',
-      secondaryPhoto: '',
-      previewPhoto: '',
-      title: '',
-      content: '',
+      question: '',
+      answer: '',
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
-      addNewStory(values);
+      addNewFaq(values).then((res) => setAddResponse(res));
     },
   });
   return (
     <S.Form onSubmit={formik.handleSubmit}>
-      <TextInput
-        fullWidth
-        required
-        placeholder="Title"
-        inputName="title"
+      <TextareaInput
+        placeholder="Question"
+        inputName="question"
         handleChange={formik.handleChange}
-        value={formik.values.title}
+        value={formik.values.question}
       />
       <TextareaInput
-        placeholder="ბლოგის ტექსტი"
-        inputName="content"
+        placeholder="Answer"
+        inputName="answer"
         handleChange={formik.handleChange}
-        value={formik.values.content}
+        value={formik.values.answer}
       />
       <S.SubmitButton type="submit">Add</S.SubmitButton>
     </S.Form>
   );
 };
 
-export default AddNewBlog;
+export default AddNewFaq;

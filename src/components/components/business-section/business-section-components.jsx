@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 91.4rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 0rem 10%;
@@ -130,6 +130,11 @@ export const AllCompanyButton = styled.button`
       margin-right: 7%;
       
   `}
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  gap: 1.6rem;
 `;
 
 export const ButtonImage = styled.img``;
