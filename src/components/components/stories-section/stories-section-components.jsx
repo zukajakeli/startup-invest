@@ -92,7 +92,7 @@ export const AllStoriesButton = styled.button`
   }
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
     & svg {
       stroke: #13182b;

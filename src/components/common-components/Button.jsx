@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Button = styled.button`
   /* width: 22.9rem; */
@@ -17,7 +17,7 @@ const Button = styled.button`
   transition: all 0.3s ease-out;
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
   }
 `;

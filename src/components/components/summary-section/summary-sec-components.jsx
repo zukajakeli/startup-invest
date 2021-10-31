@@ -27,7 +27,7 @@ export const PinkButton = styled.button`
 
   background: linear-gradient(to left, pink 50%, rgba(255, 255, 255, 0) 0%);
   background-size: 200% 100%;
-  background-position: left bottom;
+  background-position: left top;
   transition: all 0.3s ease-out;
 
   &:hover {
@@ -78,7 +78,7 @@ export const GreenButton = styled.button`
   transition: all 0.3s ease-out;
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
   }
 

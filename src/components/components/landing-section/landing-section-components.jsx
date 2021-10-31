@@ -184,7 +184,7 @@ export const Button = styled.button`
   transition: all 0.4s ease-out;
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
   }
 

@@ -54,7 +54,7 @@ export const BlogsButton = styled.button`
   transition: all 0.4s ease-out;
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
   }
 
@@ -79,7 +79,7 @@ export const InvestmentsButton = styled.button`
   padding: 0rem 2.5rem;
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
   }
 
@@ -116,7 +116,7 @@ export const LoginButton = styled.button`
   }
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
     svg {
       fill: #13182b;

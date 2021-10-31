@@ -138,7 +138,7 @@ export const Button = styled.button`
   margin-top: 0.4rem;
 
   &:hover {
-    background-position: left bottom;
+    background-position: left top;
     color: #13182b;
   }
 
