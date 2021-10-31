@@ -73,7 +73,6 @@ const AboutUsPage = () => {
                 <InstagramIcon />
                 <FacebookIcon />
                 <LinkedinIcon />
-                <TiktokIcon />
               </S.FollowIcons>
             </S.FollowWrapper>
           </S.ImagesWrapper>

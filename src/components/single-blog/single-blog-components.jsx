@@ -107,7 +107,7 @@ export const ZIndexTop = styled.div`
 `;
 
 export const MainImage = styled.img`
-  height: 44.8rem;
+  height: 38vh;
   width: 100%;
   object-fit: cover;
   border-radius: 4rem;

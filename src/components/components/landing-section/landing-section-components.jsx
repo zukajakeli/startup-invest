@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+const width = window.innerWidth;
+const height = window.innerHeight;
+const circleWidth = width * 0.12;
+
+console.log(width);
+
 export const Wrapper = styled.div`
   height: 100vh;
   background-color: #f2f1f1;
@@ -50,12 +56,12 @@ export const BackgroundImage = styled.img`
 export const Arrow = styled.img`
   position: absolute;
   z-index: 5;
-  right: 27rem;
-  bottom: 5rem;
+  right: 21rem;
+  bottom: 4rem;
   transform: rotate(170deg);
   cursor: pointer;
   transition: all 0.1s ease-in-out;
-  width: 13rem;
+  width: 11rem;
 
   &:hover {
     transform: rotate(200deg);
@@ -72,9 +78,9 @@ export const Arrow = styled.img`
 export const Circle = styled.img`
   position: absolute;
   z-index: 1;
-  right: 23.5rem;
+  right: 18.5rem;
   bottom: 0rem;
-  width: 20rem;
+  width: ${width * 0.11}px;
 
   ${({ theme }) => theme.mobile`
     right: 18rem;

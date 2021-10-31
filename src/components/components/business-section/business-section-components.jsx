@@ -5,9 +5,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0rem 10%;
+  padding-bottom: 9rem;
   box-sizing: border-box;
   position: relative;
   background-color: #ffffff;
+  align-items: center;
 
   ${({ theme }) => theme.mobile`
     height: 185.5rem;

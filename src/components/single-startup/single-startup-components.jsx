@@ -40,7 +40,7 @@ export const LogoAndImage = styled.div`
 export const MainImage = styled.img`
   border-radius: 4rem;
   width: 100%;
-  height: 38rem;
+  height: 38vh;
   margin-top: 1.6rem;
   object-fit: cover;
 

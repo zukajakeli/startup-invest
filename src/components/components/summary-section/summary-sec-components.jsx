@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import backgroundImage from 'assets/images/summary-background.svg';
 
 export const Wrapper = styled.div`
-  height: 48rem;
+  height: 41.8rem;
   background-color: #f2f1f1;
   position: relative;
 `;
@@ -22,7 +23,7 @@ export const PinkButton = styled.button`
   left: 18.4rem;
   top: -5rem;
   cursor: pointer;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 600;
 
   background: linear-gradient(to left, pink 50%, rgba(255, 255, 255, 0) 0%);

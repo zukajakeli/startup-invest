@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 69.4rem;
+  height: 100vh;
   background-color: #ffffff;
   padding: 0rem 10%;
+  padding-bottom: 9.4rem;
   position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 
   ${({ theme }) => theme.mobile`
     min-height: 83.6rem;

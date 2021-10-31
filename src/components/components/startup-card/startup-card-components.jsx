@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 57rem;
+  height: 51rem;
   width: 35.2rem;
   background-color: #ffffff;
   border-radius: 2.2rem;
+  padding-bottom: 2.4rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -98,7 +99,7 @@ export const StartupInfo = styled.p`
 `;
 
 export const AboutButton = styled.button`
-  height: 4.6rem;
+  height: 4rem;
   width: 21rem;
   outline: none;
   border-radius: 3rem;
