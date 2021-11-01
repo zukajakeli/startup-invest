@@ -56,7 +56,7 @@ export const BackgroundImage = styled.img`
 export const Arrow = styled.img`
   position: absolute;
   z-index: 5;
-  right: 21rem;
+  right: 15%;
   bottom: 4rem;
   transform: rotate(170deg);
   cursor: pointer;
