@@ -26,11 +26,11 @@ const StartupCard = ({
 
           <S.StartupFundsWrapper>
             <S.FlexWrapper>
-              <S.FundsText>მიზანი:</S.FundsText>
+              <S.FundsText>წილის ღირებულება:</S.FundsText>
               <S.FundsAmount>{goal}</S.FundsAmount>
             </S.FlexWrapper>
             <S.FlexWrapper>
-              <S.FundsText>შეგროვებული:</S.FundsText>
+              <S.FundsText>წილი:</S.FundsText>
               <S.FundsAmount>{raised}</S.FundsAmount>
             </S.FlexWrapper>
           </S.StartupFundsWrapper>

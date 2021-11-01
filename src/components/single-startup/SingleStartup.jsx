@@ -84,7 +84,7 @@ const SingleStartup = () => {
           <S.DataWrapper>
             <S.DataImage src={priceIcon} alt="price" />
             <S.SingleData>
-              <S.DataName>ღირებულება</S.DataName>
+              <S.DataName>წილის ღირებულება</S.DataName>
               <S.DataFigure>$200.000</S.DataFigure>
             </S.SingleData>
 
@@ -186,7 +186,7 @@ const SingleStartup = () => {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-            <S.GetInfoButton type="submit">მოითხოვნა</S.GetInfoButton>
+            <S.GetInfoButton type="submit">მოთხოვნა</S.GetInfoButton>
           </S.GetInfoBox>
         </S.GetInfoWrapper>
       )}
