@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
 
-import backgroundImage from '../../../assets/images/landing-background.png';
+import backgroundImage from '../../../assets/images/landing-background.svg';
 import backgroundImageMobile from 'assets/images/landing-background-mobile.svg';
 import circleBlue from '../../../assets/icons/circle-blue.svg';
 import Header from '../header/Header.jsx';
@@ -34,7 +34,7 @@ const LandingSection = () => {
   return (
     <S.Wrapper>
       <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
-      <S.Circle src={circleGreen} alt="circle" />
+      {/* <S.Circle src={circleGreen} alt="circle" /> */}
 
       <S.HeaderWrapper>
         <Header />
