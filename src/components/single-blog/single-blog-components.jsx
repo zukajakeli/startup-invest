@@ -11,6 +11,7 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   padding: 0rem 10%;
   z-index: 10;
+  max-width: 136.6rem;
 
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;

@@ -12,6 +12,7 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   padding: 0rem 10%;
   background-color: #ffffff;
+  max-width: 136.6rem;
 `;
 
 export const Body = styled.div`

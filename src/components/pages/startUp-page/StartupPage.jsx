@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Header from '../../components/header/Header';
 import StartupCard from '../../components/startup-card/StartupCard';
 import Footer from '../../components/footer/Footer';
@@ -12,10 +14,19 @@ import { ReactComponent as Arch } from '../../../assets/icons/arch.svg';
 import * as S from './startup-page-components';
 
 const StartupPage = () => {
+  const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(false);
+
+  const openAuthModal = () => {
+    setIsAuthDropdownOpen(true);
+  };
+
   return (
     <S.Wrapper>
       <S.HeaderWrapper>
-        <Header />
+        <Header
+          isAuthDropdownOpen={isAuthDropdownOpen}
+          setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+        />
       </S.HeaderWrapper>
       <S.Body>
         <S.HeadingsWrapper>
@@ -46,7 +57,7 @@ const StartupPage = () => {
           )}
         </S.StartupsWrapper>
         <S.BlurredWrapper>
-          <BlurredStartups />
+          <BlurredStartups openAuthModal={openAuthModal} />
         </S.BlurredWrapper>
 
         <SubscribeOffer

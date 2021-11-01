@@ -1,8 +1,8 @@
 import { Modal, Button } from 'antd';
 import { useState } from 'react';
 
-const CustomModal = ({ text, body }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const CustomModal = ({ text, body, closable = true }) => {
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -26,6 +26,7 @@ const CustomModal = ({ text, body }) => {
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
+        closable={closable}
       >
         {body}
       </Modal>

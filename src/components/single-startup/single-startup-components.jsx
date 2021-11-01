@@ -17,6 +17,7 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   z-index: 10;
   background-color: #fff;
+  max-width: 136.6rem;
 
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;
@@ -342,4 +343,11 @@ export const OvalWrapper = styled.div`
   position: absolute;
   bottom: 0rem;
   left: 30%;
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  gap: 1.6rem;
+  z-index: 10;
+  position: relative;
 `;

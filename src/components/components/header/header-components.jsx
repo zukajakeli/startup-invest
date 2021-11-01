@@ -132,10 +132,10 @@ export const LoginButton = styled.button`
 export const ButtonImage = styled.img``;
 
 export const AuthWrapper = styled.div`
-  position: absolute;
+  /* position: absolute;
   z-index: 11;
   right: 0rem;
-  top: 10rem;
+  top: 10rem; */
 `;
 
 export const BurgerMenu = styled.img`

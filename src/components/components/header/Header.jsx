@@ -11,9 +11,9 @@ import Authorization from 'components/authorization/Authorization';
 import { useState } from 'react';
 import Registration from '../registration/Registration';
 import ResetPassword from '../reset-password/ResetPassword';
+import MuiModal from 'components/modal/MuiModal';
 
-const Header = () => {
-  const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(false);
+const Header = ({ isAuthDropdownOpen, setIsAuthDropdownOpen }) => {
   const AuthDropdownToggler = () => {
     setIsAuthDropdownOpen((prev) => !prev);
   };
@@ -77,37 +77,40 @@ const Header = () => {
             </S.ButtonsWrapper>
           </S.SideMenu>
         )}
-
-        {isAuthDropdownOpen && (
-          <S.AuthWrapper>
-            {isAuthorizationOpen && (
-              <Authorization
-                setIsAuthDropdownOpen={setIsAuthDropdownOpen}
-                setIsAuthorizationOpen={setIsAuthorizationOpen}
-                setIsRegistrationOpen={setIsRegistrationOpen}
-                setIsResetPasswordOpen={setIsResetPasswordOpen}
-              />
-            )}
-
-            {isRegistrationOpen && (
-              <Registration
-                setIsAuthDropdownOpen={setIsAuthDropdownOpen}
-                setIsAuthorizationOpen={setIsAuthorizationOpen}
-                setIsRegistrationOpen={setIsRegistrationOpen}
-                setIsResetPasswordOpen={setIsResetPasswordOpen}
-              />
-            )}
-            {isResetPasswordOpen && (
-              <ResetPassword
-                setIsAuthDropdownOpen={setIsAuthDropdownOpen}
-                setIsAuthorizationOpen={setIsAuthorizationOpen}
-                setIsResetPasswordOpen={setIsResetPasswordOpen}
-                setIsRegistrationOpen={setIsRegistrationOpen}
-              />
-            )}
-          </S.AuthWrapper>
-        )}
       </S.Wrapper>
+      {isAuthDropdownOpen && (
+        <MuiModal
+          body={
+            <S.AuthWrapper>
+              {isAuthorizationOpen && (
+                <Authorization
+                  setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+                  setIsAuthorizationOpen={setIsAuthorizationOpen}
+                  setIsRegistrationOpen={setIsRegistrationOpen}
+                  setIsResetPasswordOpen={setIsResetPasswordOpen}
+                />
+              )}
+
+              {isRegistrationOpen && (
+                <Registration
+                  setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+                  setIsAuthorizationOpen={setIsAuthorizationOpen}
+                  setIsRegistrationOpen={setIsRegistrationOpen}
+                  setIsResetPasswordOpen={setIsResetPasswordOpen}
+                />
+              )}
+              {isResetPasswordOpen && (
+                <ResetPassword
+                  setIsAuthDropdownOpen={setIsAuthDropdownOpen}
+                  setIsAuthorizationOpen={setIsAuthorizationOpen}
+                  setIsResetPasswordOpen={setIsResetPasswordOpen}
+                  setIsRegistrationOpen={setIsRegistrationOpen}
+                />
+              )}
+            </S.AuthWrapper>
+          }
+        />
+      )}
     </>
   );
 };

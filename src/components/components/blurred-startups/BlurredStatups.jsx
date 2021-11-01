@@ -40,7 +40,7 @@ export const dummy = [
   },
 ];
 
-const BlurredStartups = () => {
+const BlurredStartups = ({ openAuthModal }) => {
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
   return (
@@ -93,7 +93,7 @@ const BlurredStartups = () => {
           ფინანსური რეგულაციებიდან გამომდინარე, შენი ავტორიზაცია აუცილებლია მეტი
           ინფორმაციის სანახავად.
         </S.SubHeading>
-        <S.Button>ავტორიზაცია</S.Button>
+        <S.Button onClick={openAuthModal}>ავტორიზაცია</S.Button>
       </S.Content>
     </S.Wrapper>
   );

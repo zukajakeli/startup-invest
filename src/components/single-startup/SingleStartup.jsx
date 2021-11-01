@@ -194,33 +194,26 @@ const SingleStartup = () => {
       {!isMobile ? (
         <S.OtherOffersWrapper>
           <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
-          <Swiper
-            spaceBetween={10}
-            slidesPerView={3}
-            direction="horizontal"
-            pagination
-          >
+          <S.Flex>
             {startupsDummy.map(
               (
                 { startupName, goal, raised, startupInfo, image, logo },
                 index,
               ) => {
                 return (
-                  <SwiperSlide key={`startup${index}`}>
-                    <StartupCard
-                      startupName={startupName}
-                      goal={goal}
-                      raised={raised}
-                      startupInfo={startupInfo}
-                      image={image}
-                      logo={logo}
-                    />
-                  </SwiperSlide>
+                  <StartupCard
+                    key={`startup${index}`}
+                    startupName={startupName}
+                    goal={goal}
+                    raised={raised}
+                    startupInfo={startupInfo}
+                    image={image}
+                    logo={logo}
+                  />
                 );
               },
             )}
-          </Swiper>
-
+          </S.Flex>
           <S.OvalWrapper>
             <YellowOval fill="#FFCA0F" />
           </S.OvalWrapper>
