@@ -8,6 +8,7 @@ export const Wrapper = styled.header`
   height: 9.8rem;
   box-sizing: border-box;
   position: relative;
+  padding-right: 10%;
 
   ${({ theme }) => theme.mobile`
     height: 8.7rem;
@@ -171,4 +172,50 @@ export const Exit = styled.img`
   cursor: pointer;
   border-radius: 5.2rem;
   border: 0.3rem solid #ffca10;
+`;
+
+export const LoggedInImg = styled.img`
+  cursor: pointer;
+`;
+
+export const LogOutWrapper = styled.div``;
+
+export const LogOutBox = styled.div`
+  width: 28rem;
+  height: 11rem;
+  background-color: #ffca0f;
+  border-radius: 0.8rem;
+  margin-top: 0.5rem;
+  position: absolute;
+  display: ${({ logoutBoxOpen }) => (logoutBoxOpen ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LogOutButton = styled.button`
+  height: 4.5rem;
+  outline: none;
+  border-radius: 5.2rem;
+  border: 0.4rem solid #13182b;
+  color: #13182b;
+  background: linear-gradient(to right, #13182b 50%, rgba(255, 255, 255, 0) 0%);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.4s ease-out;
+  padding: 0rem 2.5rem;
+
+  ${({ theme }) => theme.mobile`
+    width: 15.1rem;
+  `}
+`;
+
+export const UserMail = styled.p`
+  font-size: 1.6rem;
+  color: #13182b;
+  font-weight: 600;
+  margin-bottom: 1rem;
 `;

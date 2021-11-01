@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: unset;
   }
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5, p {
     font-size: unset;
     margin: 0rem;
     font-weight: normal;

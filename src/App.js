@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import SingleStartup from 'components/single-startup/SingleStartup';
 import SingleBlog from 'components/single-blog/SingleBlog';
 import Admin from './components/pages/admin/Admin';
+import { useContext } from 'react';
+import { MeContext } from 'contexts/MeContext';
 
 function App() {
   const location = useLocation();
@@ -18,6 +20,11 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  const [meInfo, setMeInfo] = useContext(MeContext);
+  useEffect(() => {
+    setMeInfo(localStorage.getItem('token'));
+  }, []);
 
   return (
     <>

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Header from '../../components/header/Header';
 import StartupCard from '../../components/startup-card/StartupCard';
 import Footer from '../../components/footer/Footer';
@@ -12,9 +10,14 @@ import ovalPink from '../../../assets/icons/oval-pink.svg';
 import { ReactComponent as Arch } from '../../../assets/icons/arch.svg';
 
 import * as S from './startup-page-components';
+import { useContext } from 'react';
+import { AuthDropdownContext } from 'contexts/AuthDropdownContext';
+import { MeContext } from 'contexts/MeContext';
 
 const StartupPage = () => {
-  const [isAuthDropdownOpen, setIsAuthDropdownOpen] = useState(false);
+  const [isAuthDropdownOpen, setIsAuthDropdownOpen] =
+    useContext(AuthDropdownContext);
+  const [meInfo, setMeInfo] = useContext(MeContext);
 
   const openAuthModal = () => {
     setIsAuthDropdownOpen(true);
@@ -23,10 +26,7 @@ const StartupPage = () => {
   return (
     <S.Wrapper>
       <S.HeaderWrapper>
-        <Header
-          isAuthDropdownOpen={isAuthDropdownOpen}
-          setIsAuthDropdownOpen={setIsAuthDropdownOpen}
-        />
+        <Header />
       </S.HeaderWrapper>
       <S.Body>
         <S.HeadingsWrapper>
@@ -56,9 +56,11 @@ const StartupPage = () => {
             },
           )}
         </S.StartupsWrapper>
-        <S.BlurredWrapper>
-          <BlurredStartups openAuthModal={openAuthModal} />
-        </S.BlurredWrapper>
+        {!meInfo && (
+          <S.BlurredWrapper>
+            <BlurredStartups openAuthModal={openAuthModal} />
+          </S.BlurredWrapper>
+        )}
 
         <SubscribeOffer
           inputColor="#9AB7FF"

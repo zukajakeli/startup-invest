@@ -1,11 +1,39 @@
+import * as Yup from 'yup';
 import { useFormik } from 'formik';
-
+import { useContext } from 'react';
+import { MeContext } from 'contexts/MeContext';
 import TextInput from 'components/components/text-input/TextInput';
+import { register } from 'config/API';
 
 import exitIcon from 'assets/icons/exit-icon.svg';
 import backIcon from 'assets/icons/back-icon.svg';
 
 import * as S from './registration-components';
+import { useEffect } from 'react';
+
+const SignupSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  lastName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  phone: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  repeatPassword: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+});
 
 const Registration = ({
   setIsAuthDropdownOpen,
@@ -13,17 +41,29 @@ const Registration = ({
   setIsAuthorizationOpen,
   setIsRegistrationOpen,
 }) => {
+  const [meInfo, setMeInfo] = useContext(MeContext);
+
+  useEffect(() => {
+    console.log('meInfo', meInfo);
+  }, [meInfo]);
+
   const formik = useFormik({
     initialValues: {
-      name: '',
+      firstName: '',
       lastName: '',
       email: '',
       phone: '',
       password: '',
       repeatPassword: '',
     },
+    validationSchema: SignupSchema,
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
+      register(values).then((res) => {
+        setMeInfo(res.data);
+        localStorage.setItem('token', res.data.token);
+        setIsAuthDropdownOpen(false);
+      });
     },
   });
 
@@ -53,9 +93,9 @@ const Registration = ({
             required
             fullWidth
             placeholder="სახელი"
-            inputName="name"
+            inputName="firstName"
             handleChange={formik.handleChange}
-            value={formik.values.name}
+            value={formik.values.firstName}
           />
         </S.InputWrapper>
         <S.InputWrapper isPasswordInput>

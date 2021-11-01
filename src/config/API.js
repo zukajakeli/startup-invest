@@ -71,3 +71,9 @@ export const getAllAbouts = async () => {
   const response = await axios.get(`${BASE_URL}/getAllAbouts`);
   return response;
 };
+
+export const register = async (data) => {
+  const response = await axios.post(`${BASE_URL}/register`, data);
+
+  return response;
+};

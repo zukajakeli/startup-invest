@@ -7,15 +7,21 @@ import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './styles/global-styles';
 import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
+import { AuthDropdownProvider } from 'contexts/AuthDropdownContext';
+import { MeContextProvider } from 'contexts/MeContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <AuthDropdownProvider>
+      <MeContextProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </MeContextProvider>
+    </AuthDropdownProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

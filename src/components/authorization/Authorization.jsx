@@ -1,5 +1,8 @@
 import { useFormik } from 'formik';
 import { GoogleLogin } from 'react-google-login';
+import * as Yup from 'yup';
+import { useContext } from 'react';
+import { MeContext } from 'contexts/MeContext';
 
 import TextInput from 'components/components/text-input/TextInput';
 import { signUpRequest } from 'config/API';
@@ -10,20 +13,34 @@ import exitIcon from 'assets/icons/exit-icon.svg';
 
 import * as S from './authorization-components';
 
+const ValidationSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+});
+
 const Authorization = ({
   setIsAuthDropdownOpen,
   setIsRegistrationOpen,
   setIsResetPasswordOpen,
   setIsAuthorizationOpen,
 }) => {
+  const [meInfo, setMeInfo] = useContext(MeContext);
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
+    validationSchema: ValidationSchema,
     onSubmit: (values) => {
-      console.log(JSON.stringify(values));
-      signUpRequest(values);
+      signUpRequest(values).then((res) => {
+        setMeInfo(res.data);
+        localStorage.setItem('token', res.data.token);
+        setIsAuthDropdownOpen(false);
+        console.log(res.data);
+      });
     },
   });
 
