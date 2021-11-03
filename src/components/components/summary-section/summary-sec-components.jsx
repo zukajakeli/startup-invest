@@ -5,12 +5,16 @@ export const Wrapper = styled.div`
   height: 41.8rem;
   background-color: #f2f1f1;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 `;
 
 export const BackgroundImage = styled.img`
+  margin-top: 8.7rem;
   ${({ theme }) => theme.mobile`
     display: none;
- `}
+ `};
 `;
 
 export const PinkButton = styled.button`
@@ -21,7 +25,7 @@ export const PinkButton = styled.button`
   position: absolute;
   color: pink;
   left: 18.4rem;
-  top: -5rem;
+  top: 3.7rem;
   cursor: pointer;
   font-size: 1.8rem;
   font-weight: 600;
@@ -45,10 +49,9 @@ export const PinkButton = styled.button`
 `;
 
 export const BackgroundWrapper = styled.div`
-  position: absolute;
+  position: relative;
   height: 40.7rem;
-  right: 10%;
-  bottom: -8.7rem;
+  margin-top: 5rem;
 
   ${({ theme }) => theme.mobile`
     position: unset;
@@ -68,7 +71,7 @@ export const GreenButton = styled.button`
   position: absolute;
   color: #55aa79;
   left: 73.5rem;
-  top: 1rem;
+  top: 8.5rem;
   cursor: pointer;
   font-size: 1.7rem;
   font-weight: 600;
@@ -95,7 +98,7 @@ export const GreenButton = styled.button`
 
 export const ArrowImage = styled.img`
   position: absolute;
-  bottom: 6rem;
+  bottom: -3rem;
   right: 47%;
   cursor: pointer;
   transition: all 0.2s ease-out;

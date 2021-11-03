@@ -9,7 +9,7 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   background: url(${background}) no-repeat #ffffff;
-  background-position: center;
+  background-position: 45% 90%;
   padding: 4.6rem 9.2rem;
   position: relative;
 `;
@@ -43,6 +43,7 @@ export const Button = styled.button`
   background-position: right bottom;
   transition: all 0.3s ease-out;
   margin-top: 1.5rem;
+  background-color: #ffffff;
 
   &:hover {
     background-position: left top;

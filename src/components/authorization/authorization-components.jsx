@@ -61,6 +61,7 @@ export const Button = styled.button`
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
+  background-color: #fff;
 
   &:hover {
     background-position: left top;

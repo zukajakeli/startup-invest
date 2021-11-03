@@ -33,33 +33,37 @@ const LandingSection = () => {
 
   return (
     <S.Wrapper>
-      <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
       {/* <S.Circle src={circleGreen} alt="circle" /> */}
 
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
-      <S.Content>
-        {/* <S.LogoMobile src={logo} alt="logo" /> */}
-        <S.Heading>
-          გახდი სტარტაპის მეწილე - დააბანდე ფული სწრაფად მზარდ ბიზნესში
-        </S.Heading>
-        <S.SubHeading>
-          იპოვე შენთვის საინტერესო წინადადება და აქციე შესაძლებლობა - გონივრულ
-          ინვესტიციად
-        </S.SubHeading>
-        <S.ButtonsWrapper>
-          <S.Button onClick={goToStartups}>შეიძინე წილი</S.Button>
-          <S.LearnMoreWrapper onClick={goToAbout}>
-            <S.CircleImage src={circleBlue} />
-            <S.LearnMore>გაიგე მეტი</S.LearnMore>
-          </S.LearnMoreWrapper>
-        </S.ButtonsWrapper>
-      </S.Content>
+      <S.ContentAndImage>
+        <S.Content>
+          {/* <S.LogoMobile src={logo} alt="logo" /> */}
+          <S.Heading>
+            გახდი სტარტაპის მეწილე - დააბანდე ფული სწრაფად მზარდ ბიზნესში
+          </S.Heading>
+          <S.SubHeading>
+            იპოვე შენთვის საინტერესო წინადადება და აქციე შესაძლებლობა - გონივრულ
+            ინვესტიციად
+          </S.SubHeading>
+          <S.ButtonsWrapper>
+            <S.Button onClick={goToStartups}>შეიძინე წილი</S.Button>
+            <S.LearnMoreWrapper onClick={goToAbout}>
+              <S.CircleImage src={circleBlue} />
+              <S.LearnMore>გაიგე მეტი</S.LearnMore>
+            </S.LearnMoreWrapper>
+          </S.ButtonsWrapper>
+        </S.Content>
 
-      <S.BackgroundImage
-        src={isMobile ? backgroundImageMobile : backgroundImage}
-      />
+        <S.BackgroundWrapper>
+          <S.BackgroundImage
+            src={isMobile ? backgroundImageMobile : backgroundImage}
+          />
+          <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
+        </S.BackgroundWrapper>
+      </S.ContentAndImage>
     </S.Wrapper>
   );
 };

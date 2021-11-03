@@ -8,7 +8,8 @@ export const Wrapper = styled.header`
   height: 9.8rem;
   box-sizing: border-box;
   position: relative;
-  padding-right: 10%;
+  padding-right: ${({ isMainPage }) => isMainPage && '12%'};
+  /* padding-right: 10%; */
 
   ${({ theme }) => theme.mobile`
     height: 8.7rem;
@@ -35,7 +36,7 @@ export const ButtonsWrapper = styled.div`
     & > * {
       margin-bottom: 2rem;
     }
-  `}
+  `};
 `;
 
 export const BlogsButton = styled.button`
@@ -178,15 +179,20 @@ export const LoggedInImg = styled.img`
   cursor: pointer;
 `;
 
-export const LogOutWrapper = styled.div``;
+export const LogOutWrapper = styled.div`
+  position: relative;
+  margin-right: 5rem;
+`;
 
 export const LogOutBox = styled.div`
-  width: 28rem;
+  width: 23rem;
   height: 11rem;
   background-color: #ffca0f;
   border-radius: 0.8rem;
   margin-top: 0.5rem;
+  margin-right: 1%;
   position: absolute;
+  /* right: 0rem; */
   display: ${({ logoutBoxOpen }) => (logoutBoxOpen ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
@@ -207,6 +213,11 @@ export const LogOutButton = styled.button`
   background-position: right bottom;
   transition: all 0.4s ease-out;
   padding: 0rem 2.5rem;
+
+  &:hover {
+    background-position: left top;
+    color: #ffca0f;
+  }
 
   ${({ theme }) => theme.mobile`
     width: 15.1rem;

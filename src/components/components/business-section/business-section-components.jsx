@@ -19,8 +19,8 @@ export const Wrapper = styled.div`
 
 export const BackgroundImage = styled.img`
   position: absolute;
-  left: 30%;
-  top: 10rem;
+  left: 25%;
+  top: 6.5rem;
   z-index: 0;
 
   ${({ theme }) => theme.mobile`

@@ -348,6 +348,6 @@ export const OvalWrapper = styled.div`
 export const Flex = styled.div`
   display: flex;
   gap: 1.6rem;
-  z-index: 10;
+  z-index: 9;
   position: relative;
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 100vh;
+  height: 72.4rem;
   background-color: #ffffff;
   padding: 0rem 10%;
   padding-bottom: 9.4rem;
@@ -24,7 +24,7 @@ export const Header = styled.div`
   width: 100%;
   justify-content: space-between;
   z-index: 1;
-  margin-bottom: 10.5rem;
+  margin-bottom: 7.5rem;
   position: relative;
 
   ${({ theme }) => theme.mobile`
@@ -142,9 +142,9 @@ export const SmallStoriesWrapper = styled.div`
 
 export const PinkBackground = styled.img`
   position: absolute;
-  bottom: 4rem;
+  bottom: 2rem;
   z-index: 0;
-  left: 36.3%;
+  left: 40%;
 
   ${({ theme }) => theme.mobile`
     width: 13.5rem;

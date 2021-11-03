@@ -24,7 +24,9 @@ export const HeaderWrapper = styled.div`
 export const Body = styled.div`
   display: flex;
   padding-top: 9.8rem;
-
+  width: 100%;
+  justify-content: center;
+  background-color: #f2f1f1;
   ${({ theme }) => theme.mobile`
     flex-direction: column;
     
@@ -33,24 +35,24 @@ export const Body = styled.div`
 
 export const LeftWrapper = styled.div`
   background-color: #fff;
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
   height: 66rem;
+  width: 100%;
 
   ${({ theme }) => theme.mobile`
     align-items: center;
-  `}
+  `};
 `;
 
 export const RightWrapper = styled.div`
-  flex: 1;
   position: relative;
   display: flex;
   align-items: center;
   padding-left: 10rem;
+  width: 100%;
 
   ${({ theme }) => theme.mobile`
     height: 35.5rem;
@@ -58,7 +60,7 @@ export const RightWrapper = styled.div`
     justify-content: center;
     background-image: url(${mobileBackground});
     background-repeat: no-repeat;
-    `}
+    `};
 `;
 
 export const BackgroundImage = styled.img`

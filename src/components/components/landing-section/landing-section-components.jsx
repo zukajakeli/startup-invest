@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const width = window.innerWidth;
-const height = window.innerHeight;
-const circleWidth = width * 0.12;
 
 console.log(width);
 
@@ -48,7 +46,7 @@ export const HeaderWrapper = styled.div`
 
 export const BackgroundImage = styled.img`
   height: 100%;
-  position: absolute;
+  /* position: absolute; */
   right: 0;
   z-index: 0;
 `;
@@ -56,7 +54,7 @@ export const BackgroundImage = styled.img`
 export const Arrow = styled.img`
   position: absolute;
   z-index: 5;
-  right: 15%;
+  right: 36%;
   bottom: 4rem;
   transform: rotate(170deg);
   cursor: pointer;
@@ -92,14 +90,17 @@ export const Circle = styled.img`
 export const Content = styled.div`
   width: 50%;
   z-index: 1;
-
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   ${({ theme }) => theme.mobile`
      width: 77%;
      height: 59.6rem;
      background-color: #ffffff;
      border-radius: 0rem 0rem 6rem 0rem;
      padding: 10rem 2.8rem 3.9rem 3.6rem;
-  `}
+  `};
 `;
 
 export const Heading = styled.h2`
@@ -199,4 +200,16 @@ export const Button = styled.button`
     font-size: 1.4rem;
     margin-right: 1.4rem;
   `}
+`;
+
+export const ContentAndImage = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const BackgroundWrapper = styled.div`
+  height: 100vh;
+  position: relative;
 `;

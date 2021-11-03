@@ -54,6 +54,10 @@ export const SinglePage = styled.h3`
   margin-bottom: 1.4rem;
   cursor: pointer;
 
+  &:hover {
+    color: #9ab7ff;
+  }
+
   ${({ theme }) => theme.mobile`
     font-size: 1.4rem;
   `}

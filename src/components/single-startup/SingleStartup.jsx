@@ -25,7 +25,15 @@ import { startupsDummy } from 'components/common-components/StartupsDummyArray';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 
+import { useContext } from 'react';
+import { AuthDropdownContext } from 'contexts/AuthDropdownContext';
+import { MeContext } from 'contexts/MeContext';
+
 const SingleStartup = () => {
+  const [isAuthDropdownOpen, setIsAuthDropdownOpen] =
+    useContext(AuthDropdownContext);
+  const [meInfo, setMeInfo] = useContext(MeContext);
+
   SwiperCore.use([Pagination]);
 
   const formik = useFormik({
@@ -33,7 +41,9 @@ const SingleStartup = () => {
       email: '',
     },
     onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
+      !meInfo
+        ? setIsAuthDropdownOpen(true)
+        : console.log(JSON.stringify(values, null, 2));
     },
   });
 
@@ -161,7 +171,7 @@ const SingleStartup = () => {
                     onChange={formik.handleChange}
                     value={formik.values.email}
                   />
-                  <S.GetInfoButton type="submit">მოითხოვნა</S.GetInfoButton>
+                  <S.GetInfoButton type="submit">მოთხოვნა</S.GetInfoButton>
                 </S.GetInfoBox>
               </S.GetInfoWrapper>
             )}

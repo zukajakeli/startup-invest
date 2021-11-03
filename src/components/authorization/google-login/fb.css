@@ -1,0 +1,19 @@
+.my-facebook-button-class {
+  background-color: rgb(93, 128, 209);
+  height: 4.6rem;
+  width: 16.8rem;
+  border: none;
+  outline: none;
+  border-radius: 4rem;
+  color: #13182b;
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.my-facebook-button-class > * {
+  margin-right: 1.6rem;
+}

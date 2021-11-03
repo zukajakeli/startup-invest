@@ -36,6 +36,7 @@ const StoriesSection = () => {
 
       <S.Body>
         <LargeStory
+          forMainPage
           backgroundImage="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
           readingTime="4 წუთი"
           storyTitle="ბიზნეს ისტორიები"

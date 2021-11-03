@@ -17,7 +17,7 @@ export const Input = styled.input`
   color: ${({ color }) => color};
   box-sizing: border-box;
   background: none;
-  width: 19rem;
+  width: 30rem;
 `;
 
 export const Button = styled.button`

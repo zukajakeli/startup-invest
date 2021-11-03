@@ -67,8 +67,11 @@ export const StoryPreview = styled.p`
   line-height: 1.8rem;
   color: ${({ white }) => (white ? '#ffffff' : '#767C8B')};
   text-overflow: ellipsis;
-  max-height: 9rem;
-  overflow-y: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   ${({ theme }) => theme.mobile`
     font-size: 1.2rem;

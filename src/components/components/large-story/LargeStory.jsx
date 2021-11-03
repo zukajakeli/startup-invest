@@ -6,6 +6,7 @@ const LargeStory = ({
   readingTime,
   storyTitle,
   storyPreview,
+  forMainPage,
 }) => {
   const history = useHistory();
   const openBolg = () => {
@@ -13,7 +14,7 @@ const LargeStory = ({
   };
 
   return (
-    <S.LargeStory onClick={openBolg}>
+    <S.LargeStory onClick={openBolg} forMainPage={forMainPage}>
       <S.LargeStoryBackground src={backgroundImage} />
       <S.StoryTextsWrapper>
         <S.ReadingTime white>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const LargeStory = styled.div`
-  height: 43.6rem;
+  height: ${({ forMainPage }) => (forMainPage ? '43.6rem' : '33.2rem')};
   max-width: 53.6rem;
   flex: 1 35rem;
   position: relative;

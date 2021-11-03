@@ -74,6 +74,20 @@ export const getAllAbouts = async () => {
 
 export const register = async (data) => {
   const response = await axios.post(`${BASE_URL}/register`, data);
+  return response;
+};
 
+export const sendGoogleToken = async (data) => {
+  const response = await axios.post(`${BASE_URL}/sendGoogleToken`, data);
+  return response;
+};
+
+export const loginFacebook = async (data) => {
+  const response = await axios.post(`${BASE_URL}/facebookLogin`, data);
+  return response;
+};
+
+export const whoAmI = async (data) => {
+  const response = await axios.post(`${BASE_URL}/whoAmI`, data);
   return response;
 };

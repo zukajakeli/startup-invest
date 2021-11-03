@@ -46,7 +46,7 @@ const MuiModal = ({ body }) => {
         onClose={handleClose}
         BackdropComponent={Backdrop}
       >
-        <Box sx={style}>{body}</Box>
+        {body}
       </StyledModal>
     </div>
   );

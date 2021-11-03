@@ -53,7 +53,7 @@ const Header = () => {
 
   return (
     <>
-      <S.Wrapper>
+      <S.Wrapper isMainPage={isMainPage}>
         <S.Logo src={logo} onClick={goToMain} />
         {!isMobile ? (
           <S.ButtonsWrapper>

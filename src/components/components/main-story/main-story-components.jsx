@@ -67,11 +67,14 @@ export const StoryPreview = styled.p`
   font-weight: 400;
   line-height: 1.8rem;
   color: ${({ white }) => (white ? '#ffffff' : '#767C8B')};
-  max-height: 9rem;
+  /* max-height: 9rem; */
   text-overflow: ellipsis;
   overflow: hidden;
-
-  ${({ theme }) => theme.mobile`
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden
+    ${({ theme }) => theme.mobile`
     font-size: 1.4rem;
-  `}
+  `};
 `;

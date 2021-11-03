@@ -1,17 +1,19 @@
 import { useFormik } from 'formik';
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 import * as Yup from 'yup';
 import { useContext } from 'react';
 import { MeContext } from 'contexts/MeContext';
 
 import TextInput from 'components/components/text-input/TextInput';
-import { signUpRequest } from 'config/API';
+import { signUpRequest, googleAuth } from 'config/API';
 
 import googleIcon from 'assets/icons/google-icon.svg';
-import fbIcon from 'assets/icons/fb-icon.svg';
+
 import exitIcon from 'assets/icons/exit-icon.svg';
 
 import * as S from './authorization-components';
+import GoogleLoginButton from './google-login/GoogleLoginButton';
+import FBLoginButton from './google-login/FBLoginButton';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -55,6 +57,7 @@ const Authorization = ({
     setIsResetPasswordOpen(false);
     setIsAuthorizationOpen(false);
   };
+
   return (
     <S.Wrapper onSubmit={formik.handleSubmit}>
       <S.ExitButton
@@ -100,17 +103,8 @@ const Authorization = ({
       <S.HorizontalLine />
       <S.Text style={{ alignSelf: 'center', marginTop: 16 }}>ან</S.Text>
       <S.SocialAuthWrapper>
-        <S.SocialButton type="button">
-          <S.SocialIcon src={fbIcon} alt="fb" /> Facebook-ით
-        </S.SocialButton>
-        <GoogleLogin
-          clientId="GOOGLE ID"
-          render={(renderProps) => (
-            <S.SocialButton type="button" google>
-              <S.SocialIcon src={googleIcon} alt="fb" /> Google-ით
-            </S.SocialButton>
-          )}
-        />
+        <FBLoginButton />
+        <GoogleLoginButton />
       </S.SocialAuthWrapper>
     </S.Wrapper>
   );

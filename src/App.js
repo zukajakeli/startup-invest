@@ -14,6 +14,7 @@ import Admin from './components/pages/admin/Admin';
 import { useContext } from 'react';
 import { MeContext } from 'contexts/MeContext';
 import Temporary from 'temporary';
+import { whoAmI } from 'config/API';
 
 function App() {
   const location = useLocation();
@@ -24,7 +25,11 @@ function App() {
 
   const [meInfo, setMeInfo] = useContext(MeContext);
   useEffect(() => {
-    setMeInfo(localStorage.getItem('token'));
+    const token = { token: localStorage.getItem('token') };
+    whoAmI(token).then((res) => {
+      console.log('whoAmI', res);
+      setMeInfo(res.data);
+    });
   }, []);
 
   return (
