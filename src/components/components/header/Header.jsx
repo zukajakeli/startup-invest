@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthDropdownContext } from 'contexts/AuthDropdownContext';
 import { MeContext } from 'contexts/MeContext';
 
-import logo from '../../../assets/images/main-logo.png';
+import logo from '../../../assets/icons/main-logo.svg';
 import { ReactComponent as UserIcon } from '../../../assets/icons/user-icon.svg';
 import burgerMenu from 'assets/icons/burger-menu.svg';
 import exitIcon from 'assets/icons/exit-yellow.svg';
