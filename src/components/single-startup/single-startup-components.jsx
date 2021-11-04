@@ -351,3 +351,19 @@ export const Flex = styled.div`
   z-index: 9;
   position: relative;
 `;
+
+export const Line = styled.div`
+  width: 100%;
+  height: 0.2rem;
+  background-color: #b8c3de;
+  margin-top: 1.5rem;
+`;
+
+export const SuccessMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;

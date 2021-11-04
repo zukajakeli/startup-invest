@@ -33,3 +33,21 @@ export const Button = styled.button`
   border-radius: 0rem 4rem 4rem 0rem;
   cursor: pointer;
 `;
+
+export const MailSentBox = styled.div`
+  border-radius: 4rem;
+  background: ${({ color }) => color};
+  color: #13182b;
+  height: 5.5rem;
+  width: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  text-align: center;
+`;
+
+export const SuccessImg = styled.img`
+  height: 40%;
+  margin-left: 1rem;
+`;

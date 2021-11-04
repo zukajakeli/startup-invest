@@ -28,11 +28,17 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthDropdownContext } from 'contexts/AuthDropdownContext';
 import { MeContext } from 'contexts/MeContext';
+import SuccessMessage from './SuccessMessage';
+
+import emailjs from 'emailjs-com';
+import { useRef } from 'react';
+import { keys } from 'keys/keys';
 
 const SingleStartup = () => {
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] =
     useContext(AuthDropdownContext);
   const [meInfo, setMeInfo] = useContext(MeContext);
+  const [isSuccessMessageOpen, setIsSuccessMessageOpen] = useState(false);
 
   SwiperCore.use([Pagination]);
 
@@ -44,6 +50,7 @@ const SingleStartup = () => {
       !meInfo
         ? setIsAuthDropdownOpen(true)
         : console.log(JSON.stringify(values, null, 2));
+      setIsSuccessMessageOpen(true);
     },
   });
 
@@ -71,6 +78,33 @@ const SingleStartup = () => {
         />
       );
     });
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    if (!meInfo) {
+      setIsAuthDropdownOpen(true);
+    } else {
+      console.log(e.target.value);
+      emailjs
+        .sendForm(
+          keys.emailJsServiceId,
+          keys.templateId,
+          e.target,
+          keys.emailJsId,
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            setIsSuccessMessageOpen(true);
+          },
+          (error) => {
+            console.log(error.text);
+          },
+        );
+    }
+  };
 
   return (
     <S.Wrapper>
@@ -154,24 +188,28 @@ const SingleStartup = () => {
               ></source>
             </video>
             <S.VideoText>ვიდეოს აღწერა</S.VideoText>
+            <S.Line />
             {!isMobile && (
               <S.GetInfoWrapper>
-                <S.GetInfoBox onSubmit={formik.handleSubmit}>
-                  <S.BlueArrow src={blueArrow} alt="arrow" />
-
-                  <S.GetInfoHeading>მოითხოვე ინფორმაცია</S.GetInfoHeading>
-                  <S.GetInfoText>
-                    მიიღე დეტალური ინფორმაცია სტარტაპის შესახებ
-                  </S.GetInfoText>
-                  <label htmlFor="email" />
-                  <S.MailInput
-                    placeholder="ელ-ფოსტა"
-                    name="email"
-                    id="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                  />
-                  <S.GetInfoButton type="submit">მოთხოვნა</S.GetInfoButton>
+                <S.GetInfoBox onSubmit={sendEmail} ref={form}>
+                  {isSuccessMessageOpen ? (
+                    <SuccessMessage />
+                  ) : (
+                    <>
+                      <S.BlueArrow src={blueArrow} alt="arrow" />
+                      <S.GetInfoHeading>მოითხოვე ინფორმაცია</S.GetInfoHeading>
+                      <S.GetInfoText>
+                        მიიღე დეტალური ინფორმაცია სტარტაპის შესახებ
+                      </S.GetInfoText>
+                      <label htmlFor="email" />
+                      <S.MailInput
+                        placeholder="ელ-ფოსტა"
+                        name="email"
+                        id="email"
+                      />
+                      <S.GetInfoButton type="submit">მოთხოვნა</S.GetInfoButton>{' '}
+                    </>
+                  )}
                 </S.GetInfoBox>
               </S.GetInfoWrapper>
             )}
@@ -181,7 +219,7 @@ const SingleStartup = () => {
 
       {isMobile && (
         <S.GetInfoWrapper>
-          <S.GetInfoBox onSubmit={formik.handleSubmit}>
+          <S.GetInfoBox onSubmit={sendEmail} ref={form}>
             <S.BlueArrow src={blueArrow} alt="arrow" />
 
             <S.GetInfoHeading>მოითხოვე ინფორმაცია</S.GetInfoHeading>
@@ -189,13 +227,7 @@ const SingleStartup = () => {
               მიიღე დეტალური ინფორმაცია სტარტაპის შესახებ
             </S.GetInfoText>
             <label htmlFor="email" />
-            <S.MailInput
-              placeholder="ელ-ფოსტა"
-              name="email"
-              id="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-            />
+            <S.MailInput placeholder="ელ-ფოსტა" name="email" id="email" />
             <S.GetInfoButton type="submit">მოთხოვნა</S.GetInfoButton>
           </S.GetInfoBox>
         </S.GetInfoWrapper>

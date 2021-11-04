@@ -35,8 +35,8 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={Temporary} />
-        <Route exact path="/main" component={MainPage} />
+        {/* <Route exact path="/" component={Temporary} /> */}
+        <Route exact path="/" component={MainPage} />
         <Route exact path="/startups" component={StartupPage} />
         <Route exact path="/blogs" component={BlogsPage} />
         <Route exact path="/about-us" component={AboutUsPage} />

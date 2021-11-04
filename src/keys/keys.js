@@ -1,6 +1,6 @@
 export const keys = {
-  emailJsServiceId: 'service_e0989ke',
-  emailJsId: 'user_bM45CYM1theUTI7vzISYV',
-  emailJsToken: '927bcd36f8717e8d52bde43cfd62eb0',
-  templateId: 'template_236tueb',
+  emailJsServiceId: 'startupinvest-mail',
+  emailJsId: 'user_RYJdzmmtZt7uKfeN3gl91',
+  emailJsToken: '13f8fd321e3d9a7f9edd0bc0fa3394e7',
+  templateId: 'template_01dbwnq',
 };
