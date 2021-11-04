@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 const width = window.innerWidth;
 
-console.log(width);
-
 export const Wrapper = styled.div`
   height: 100vh;
   background-color: #f2f1f1;
@@ -51,15 +49,19 @@ export const BackgroundImage = styled.img`
   z-index: 0;
 `;
 
+const innerHeight = window.innerHeight;
+console.log('innerHeight', innerHeight);
+
 export const Arrow = styled.img`
   position: absolute;
   z-index: 5;
-  right: 36%;
-  bottom: 4rem;
+  right: 35.5%;
+  bottom: 4%;
   transform: rotate(170deg);
   cursor: pointer;
   transition: all 0.1s ease-in-out;
-  width: 11rem;
+  width: ${(innerHeight / 1.32) * 0.18}px;
+  /* height: ${({ innerHeight }) => innerHeight * 0.05} */
 
   &:hover {
     transform: rotate(200deg);
@@ -205,6 +207,7 @@ export const Button = styled.button`
 export const ContentAndImage = styled.div`
   display: flex;
   height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
 `;

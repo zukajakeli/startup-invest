@@ -30,11 +30,15 @@ const LandingSection = () => {
   };
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  const innerHeight = window.innerHeight;
+
+  const backgroundImageWidth =
+    document.getElementById('background-image')?.offsetWidth;
+
+  console.log(backgroundImageWidth);
 
   return (
     <S.Wrapper>
-      {/* <S.Circle src={circleGreen} alt="circle" /> */}
-
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
@@ -59,10 +63,15 @@ const LandingSection = () => {
 
         <S.BackgroundWrapper>
           <S.BackgroundImage
+            id="background-image"
             src={isMobile ? backgroundImageMobile : backgroundImage}
           />
+          <S.Arrow
+            src={arrow}
+            alt="arrow"
+            onClick={scrollDown}
+            innerHeight={innerHeight}
           />
-          <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
         </S.BackgroundWrapper>
       </S.ContentAndImage>
     </S.Wrapper>
