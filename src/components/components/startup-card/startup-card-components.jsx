@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 51rem;
-  width: 35.2rem;
+  height: 44rem;
+  width: 32rem;
   background-color: #ffffff;
   border-radius: 2.2rem;
   padding-bottom: 2.4rem;
@@ -35,19 +35,19 @@ export const Image = styled.img`
 `;
 
 export const Logo = styled.img`
-  width: 5.8rem;
-  height: 5.8rem;
+  width: 5.5rem;
+  height: 5.5rem;
   border-radius: 50%;
   position: absolute;
-  top: 45%;
-  left: 1.8rem;
+  top: 42%;
+  left: 1.4rem;
   box-shadow: 0.3rem 0.3rem 0.8rem #00000029;
   object-fit: cover;
   background: #ffffff;
 `;
 
 export const ContentHeader = styled.div`
-  padding-left: 1.8rem;
+  padding-left: 3rem;
   padding-top: 1rem;
 `;
 
@@ -66,7 +66,7 @@ export const StartupName = styled.p`
 
 export const StartupFundsWrapper = styled.div`
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
 `;
 
 export const FlexWrapper = styled.div`
@@ -116,7 +116,7 @@ export const AboutButton = styled.button`
   background-size: 200% 200%;
   background-position: right bottom;
   transition: all 0.3s ease-out;
-  margin-top: 3rem;
+  margin-top: 2rem;
 
   &:hover {
     background-position: left top;

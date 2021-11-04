@@ -6,9 +6,9 @@ import backgroundImageMobile from 'assets/images/landing-background-mobile.svg';
 import circleBlue from '../../../assets/icons/circle-blue.svg';
 import Header from '../header/Header.jsx';
 
+import { ReactComponent as Background } from 'assets/images/landing-background.svg';
+
 import arrow from 'assets/icons/arrow-curly-pink.svg';
-import circleGreen from 'assets/icons/circle-green.svg';
-import logo from 'assets/images/main-logo.png';
 
 import * as S from './landing-section-components';
 
@@ -60,6 +60,7 @@ const LandingSection = () => {
         <S.BackgroundWrapper>
           <S.BackgroundImage
             src={isMobile ? backgroundImageMobile : backgroundImage}
+          />
           />
           <S.Arrow src={arrow} alt="arrow" onClick={scrollDown} />
         </S.BackgroundWrapper>

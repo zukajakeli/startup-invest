@@ -35,7 +35,7 @@ export const Header = styled.div`
   width: 100%;
   justify-content: space-between;
   z-index: 1;
-  margin-bottom: 5.5rem;
+  margin-bottom: 3rem;
 
   ${({ theme }) => theme.mobile`
       margin-bottom: 2.4rem;
@@ -153,4 +153,19 @@ export const OvalMobile = styled.img`
   ${({ theme }) => theme.mobile`
     display: block;
   `}
+`;
+
+export const OvalGreen = styled.img`
+  position: absolute;
+  width: 14rem;
+  bottom: 2%;
+  left: 30%;
+`;
+
+export const OvalPink = styled.img`
+  position: absolute;
+  width: 14rem;
+  height: 30rem;
+  top: 7rem;
+  right: 30%;
 `;

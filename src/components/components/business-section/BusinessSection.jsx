@@ -12,6 +12,8 @@ import * as S from './business-section-components';
 import backgroundImage from '../../../assets/images/business-section-background.svg';
 import { ReactComponent as Arrow } from '../../../assets/images/arrow.svg';
 import { ReactComponent as Oval } from 'assets/icons/oval-green.svg';
+import ovalGreen from 'assets/icons/oval-green.svg';
+import ovalPink from 'assets/icons/oval-orange.svg';
 import { startupsDummy as startupsArray } from '../../common-components/StartupsDummyArray';
 
 const BusinessSection = () => {
@@ -26,7 +28,7 @@ const BusinessSection = () => {
 
   return (
     <S.Wrapper>
-      <S.BackgroundImage src={backgroundImage} />
+      {/* <S.BackgroundImage src={backgroundImage} /> */}
       <S.Header>
         <S.TextsWrapper>
           <S.Heading>სტარტაპ შეთავაზებები</S.Heading>
@@ -121,6 +123,8 @@ const BusinessSection = () => {
         </S.AllCompanyButton>
       )}
 
+      <S.OvalGreen src={ovalGreen} alt="oval" />
+      <S.OvalPink src={ovalPink} alt="oval" />
       {/* <Oval fill="#55AA79" /> */}
       {/* <S.OvalMobile src={oval} /> */}
     </S.Wrapper>
