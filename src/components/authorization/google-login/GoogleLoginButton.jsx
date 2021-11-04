@@ -20,13 +20,13 @@ const GoogleLoginButton = () => {
     });
   };
   const responseGoogleFail = (response) => {
-    console.log(response);
+    console.log('errorResponse', response);
   };
 
   return (
     <>
       <GoogleLogin
-        clientId="637911518446-mjf67p3846ubqrkvhd773ph78e740gmp.apps.googleusercontent.com"
+        clientId="637911518446-fuqolk9hrisqtl90qbkn21ftnaf06508.apps.googleusercontent.com"
         render={(renderProps) => (
           <S.SocialButton onClick={renderProps.onClick} type="button" google>
             <S.SocialIcon src={googleIcon} alt="fb" /> Google-ით
