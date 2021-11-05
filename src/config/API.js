@@ -87,7 +87,7 @@ export const loginFacebook = async (data) => {
   return response;
 };
 
-export const whoAmI = async (data) => {
-  const response = await axios.post(`${BASE_URL}/who-am-i`, data);
+export const whoAmI = async () => {
+  const response = await axios.get(`${BASE_URL}/me`);
   return response;
 };
