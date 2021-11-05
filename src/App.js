@@ -26,10 +26,11 @@ function App() {
   const [meInfo, setMeInfo] = useContext(MeContext);
   useEffect(() => {
     const token = { token: localStorage.getItem('token') };
-    whoAmI(token).then((res) => {
-      console.log('whoAmI', res);
-      setMeInfo(res.data);
-    });
+    token &&
+      whoAmI(token).then((res) => {
+        console.log('whoAmI', res);
+        setMeInfo(res.data);
+      });
   }, []);
 
   return (
