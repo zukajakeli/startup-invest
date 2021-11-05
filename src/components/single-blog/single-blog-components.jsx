@@ -240,7 +240,7 @@ export const ShareWrapper = styled.div`
   color: #767c8b;
   font-size: 1.6rem;
   font-weight: 400;
-  right: 12%;
+  right: 2%;
   top: 58rem;
 
   ${({ theme }) => theme.mobile`

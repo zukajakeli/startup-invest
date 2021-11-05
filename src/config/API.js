@@ -88,6 +88,6 @@ export const loginFacebook = async (data) => {
 };
 
 export const whoAmI = async (data) => {
-  const response = await axios.post(`${BASE_URL}/whoAmI`, data);
+  const response = await axios.post(`${BASE_URL}/who-am-i`, data);
   return response;
 };
