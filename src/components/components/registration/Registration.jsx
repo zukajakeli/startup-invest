@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import emailjs from 'emailjs-com';
 import { useFormik } from 'formik';
 import { useContext } from 'react';
 import { MeContext } from 'contexts/MeContext';
@@ -7,9 +8,12 @@ import { register } from 'config/API';
 
 import exitIcon from 'assets/icons/exit-icon.svg';
 import backIcon from 'assets/icons/back-icon.svg';
+import successIcon from 'assets/icons/success.svg';
 
 import * as S from './registration-components';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import { keys } from 'keys/keys';
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -42,6 +46,7 @@ const Registration = ({
   setIsRegistrationOpen,
 }) => {
   const [meInfo, setMeInfo] = useContext(MeContext);
+  const [verificationMessageOpen, setVerificationMessageOpen] = useState(false);
 
   useEffect(() => {
     console.log('meInfo', meInfo);
@@ -60,9 +65,16 @@ const Registration = ({
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
       register(values).then((res) => {
-        setMeInfo(res.data);
-        localStorage.setItem('token', res.data.token);
-        setIsAuthDropdownOpen(false);
+        setVerificationMessageOpen(true);
+        emailjs.send(
+          keys.emailJsServiceId,
+          'reg_verify',
+          {
+            email: values.email,
+            link: `https://startupinvest.ge/api/verifyUser?id=${res.data.userID}`,
+          },
+          keys.emailJsId,
+        );
       });
     },
   });
@@ -84,76 +96,91 @@ const Registration = ({
     <S.Wrapper onSubmit={formik.handleSubmit}>
       <S.ExitButton src={exitIcon} alt="exit" onClick={exitHandler} />
       <S.BackButton src={backIcon} alt="back" onClick={goToAuthorization} />
-
-      <S.Heading>რეგისტრაცია</S.Heading>
-      <S.Text style={{ marginBottom: 20 }}>შეავსე პირადი მონაცემები</S.Text>
-      <S.FlexWrapper>
-        <S.InputWrapper>
-          <TextInput
-            required
-            fullWidth
-            placeholder="სახელი"
-            inputName="firstName"
-            handleChange={formik.handleChange}
-            value={formik.values.firstName}
+      {verificationMessageOpen ? (
+        <S.VerificationMessage>
+          <div>
+            ანგარიშის გასააქტიურებელი ბმული გამოგზავნილია თქვენ მიერ მითითებულ
+            მეილზე
+          </div>
+          <img
+            style={{ height: '4rem', marginTop: 15 }}
+            src={successIcon}
+            alt="success"
           />
-        </S.InputWrapper>
-        <S.InputWrapper isPasswordInput>
-          <TextInput
-            required
-            fullWidth
-            placeholder="გვარი"
-            inputName="lastName"
-            handleChange={formik.handleChange}
-            value={formik.values.lastName}
-          />
-        </S.InputWrapper>
-      </S.FlexWrapper>
+        </S.VerificationMessage>
+      ) : (
+        <>
+          <S.Heading>რეგისტრაცია</S.Heading>
+          <S.Text style={{ marginBottom: 20 }}>შეავსე პირადი მონაცემები</S.Text>
+          <S.FlexWrapper>
+            <S.InputWrapper>
+              <TextInput
+                required
+                fullWidth
+                placeholder="სახელი"
+                inputName="firstName"
+                handleChange={formik.handleChange}
+                value={formik.values.firstName}
+              />
+            </S.InputWrapper>
+            <S.InputWrapper isPasswordInput>
+              <TextInput
+                required
+                fullWidth
+                placeholder="გვარი"
+                inputName="lastName"
+                handleChange={formik.handleChange}
+                value={formik.values.lastName}
+              />
+            </S.InputWrapper>
+          </S.FlexWrapper>
 
-      <S.InputWrapper isPasswordInput>
-        <TextInput
-          required
-          fullWidth
-          placeholder="ელ-ფოსტა"
-          inputName="email"
-          handleChange={formik.handleChange}
-          value={formik.values.email}
-        />
-      </S.InputWrapper>
-      <S.InputWrapper isPasswordInput>
-        <TextInput
-          required
-          fullWidth
-          placeholder="ტელეფონი"
-          inputName="phone"
-          handleChange={formik.handleChange}
-          value={formik.values.phone}
-        />
-      </S.InputWrapper>
-      <S.InputWrapper isPasswordInput>
-        <TextInput
-          required
-          fullWidth
-          placeholder="პაროლი"
-          inputName="password"
-          handleChange={formik.handleChange}
-          value={formik.values.password}
-          isPasswordInput
-        />
-      </S.InputWrapper>
-      <S.InputWrapper isPasswordInput>
-        <TextInput
-          required
-          fullWidth
-          placeholder="გაიმეორე პაროლი"
-          inputName="repeatPassword"
-          handleChange={formik.handleChange}
-          value={formik.values.repeatPassword}
-          isPasswordInput
-        />
-      </S.InputWrapper>
+          <S.InputWrapper isPasswordInput>
+            <TextInput
+              required
+              fullWidth
+              placeholder="ელ-ფოსტა"
+              inputName="email"
+              handleChange={formik.handleChange}
+              value={formik.values.email}
+            />
+          </S.InputWrapper>
+          <S.InputWrapper isPasswordInput>
+            <TextInput
+              required
+              fullWidth
+              placeholder="ტელეფონი"
+              inputName="phone"
+              handleChange={formik.handleChange}
+              value={formik.values.phone}
+            />
+          </S.InputWrapper>
+          <S.InputWrapper isPasswordInput>
+            <TextInput
+              required
+              fullWidth
+              placeholder="პაროლი"
+              inputName="password"
+              handleChange={formik.handleChange}
+              value={formik.values.password}
+              isPasswordInput
+            />
+          </S.InputWrapper>
+          <S.InputWrapper isPasswordInput>
+            <TextInput
+              required
+              fullWidth
+              placeholder="გაიმეორე პაროლი"
+              inputName="repeatPassword"
+              handleChange={formik.handleChange}
+              value={formik.values.repeatPassword}
+              isPasswordInput
+            />
+          </S.InputWrapper>
 
-      <S.Button type="submit">რეგისტრაცია</S.Button>
+          <S.Button type="submit">რეგისტრაცია</S.Button>
+        </>
+      )}
     </S.Wrapper>
   );
 };

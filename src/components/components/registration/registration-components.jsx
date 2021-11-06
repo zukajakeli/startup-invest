@@ -72,3 +72,18 @@ export const FlexWrapper = styled.div`
   gap: 1.6rem;
   justify-content: space-between;
 `;
+
+export const VerificationMessage = styled.div`
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: 50%;
+  padding: 1rem;
+  border-radius: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.4rem;
+  display: flex;
+  flex-direction: column;
+`;
