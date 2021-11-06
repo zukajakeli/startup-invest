@@ -27,7 +27,7 @@ export const HeaderWrapper = styled.div`
 
 export const Body = styled.div`
   background-color: #f2f1f1;
-  padding: 9.8rem 10% 5rem 10%;
+  padding: 9.8rem 4% 5rem 4%;
 
   ${({ theme }) => theme.mobile`
     padding: 0rem;
@@ -169,7 +169,6 @@ export const HorizontalLine = styled.div`
 export const SubContent = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0rem 9.3rem;
   margin-top: 3.3rem;
   gap: 2rem;
   padding-right: 0rem;
@@ -181,7 +180,7 @@ export const SubContent = styled.div`
 `;
 
 export const TextsWrapper = styled.div`
-  max-width: 54rem;
+  max-width: 47rem;
 
   ${({ theme }) => theme.mobile`
     padding: 0rem 7%  2.5rem 7%;
@@ -310,11 +309,11 @@ export const SubscribeWrapper = styled.div`
 `;
 
 export const OtherOffersWrapper = styled.div`
-  height: 80rem;
+  height: 68rem;
   background: url(${otherOffersBackground}) no-repeat #ffffff;
   background-position: 85% 50%;
   position: relative;
-  padding: 4rem 10%;
+  padding: 4rem 4% 0rem 4%;
 
   ${({ theme }) => theme.mobile`
     height: unset;
@@ -357,6 +356,7 @@ export const Line = styled.div`
   height: 0.2rem;
   background-color: #b8c3de;
   margin-top: 1.5rem;
+  margin-bottom: 5rem;
 `;
 
 export const SuccessMessage = styled.div`

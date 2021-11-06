@@ -8,7 +8,7 @@ export const Wrapper = styled.header`
   height: 9.8rem;
   box-sizing: border-box;
   position: relative;
-  padding-right: ${({ isMainPage }) => isMainPage && '12%'};
+  /* padding-right: ${({ isMainPage }) => isMainPage && '12%'}; */
   /* padding-right: 10%; */
 
   ${({ theme }) => theme.mobile`
@@ -229,4 +229,14 @@ export const UserMail = styled.p`
   color: #13182b;
   font-weight: 600;
   margin-bottom: 1rem;
+`;
+
+export const Relative = styled.div`
+  position: relative;
+`;
+
+export const ArrowYellow = styled.img`
+  position: absolute;
+  top: 4rem;
+  left: -5rem;
 `;

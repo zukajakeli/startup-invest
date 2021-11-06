@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   gap: 1.6rem;
   position: relative;
+  margin-bottom: 4rem;
 
   ${({ theme }) => theme.mobile`
     justify-content: center;
@@ -17,8 +18,8 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  left: 31%;
-  top: 13.2rem;
+  left: 27%;
+  top: 6.2rem;
 
   ${({ theme }) => theme.mobile`
     left: 0;

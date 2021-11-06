@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   background: #fff;
   border-radius: 3rem;
   box-shadow: 0.3rem 1rem 1rem #0000001f;
+  cursor: pointer;
 `;
 
 export const ReadingTime = styled.p`

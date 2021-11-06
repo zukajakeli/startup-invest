@@ -6,8 +6,6 @@ import backgroundImageMobile from 'assets/images/landing-background-mobile.svg';
 import circleBlue from '../../../assets/icons/circle-blue.svg';
 import Header from '../header/Header.jsx';
 
-import { ReactComponent as Background } from 'assets/images/landing-background.svg';
-
 import arrow from 'assets/icons/arrow-curly-pink.svg';
 
 import * as S from './landing-section-components';
@@ -31,11 +29,6 @@ const LandingSection = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   const innerHeight = window.innerHeight;
-
-  const backgroundImageWidth =
-    document.getElementById('background-image')?.offsetWidth;
-
-  console.log(backgroundImageWidth);
 
   return (
     <S.Wrapper>

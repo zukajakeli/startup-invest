@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0rem 10%;
-  padding-bottom: 9rem;
-  box-sizing: border-box;
+  padding-bottom: 7rem;
+  box-sizing: content-box;
   position: relative;
   background-color: #ffffff;
   align-items: center;
@@ -159,7 +159,7 @@ export const OvalGreen = styled.img`
   position: absolute;
   width: 14rem;
   bottom: 2%;
-  left: 30%;
+  left: 25%;
 `;
 
 export const OvalPink = styled.img`

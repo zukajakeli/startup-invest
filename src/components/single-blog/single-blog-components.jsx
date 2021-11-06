@@ -241,7 +241,7 @@ export const ShareWrapper = styled.div`
   font-size: 1.6rem;
   font-weight: 400;
   right: 2%;
-  top: 58rem;
+  bottom: 2.5rem;
 
   ${({ theme }) => theme.mobile`
     position: absolute;

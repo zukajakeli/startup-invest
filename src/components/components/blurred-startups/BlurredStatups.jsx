@@ -90,8 +90,7 @@ const BlurredStartups = ({ openAuthModal }) => {
 
         <S.Heading>მეტის სანახავად გაიარე ავტორიზაცია</S.Heading>
         <S.SubHeading>
-          ფინანსური რეგულაციებიდან გამომდინარე, შენი ავტორიზაცია აუცილებლია მეტი
-          ინფორმაციის სანახავად.
+          და ერთ სივრცეში იხილე სწრაფად მზარდი ბიზნესები საქართველოში
         </S.SubHeading>
         <S.Button onClick={openAuthModal}>ავტორიზაცია</S.Button>
       </S.Content>

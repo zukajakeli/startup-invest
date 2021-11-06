@@ -109,7 +109,7 @@ const BlogsPage = () => {
                 ? 1.1
                 : Math.floor(window.innerWidth / 260) - 0.5 > 4
                 ? 4
-                : 3
+                : 3.3
             }
             direction="horizontal"
             autoplay={{ delay: 3500 }}

@@ -21,6 +21,7 @@ export const MainImage = styled.img`
   height: 33.2rem;
   max-width: 62.8rem;
   border-radius: 4rem;
+  cursor: pointer;
 
   ${({ theme }) => theme.mobile`
     width: 100%;
@@ -45,6 +46,7 @@ export const StoryTitle = styled.h3`
   font-weight: 600;
   color: ${({ white }) => (white ? '#ffffff' : '##13182B')};
   margin-bottom: 1.8rem;
+  cursor: pointer;
 
   ${({ theme }) => theme.mobile`
     font-size: 1.4rem;

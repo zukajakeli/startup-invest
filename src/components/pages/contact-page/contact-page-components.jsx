@@ -41,6 +41,7 @@ export const LeftWrapper = styled.div`
   justify-content: center;
   height: 66rem;
   width: 100%;
+  padding-left: 2rem;
 
   ${({ theme }) => theme.mobile`
     align-items: center;

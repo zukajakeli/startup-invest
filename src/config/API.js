@@ -91,3 +91,8 @@ export const whoAmI = async () => {
   const response = await axios.get(`${BASE_URL}/me`);
   return response;
 };
+
+export const resetPassword = async (data) => {
+  const response = await axios.post(`${BASE_URL}/reset-password`, data);
+  return response;
+};

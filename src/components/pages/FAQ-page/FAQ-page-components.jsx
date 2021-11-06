@@ -35,11 +35,12 @@ export const Test = styled.div`
 export const Body = styled.div`
   background-color: #f2f1f1;
   height: 77rem;
-  padding: 10rem 10%;
+  width: 100%;
+  padding: 10rem 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 17%;
+  padding-left: 9%;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-position: 55% 80%;
@@ -71,7 +72,7 @@ export const Heading = styled.h5`
 
 export const ContainersWrapper = styled.div`
   display: flex;
-  gap: 1.6rem;
+  gap: 5rem;
   z-index: 1;
   position: relative;
   width: 100%;
@@ -152,9 +153,12 @@ export const Button = styled.button`
 export const FaqBoxWrapper = styled.div`
   width: 44.4rem;
   height: 48.8rem;
-  padding: 2.4rem;
+  /* padding: 2.4rem; */
   background-color: #ffffff;
   border-radius: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${({ theme }) => theme.mobile`
       width: 100%;
@@ -164,8 +168,8 @@ export const FaqBoxWrapper = styled.div`
 `;
 
 export const FaqBox = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background-color: #ffffff;
   padding: 3.2rem 2rem;
   padding-right: 4.4rem;
@@ -185,18 +189,20 @@ export const FaqBox = styled.div`
 
   ::-webkit-scrollbar {
     width: 0.7rem;
+    padding: 1rem;
   }
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: pink;
+    background: #fff;
     width: 0.1rem;
     border-radius: 1rem;
-    max-height: 2rem;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: pink;
+    max-height: 2rem;
+    border-radius: 1.2rem;
   }
 `;

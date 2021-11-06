@@ -6,6 +6,8 @@ import exitIcon from 'assets/icons/exit-icon.svg';
 import backIcon from 'assets/icons/back-icon.svg';
 
 import * as S from './reset-password-components';
+import { resetPassword } from 'config/API';
+import { useState } from 'react';
 
 const ResetPassword = ({
   setIsAuthDropdownOpen,
@@ -13,12 +15,16 @@ const ResetPassword = ({
   setIsResetPasswordOpen,
   setIsRegistrationOpen,
 }) => {
+  const [isSuccessMessageOpen, setIsSuccessMessageOpen] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       email: '',
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
+      resetPassword(values);
+      setIsSuccessMessageOpen(true);
     },
   });
 

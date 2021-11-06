@@ -78,7 +78,7 @@ export const GreenButton = styled.button`
 
   background: linear-gradient(to right, #55aa79 50%, rgba(255, 255, 255, 0) 0%);
   background-size: 200% 100%;
-  background-position: right bottom;
+  background-position: right top;
   transition: all 0.3s ease-out;
 
   &:hover {
