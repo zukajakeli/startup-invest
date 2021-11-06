@@ -29,7 +29,7 @@ function App() {
     token &&
       whoAmI(token).then((res) => {
         console.log('whoAmI', res);
-        setMeInfo(res.data);
+        setMeInfo(res.data.user);
       });
   }, []);
 

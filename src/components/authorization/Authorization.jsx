@@ -38,10 +38,10 @@ const Authorization = ({
     validationSchema: ValidationSchema,
     onSubmit: (values) => {
       signUpRequest(values).then((res) => {
-        setMeInfo(res.data);
+        console.log(res.data);
+        setMeInfo(res.data.user);
         localStorage.setItem('token', res.data.token);
         setIsAuthDropdownOpen(false);
-        console.log(res.data);
       });
     },
   });
