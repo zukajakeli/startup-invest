@@ -100,7 +100,7 @@ const Registration = ({
         <S.VerificationMessage>
           <div>
             ანგარიშის გასააქტიურებელი ბმული გამოგზავნილია თქვენ მიერ მითითებულ
-            მეილზე
+            ელ-ფოსტაზე
           </div>
           <img
             style={{ height: '4rem', marginTop: 15 }}

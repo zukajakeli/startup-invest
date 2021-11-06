@@ -71,9 +71,11 @@ const StartupPage = () => {
         {/* position absolute elements */}
         <S.OvalBlueWrapper src={ovalBlue} alt="oval" />
         <S.OvalPinkWrapper src={ovalPink} alt="oval" />
-        <S.ArchWrapper>
-          <Arch fill="#FFCA0F" />
-        </S.ArchWrapper>
+        {!meInfo && (
+          <S.ArchWrapper>
+            <Arch fill="#FFCA0F" />
+          </S.ArchWrapper>
+        )}
       </S.Body>
       <Footer />
     </S.Wrapper>
