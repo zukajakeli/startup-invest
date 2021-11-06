@@ -17,7 +17,7 @@ const FBLoginButton = () => {
     loginFacebook({ accessToken: res.accessToken, userID: res.userID }).then(
       (res) => {
         console.log('response from back about facebook', res);
-        setMeInfo(res.data);
+        setMeInfo(res.data.user);
         localStorage.setItem('token', res.data.token);
         setIsAuthDropdownOpen(false);
       },
