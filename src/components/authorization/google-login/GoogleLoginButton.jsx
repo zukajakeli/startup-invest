@@ -14,7 +14,7 @@ const GoogleLoginButton = () => {
   const responseGoogleSuccess = (response) => {
     sendGoogleToken({ tokenId: response.tokenId }).then((res) => {
       console.log(res);
-      setMeInfo(res.data);
+      setMeInfo(res.data.user);
       localStorage.setItem('token', res.data.token);
       setIsAuthDropdownOpen(false);
     });
