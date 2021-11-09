@@ -14,6 +14,8 @@ import * as S from './registration-components';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { keys } from 'keys/keys';
+import { useHistory } from 'react-router';
+import { useMediaQuery } from 'react-responsive';
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -45,6 +47,8 @@ const Registration = ({
   setIsAuthorizationOpen,
   setIsRegistrationOpen,
 }) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  const history = useHistory();
   const [meInfo, setMeInfo] = useContext(MeContext);
   const [verificationMessageOpen, setVerificationMessageOpen] = useState(false);
 
@@ -95,7 +99,17 @@ const Registration = ({
   return (
     <S.Wrapper onSubmit={formik.handleSubmit}>
       <S.ExitButton src={exitIcon} alt="exit" onClick={exitHandler} />
-      <S.BackButton src={backIcon} alt="back" onClick={goToAuthorization} />
+      <S.BackButton
+        src={backIcon}
+        alt="back"
+        onClick={
+          isMobile
+            ? () => {
+                history.goBack();
+              }
+            : goToAuthorization
+        }
+      />
       {verificationMessageOpen ? (
         <S.VerificationMessage>
           <div>

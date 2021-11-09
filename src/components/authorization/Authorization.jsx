@@ -7,13 +7,14 @@ import { MeContext } from 'contexts/MeContext';
 import TextInput from 'components/components/text-input/TextInput';
 import { signUpRequest, googleAuth } from 'config/API';
 
-import googleIcon from 'assets/icons/google-icon.svg';
+import { useMediaQuery } from 'react-responsive';
 
 import exitIcon from 'assets/icons/exit-icon.svg';
 
 import * as S from './authorization-components';
 import GoogleLoginButton from './google-login/GoogleLoginButton';
 import FBLoginButton from './google-login/FBLoginButton';
+import { useHistory } from 'react-router';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -29,6 +30,9 @@ const Authorization = ({
   setIsResetPasswordOpen,
   setIsAuthorizationOpen,
 }) => {
+  const history = useHistory();
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
   const [meInfo, setMeInfo] = useContext(MeContext);
   const formik = useFormik({
     initialValues: {
@@ -41,7 +45,7 @@ const Authorization = ({
         console.log(res.data);
         setMeInfo(res.data.user);
         localStorage.setItem('token', res.data.token);
-        setIsAuthDropdownOpen(false);
+        isMobile ? history.push('/') : setIsAuthDropdownOpen(false);
       });
     },
   });
@@ -69,7 +73,7 @@ const Authorization = ({
       />
 
       <S.Heading>ავტორიზაცია</S.Heading>
-      <S.Text style={{ marginBottom: 20 }}>შეიყვანე მონაცემები</S.Text>
+      <S.Text style={{ marginBottom: 20 }}>შეავსე პირადი მონაცემები</S.Text>
       <S.InputWrapper>
         <TextInput
           fullWidth
@@ -93,11 +97,33 @@ const Authorization = ({
       </S.InputWrapper>
       <S.Text style={{ marginBottom: 6 }}>
         დაგავიწყდა პაროლი?
-        <S.Hyperlink onClick={openResetPassword}> აღადგინე აქ </S.Hyperlink>
+        <S.Hyperlink
+          onClick={
+            isMobile
+              ? () => {
+                  history.push('/auth/resetpassword');
+                }
+              : openResetPassword
+          }
+        >
+          {' '}
+          აღადგინე აქ{' '}
+        </S.Hyperlink>
       </S.Text>
       <S.Text style={{ marginBottom: 30 }}>
         არ ხარ რეგისტრირებული?{' '}
-        <S.Hyperlink onClick={openRegistration}> დააჭირე აქ </S.Hyperlink>
+        <S.Hyperlink
+          onClick={
+            isMobile
+              ? () => {
+                  history.push('/auth/register');
+                }
+              : openRegistration
+          }
+        >
+          {' '}
+          დააჭირე აქ{' '}
+        </S.Hyperlink>
       </S.Text>
       <S.Button type="submit">შესვლა</S.Button>
       <S.HorizontalLine />

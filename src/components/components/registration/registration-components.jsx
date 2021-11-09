@@ -12,12 +12,19 @@ export const Wrapper = styled.form`
   background-position: center;
   padding: 4.6rem 9.2rem;
   position: relative;
+
+  ${({ theme }) => theme.mobile`
+    padding: 2rem;
+  `}
 `;
 
 export const ExitButton = styled.img`
   position: absolute;
   cursor: pointer;
   right: 3.8rem;
+  ${({ theme }) => theme.mobile`
+    display: none;
+`}
 `;
 
 export const Heading = styled.h6`
@@ -25,6 +32,10 @@ export const Heading = styled.h6`
   font-size: 3.2rem;
   font-weight: 600;
   margin-bottom: 1.6rem;
+
+  ${({ theme }) => theme.mobile`
+    text-align: center;
+`}
 `;
 
 export const Text = styled.p`
@@ -32,6 +43,11 @@ export const Text = styled.p`
   font-size: 1.6rem;
   font-weight: 400;
   display: flex;
+
+  ${({ theme }) => theme.mobile`
+    display: block;
+    text-align: center;
+`}
 `;
 
 export const InputWrapper = styled.div`
@@ -59,6 +75,11 @@ export const Button = styled.button`
     background-position: left top;
     color: #13182b;
   }
+
+  ${({ theme }) => theme.mobile`
+    margin: 0 auto;
+    width: 100%;
+  `}
 `;
 
 export const BackButton = styled.img`

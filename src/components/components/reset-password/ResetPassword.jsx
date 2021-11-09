@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useMediaQuery } from 'react-responsive';
 
 import TextInput from 'components/components/text-input/TextInput';
 
@@ -8,6 +9,7 @@ import backIcon from 'assets/icons/back-icon.svg';
 import * as S from './reset-password-components';
 import { resetPassword } from 'config/API';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 
 const ResetPassword = ({
   setIsAuthDropdownOpen,
@@ -15,6 +17,8 @@ const ResetPassword = ({
   setIsResetPasswordOpen,
   setIsRegistrationOpen,
 }) => {
+  const history = useHistory();
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   const [isSuccessMessageOpen, setIsSuccessMessageOpen] = useState(false);
 
   const formik = useFormik({
@@ -43,7 +47,17 @@ const ResetPassword = ({
   return (
     <S.Wrapper onSubmit={formik.handleSubmit}>
       <S.ExitButton src={exitIcon} alt="exit" onClick={exitHandler} />
-      <S.BackButton src={backIcon} alt="back" onClick={goToAuthorization} />
+      <S.BackButton
+        src={backIcon}
+        alt="back"
+        onClick={
+          isMobile
+            ? () => {
+                history.goBack();
+              }
+            : goToAuthorization
+        }
+      />
 
       <S.Heading>პაროლის აღდგენა</S.Heading>
 

@@ -18,6 +18,10 @@ export const Input = styled.input`
   box-sizing: border-box;
   background: none;
   width: 30rem;
+
+  ${({ theme }) => theme.mobile`
+    width: 20rem;
+  `}
 `;
 
 export const Button = styled.button`

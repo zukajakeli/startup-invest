@@ -33,6 +33,10 @@ const Header = () => {
     history.push('/');
   };
 
+  const goToAuth = () => {
+    history.push('/auth/login');
+  };
+
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
   const [isAuthorizationOpen, setIsAuthorizationOpen] = useState(true);
@@ -109,7 +113,7 @@ const Header = () => {
               <Link to="/blogs">
                 <S.BlogsButton>ბლოგი</S.BlogsButton>
               </Link>
-              <S.LoginButton onClick={AuthDropdownToggler}>
+              <S.LoginButton onClick={goToAuth}>
                 <UserIcon />
                 შესვლა
               </S.LoginButton>

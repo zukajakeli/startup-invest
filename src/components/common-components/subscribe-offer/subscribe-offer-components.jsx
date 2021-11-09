@@ -63,5 +63,6 @@ export const SubscribeText = styled.p`
       font-size: 1.4rem;
       margin-bottom: 3.7rem;
       z-index: 1;
+      text-align: center;
   `}
 `;

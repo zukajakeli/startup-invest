@@ -15,6 +15,7 @@ import { useContext } from 'react';
 import { MeContext } from 'contexts/MeContext';
 import Temporary from 'temporary';
 import { whoAmI } from 'config/API';
+import MobileAuth from 'components/pages/mobile-auth/MobileAuth';
 
 function App() {
   const location = useLocation();
@@ -45,6 +46,8 @@ function App() {
         <Route exact path="/contact-us" component={ContactPage} />
         <Route exact path="/single-blog" component={SingleBlog} />
         <Route exact path="/single-startup" component={SingleStartup} />
+        <Route path="/auth/:authType" component={MobileAuth} />
+
         <Route path="/admin" component={Admin} />
       </Switch>
     </>
