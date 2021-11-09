@@ -14,6 +14,7 @@ export const BackgroundImage = styled.img`
   margin-top: 8.7rem;
   ${({ theme }) => theme.mobile`
     display: none;
+    position: absolute;
  `};
 `;
 
@@ -87,11 +88,11 @@ export const GreenButton = styled.button`
   }
 
   ${({ theme }) => theme.mobile`
-    width: 21.2rem;
+    width: 19.2rem;
     height: 8.4rem;
     position: unset;
     font-size: 1.4rem;
-    margin-top: 11rem;
+    margin-top: 7.6rem;
     margin-right: -1rem;
   `}
 `;
@@ -109,4 +110,22 @@ export const ArrowImage = styled.img`
   ${({ theme }) => theme.mobile`
     display: none;
   `}
+`;
+
+export const HalfCircle = styled.img`
+  position: absolute;
+  width: 18.5rem;
+  top: 0rem;
+  left: 0rem;
+  display: none;
+
+  ${({ theme }) => theme.mobile`
+    display: unset;
+  `}
+`;
+
+export const Relative = styled.div`
+  ${({ theme }) => theme.mobile`
+ position: relative;
+`}
 `;

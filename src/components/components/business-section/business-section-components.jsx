@@ -160,6 +160,10 @@ export const OvalGreen = styled.img`
   width: 14rem;
   bottom: 2%;
   left: 25%;
+
+  ${({ theme }) => theme.mobile`
+    left: 4%;
+  `}
 `;
 
 export const OvalPink = styled.img`
@@ -168,4 +172,9 @@ export const OvalPink = styled.img`
   height: 30rem;
   top: 7rem;
   right: 30%;
+
+  ${({ theme }) => theme.mobile`
+    top : 5rem;
+    right: 10%;
+  `}
 `;

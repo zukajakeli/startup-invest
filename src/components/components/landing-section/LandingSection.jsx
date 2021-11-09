@@ -32,7 +32,7 @@ const LandingSection = () => {
 
   return (
     <S.Wrapper>
-      <S.HeaderWrapper>
+      <S.HeaderWrapper isHeaderTransparent={true}>
         <Header />
       </S.HeaderWrapper>
       <S.ContentAndImage>

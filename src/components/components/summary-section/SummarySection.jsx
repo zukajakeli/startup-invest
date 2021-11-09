@@ -4,6 +4,7 @@ import * as S from './summary-sec-components';
 
 import backgroundImage from '../../../assets/images/summary-background.svg';
 import arrow from '../../../assets/icons/arrow-curly-pink.svg';
+import yellowHalfCircle from 'assets/icons/half-circle-yellow.svg';
 
 const SummarySection = () => {
   const scrollToTop = () => {
@@ -27,7 +28,10 @@ const SummarySection = () => {
       <S.BackgroundWrapper>
         <S.BackgroundImage src={backgroundImage} alt="background" />
         <S.PinkButton onClick={goToStartups}>იყიდე წილი</S.PinkButton>
-        <S.GreenButton onClick={goToBlogs}>მოიზიდე ინვესტიცია</S.GreenButton>
+        <S.Relative>
+          <S.HalfCircle src={yellowHalfCircle} alt="yellow" />
+          <S.GreenButton onClick={goToBlogs}>მოიზიდე ინვესტიცია</S.GreenButton>
+        </S.Relative>
         <S.ArrowImage src={arrow} alt="arrow" onClick={scrollToTop} />
       </S.BackgroundWrapper>
     </S.Wrapper>

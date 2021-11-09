@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   }
 
   ${({ theme }) => theme.mobile`
-    min-height: 83.6rem;
+    min-height: 90rem;
     padding: 0rem 7%;
     padding-bottom: 2rem;
   `}
@@ -163,4 +163,17 @@ export const GreenBackground = styled.img`
   ${({ theme }) => theme.mobile`
     right: -6rem;
   `}
+`;
+
+export const HalfCircle = styled.div`
+  display: none;
+  position: absolute;
+
+  ${({ theme }) => theme.mobile`
+      display: block;
+    `}
+`;
+
+export const Relative = styled.div`
+  position: relative;
 `;

@@ -44,7 +44,9 @@ export const HeaderWrapper = styled.div`
 
 export const BackgroundImage = styled.img`
   height: 100%;
-  /* position: absolute; */
+  ${({ theme }) => theme.mobile`
+  position: absolute;
+  `}
   right: 0;
   z-index: 0;
 `;
@@ -210,6 +212,10 @@ export const ContentAndImage = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-between;
+
+  ${({ theme }) => theme.mobile`
+    align-items: flex-start;
+  `}
 `;
 
 export const BackgroundWrapper = styled.div`

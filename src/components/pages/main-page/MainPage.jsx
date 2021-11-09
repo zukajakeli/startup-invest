@@ -7,11 +7,19 @@ import * as S from './main-page-component';
 import SummarySection from '../../components/summary-section/SummarySection';
 import Footer from '../../components/footer/Footer';
 import Header from 'components/components/header/Header';
+import { useState } from 'react';
 
 const MainPage = () => {
+  const [isHeaderTransparent, setIsHeaderTransparent] = useState(false);
+
+  window.onscroll = () => {
+    console.log(window.scrollY >= window.innerHeight);
+    setIsHeaderTransparent(window.scrollY >= window.innerHeight);
+  };
+
   return (
     <S.Wrapper>
-      <S.HeaderWrapper>
+      <S.HeaderWrapper isHeaderTransparent={isHeaderTransparent}>
         <Header />
       </S.HeaderWrapper>
       <LandingSection />

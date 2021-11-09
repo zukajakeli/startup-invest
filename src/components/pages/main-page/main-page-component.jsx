@@ -13,6 +13,9 @@ export const HeaderWrapper = styled.div`
   padding: 0rem 8%;
   width: 100%;
 
+  ${({ isHeaderTransparent }) =>
+    isHeaderTransparent && 'background-color: white'};
+
   ${({ theme }) => theme.mobile`
     display: block;
   `}
