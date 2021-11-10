@@ -1,68 +1,103 @@
-import TextareaInput from 'components/components/text-area/TextareaInput';
-import TextInput from 'components/components/text-input/TextInput';
-import { useFormik } from 'formik';
-import { Input, Button } from 'antd';
-import { useState, useRef } from 'react';
 import * as S from './components';
 import { addNewStory } from 'config/API';
+import { useState } from 'react';
 
-const AddNewBlog = () => {
-  //form states
-  const [mainPhoto, setMainPhoto] = useState('');
-  const [secondaryPhoto, setSecondaryPhoto] = useState('');
-  const [previewPhoto, setPreviewPhoto] = useState('');
-  const [title, setTitle] = useState('');
-  const [quote, setQuote] = useState('');
-  const [content, setContent] = useState('');
+import { Input, Upload, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
-  const submit = (e) => {
+const { TextArea } = Input;
+
+const AddNewStartup = ({ setAddResponse }) => {
+  const [mainPhoto, setMainPhoto] = useState(null);
+  const [secondaryPhoto, setSecondaryPhoto] = useState(null);
+  const [previewPhoto, setPreviewPhoto] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [previewText, setPreviewText] = useState(null);
+  const [mainText, setMainText] = useState(null);
+  const [quote, setQuote] = useState(null);
+
+  const send = (e) => {
+    const formData = new FormData();
+    formData.append('mainPhoto', mainPhoto);
+    formData.append('secondaryPhoto', secondaryPhoto);
+    formData.append('previewPhoto', previewPhoto);
+    formData.append('title', title);
+    formData.append('previewText', previewText);
+    formData.append('mainText', mainText);
+    formData.append('quote', quote);
     e.preventDefault();
-
-    const data = new FormData();
-    data.append('file', mainPhoto);
-
-    addNewStory(data).then((res) => console.log('response', res));
-
-    console.log('data', data);
+    console.log(formData);
+    addNewStory(formData).then((res) => console.log(res));
   };
 
   return (
-    <>
-      <S.Form id="add-blog-form" encType="multipart/form-data">
-        {/* <input
-        type="text"
-        placeholder="Title"
-        name="title"
+    <S.Form enctype="multipart/form-data">
+      <Input
+        prefix="Title:"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
       />
-      <input
-        type="text"
-        placeholder="Quote"
-        name="quote"
+      <Input
+        prefix="PreviewText:"
+        value={previewText}
+        onChange={(e) => {
+          setPreviewText(e.target.value);
+        }}
+      />
+
+      <Input
+        prefix="Quote:"
         value={quote}
-        onChange={(e) => setQuote(e.target.value)}
+        onChange={(e) => {
+          setQuote(e.target.value);
+        }}
       />
-      <input
-        type="text"
-        placeholder="Content"
-        name="conent"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      /> */}
-      </S.Form>
-      <div>
-        <input
-          type="file"
-          name="file"
-          onChange={(e) => setMainPhoto(e.target.files[0])}
-        />
-        <S.SubmitButton type="button" onClick={submit}>
-          Add
-        </S.SubmitButton>
-      </div>
-    </>
+      <TextArea
+        placeholder="Main Text"
+        value={mainText}
+        onChange={(e) => {
+          setMainText(e.target.value);
+        }}
+      />
+      <Upload
+        name="mainPhoto"
+        beforeUpload={false}
+        multiple={false}
+        onChange={(e) => {
+          setMainPhoto(e.file.originFileObj);
+        }}
+      >
+        <Button icon={<UploadOutlined />}>Upload Main Photo</Button>
+      </Upload>
+      <Upload
+        name="secondaryPhoto"
+        beforeUpload={false}
+        multiple={false}
+        onChange={(e) => {
+          setSecondaryPhoto(e.file.originFileObj);
+        }}
+      >
+        <Button icon={<UploadOutlined />}>Upload Secondary Photo</Button>
+      </Upload>
+      <Upload
+        name="previewPhoto"
+        beforeUpload={false}
+        multiple={false}
+        onChange={(e) => {
+          console.log(e.file.originFileObj);
+          setPreviewPhoto(e.file.originFileObj);
+        }}
+      >
+        <Button icon={<UploadOutlined />}>Upload Preview Photo</Button>
+      </Upload>
+
+      <Button type="primary" onClick={send}>
+        Add Blog
+      </Button>
+    </S.Form>
   );
 };
 
-export default AddNewBlog;
+export default AddNewStartup;
