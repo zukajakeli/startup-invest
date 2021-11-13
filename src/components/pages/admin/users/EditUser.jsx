@@ -1,24 +1,105 @@
-import { addNewUser } from 'config/API';
-import { useFormik } from 'formik';
-import TextareaInput from 'components/components/text-area/TextareaInput';
-import * as S from './components';
+import * as S from '../FAQs/components';
+import { getSingleUser, updateUser } from 'config/API';
+import { useState } from 'react';
 
-const EditUser = () => {
-  const formik = useFormik({
-    initialValues: {
-      mainPhoto: '',
-      secondaryPhoto: '',
-      previewPhoto: '',
-      content: '',
-    },
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values));
-      addNewUser(values);
-    },
-  });
+import { Input, Select, Button } from 'antd';
+import { useEffect } from 'react';
+
+const { Option } = Select;
+
+const EditUser = ({ setResponse, id }) => {
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [role, setRole] = useState(null);
+  // const [id, setId] = useState(null);
+
+  useEffect(() => {
+    getSingleUser(id).then((res) => {
+      console.log(res.data.user);
+      const { firstName, lastName, email, phone, role } = res.data.user;
+      setFirstName(firstName);
+      setLastName(lastName);
+      setEmail(email);
+      setPhone(phone);
+      setRole(role);
+      // setId(_id);
+    });
+  }, []);
+
+  const handleSelect = (value) => {
+    setRole(value);
+  };
+
+  const send = (e) => {
+    const formData = {
+      firstName,
+      lastName,
+      role,
+      email,
+      phone,
+    };
+    e.preventDefault();
+    updateUser(id, formData).then((res) => {
+      console.log(res);
+      // setAddResponse(res);
+      setFirstName(null);
+      setLastName(null);
+      setEmail(null);
+      setPhone(null);
+      setRole(null);
+      setResponse(res);
+    });
+  };
+
   return (
-    <S.Form onSubmit={formik.handleSubmit}>
-      <S.SubmitButton type="submit">Save</S.SubmitButton>
+    <S.Form enctype="multipart/form-data">
+      <Input
+        prefix="First Name:"
+        value={firstName}
+        required={true}
+        onChange={(e) => {
+          setFirstName(e.target.value);
+        }}
+      />
+      <Input
+        prefix="Last Name:"
+        value={lastName}
+        required={true}
+        onChange={(e) => {
+          setLastName(e.target.value);
+        }}
+      />
+      <Input
+        prefix="Email:"
+        value={email}
+        required={true}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+      />
+      <Input
+        prefix="PhoneNumber:"
+        value={phone}
+        required
+        onChange={(e) => {
+          setPhone(e.target.value);
+        }}
+      />
+
+      <Select
+        style={{ width: '100%' }}
+        placeholder={'User Role'}
+        onChange={handleSelect}
+      >
+        <Option value="admin">Admin</Option>
+        <Option value="user">User</Option>
+      </Select>
+
+      <Button type="primary" onClick={send}>
+        Update User
+      </Button>
     </S.Form>
   );
 };

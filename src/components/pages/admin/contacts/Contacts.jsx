@@ -4,10 +4,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Table } from 'antd';
 import CustomModal from 'components/modal/CustomModal';
-import { columns } from './columns';
+import useColumns from './useColumns';
 import EditContactInfo from './EditContactInfo';
 
 const Contacts = () => {
+  const { columns } = useColumns();
   const [addResponse, setAddResponse] = useState(null);
 
   const [allData, setAllData] = useState([]);
@@ -20,7 +21,10 @@ const Contacts = () => {
     <S.Wrapper>
       <S.Header>
         <S.UserTitle>Contact Info</S.UserTitle>
-        <CustomModal text={'Edit Contact Details'} body={<EditContactInfo />} />
+        <CustomModal
+          text={'Edit Contact Details'}
+          body={<EditContactInfo setAddResponse={setAddResponse} />}
+        />
       </S.Header>
 
       {!!allData.length && <Table columns={columns} dataSource={allData} />}

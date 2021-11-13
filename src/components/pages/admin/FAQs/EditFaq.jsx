@@ -1,21 +1,30 @@
 import * as S from './components';
-import { addNewFaq } from 'config/API';
+import { getSingleFaq, updateFaq } from 'config/API';
 import { useState } from 'react';
 
 import { Input, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { useEffect } from 'react';
 
 const { TextArea } = Input;
 
-const AddNewStartup = ({ setAddResponse }) => {
+const EditFaq = ({ setResponse, id }) => {
   const [question, setQuestion] = useState(null);
   const [answer, setAnswer] = useState(null);
 
+  useEffect(() => {
+    getSingleFaq(id).then((res) => {
+      console.log(res);
+      setQuestion(res.data.question);
+      setAnswer(res.data.answer);
+    });
+  }, []);
+
   const send = (e) => {
     e.preventDefault();
-    addNewFaq({ question, answer }).then((res) => {
+    updateFaq({ question, answer }, id).then((res) => {
       console.log(res);
-      setAddResponse(res);
+      setResponse(res);
       setQuestion('');
       setAnswer('');
     });
@@ -40,10 +49,10 @@ const AddNewStartup = ({ setAddResponse }) => {
       />
 
       <Button type="primary" onClick={send}>
-        Add New FAQ
+        Edit FAQ
       </Button>
     </S.Form>
   );
 };
 
-export default AddNewStartup;
+export default EditFaq;

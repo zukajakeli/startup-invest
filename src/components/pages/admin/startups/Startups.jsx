@@ -6,17 +6,20 @@ import CustomModal from 'components/modal/CustomModal';
 import { Table } from 'antd';
 import 'antd/dist/antd.css';
 
-import { columns } from './useColumns';
+import useColumns from './useColumns';
 
 import AddNewStartup from './AddNewStratup';
 
 const Startups = () => {
+  const { columns, deleteResponse } = useColumns();
   const [addResponse, setAddResponse] = useState(null);
+
+  console.log('delete', deleteResponse);
 
   const [allData, setAllData] = useState([]);
   useEffect(() => {
     getAllStartups().then((res) => setAllData(res.data));
-  }, [addResponse]);
+  }, [addResponse, deleteResponse]);
 
   console.log(allData);
   return (

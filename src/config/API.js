@@ -17,6 +17,21 @@ export const getAllUsers = async () => {
   return response;
 };
 
+export const getSingleUser = async (id) => {
+  const response = await axios.get(`${BASE_URL}/get-single-user/${id}`);
+  return response;
+};
+
+export const updateUser = async (id, data) => {
+  const response = await axios.post(`${BASE_URL}/update-user/${id}`, data);
+  return response;
+};
+
+export const deleteUser = async (id) => {
+  const response = await axios.delete(`${BASE_URL}/delete-user/${id}`);
+  return response;
+};
+
 export const addNewUser = async (data) => {
   const response = await axios.post(`${BASE_URL}/addNewUser`, data);
   return response;
@@ -37,6 +52,21 @@ export const addNewFaq = async (data) => {
   return response;
 };
 
+export const deleteFaq = async (id) => {
+  const response = await axios.delete(`${BASE_URL}/delete-faq/${id}`);
+  return response;
+};
+
+export const updateFaq = async (data, id) => {
+  const response = await axios.post(`${BASE_URL}/update-faq/${id}`, data);
+  return response;
+};
+
+export const getSingleFaq = async (id) => {
+  const response = await axios.get(`${BASE_URL}/get-single-faq/${id}`);
+  return response;
+};
+
 export const getAllFaqs = async () => {
   const response = await axios.get(`${BASE_URL}/getAllFaqs`);
   return response;
@@ -52,8 +82,18 @@ export const getAllStartups = async () => {
   return response;
 };
 
-export const addNewContact = async (data) => {
-  const response = await axios.post(`${BASE_URL}/addNewContact`, data);
+export const getSingleStartup = async (id) => {
+  const response = await axios.get(`${BASE_URL}/get-single-startup/${id}`);
+  return response;
+};
+
+export const deleteStartup = async (id) => {
+  const response = await axios.delete(`${BASE_URL}/delete-startup/${id}`);
+  return response;
+};
+
+export const updateContact = async (data) => {
+  const response = await axios.post(`${BASE_URL}/update-contact`, data);
   return response;
 };
 

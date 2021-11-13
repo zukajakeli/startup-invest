@@ -33,6 +33,10 @@ import SuccessMessage from './SuccessMessage';
 import emailjs from 'emailjs-com';
 import { useRef } from 'react';
 import { keys } from 'keys/keys';
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
+import { getSingleStartup } from 'config/API';
+import BASE_URL from 'config/BaseUrl';
 
 const SingleStartup = () => {
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] =
@@ -106,6 +110,27 @@ const SingleStartup = () => {
     }
   };
 
+  const { id } = useParams();
+  const [startupData, setStartupData] = useState([]);
+  useEffect(() => {
+    getSingleStartup(id).then((res) => {
+      console.log('startup data', res.data.startup);
+      setStartupData(res.data.startup);
+    });
+  }, []);
+
+  const {
+    mainPhoto,
+    logoPhoto,
+    video,
+    sharePrice,
+    share,
+    title,
+    previewText,
+    mainText,
+    category,
+  } = startupData;
+
   return (
     <S.Wrapper>
       <S.HeaderWrapper>
@@ -114,78 +139,43 @@ const SingleStartup = () => {
 
       <S.Body>
         <S.LogoAndImage>
-          <S.MainImage
-            src="https://929voice.fm/wp-content/uploads/sites/293/2020/10/young-adult-nathan-van-de-graaf-unsplash-2.jpg"
-            alt="main"
-          />
-          <S.Logo
-            src="https://netrinoimages.s3.eu-west-2.amazonaws.com/2016/12/18/431639/135315/ferrari_logo_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_3016782_o.jpg"
-            alt="logo"
-          />
+          <S.MainImage src={`${BASE_URL}/${mainPhoto}`} alt="main" />
+          <S.Logo src={`${BASE_URL}/${logoPhoto}`} alt="logo" />
         </S.LogoAndImage>
         <S.Content>
-          <S.Heading>სტარტაპის სახელი </S.Heading>
+          <S.Heading>{title} </S.Heading>
           <S.DataWrapper>
             <S.DataImage src={priceIcon} alt="price" />
             <S.SingleData>
               <S.DataName>წილის ღირებულება</S.DataName>
-              <S.DataFigure>$200.000</S.DataFigure>
+              <S.DataFigure>{sharePrice}</S.DataFigure>
             </S.SingleData>
 
             <S.DataImage src={percentageIcon} alt="price" />
             <S.SingleData>
               <S.DataName>წილი</S.DataName>
-              <S.DataFigure>50%</S.DataFigure>
+              <S.DataFigure>{share}</S.DataFigure>
             </S.SingleData>
           </S.DataWrapper>
 
-          <S.PreviewText>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-            მეწარმეობის მიმართულებით
-          </S.PreviewText>
+          <S.PreviewText>{previewText}</S.PreviewText>
         </S.Content>
         <S.HorizontalLine />
 
         <S.SubContent>
           <S.TextsWrapper>
             <S.SubHeading>
-              ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
+              {/* ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე */}
             </S.SubHeading>
-            <S.Text large>
-              ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-              მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-              მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-            </S.Text>
+
             <S.Text>
-              ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-              მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-              მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-            </S.Text>
-            <S.Text>
-              ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-              მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-              მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-            </S.Text>
-            <S.Text>
-              ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-              მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-              მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
+              <div dangerouslySetInnerHTML={{ __html: mainText }} />
             </S.Text>
           </S.TextsWrapper>
 
           <S.VideoAndInfoWrapper>
             <video width="444" height="250" controls>
-              <source
-                src="https://www.youtube.com/watch?v=9NTrwrfI-X4"
-                type="video/mp4"
-              ></source>
+              <source src={`${BASE_URL}/${video}`} type="video/mp4"></source>
             </video>
             <S.VideoText>ვიდეოს აღწერა</S.VideoText>
             <S.Line />

@@ -1,23 +1,43 @@
 import * as S from './components';
-import { addNewContact } from 'config/API';
+import { getAllContacts, updateContact } from 'config/API';
 import { useState } from 'react';
 
 import { Input, Upload, Button } from 'antd';
+import { useEffect } from 'react';
 
 const EditContactInfo = ({ setAddResponse }) => {
   const [email, setEmail] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [address, setAddress] = useState(null);
+  const [id, setId] = useState(null);
+
+  useEffect(() => {
+    getAllContacts().then((res) => {
+      console.log(res);
+      const { email, phoneNumber, address, _id } = res.data[0];
+      setEmail(email);
+      setPhoneNumber(phoneNumber);
+      setAddress(address);
+      setId(_id);
+    });
+  }, []);
 
   const send = (e) => {
-    const formData = new FormData();
-
-    formData.append('email', email);
-    formData.append('phoneNumber', phoneNumber);
-    formData.append('address', address);
+    const formData = {
+      email,
+      phoneNumber,
+      address,
+      id,
+    };
     e.preventDefault();
     console.log(formData);
-    addNewContact(formData).then((res) => console.log(res));
+    updateContact(formData).then((res) => {
+      console.log(res);
+      setAddResponse(res);
+      setEmail(null);
+      setPhoneNumber(null);
+      setAddress(null);
+    });
   };
 
   return (

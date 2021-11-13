@@ -165,15 +165,3 @@ export const GreenBackground = styled.img`
   `}
 `;
 
-export const HalfCircle = styled.div`
-  display: none;
-  position: absolute;
-
-  ${({ theme }) => theme.mobile`
-      display: block;
-    `}
-`;
-
-export const Relative = styled.div`
-  position: relative;
-`;

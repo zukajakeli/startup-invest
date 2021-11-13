@@ -4,9 +4,13 @@ import TextInput from 'components/components/text-input/TextInput';
 import TextareaInput from 'components/components/text-area/TextareaInput';
 import Footer from 'components/components/footer/Footer';
 import Header from 'components/components/header/Header';
+import SingleFaq from 'components/components/single-faq/SingleFaq';
+
+import { getAllFaqs } from 'config/API';
 
 import * as S from './FAQ-page-components';
-import SingleFaq from 'components/components/single-faq/SingleFaq';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const FAQPage = () => {
   const formik = useFormik({
@@ -19,33 +23,11 @@ const FAQPage = () => {
     },
   });
 
-  const FAQs = [
-    {
-      question: 'როგორ ვიყიდო წილი?',
-      answer:
-        'თქვენთვის სასურველი სტარტაპ შეთავაზების გვერდიდან შეგიძლიათ მოითხოვოთ კონფიდენციალური ინფორმაცია სტარტაპის  შესახებ.  ჩვენი გუნდი დაგიკავშირდებათ და დაგეხმარებათ  არსებულ სტარტაპთან მოლაპარაკების წარმოებაში.',
-    },
-    {
-      question: 'რაში გჭირდებათ პირადი ინფორმაცია?',
-      answer:
-        ' პლატფორმა ექსკლუზიურად აერთიანებს  საქართველოში არსებულ სტარტაპებს და წვდომას გიხსნით მათი შესახებ. ჩვენთვის მნიშვნელოვანია დავიცვათ კონფიდენციალურობა.',
-    },
-    {
-      question: 'როგორ გავიარო რეგისტრაცია?',
-      answer:
-        'რეგისტრაცია შეგიძლია გაიაროთ ელექტრონული ფოსტით, ან ავტორიზირდეთ  facebook ან google ანგარიშებით.',
-    },
-    {
-      question: 'დაცული იქნება თუ არა ჩემი მონაცემები?',
-      answer:
-        'საიტზე არსებული პირადი ინფორმაცია  გამოყენებული იქნება მხოლოდ საიდენტიფიკაციო დანიშნულებით. კონფიდენციალურობა  სრულად დაცულია.',
-    },
-    {
-      question: 'რა არის Startupinvest?',
-      answer:
-        'StartupInvest  სტარტაპ შეთავაზებების ყველაზე დიდი პლატფორმაა საქართველოში, რომელიც ერთის მხრივ ეხმარება სტარტაპებს ინვესტიციის მოზიდვაში ხოლო დაინტერესებულ პირებს წილის შეძენაში.',
-    },
-  ];
+  const [faqsData, setFaqsData] = useState([]);
+
+  useEffect(() => {
+    getAllFaqs().then((res) => setFaqsData(res.data));
+  }, []);
 
   return (
     <S.Wrapper>
@@ -57,10 +39,10 @@ const FAQPage = () => {
         <S.ContainersWrapper>
           <S.FaqBoxWrapper>
             <S.FaqBox>
-              {FAQs?.map(({ question, answer }, index) => {
+              {faqsData?.map(({ question, answer, _id }, index) => {
                 return (
                   <SingleFaq
-                    key={`faq${index}`}
+                    key={`faq${_id}`}
                     question={question}
                     answer={answer}
                   />

@@ -2,13 +2,12 @@ import { useFormik } from 'formik';
 
 import Footer from 'components/components/footer/Footer';
 import Header from 'components/components/header/Header';
-
-import backgroundImage from 'assets/images/contact-page-background.svg';
-
-import * as S from './contact-page-components';
 import ContactCard from 'components/components/contact-card/ContactCard';
 import TextInput from 'components/components/text-input/TextInput';
 import TextareaInput from 'components/components/text-area/TextareaInput';
+
+import backgroundImage from 'assets/images/contact-page-background.svg';
+import * as S from './contact-page-components';
 
 const ContactPage = () => {
   const formik = useFormik({

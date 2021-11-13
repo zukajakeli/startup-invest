@@ -22,6 +22,7 @@ const CustomModal = ({ text, body, closable = true }) => {
         {text}
       </Button>
       <Modal
+        destroyOnClose={true}
         title={text}
         visible={isModalVisible}
         onCancel={handleCancel}

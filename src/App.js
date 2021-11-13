@@ -45,7 +45,7 @@ function App() {
         <Route exact path="/FAQ" component={FAQPage} />
         <Route exact path="/contact-us" component={ContactPage} />
         <Route exact path="/single-blog" component={SingleBlog} />
-        <Route exact path="/single-startup" component={SingleStartup} />
+        <Route path="/single-startup/:id" component={SingleStartup} />
         <Route path="/auth/:authType" component={MobileAuth} />
 
         <Route path="/admin" component={Admin} />

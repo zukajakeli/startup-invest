@@ -13,6 +13,9 @@ import * as S from './startup-page-components';
 import { useContext } from 'react';
 import { AuthDropdownContext } from 'contexts/AuthDropdownContext';
 import { MeContext } from 'contexts/MeContext';
+import { useEffect } from 'react';
+import { getAllStartups } from 'config/API';
+import { useState } from 'react';
 
 const StartupPage = () => {
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] =
@@ -22,6 +25,14 @@ const StartupPage = () => {
   const openAuthModal = () => {
     setIsAuthDropdownOpen(true);
   };
+
+  const [startupsData, setStartupsData] = useState([]);
+  useEffect(() => {
+    getAllStartups().then((res) => {
+      console.log(res.data);
+      setStartupsData(res.data);
+    });
+  }, []);
 
   return (
     <S.Wrapper>
@@ -37,20 +48,27 @@ const StartupPage = () => {
         </S.HeadingsWrapper>
 
         <S.StartupsWrapper>
-          {startupsDummy.map(
-            (
-              { startupName, goal, raised, startupInfo, image, logo },
-              index,
-            ) => {
+          {startupsData.map(
+            ({
+              previewPhoto,
+              logoPhoto,
+              sharePrice,
+              share,
+              title,
+              previewText,
+              category,
+              _id,
+            }) => {
               return (
                 <StartupCard
-                  key={`startup${index}`}
-                  startupName={startupName}
-                  goal={goal}
-                  raised={raised}
-                  startupInfo={startupInfo}
-                  image={image}
-                  logo={logo}
+                  key={`startup${_id}`}
+                  title={title}
+                  share={share}
+                  sharePrice={sharePrice}
+                  previewText={previewText}
+                  previewPhoto={previewPhoto}
+                  logoPhoto={logoPhoto}
+                  _id={_id}
                 />
               );
             },

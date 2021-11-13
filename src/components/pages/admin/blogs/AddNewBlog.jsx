@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import { Input, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { Editor } from 'react-draft-wysiwyg';
+import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const { TextArea } = Input;
 
@@ -61,6 +63,7 @@ const AddNewStartup = ({ setAddResponse }) => {
           setMainText(e.target.value);
         }}
       />
+      <Editor onEditorStateChange={(e) => setMainText(e)} />
       <Upload
         name="mainPhoto"
         beforeUpload={false}
