@@ -7,6 +7,7 @@ import Startups from './startups/Startups';
 import About from './about/About';
 import Users from './users/Users';
 import AddNewBlog from './blogs/AddNewBlog';
+import AddNewStartup from './startups/AddNewStratup';
 
 const Admin = () => {
   const { pathname } = useLocation();
@@ -18,9 +19,12 @@ const Admin = () => {
           <S.StyledNavLink to="/admin/users">Users </S.StyledNavLink>
           <S.StyledNavLink to="/admin/blogs">Blogs </S.StyledNavLink>
           <S.StyledNavLink to="/admin/add-new-blog">
-            Add New Blog{' '}
+            + Add New Blog{' '}
           </S.StyledNavLink>
           <S.StyledNavLink to="/admin/startups">Startups </S.StyledNavLink>
+          <S.StyledNavLink to="/admin/add-new-startup">
+            + Add New Startup{' '}
+          </S.StyledNavLink>
           <S.StyledNavLink to="/admin/contact">Contact </S.StyledNavLink>
           <S.StyledNavLink to="/admin/about">About </S.StyledNavLink>
           <S.StyledNavLink to="/admin/faq">FAQ </S.StyledNavLink>
@@ -30,6 +34,7 @@ const Admin = () => {
         {pathname === '/admin/users' && <Users />}
         {pathname === '/admin/blogs' && <Blogs />}
         {pathname === '/admin/add-new-blog' && <AddNewBlog />}
+        {pathname === '/admin/add-new-startup' && <AddNewStartup />}
         {pathname === '/admin/startups' && <Startups />}
         {pathname === '/admin/contact' && <Contacts />}
         {pathname === '/admin/about' && <About />}

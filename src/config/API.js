@@ -92,6 +92,11 @@ export const deleteStartup = async (id) => {
   return response;
 };
 
+export const updateStartup = async (id, data) => {
+  const response = await axios.post(`${BASE_URL}/update-startup/${id}`, data);
+  return response;
+};
+
 export const updateContact = async (data) => {
   const response = await axios.post(`${BASE_URL}/update-contact`, data);
   return response;

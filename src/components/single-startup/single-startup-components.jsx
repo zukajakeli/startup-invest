@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
+import greenBullet from 'assets/icons/ul-green.svg';
 import otherOffersBackground from 'assets/icons/other-offers-background.svg';
 import getInfoBackground from 'assets/images/get-info-background.svg';
 
 export const Wrapper = styled.div`
   width: 100%;
+
+  & ul {
+    list-style-image: url(${greenBullet});
+  }
 
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;
@@ -168,7 +173,7 @@ export const HorizontalLine = styled.div`
 
 export const SubContent = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 3.3rem;
   gap: 2rem;
   padding-right: 0rem;

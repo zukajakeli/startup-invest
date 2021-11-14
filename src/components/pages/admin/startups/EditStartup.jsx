@@ -1,5 +1,5 @@
 import * as S from './components';
-import { addNewStartup, getSingleStartup } from 'config/API';
+import { updateStartup, getSingleStartup } from 'config/API';
 import { useState } from 'react';
 
 import { Input, Upload, Button } from 'antd';
@@ -15,12 +15,12 @@ const EditStartup = ({ setResponse, id }) => {
   const [mainPhoto, setMainPhoto] = useState(null);
   const [logoPhoto, setLogoPhoto] = useState(null);
   const [previewPhoto, setPreviewPhoto] = useState(null);
-  const [title, setTitle] = useState(null);
-  const [previewText, setPreviewText] = useState(null);
-  const [mainText, setMainText] = useState(null);
-  const [share, setShare] = useState(null);
-  const [sharePrice, setSharePrice] = useState(null);
-  const [category, setCategory] = useState(null);
+  const [title, setTitle] = useState('');
+  const [previewText, setPreviewText] = useState('');
+  const [mainText, setMainText] = useState('');
+  const [share, setShare] = useState('');
+  const [sharePrice, setSharePrice] = useState('');
+  const [category, setCategory] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   const send = (e) => {
@@ -36,18 +36,18 @@ const EditStartup = ({ setResponse, id }) => {
     formData.append('sharePrice', sharePrice);
     e.preventDefault();
     console.log(formData);
-    addNewStartup(formData).then((res) => {
+    updateStartup(id, formData).then((res) => {
       console.log(res);
       setResponse(res);
       setMainPhoto(null);
       setLogoPhoto(null);
       setPreviewPhoto(null);
-      setTitle(null);
-      setPreviewText(null);
-      setMainText(null);
-      setShare(null);
-      setSharePrice(null);
-      setCategory(null);
+      setTitle('');
+      setPreviewText('');
+      setMainText('');
+      setShare('');
+      setSharePrice('');
+      setCategory('');
     });
   };
 
@@ -76,7 +76,6 @@ const EditStartup = ({ setResponse, id }) => {
     });
   }, []);
 
-  console.log(mainText, isLoading);
   return (
     <>
       {!isLoading && (
@@ -152,7 +151,7 @@ const EditStartup = ({ setResponse, id }) => {
           </Upload>
 
           <Button type="primary" onClick={send}>
-            Add Startup
+            Update Startup
           </Button>
         </S.Form>
       )}

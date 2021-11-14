@@ -13,12 +13,13 @@ const AddNewStartup = ({ setAddResponse }) => {
   const [mainPhoto, setMainPhoto] = useState(null);
   const [logoPhoto, setLogoPhoto] = useState(null);
   const [previewPhoto, setPreviewPhoto] = useState(null);
-  const [title, setTitle] = useState(null);
-  const [previewText, setPreviewText] = useState(null);
+  const [title, setTitle] = useState('');
+  const [previewText, setPreviewText] = useState('');
   const [mainText, setMainText] = useState('');
-  const [share, setShare] = useState(null);
-  const [sharePrice, setSharePrice] = useState(null);
-  const [category, setCategory] = useState(null);
+  const [share, setShare] = useState('');
+  const [sharePrice, setSharePrice] = useState('');
+  const [category, setCategory] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const send = (e) => {
     const formData = new FormData();
@@ -34,16 +35,16 @@ const AddNewStartup = ({ setAddResponse }) => {
     e.preventDefault();
     console.log(formData);
     addNewStartup(formData).then((res) => {
-      setAddResponse(res);
+      // setAddResponse(res);
       setMainPhoto(null);
       setLogoPhoto(null);
       setPreviewPhoto(null);
-      setTitle(null);
-      setPreviewText(null);
-      setMainText(null);
-      setShare(null);
-      setSharePrice(null);
-      setCategory(null);
+      setTitle('');
+      setPreviewText('');
+      setMainText('');
+      setShare('');
+      setSharePrice('');
+      setCategory('');
     });
   };
 
