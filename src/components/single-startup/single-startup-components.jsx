@@ -173,7 +173,7 @@ export const HorizontalLine = styled.div`
 
 export const SubContent = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
   margin-top: 3.3rem;
   gap: 2rem;
   padding-right: 0rem;
@@ -185,8 +185,8 @@ export const SubContent = styled.div`
 `;
 
 export const TextsWrapper = styled.div`
-  max-width: 47rem;
-
+  /* max-width: 47rem; */
+  flex: 1;
   ${({ theme }) => theme.mobile`
     padding: 0rem 7%  2.5rem 7%;
   `}

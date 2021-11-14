@@ -2,16 +2,16 @@ import TextareaInput from 'components/components/text-area/TextareaInput';
 import TextInput from 'components/components/text-input/TextInput';
 import { useFormik } from 'formik';
 import * as S from './components';
-import { addNewAbout } from 'config/API';
+// import { addNewAbout } from 'config/API';
 
-const AddNewAbout = ({ setAddResponse }) => {
+const EditAboutInfo = ({ setAddResponse }) => {
   const formik = useFormik({
     initialValues: {
       text: '',
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
-      addNewAbout(values).then((res) => setAddResponse(res));
+      // addNewAbout(values).then((res) => setAddResponse(res));
     },
   });
   return (
@@ -28,4 +28,4 @@ const AddNewAbout = ({ setAddResponse }) => {
   );
 };
 
-export default AddNewAbout;
+export default EditAboutInfo;

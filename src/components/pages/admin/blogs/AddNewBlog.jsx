@@ -6,6 +6,7 @@ import { Input, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { Editor } from 'react-draft-wysiwyg';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import './border.css';
 
 const { TextArea } = Input;
 
