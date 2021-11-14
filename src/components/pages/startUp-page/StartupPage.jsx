@@ -75,7 +75,7 @@ const StartupPage = () => {
               sharePrice,
               share,
               title,
-              previewText,
+              outsideText,
               category,
               _id,
             }) => {
@@ -85,7 +85,7 @@ const StartupPage = () => {
                   title={title}
                   share={share}
                   sharePrice={sharePrice}
-                  previewText={startupsData.outsideText}
+                  previewText={outsideText}
                   previewPhoto={previewPhoto}
                   logoPhoto={logoPhoto}
                   _id={_id}
