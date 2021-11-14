@@ -2,7 +2,7 @@ import * as S from './components';
 import { updateStartup, getSingleStartup } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button } from 'antd';
+import { Input, Upload, Button, Checkbox } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect } from 'react';
 
@@ -21,6 +21,12 @@ const EditStartup = ({ setResponse, id }) => {
   const [share, setShare] = useState('');
   const [sharePrice, setSharePrice] = useState('');
   const [category, setCategory] = useState('');
+  const [video, setVideo] = useState('');
+  const [videoDescription, setVideoDescription] = useState('');
+  const [outsideText, setOutsideText] = useState('');
+
+  const [isMainPage, setIsMainPage] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const send = (e) => {
@@ -30,10 +36,15 @@ const EditStartup = ({ setResponse, id }) => {
     formData.append('previewPhoto', previewPhoto);
     formData.append('title', title);
     formData.append('previewText', previewText);
+    formData.append('outsideText', outsideText);
     formData.append('mainText', mainText);
     formData.append('category', category);
     formData.append('share', share);
     formData.append('sharePrice', sharePrice);
+    formData.append('video', video);
+    formData.append('videoDescription', videoDescription);
+    formData.append('isMainPage', isMainPage);
+    formData.append('isVisible', isVisible);
     e.preventDefault();
     console.log(formData);
     updateStartup(id, formData).then((res) => {
@@ -48,6 +59,7 @@ const EditStartup = ({ setResponse, id }) => {
       setShare('');
       setSharePrice('');
       setCategory('');
+      setOutsideText('');
     });
   };
 
@@ -62,6 +74,12 @@ const EditStartup = ({ setResponse, id }) => {
         mainPhoto,
         logoPhoto,
         previewPhoto,
+        isMainPage,
+        isVisible,
+        video,
+        videoDescription,
+        outsideText,
+        category,
       } = res.data.startup;
 
       setTitle(title);
@@ -72,9 +90,23 @@ const EditStartup = ({ setResponse, id }) => {
       setMainPhoto(mainPhoto);
       setLogoPhoto(logoPhoto);
       setPreviewPhoto(previewPhoto);
+      setIsMainPage(isMainPage);
+      setIsVisible(isVisible);
+      setVideo(video);
+      setVideoDescription(videoDescription);
       setIsLoading(false);
+      setOutsideText(outsideText);
+      setCategory(category);
     });
   }, []);
+
+  const mainCheckboxChange = (e) => {
+    setIsMainPage(e.target.checked);
+  };
+
+  const visibleCheckboxChange = (e) => {
+    setIsVisible(e.target.checked);
+  };
 
   return (
     <>
@@ -87,11 +119,11 @@ const EditStartup = ({ setResponse, id }) => {
               setTitle(e.target.value);
             }}
           />
-          <Input
-            prefix="PreviewText:"
-            value={previewText}
+          <TextArea
+            placeholder="Outside Text"
+            value={outsideText}
             onChange={(e) => {
-              setPreviewText(e.target.value);
+              setOutsideText(e.target.value);
             }}
           />
           <Input
@@ -109,15 +141,40 @@ const EditStartup = ({ setResponse, id }) => {
             }}
           />
           <Input
+            prefix="Video URL:"
+            value={video}
+            onChange={(e) => {
+              setVideo(e.target.value);
+            }}
+          />
+          <TextArea
+            placeholder="Video Description"
+            value={videoDescription}
+            onChange={(e) => {
+              setVideoDescription(e.target.value);
+            }}
+          />
+          <Input
             prefix="Category:"
             value={category}
             onChange={(e) => {
               setCategory(e.target.value);
             }}
           />
-
+          <div style={{ display: 'flex', gap: '2rem', marginBottom: '3rem' }}>
+            <Checkbox checked={isMainPage} onChange={mainCheckboxChange}>
+              {' '}
+              Main Page Startup{' '}
+            </Checkbox>
+            <Checkbox checked={isVisible} onChange={visibleCheckboxChange}>
+              {' '}
+              Visible for Everyone{' '}
+            </Checkbox>
+          </div>
+          Preview text
+          <WYSIWYGEditor onChange={setPreviewText} value={previewText} />
+          Main Text
           <WYSIWYGEditor onChange={setMainText} value={mainText} />
-
           <Upload
             name="mainPhoto"
             beforeUpload={false}
@@ -149,7 +206,6 @@ const EditStartup = ({ setResponse, id }) => {
           >
             <Button icon={<UploadOutlined />}>Upload Preview Photo</Button>
           </Upload>
-
           <Button type="primary" onClick={send}>
             Update Startup
           </Button>

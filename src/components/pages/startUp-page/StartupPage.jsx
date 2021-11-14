@@ -14,7 +14,11 @@ import { useContext } from 'react';
 import { AuthDropdownContext } from 'contexts/AuthDropdownContext';
 import { MeContext } from 'contexts/MeContext';
 import { useEffect } from 'react';
-import { getAllStartups } from 'config/API';
+import {
+  getAllStartups,
+  getStartupsCount,
+  getDisplayStartups,
+} from 'config/API';
 import { useState } from 'react';
 
 const StartupPage = () => {
@@ -26,13 +30,29 @@ const StartupPage = () => {
     setIsAuthDropdownOpen(true);
   };
 
+  const [startupsNumber, setStartupsNumber] = useState(1000);
+  const [isBlurVisible, setIsBlurVisible] = useState(true);
   const [startupsData, setStartupsData] = useState([]);
+
   useEffect(() => {
-    getAllStartups().then((res) => {
-      console.log(res.data);
-      setStartupsData(res.data);
+    getStartupsCount().then((res) => {
+      setIsBlurVisible(res.data.data[0].isBlurVisible);
+      setStartupsNumber(res.data.data[0].startupsNumber);
+      getDisplayStartups({
+        startupsNumber: res.data.data[0].startupsNumber,
+      }).then((res) => {
+        console.log(res.data);
+        setStartupsData(res.data);
+      });
     });
   }, []);
+
+  // useEffect(() => {
+  //   getDisplayStartups({ startupsNumber }).then((res) => {
+  //     console.log(res.data);
+  //     setStartupsData(res.data);
+  //   });
+  // }, []);
 
   return (
     <S.Wrapper>
@@ -65,7 +85,7 @@ const StartupPage = () => {
                   title={title}
                   share={share}
                   sharePrice={sharePrice}
-                  previewText={previewText}
+                  previewText={startupsData.outsideText}
                   previewPhoto={previewPhoto}
                   logoPhoto={logoPhoto}
                   _id={_id}
@@ -74,7 +94,7 @@ const StartupPage = () => {
             },
           )}
         </S.StartupsWrapper>
-        {!meInfo && (
+        {!meInfo && isBlurVisible && (
           <S.BlurredWrapper>
             <BlurredStartups openAuthModal={openAuthModal} />
           </S.BlurredWrapper>

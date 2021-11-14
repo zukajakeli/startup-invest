@@ -8,6 +8,7 @@ import About from './about/About';
 import Users from './users/Users';
 import AddNewBlog from './blogs/AddNewBlog';
 import AddNewStartup from './startups/AddNewStratup';
+import EditAboutInfo from './about/EditAboutInfo';
 
 const Admin = () => {
   const { pathname } = useLocation();
@@ -37,7 +38,7 @@ const Admin = () => {
         {pathname === '/admin/add-new-startup' && <AddNewStartup />}
         {pathname === '/admin/startups' && <Startups />}
         {pathname === '/admin/contact' && <Contacts />}
-        {pathname === '/admin/about' && <About />}
+        {pathname === '/admin/about' && <EditAboutInfo />}
         {pathname === '/admin/faq' && <FAQs />}
       </S.Content>
     </S.Wrapper>

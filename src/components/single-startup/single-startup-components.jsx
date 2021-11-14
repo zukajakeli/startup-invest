@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import greenBullet from 'assets/icons/ul-green.svg';
+import pinkBullet from 'assets/icons/ul-pink.svg';
 import otherOffersBackground from 'assets/icons/other-offers-background.svg';
 import getInfoBackground from 'assets/images/get-info-background.svg';
 
@@ -8,7 +9,13 @@ export const Wrapper = styled.div`
   width: 100%;
 
   & ul {
-    list-style-image: url(${greenBullet});
+    list-style-image: url(${greenBullet}) !important;
+    list-style-position: inside;
+  }
+
+  & ol {
+    list-style-image: url(${pinkBullet}) !important;
+    list-style-position: inside;
   }
 
   ${({ theme }) => theme.mobile`
@@ -139,6 +146,10 @@ export const PreviewText = styled.p`
   max-height: 12.5rem;
   overflow-y: auto;
   margin-top: 2.3rem;
+
+  & ul {
+    list-style-image: url(${greenBullet}) !important;
+  }
 
   ${({ theme }) => theme.mobile`
      font-size: 1.4rem;

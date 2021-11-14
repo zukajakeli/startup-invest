@@ -35,7 +35,7 @@ import { useRef } from 'react';
 import { keys } from 'keys/keys';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
-import { getSingleStartup } from 'config/API';
+import { getSimilarStartups, getSingleStartup } from 'config/API';
 import BASE_URL from 'config/BaseUrl';
 
 const SingleStartup = () => {
@@ -59,29 +59,6 @@ const SingleStartup = () => {
   });
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-
-  const [pageNumber, setPageNumber] = useState(0);
-  const startupsPerPage = 3;
-  const startupsSeen = pageNumber * startupsPerPage;
-
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
-
-  const displayStartups = startupsDummy
-    .slice(startupsSeen, startupsSeen + startupsPerPage)
-    .map(({ image, startupName, goal, raised, startupInfo, logo }) => {
-      return (
-        <StartupCard
-          startupName={startupName}
-          goal={goal}
-          raised={raised}
-          startupInfo={startupInfo}
-          image={image}
-          logo={logo}
-        />
-      );
-    });
 
   const form = useRef();
 
@@ -111,13 +88,47 @@ const SingleStartup = () => {
   };
 
   const { id } = useParams();
+  const [similarStartups, setSimilarStartups] = useState([]);
   const [startupData, setStartupData] = useState([]);
   useEffect(() => {
     getSingleStartup(id).then((res) => {
       console.log('startup data', res.data.startup);
       setStartupData(res.data.startup);
+      getSimilarStartups(res.data.startup.category).then((res) => {
+        console.log('categorized ', res.data.startups);
+        setSimilarStartups(res.data.startups);
+      });
     });
   }, []);
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const startupsPerPage = 3;
+  const startupsSeen = pageNumber * startupsPerPage;
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+  const displayStartups = similarStartups
+    .slice(startupsSeen, startupsSeen + startupsPerPage)
+    .map(({ image, startupName, goal, raised, startupInfo, logo }) => {
+      return (
+        <StartupCard
+          startupName={startupName}
+          goal={goal}
+          raised={raised}
+          startupInfo={startupInfo}
+          image={image}
+          logo={logo}
+        />
+      );
+    });
+
+  // useEffect(() => {
+  //   getSimilarStartups(startupData.category).then((res) => {
+  //     console.log(res.data.startups);
+  //   });
+  // }, []);
 
   const {
     mainPhoto,
@@ -128,9 +139,11 @@ const SingleStartup = () => {
     title,
     previewText,
     mainText,
+    outsideText,
     category,
   } = startupData;
 
+  console.log(startupData);
   return (
     <S.Wrapper>
       <S.HeaderWrapper>
@@ -158,7 +171,9 @@ const SingleStartup = () => {
             </S.SingleData>
           </S.DataWrapper>
 
-          <S.PreviewText>{previewText}</S.PreviewText>
+          <S.PreviewText>
+            <div dangerouslySetInnerHTML={{ __html: previewText }} />
+          </S.PreviewText>
         </S.Content>
         <S.HorizontalLine />
 
@@ -174,10 +189,14 @@ const SingleStartup = () => {
           </S.TextsWrapper>
 
           <S.VideoAndInfoWrapper>
-            <video width="444" height="250" controls>
-              <source src={`${BASE_URL}/${video}`} type="video/mp4"></source>
-            </video>
-            <S.VideoText>ვიდეოს აღწერა</S.VideoText>
+            <iframe
+              width="444"
+              height="250"
+              frameborder="0"
+              allowfullscreen
+              src={startupData.video}
+            ></iframe>
+            <S.VideoText>{startupData.videoDescription}</S.VideoText>
             <S.Line />
             {!isMobile && (
               <S.GetInfoWrapper>
@@ -227,22 +246,35 @@ const SingleStartup = () => {
         <S.OtherOffersWrapper>
           <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
           <S.Flex>
-            {startupsDummy.map(
+            {similarStartups.map(
               (
-                { startupName, goal, raised, startupInfo, image, logo },
+                {
+                  title,
+                  sharePrice,
+                  share,
+                  outsideText,
+                  previewPhoto,
+                  logoPhoto,
+                  _id,
+                  category,
+                },
                 index,
               ) => {
-                return (
-                  <StartupCard
-                    key={`startup${index}`}
-                    startupName={startupName}
-                    goal={goal}
-                    raised={raised}
-                    startupInfo={startupInfo}
-                    image={image}
-                    logo={logo}
-                  />
-                );
+                if (index < 3) {
+                  return (
+                    <StartupCard
+                      key={`startup${_id}`}
+                      title={title}
+                      sharePrice={sharePrice}
+                      share={share}
+                      previewText={outsideText}
+                      previewPhoto={previewPhoto}
+                      logoPhoto={logoPhoto}
+                      category={category}
+                      id={_id}
+                    />
+                  );
+                }
               },
             )}
           </S.Flex>
@@ -257,7 +289,7 @@ const SingleStartup = () => {
           <ReactPaginate
             previousLabel={<PreviousButton />}
             nextLabel={<NextButton />}
-            pageCount={Math.ceil(startupsDummy.length / startupsPerPage)}
+            pageCount={Math.ceil(startupData.length / startupsPerPage)}
             pageRangeDisplayed={2}
             marginPagesDisplayed={0}
             breakLabel={<EllipsisButton />}

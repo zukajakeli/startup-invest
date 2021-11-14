@@ -2,10 +2,11 @@ import * as S from './components';
 import { addNewStartup } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button } from 'antd';
+import { Input, Upload, Button, Checkbox } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import WYSIWYGEditor from 'components/editor/editor';
+import BASE_URL from 'config/BaseUrl';
 
 const { TextArea } = Input;
 
@@ -19,6 +20,12 @@ const AddNewStartup = ({ setAddResponse }) => {
   const [share, setShare] = useState('');
   const [sharePrice, setSharePrice] = useState('');
   const [category, setCategory] = useState('');
+  const [video, setVideo] = useState('');
+  const [videoDescription, setVideoDescription] = useState('');
+  const [isMainPage, setIsMainPage] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [outsideText, setOutsideText] = useState('');
+
   const [isLoading, setIsLoading] = useState(true);
 
   const send = (e) => {
@@ -27,11 +34,16 @@ const AddNewStartup = ({ setAddResponse }) => {
     formData.append('logoPhoto', logoPhoto);
     formData.append('previewPhoto', previewPhoto);
     formData.append('title', title);
+    formData.append('outsideText', outsideText);
+    formData.append('video', video);
+    formData.append('videoDescription', videoDescription);
     formData.append('previewText', previewText);
     formData.append('mainText', mainText);
     formData.append('category', category);
     formData.append('share', share);
     formData.append('sharePrice', sharePrice);
+    formData.append('isMainPage', isMainPage);
+    formData.append('isVisible', isVisible);
     e.preventDefault();
     console.log(formData);
     addNewStartup(formData).then((res) => {
@@ -45,11 +57,49 @@ const AddNewStartup = ({ setAddResponse }) => {
       setShare('');
       setSharePrice('');
       setCategory('');
+      setOutsideText('');
+      document.getElementById('startup-form').reset();
     });
   };
 
+  const mainPhotoPreview = [
+    {
+      uid: '-1',
+      status: 'done',
+      url: `${BASE_URL}/${mainPhoto}`,
+      thumbUrl: `${BASE_URL}/${mainPhoto}`,
+    },
+  ];
+
+  const logoPhotoPreview = [
+    {
+      uid: '-1',
+      status: 'done',
+      url: `${BASE_URL}/${logoPhoto}`,
+      thumbUrl: `${BASE_URL}/${logoPhoto}`,
+    },
+  ];
+
+  const previewPhotoPreview = [
+    {
+      uid: '-1',
+      status: 'done',
+      url: `${BASE_URL}/${previewPhoto}`,
+      thumbUrl: `${BASE_URL}/${previewPhoto}`,
+    },
+  ];
+
+  const mainCheckboxChange = (e) => {
+    setIsMainPage(e.target.checked);
+  };
+
+  const visibleCheckboxChange = (e) => {
+    setIsVisible(e.target.checked);
+  };
+  console.log('isVisible', isVisible);
+
   return (
-    <S.Form enctype="multipart/form-data">
+    <S.Form enctype="multipart/form-data" id="startup-form">
       <Input
         prefix="Title:"
         value={title}
@@ -58,10 +108,10 @@ const AddNewStartup = ({ setAddResponse }) => {
         }}
       />
       <TextArea
-        placeholder="PreviewText:"
-        value={previewText}
+        placeholder="Outside Text"
+        value={outsideText}
         onChange={(e) => {
-          setPreviewText(e.target.value);
+          setOutsideText(e.target.value);
         }}
       />
       <Input
@@ -79,18 +129,44 @@ const AddNewStartup = ({ setAddResponse }) => {
         }}
       />
       <Input
+        prefix="Video URL:"
+        value={video}
+        onChange={(e) => {
+          setVideo(e.target.value);
+        }}
+      />
+      <TextArea
+        placeholder="Video Description"
+        value={videoDescription}
+        onChange={(e) => {
+          setVideoDescription(e.target.value);
+        }}
+      />
+      <Input
         prefix="Category:"
         value={category}
         onChange={(e) => {
           setCategory(e.target.value);
         }}
       />
-
+      <div style={{ display: 'flex', gap: '2rem', marginBottom: '3rem' }}>
+        <Checkbox checked={isMainPage} onChange={mainCheckboxChange}>
+          {' '}
+          Main Page Startup{' '}
+        </Checkbox>
+        <Checkbox checked={isVisible} onChange={visibleCheckboxChange}>
+          {' '}
+          Visible for Everyone{' '}
+        </Checkbox>
+      </div>
+      Preview Text
+      <WYSIWYGEditor onChange={setPreviewText} value={previewText} />
+      Main Text
       <WYSIWYGEditor onChange={setMainText} value={mainText} />
-
       <Upload
         name="mainPhoto"
         beforeUpload={false}
+        listType="picture"
         multiple={false}
         onChange={(e) => {
           setMainPhoto(e.file.originFileObj);
@@ -101,6 +177,7 @@ const AddNewStartup = ({ setAddResponse }) => {
       <Upload
         name="logoPhoto"
         beforeUpload={false}
+        listType="picture"
         multiple={false}
         onChange={(e) => {
           setLogoPhoto(e.file.originFileObj);
@@ -111,6 +188,7 @@ const AddNewStartup = ({ setAddResponse }) => {
       <Upload
         name="previewPhoto"
         beforeUpload={false}
+        listType="picture"
         multiple={false}
         onChange={(e) => {
           console.log(e.file.originFileObj);

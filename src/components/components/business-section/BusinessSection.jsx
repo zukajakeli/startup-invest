@@ -14,7 +14,10 @@ import { ReactComponent as Arrow } from '../../../assets/images/arrow.svg';
 import { ReactComponent as Oval } from 'assets/icons/oval-green.svg';
 import ovalGreen from 'assets/icons/oval-green.svg';
 import ovalPink from 'assets/icons/oval-orange.svg';
-import { startupsDummy as startupsArray } from '../../common-components/StartupsDummyArray';
+// import { startupsDummy as startupsArray } from '../../common-components/StartupsDummyArray';
+import { useEffect } from 'react';
+import { getMainpageStartups } from 'config/API';
+import { useState } from 'react';
 
 const BusinessSection = () => {
   SwiperCore.use([Pagination]);
@@ -26,108 +29,139 @@ const BusinessSection = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
+  const [startupsArray, setStartupsArray] = useState([]);
+  useEffect(() => {
+    getMainpageStartups().then((res) => {
+      console.log(res.data.startups);
+      setStartupsArray(res.data.startups);
+    });
+  }, []);
+
+  // console.log(startupsArray);
+
   return (
-    <S.Wrapper>
-      {/* <S.BackgroundImage src={backgroundImage} /> */}
-      <S.Header>
-        <S.TextsWrapper>
-          <S.Heading>სტარტაპ შეთავაზებები</S.Heading>
-          <S.SubHeading>
-            შეიძინე წილი სტარტაპ შეთავაზებების ყველაზე დიდ პლატფორმაზე
-          </S.SubHeading>
-        </S.TextsWrapper>
-        {!isMobile && (
-          <S.AllCompanyButton onClick={goToStartups}>
-            ყველა შეთავაზება
-            <Arrow />
-          </S.AllCompanyButton>
-        )}
-      </S.Header>
-
-      <S.Body>
-        {isMobile ? (
-          startupsArray.map(
-            (
-              { startupName, goal, raised, startupInfo, image, logo },
-              index,
-            ) => {
-              return (
-                index < 3 && (
-                  <StartupCard
-                    key={`startup${index}`}
-                    startupName={startupName}
-                    goal={goal}
-                    raised={raised}
-                    startupInfo={startupInfo}
-                    image={image}
-                    logo={logo}
-                  />
-                )
-              );
-            },
-          )
-        ) : startupsArray.length <= 3 ? (
-          <S.Flex>
-            {startupsArray.map(
-              (
-                { startupName, goal, raised, startupInfo, image, logo },
-                index,
-              ) => {
-                return (
-                  <StartupCard
-                    key={`startup${index}`}
-                    startupName={startupName}
-                    goal={goal}
-                    raised={raised}
-                    startupInfo={startupInfo}
-                    image={image}
-                    logo={logo}
-                  />
-                );
-              },
+    <>
+      {!!startupsArray.length && (
+        <S.Wrapper>
+          {/* <S.BackgroundImage src={backgroundImage} /> */}
+          <S.Header>
+            <S.TextsWrapper>
+              <S.Heading>სტარტაპ შეთავაზებები</S.Heading>
+              <S.SubHeading>
+                შეიძინე წილი სტარტაპ შეთავაზებების ყველაზე დიდ პლატფორმაზე
+              </S.SubHeading>
+            </S.TextsWrapper>
+            {!isMobile && (
+              <S.AllCompanyButton onClick={goToStartups}>
+                ყველა შეთავაზება
+                <Arrow />
+              </S.AllCompanyButton>
             )}
-          </S.Flex>
-        ) : (
-          <Swiper
-            spaceBetween={100}
-            slidesPerView={3}
-            direction="horizontal"
-            pagination
-          >
-            {startupsArray.map(
-              (
-                { startupName, goal, raised, startupInfo, image, logo },
-                index,
-              ) => {
-                return (
-                  <SwiperSlide key={`startup${index}`}>
+          </S.Header>
+
+          <S.Body>
+            {isMobile ? (
+              startupsArray.map(
+                (
+                  {
+                    title,
+                    sharePrice,
+                    share,
+                    outsideText,
+                    previewPhoto,
+                    logoPhoto,
+                    _id,
+                    category,
+                  },
+                  index,
+                ) => {
+                  return (
+                    index < 3 && (
+                      <StartupCard
+                        key={`startup${_id}`}
+                        title={title}
+                        sharePrice={sharePrice}
+                        share={share}
+                        previewText={outsideText}
+                        previewPhoto={previewPhoto}
+                        logoPhoto={logoPhoto}
+                        category={category}
+                        id={_id}
+                      />
+                    )
+                  );
+                },
+              )
+            ) : startupsArray.length <= 3 ? (
+              <S.Flex>
+                {startupsArray.map((statup) => {
+                  return (
                     <StartupCard
-                      startupName={startupName}
-                      goal={goal}
-                      raised={raised}
-                      startupInfo={startupInfo}
-                      image={image}
-                      logo={logo}
+                      key={`startup${statup._id}`}
+                      title={statup.title}
+                      sharePrice={statup.sharePrice}
+                      share={statup.share}
+                      previewText={statup.outsideText}
+                      previewPhoto={statup.previewPhoto}
+                      logoPhoto={statup.logoPhoto}
+                      category={statup.category}
+                      _id={statup._id}
                     />
-                  </SwiperSlide>
-                );
-              },
+                  );
+                })}
+              </S.Flex>
+            ) : (
+              <Swiper
+                spaceBetween={100}
+                slidesPerView={3}
+                direction="horizontal"
+                pagination
+              >
+                {startupsArray.map(
+                  ({
+                    title,
+                    sharePrice,
+                    share,
+                    outsideText,
+                    previewPhoto,
+                    logoPhoto,
+                    category,
+                    _id,
+                  }) => {
+                    return (
+                      <SwiperSlide key={`startup${_id}`}>
+                        <StartupCard
+                          key={`startup${_id}`}
+                          title={title}
+                          sharePrice={sharePrice}
+                          share={share}
+                          previewText={outsideText}
+                          previewPhoto={previewPhoto}
+                          logoPhoto={logoPhoto}
+                          category={category}
+                          id={_id}
+                        />
+                      </SwiperSlide>
+                    );
+                  },
+                )}
+              </Swiper>
             )}
-          </Swiper>
-        )}
-      </S.Body>
-      {isMobile && (
-        <S.AllCompanyButton onClick={goToStartups}>
-          ყველა შეთავაზება
-          <Arrow />
-        </S.AllCompanyButton>
-      )}
+          </S.Body>
+          {isMobile && (
+            <S.AllCompanyButton onClick={goToStartups}>
+              ყველა შეთავაზება
+              <Arrow />
+            </S.AllCompanyButton>
+          )}
 
-      <S.OvalGreen src={ovalGreen} alt="oval" />
-      <S.OvalPink src={ovalPink} alt="oval" />
-      {/* <Oval fill="#55AA79" /> */}
-      {/* <S.OvalMobile src={oval} /> */}
-    </S.Wrapper>
+          <S.OvalGreen src={ovalGreen} alt="oval" />
+          <S.OvalPink src={ovalPink} alt="oval" />
+          {/* <Oval fill="#55AA79" /> */}
+          {/* <S.OvalMobile src={oval} /> */}
+        </S.Wrapper>
+      )}
+    </>
   );
 };
 

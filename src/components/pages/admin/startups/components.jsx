@@ -104,7 +104,7 @@ export const SubmitButton = styled.button`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-flex-start;
 
   & > * {
     margin-bottom: 1rem;

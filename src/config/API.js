@@ -77,8 +77,35 @@ export const addNewStartup = async (data) => {
   return response;
 };
 
+export const updateStartupsCount = async (data) => {
+  const response = await axios.post(`${BASE_URL}/update-startup-counts`, data);
+  return response;
+};
+
+export const getDisplayStartups = async (data) => {
+  const response = await axios.post(`${BASE_URL}/get-display-startups`, data);
+  return response;
+};
+
+export const getStartupsCount = async () => {
+  const response = await axios.get(`${BASE_URL}/get-startup-counts`);
+  return response;
+};
+
 export const getAllStartups = async () => {
   const response = await axios.get(`${BASE_URL}/getAllStartups`);
+  return response;
+};
+
+export const getMainpageStartups = async () => {
+  const response = await axios.get(`${BASE_URL}/get-mainpage-startups`);
+  return response;
+};
+
+export const getSimilarStartups = async (category) => {
+  const response = await axios.get(
+    `${BASE_URL}/get-similar-startups/${category}`,
+  );
   return response;
 };
 
@@ -107,8 +134,8 @@ export const getAllContacts = async () => {
   return response;
 };
 
-export const addNewAbout = async (data) => {
-  const response = await axios.post(`${BASE_URL}/addNewAbout`, data);
+export const editAbout = async (id, data) => {
+  const response = await axios.post(`${BASE_URL}/edit-about/${id}`, data);
   return response;
 };
 

@@ -14,7 +14,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './editor.css';
 
 const WYSIWYGEditor = (props) => {
-  console.log(props);
+  //   console.log(props);
   const contentDataState = ContentState.createFromBlockArray(
     convertFromHTML(props.value),
   );

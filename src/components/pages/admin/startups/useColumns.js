@@ -4,6 +4,7 @@ import CustomModal from 'components/modal/CustomModal';
 import { deleteStartup } from 'config/API';
 import { useState } from 'react';
 import EditStartup from './EditStartup';
+import { Checkbox } from 'antd';
 
 const useColumns = () => {
   const [deleteResponse, setDeleteResponse] = useState(null);
@@ -19,19 +20,28 @@ const useColumns = () => {
       key: 'title',
     },
     {
-      title: 'Preview Text',
-      dataIndex: 'previewText',
-      key: 'previewText',
+      title: 'Outside Text',
+      dataIndex: 'outsideText',
+      key: 'outsideText',
     },
     {
-      title: 'Share',
-      dataIndex: 'share',
-      key: 'share',
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
     },
+
     {
-      title: 'Share Price',
-      dataIndex: 'sharePrice',
-      key: 'sharePrice',
+      title: 'Main Page Startup',
+      dataIndex: 'isMainPage',
+      key: 'isMainPage',
+      render: (text, record) => <Checkbox checked={record.isMainPage} />,
+    },
+
+    {
+      title: 'Visible For Everyone',
+      dataIndex: 'isVisible',
+      key: 'isVisible',
+      render: (text, record) => <Checkbox checked={record.isVisible} />,
     },
 
     {

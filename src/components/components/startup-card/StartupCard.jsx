@@ -18,6 +18,8 @@ const StartupCard = ({
     history.push(`/single-startup/${_id}`);
   };
 
+  console.log(_id);
+
   return (
     <S.Wrapper isBlurred={isBlurred}>
       <S.Logo src={`${BASE_URL}/${logoPhoto}`} />

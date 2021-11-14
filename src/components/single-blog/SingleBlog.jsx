@@ -18,8 +18,7 @@ import { ReactComponent as EllipsisButton } from 'assets/icons/ellipsis-button.s
 import shareIcon from 'assets/icons/share-icon.svg';
 import linkIcon from 'assets/icons/link-icon.svg';
 import fbGreen from 'assets/icons/fb-green.svg';
-import messengerIcon from 'assets/icons/messenger.svg';
-import linkedinIcon from 'assets/icons/linkedin.svg';
+import linkedinIcon from 'assets/icons/linkedin-icon.svg';
 
 import * as S from './single-blog-components';
 
@@ -59,7 +58,6 @@ const SingleBlog = () => {
             <S.ShareIcon src={shareIcon} alt="icon" />
             <S.ShareIcon src={linkIcon} alt="icon" />
             <S.ShareIcon src={fbGreen} alt="icon" />
-            <S.ShareIcon src={messengerIcon} alt="icon" />
             <S.ShareIcon src={linkedinIcon} alt="icon" />
           </S.IconsWrapper>
         </S.ShareWrapper>

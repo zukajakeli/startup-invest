@@ -7,7 +7,6 @@ import logo from '../../../assets/images/main-logo-white.svg';
 import { ReactComponent as LinkedinIcon } from '../../../assets/icons/linkedin-icon.svg';
 import { ReactComponent as InstagramIcon } from '../../../assets/icons/instagram-icon.svg';
 import { ReactComponent as FacebookIcon } from '../../../assets/icons/facebook-icon.svg';
-import { ReactComponent as TiktokIcon } from '../../../assets/icons/tiktok-icon.svg';
 
 import * as S from './footer-components';
 

@@ -17,7 +17,7 @@ export const HeaderWrapper = styled.div`
 
 export const Body = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   padding: 2.5rem 0rem 6rem 0rem;
 
   ${({ theme }) => theme.mobile`
