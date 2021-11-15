@@ -60,76 +60,24 @@ const BusinessSection = () => {
           </S.Header>
 
           <S.Body>
-            {isMobile ? (
-              startupsArray.map(
-                (
-                  {
-                    title,
-                    sharePrice,
-                    share,
-                    outsideText,
-                    previewPhoto,
-                    logoPhoto,
-                    _id,
-                    category,
-                  },
-                  index,
-                ) => {
-                  return (
-                    index < 3 && (
-                      <StartupCard
-                        key={`startup${_id}`}
-                        title={title}
-                        sharePrice={sharePrice}
-                        share={share}
-                        previewText={outsideText}
-                        previewPhoto={previewPhoto}
-                        logoPhoto={logoPhoto}
-                        category={category}
-                        id={_id}
-                      />
-                    )
-                  );
-                },
-              )
-            ) : startupsArray.length <= 3 ? (
-              <S.Flex>
-                {startupsArray.map((statup) => {
-                  return (
-                    <StartupCard
-                      key={`startup${statup._id}`}
-                      title={statup.title}
-                      sharePrice={statup.sharePrice}
-                      share={statup.share}
-                      previewText={statup.outsideText}
-                      previewPhoto={statup.previewPhoto}
-                      logoPhoto={statup.logoPhoto}
-                      category={statup.category}
-                      _id={statup._id}
-                    />
-                  );
-                })}
-              </S.Flex>
-            ) : (
-              <Swiper
-                spaceBetween={100}
-                slidesPerView={3}
-                direction="horizontal"
-                pagination
-              >
-                {startupsArray.map(
-                  ({
-                    title,
-                    sharePrice,
-                    share,
-                    outsideText,
-                    previewPhoto,
-                    logoPhoto,
-                    category,
-                    _id,
-                  }) => {
+            {
+              isMobile ? (
+                startupsArray.map(
+                  (
+                    {
+                      title,
+                      sharePrice,
+                      share,
+                      outsideText,
+                      previewPhoto,
+                      logoPhoto,
+                      _id,
+                      category,
+                    },
+                    index,
+                  ) => {
                     return (
-                      <SwiperSlide key={`startup${_id}`}>
+                      index < 3 && (
                         <StartupCard
                           key={`startup${_id}`}
                           title={title}
@@ -141,12 +89,73 @@ const BusinessSection = () => {
                           category={category}
                           id={_id}
                         />
-                      </SwiperSlide>
+                      )
                     );
                   },
-                )}
-              </Swiper>
-            )}
+                )
+              ) : (
+                <S.Flex>
+                  {startupsArray.map((statup, index) => {
+                    return (
+                      index < 3 && (
+                        <StartupCard
+                          key={`startup${statup._id}`}
+                          title={statup.title}
+                          sharePrice={statup.sharePrice}
+                          share={statup.share}
+                          previewText={statup.outsideText}
+                          previewPhoto={statup.previewPhoto}
+                          logoPhoto={statup.logoPhoto}
+                          category={statup.category}
+                          _id={statup._id}
+                        />
+                      )
+                    );
+                  })}
+                </S.Flex>
+              )
+              // : (
+              //   <Swiper
+              //     spaceBetween={100}
+              //     slidesPerView={3}
+              //     direction="horizontal"
+              //     pagination
+              //   >
+              //     {startupsArray.map(
+              //       (
+              //         {
+              //           title,
+              //           sharePrice,
+              //           share,
+              //           outsideText,
+              //           previewPhoto,
+              //           logoPhoto,
+              //           category,
+              //           _id,
+              //         },
+              //         index,
+              //       ) => {
+              //         return (
+              //           index < 3 && (
+              //             <SwiperSlide key={`startup${_id}`}>
+              //               <StartupCard
+              //                 key={`startup${_id}`}
+              //                 title={title}
+              //                 sharePrice={sharePrice}
+              //                 share={share}
+              //                 previewText={outsideText}
+              //                 previewPhoto={previewPhoto}
+              //                 logoPhoto={logoPhoto}
+              //                 category={category}
+              //                 id={_id}
+              //               />
+              //             </SwiperSlide>
+              //           )
+              //         );
+              //       },
+              //     )}
+              //   </Swiper>
+            }
           </S.Body>
           {isMobile && (
             <S.AllCompanyButton onClick={goToStartups}>
