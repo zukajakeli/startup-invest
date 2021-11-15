@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ReactPaginate from 'react-paginate';
+import { Helmet } from 'react-helmet';
 
 import SubscribeOffer from 'components/common-components/subscribe-offer/SubscribeOffer';
 import Footer from 'components/components/footer/Footer';
@@ -21,9 +22,23 @@ import fbGreen from 'assets/icons/fb-green.svg';
 import linkedinIcon from 'assets/icons/linkedin-icon.svg';
 
 import * as S from './single-blog-components';
+import { useEffect } from 'react';
+import { getSingleStory } from 'config/API';
+import { useParams, useRouteMatch } from 'react-router';
+import BASE_URL from 'config/BaseUrl';
 
 const SingleBlog = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  const match = useRouteMatch();
+  const { id } = useParams();
+
+  const [storyData, setStoryData] = useState([]);
+  useEffect(() => {
+    getSingleStory(id).then((res) => {
+      console.log(res.data.story);
+      setStoryData(res.data.story);
+    });
+  }, []);
 
   const [pageNumber, setPageNumber] = useState(0);
   const storiesPerPage = 4;
@@ -46,155 +61,111 @@ const SingleBlog = () => {
       );
     });
 
+  console.log(match);
+
   return (
-    <S.Wrapper>
-      <S.HeaderWrapper>
-        <Header />
-      </S.HeaderWrapper>
-      <S.Body>
-        <S.ShareWrapper>
-          <S.ShareText>გამოგვყევი:</S.ShareText>
-          <S.IconsWrapper>
-            <S.ShareIcon src={shareIcon} alt="icon" />
-            <S.ShareIcon src={linkIcon} alt="icon" />
-            <S.ShareIcon src={fbGreen} alt="icon" />
-            <S.ShareIcon src={linkedinIcon} alt="icon" />
-          </S.IconsWrapper>
-        </S.ShareWrapper>
+    <>
+      {storyData && (
+        <S.Wrapper>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>{storyData.title}</title>
+            <link rel="canonical" href={`${BASE_URL}/${match.url}`} />
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={storyData.title} />
+            <meta property="og:description" content={storyData.outsideText} />
+            <meta property="og:image" content={storyData.mainPhoto} />
+          </Helmet>
+          <S.HeaderWrapper>
+            <Header />
+          </S.HeaderWrapper>
+          <S.Body>
+            <S.ShareWrapper>
+              <S.ShareText>გამოგვყევი:</S.ShareText>
+              <S.IconsWrapper>
+                <S.ShareIcon src={shareIcon} alt="icon" />
+                <S.ShareIcon src={linkIcon} alt="icon" />
+                <a
+                  className="share-event"
+                  href="https://www.facebook.com/sharer/sharer.php?u=https://startupinvest.ge/single-blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <S.ShareIcon src={fbGreen} alt="icon" />
+                </a>
 
-        <S.MainImage
-          src="https://929voice.fm/wp-content/uploads/sites/293/2020/10/young-adult-nathan-van-de-graaf-unsplash-2.jpg"
-          alt="mainImage"
-        />
-        <S.Content>
-          <S.Heading>
-            შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
-            მეწარმეობის
-          </S.Heading>
-          <S.SubHeading>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-            მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-            ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-          </S.SubHeading>
+                <S.ShareIcon src={linkedinIcon} alt="icon" />
+              </S.IconsWrapper>
+            </S.ShareWrapper>
 
-          <S.SmallImage
-            src="https://929voice.fm/wp-content/uploads/sites/293/2020/10/young-adult-nathan-van-de-graaf-unsplash-2.jpg"
-            alt="smallImage"
-          />
+            <S.MainImage
+              src={`${BASE_URL}/${storyData.mainPhoto}`}
+              alt="mainImage"
+            />
+            <S.Content>
+              <S.Heading>{storyData.title}</S.Heading>
+              {/* <S.SubHeading>
+                ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
+                მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
+                მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
+                ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
+              </S.SubHeading> */}
 
-          <S.Text>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…
-          </S.Text>
+              <S.SmallImage
+                src={`${BASE_URL}/${storyData.secondaryPhoto}`}
+                alt="smallImage"
+              />
 
-          <S.Text>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-            მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-            ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-          </S.Text>
+              <S.Text>
+                <div dangerouslySetInnerHTML={{ __html: storyData.mainText }} />
+              </S.Text>
+            </S.Content>
+          </S.Body>
 
-          <S.Text>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…
-          </S.Text>
+          <S.OtherStories>
+            <S.OtherHeading>სხვა ისტორიები</S.OtherHeading>
+            <S.ZIndexTop>
+              <S.SmallStoriesWrapper>{displayStories}</S.SmallStoriesWrapper>
 
-          <S.TextMarked>
-            <span>
-              <i>
-                “ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას
-                მეორე მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს
-                მეორე”
-              </i>
-            </span>
-          </S.TextMarked>
+              <ReactPaginate
+                previousLabel={<PreviousButton />}
+                nextLabel={<NextButton />}
+                pageCount={Math.ceil(smallStoriesData.length / storiesPerPage)}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={0}
+                breakLabel={<EllipsisButton />}
+                onPageChange={changePage}
+                containerClassName={
+                  isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
+                }
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+                pageLinkClassName={'paginationPage'}
+              />
+            </S.ZIndexTop>
 
-          <S.Text>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…
-          </S.Text>
+            <S.OvalYellow src={isMobile ? ovalYellowSmall : ovalYellow} />
+            <S.OvalPink src={isMobile ? ovalPinkSmall : ovalPink} />
+          </S.OtherStories>
 
-          <S.Text>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-            მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-            ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-          </S.Text>
+          <S.ZIndexTop>
+            <S.BreakDiv />
+          </S.ZIndexTop>
 
-          <S.BulletTextWrapper>
-            <S.GreenDot />
-            <S.BulletText>
-              ინოვაციებისა და მეწარმეობის მიმარერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას
-            </S.BulletText>
-          </S.BulletTextWrapper>
-          <S.BulletTextWrapper>
-            <S.GreenDot />
-            <S.BulletText>
-              ინოვაციებისა და მეწარმეობის მიმარერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას
-            </S.BulletText>
-          </S.BulletTextWrapper>
-          <S.BulletTextWrapper>
-            <S.GreenDot />
-            <S.BulletText>
-              ინოვაციებისა და მეწარმეობის მიმარერთ ორგანიზაციას მეორე მოყვა, ერთ
-              ღონისძიებას
-            </S.BulletText>
-          </S.BulletTextWrapper>
+          <S.ZIndexTop>
+            <S.SubscriptionWrapper>
+              <SubscribeOffer
+                cicrcleColor="#9AB7FF"
+                arrowColor="#9AB7FF"
+                inputColor="pink"
+              />
+            </S.SubscriptionWrapper>
 
-          <S.Text>
-            ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-            მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-            მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-            ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-          </S.Text>
-        </S.Content>
-      </S.Body>
-
-      <S.OtherStories>
-        <S.OtherHeading>სხვა ისტორიები</S.OtherHeading>
-        <S.ZIndexTop>
-          <S.SmallStoriesWrapper>{displayStories}</S.SmallStoriesWrapper>
-
-          <ReactPaginate
-            previousLabel={<PreviousButton />}
-            nextLabel={<NextButton />}
-            pageCount={Math.ceil(smallStoriesData.length / storiesPerPage)}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={0}
-            breakLabel={<EllipsisButton />}
-            onPageChange={changePage}
-            containerClassName={
-              isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
-            }
-            disabledClassName={'paginationDisabled'}
-            activeClassName={'paginationActive'}
-            pageLinkClassName={'paginationPage'}
-          />
-        </S.ZIndexTop>
-
-        <S.OvalYellow src={isMobile ? ovalYellowSmall : ovalYellow} />
-        <S.OvalPink src={isMobile ? ovalPinkSmall : ovalPink} />
-      </S.OtherStories>
-
-      <S.ZIndexTop>
-        <S.BreakDiv />
-      </S.ZIndexTop>
-
-      <S.ZIndexTop>
-        <S.SubscriptionWrapper>
-          <SubscribeOffer
-            cicrcleColor="#9AB7FF"
-            arrowColor="#9AB7FF"
-            inputColor="pink"
-          />
-        </S.SubscriptionWrapper>
-
-        <Footer />
-      </S.ZIndexTop>
-    </S.Wrapper>
+            <Footer />
+          </S.ZIndexTop>
+        </S.Wrapper>
+      )}{' '}
+    </>
   );
 };
 

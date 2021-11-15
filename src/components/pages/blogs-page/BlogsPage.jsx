@@ -24,6 +24,8 @@ import { ReactComponent as EllipsisButton } from 'assets/icons/ellipsis-button.s
 
 import * as S from './blogs-page-components';
 import './pagination.css';
+import { useEffect } from 'react';
+import { getMainStory, getSecondaryStories } from 'config/API';
 
 const dummy = [
   {
@@ -55,8 +57,23 @@ const dummy = [
 
 const BlogsPage = () => {
   SwiperCore.use([Autoplay]);
-
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
+  const [mainStory, setMainStory] = useState([]);
+  const [secondaryStories, setSecondaryStories] = useState([]);
+  useEffect(() => {
+    getMainStory().then((res) => {
+      console.log(res.data.story);
+      setMainStory(res.data.story);
+    });
+  }, []);
+
+  useEffect(() => {
+    getSecondaryStories().then((res) => {
+      console.log(res.data.stories);
+      setSecondaryStories(res.data.stories);
+    });
+  }, []);
 
   const [pageNumber, setPageNumber] = useState(0);
   const storiesPerPage = 6;
@@ -80,6 +97,7 @@ const BlogsPage = () => {
         </S.ZindexTop>
       );
     });
+
   return (
     <S.Wrapper>
       <S.HeaderWrapper>
@@ -87,17 +105,15 @@ const BlogsPage = () => {
       </S.HeaderWrapper>
 
       <S.Body>
-        <MainStory
-          image="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
-          readingTime="7 წუთი"
-          storyTitle="ბიზნეს ისტორიები"
-          storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს ერთ ღონისძიებას მეორე,ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს ერთ ღონისძიებას მეორე, ერთ ბიზნეს 
-          ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს ერთ ღონისძიებას მეორე, ერთ ბიზნეს 
-           ერთ ბიზნეს  "
-        />
+        {mainStory && (
+          <MainStory
+            image={mainStory.mainPhoto}
+            readingTime={mainStory.readingTime}
+            storyTitle={mainStory.title}
+            storyPreview={mainStory.outsideText}
+            _id={mainStory._id}
+          />
+        )}
 
         <S.BlogsContent>
           <S.Heading>ახალი ისტორიები</S.Heading>
@@ -126,29 +142,29 @@ const BlogsPage = () => {
             })}
           </Swiper>
 
-          <S.LargeStoriesWrapper>
-            <S.ZindexTop>
-              <LargeStory
-                backgroundImage="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
-                readingTime="4 წუთი"
-                storyTitle="ბიზნეს ისტორიები"
-                storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-        მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…"
-              />
-            </S.ZindexTop>
-            <S.ZindexTop>
-              <LargeStory
-                backgroundImage="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
-                readingTime="4 წუთი"
-                storyTitle="ბიზნეს ისტორიები"
-                storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…"
-              />
-            </S.ZindexTop>
-            <S.ArchBlueWrapper>
-              {isMobile ? <ArchMobile /> : <Arch fill="#9AB7FF" />}
-            </S.ArchBlueWrapper>
-          </S.LargeStoriesWrapper>
+          {secondaryStories && (
+            <S.LargeStoriesWrapper>
+              {secondaryStories.map(
+                ({ _id, previewPhoto, outsideText, readingTime, title }) => {
+                  return (
+                    <S.ZindexTop>
+                      <LargeStory
+                        _id={_id}
+                        backgroundImage={previewPhoto}
+                        readingTime={readingTime}
+                        storyTitle={title}
+                        storyPreview={outsideText}
+                      />
+                    </S.ZindexTop>
+                  );
+                },
+              )}
+
+              <S.ArchBlueWrapper>
+                {isMobile ? <ArchMobile /> : <Arch fill="#9AB7FF" />}
+              </S.ArchBlueWrapper>
+            </S.LargeStoriesWrapper>
+          )}
 
           <S.AllStoriesWrapper>
             <S.Heading>სხვა ისტორიები</S.Heading>

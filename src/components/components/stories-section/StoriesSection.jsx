@@ -10,6 +10,9 @@ import { ReactComponent as Arrow } from '../../../assets/images/arrow.svg';
 
 import * as S from './stories-section-components';
 import { useHistory } from 'react-router';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getMainStory, getSecondaryStories } from 'config/API';
 
 const StoriesSection = () => {
   const history = useHistory();
@@ -18,6 +21,22 @@ const StoriesSection = () => {
   };
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+
+  const [mainStory, setMainStory] = useState([]);
+  const [secondaryStories, setSecondaryStories] = useState([]);
+  useEffect(() => {
+    getMainStory().then((res) => {
+      console.log(res.data.story);
+      setMainStory(res.data.story);
+    });
+  }, []);
+
+  useEffect(() => {
+    getSecondaryStories().then((res) => {
+      console.log(res.data.stories);
+      setSecondaryStories(res.data.stories);
+    });
+  }, []);
 
   return (
     <S.Wrapper>
@@ -35,31 +54,40 @@ const StoriesSection = () => {
       </S.Header>
 
       <S.Body>
-        <LargeStory
-          forMainPage
-          backgroundImage="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
-          readingTime="4 წუთი"
-          storyTitle="ბიზნეს ისტორიები"
-          storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…"
-        />
-        <S.SmallStoriesWrapper>
-          <SmallStory
-            image="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
-            readingTime="7 წუთი"
-            storyTitle="ბიზნეს ისტორიები"
-            storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს "
+        {mainStory && (
+          <LargeStory
+            forMainPage
+            backgroundImage={mainStory.previewPhoto}
+            readingTime="4 წუთი"
+            storyTitle={mainStory.title}
+            storyPreview={mainStory.outsideText}
+            id={mainStory._id}
           />
-          <SmallStory
-            image="https://resilientblog.co/wp-content/uploads/2020/02/quotes-about-mountains-1024x614.jpg"
-            readingTime="7 წუთი"
-            storyTitle="ბიზნეს ისტორიები"
-            storyPreview="ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-          მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე…"
-          />
-          {isMobile && <S.PinkBackground src={archPink} />}
-        </S.SmallStoriesWrapper>
+        )}
+        {secondaryStories && (
+          <S.SmallStoriesWrapper>
+            {secondaryStories.map(
+              (
+                { _id, readingTime, title, outsideText, previewPhoto },
+                index,
+              ) => {
+                if (index < 2) {
+                  return (
+                    <SmallStory
+                      key={_id}
+                      image={previewPhoto}
+                      readingTime={readingTime}
+                      storyTitle={title}
+                      storyPreview={outsideText}
+                    />
+                  );
+                }
+              },
+            )}
+
+            {isMobile && <S.PinkBackground src={archPink} />}
+          </S.SmallStoriesWrapper>
+        )}
 
         <S.GreenBackground src={archGreen} />
       </S.Body>

@@ -6,7 +6,7 @@ export const MainStory = styled.div`
   padding: 3.2rem 10%;
   margin-top: 1.6rem;
   gap: 1.6rem;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   ${({ theme }) => theme.mobile`
     flex-direction: column;
@@ -47,6 +47,10 @@ export const StoryTitle = styled.h3`
   color: ${({ white }) => (white ? '#ffffff' : '##13182B')};
   margin-bottom: 1.8rem;
   cursor: pointer;
+
+  &:hover {
+    color: #fe7760;
+  }
 
   ${({ theme }) => theme.mobile`
     font-size: 1.4rem;

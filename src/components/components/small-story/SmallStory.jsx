@@ -1,3 +1,4 @@
+import BASE_URL from 'config/BaseUrl';
 import { useHistory } from 'react-router';
 import * as S from './small-story-components';
 
@@ -9,7 +10,7 @@ const SmallStory = ({ image, readingTime, storyTitle, storyPreview }) => {
 
   return (
     <S.SmallStory onClick={openBolg}>
-      <S.SmallStoryImage src={image} />
+      <S.SmallStoryImage src={`${BASE_URL}/${image}`} />
       <S.StoryTextsWrapper>
         <S.ReadingTime>
           წასაკითხი დრო: <strong>{readingTime}</strong>

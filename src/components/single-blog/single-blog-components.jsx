@@ -1,7 +1,35 @@
 import styled from 'styled-components';
+import greenBullet from 'assets/icons/ul-green.svg';
+import pinkBullet from 'assets/icons/ul-pink.svg';
 
 export const Wrapper = styled.div`
-  background-color: #f2f1f1;
+  background-color: rgb(242, 241, 241);
+  font-family: firago;
+
+  & ul {
+    list-style-image: url(${greenBullet}) !important;
+    list-style-position: inside;
+  }
+
+  & ol {
+    list-style-image: url(${pinkBullet}) !important;
+    list-style-position: inside;
+  }
+
+  & code {
+    font-family: firago;
+    font-style: italic;
+    font-size: 3.2rem;
+    line-height: 4.5rem;
+    font-weight: 500;
+    color: #13182b;
+    margin-bottom: 3.2rem;
+    text-align: center;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-color: #ffca0f;
+    padding: 0rem 1rem;
+  }
 `;
 
 export const HeaderWrapper = styled.div`
@@ -42,6 +70,10 @@ export const OtherStories = styled.div`
   height: 65.3rem;
   padding: 4rem 10%;
   position: relative;
+
+  & ul {
+    list-style-image: unset !important;
+  }
 
   ${({ theme }) => theme.mobile`
      height: unset;
@@ -167,6 +199,7 @@ export const SmallImage = styled.img`
 `;
 
 export const Text = styled.p`
+  font-family: firago !important;
   font-size: 1.6rem;
   line-height: 2.2rem;
   font-weight: 400;

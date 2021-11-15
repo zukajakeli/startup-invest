@@ -111,6 +111,7 @@ export const ArchBlueWrapper = styled.div`
 
 export const ZindexTop = styled.div`
   z-index: 1;
+  flex: 1;
 `;
 
 export const AllStoriesWrapper = styled.div`

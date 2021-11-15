@@ -2,27 +2,22 @@ import * as S from './components';
 import { addNewStory } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button, Checkbox } from 'antd';
+import { Input, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import WYSIWYGEditor from 'components/editor/editor';
+import { Editor } from 'react-draft-wysiwyg';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './border.css';
 
 const { TextArea } = Input;
 
-const AddNewBlog = ({ setAddResponse }) => {
+const EditBlog = ({ setAddResponse }) => {
   const [mainPhoto, setMainPhoto] = useState(null);
   const [secondaryPhoto, setSecondaryPhoto] = useState(null);
   const [previewPhoto, setPreviewPhoto] = useState(null);
-  const [title, setTitle] = useState('');
-  const [previewText, setPreviewText] = useState('');
-  const [mainText, setMainText] = useState('');
-  const [outsideText, setOutsideText] = useState('');
-  const [category, setCategory] = useState('');
-  const [readingTime, setReadingTime] = useState('');
-  const [isMainPage, setIsMainPage] = useState(false);
-  const [isMainStory, setIsMainStory] = useState(false);
-  const [isSecondaryStory, setIsSecondaryStory] = useState(false);
+  const [title, setTitle] = useState(null);
+  const [previewText, setPreviewText] = useState(null);
+  const [mainText, setMainText] = useState(null);
+  const [quote, setQuote] = useState(null);
 
   const send = (e) => {
     const formData = new FormData();
@@ -32,27 +27,10 @@ const AddNewBlog = ({ setAddResponse }) => {
     formData.append('title', title);
     formData.append('previewText', previewText);
     formData.append('mainText', mainText);
-    formData.append('outsideText', outsideText);
-    formData.append('category', category);
-    formData.append('readingTime', readingTime);
-    formData.append('isMainPage', isMainPage);
-    formData.append('isMainStory', isMainStory);
-    formData.append('isSecondaryStory', isSecondaryStory);
+    formData.append('quote', quote);
     e.preventDefault();
     console.log(formData);
     addNewStory(formData).then((res) => console.log(res));
-  };
-
-  const mainCheckboxChange = (e) => {
-    setIsMainPage(e.target.checked);
-  };
-
-  const mainStoryCheckboxChange = (e) => {
-    setIsMainStory(e.target.checked);
-  };
-
-  const secondaryStoryCheckboxChange = (e) => {
-    setIsSecondaryStory(e.target.checked);
   };
 
   return (
@@ -64,44 +42,22 @@ const AddNewBlog = ({ setAddResponse }) => {
           setTitle(e.target.value);
         }}
       />
+      <Input
+        prefix="PreviewText:"
+        value={previewText}
+        onChange={(e) => {
+          setPreviewText(e.target.value);
+        }}
+      />
+
       <TextArea
-        placeholder="Outside Text"
-        value={outsideText}
+        placeholder="Main Text"
+        value={mainText}
         onChange={(e) => {
-          setOutsideText(e.target.value);
+          setMainText(e.target.value);
         }}
       />
-      <Input
-        prefix="Reading Time:"
-        value={readingTime}
-        onChange={(e) => {
-          setReadingTime(e.target.value);
-        }}
-      />
-      <Input
-        prefix="Category:"
-        value={category}
-        onChange={(e) => {
-          setCategory(e.target.value);
-        }}
-      />
-      <div style={{ display: 'flex', gap: '2rem', marginBottom: '3rem' }}>
-        <Checkbox checked={isMainStory} onChange={mainStoryCheckboxChange}>
-          {' '}
-          Main Story{' '}
-        </Checkbox>
-        <Checkbox
-          checked={isSecondaryStory}
-          onChange={secondaryStoryCheckboxChange}
-        >
-          {' '}
-          Secondary story{' '}
-        </Checkbox>
-      </div>
-      Preview Text
-      <WYSIWYGEditor onChange={setPreviewText} value={previewText} />
-      Main Text
-      <WYSIWYGEditor onChange={setMainText} value={mainText} />
+      <Editor onEditorStateChange={(e) => setMainText(e)} />
       <Upload
         name="mainPhoto"
         beforeUpload={false}
@@ -133,6 +89,7 @@ const AddNewBlog = ({ setAddResponse }) => {
       >
         <Button icon={<UploadOutlined />}>Upload Preview Photo</Button>
       </Upload>
+
       <Button type="primary" onClick={send}>
         Add Blog
       </Button>
@@ -140,4 +97,4 @@ const AddNewBlog = ({ setAddResponse }) => {
   );
 };
 
-export default AddNewBlog;
+export default EditBlog;

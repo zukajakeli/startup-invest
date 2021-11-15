@@ -28,6 +28,7 @@ const CustomModal = ({ text, body, closable = true }) => {
         onCancel={handleCancel}
         footer={null}
         closable={closable}
+        width={700}
       >
         {body}
       </Modal>

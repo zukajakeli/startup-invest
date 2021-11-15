@@ -18,6 +18,21 @@ export const Wrapper = styled.div`
     list-style-position: inside;
   }
 
+  & code {
+    font-family: firago;
+    font-style: italic;
+    font-size: 3.2rem;
+    line-height: 4.5rem;
+    font-weight: 500;
+    color: #13182b;
+    margin-bottom: 3.2rem;
+    text-align: center;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-color: #ffca0f;
+    padding: 0rem 1rem;
+  }
+
   ${({ theme }) => theme.mobile`
     background-color: #F2F1F1;
   `}

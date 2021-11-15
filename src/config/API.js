@@ -47,6 +47,26 @@ export const getAllStories = async () => {
   return response;
 };
 
+export const getSingleStory = async (id) => {
+  const response = await axios.get(`${BASE_URL}/get-single-story/${id}`);
+  return response;
+};
+
+export const getMainStory = async () => {
+  const response = await axios.get(`${BASE_URL}/get-main-story`);
+  return response;
+};
+
+export const getSecondaryStories = async () => {
+  const response = await axios.get(`${BASE_URL}/get-secondary-stories`);
+  return response;
+};
+
+export const deleteStory = async (id) => {
+  const response = await axios.delete(`${BASE_URL}/delete-story/${id}`);
+  return response;
+};
+
 export const addNewFaq = async (data) => {
   const response = await axios.post(`${BASE_URL}/addNewFaq`, data);
   return response;

@@ -9,11 +9,11 @@ import AddNewBlog from './AddNewBlog';
 import useColumns from './useColumns';
 
 const Blogs = () => {
-  const { columns } = useColumns();
+  const { columns, deleteResponse } = useColumns();
   const [allData, setAllData] = useState([]);
   useEffect(() => {
     getAllStories().then((res) => setAllData(res.data));
-  }, []);
+  }, [deleteResponse]);
 
   console.log(allData);
 
@@ -21,7 +21,6 @@ const Blogs = () => {
     <S.Wrapper>
       <S.Header>
         <S.UserTitle>Blogs</S.UserTitle>
-        <CustomModal text={'Add New Story'} body={<AddNewBlog />} />
       </S.Header>
 
       <Table dataSource={allData} columns={columns} />
