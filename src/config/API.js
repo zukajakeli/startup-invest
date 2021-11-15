@@ -37,6 +37,16 @@ export const addNewUser = async (data) => {
   return response;
 };
 
+export const getAllSocials = async () => {
+  const response = await axios.get(`${BASE_URL}/get-socials`);
+  return response;
+};
+
+export const updateSocials = async (data) => {
+  const response = await axios.post(`${BASE_URL}/update-social`, data);
+  return response;
+};
+
 export const addNewStory = async (data) => {
   const response = await axios.post(`${BASE_URL}/addNewStory`, data);
   return response;
@@ -47,8 +57,18 @@ export const getAllStories = async () => {
   return response;
 };
 
+export const getRandomStories = async () => {
+  const response = await axios.get(`${BASE_URL}/get-random-stories`);
+  return response;
+};
+
 export const getSingleStory = async (id) => {
   const response = await axios.get(`${BASE_URL}/get-single-story/${id}`);
+  return response;
+};
+
+export const getPaginatedStories = async (data) => {
+  const response = await axios.post(`${BASE_URL}/get-paginated-stories`, data);
   return response;
 };
 

@@ -120,6 +120,7 @@ export const Body = styled.div`
 
   ${({ theme }) => theme.mobile`
     flex-direction: column;
+    align-items: stretch;
     & > * {
       margin-bottom: 1.6rem;
     }
@@ -164,4 +165,3 @@ export const GreenBackground = styled.img`
     right: -6rem;
   `}
 `;
-

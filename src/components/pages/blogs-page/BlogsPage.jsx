@@ -25,35 +25,40 @@ import { ReactComponent as EllipsisButton } from 'assets/icons/ellipsis-button.s
 import * as S from './blogs-page-components';
 import './pagination.css';
 import { useEffect } from 'react';
-import { getMainStory, getSecondaryStories } from 'config/API';
+import {
+  getMainStory,
+  getPaginatedStories,
+  getRandomStories,
+  getSecondaryStories,
+} from 'config/API';
 
-const dummy = [
-  {
-    readingTime: '5 წუთი',
-    storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
-მეწარმეობის`,
-  },
-  {
-    readingTime: '5 წუთი',
-    storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
-მეწარმეობის`,
-  },
-  {
-    readingTime: '5 წუთი',
-    storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
-მეწარმეობის`,
-  },
-  {
-    readingTime: '5 წუთი',
-    storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
-მეწარმეობის`,
-  },
-  {
-    readingTime: '6 წუთი',
-    storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
-მეწარმეობის`,
-  },
-];
+// const dummy = [
+//   {
+//     readingTime: '5 წუთი',
+//     storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
+// მეწარმეობის`,
+//   },
+//   {
+//     readingTime: '5 წუთი',
+//     storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
+// მეწარმეობის`,
+//   },
+//   {
+//     readingTime: '5 წუთი',
+//     storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
+// მეწარმეობის`,
+//   },
+//   {
+//     readingTime: '5 წუთი',
+//     storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
+// მეწარმეობის`,
+//   },
+//   {
+//     readingTime: '6 წუთი',
+//     storyPreview: `შეუძლებელია ვერ შეამჩნიოთ რა ხდება საქართველოში ინოვაციებისა და
+// მეწარმეობის`,
+//   },
+// ];
 
 const BlogsPage = () => {
   SwiperCore.use([Autoplay]);
@@ -77,26 +82,46 @@ const BlogsPage = () => {
 
   const [pageNumber, setPageNumber] = useState(0);
   const storiesPerPage = 6;
-  const storiesSeen = pageNumber * storiesPerPage;
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
-  const displayStories = smallStoriesData
-    .slice(storiesSeen, storiesSeen + storiesPerPage)
-    .map(({ image, readingTime, storyTitle, storyPreview }) => {
+  const [otherStoriesCount, setOtherStoriesCount] = useState([]);
+  const [otherStories, setOtherStories] = useState([]);
+  useEffect(() => {
+    getPaginatedStories({ pageNumber, storiesPerPage }).then((res) => {
+      setOtherStories(res.data.data);
+      setOtherStoriesCount(res.data.totalCount);
+    });
+  }, [pageNumber]);
+
+  const displayStories = otherStories.map(
+    ({ previewPhoto, readingTime, title, outsideText, _id }) => {
       return (
         <S.ZindexTop>
           <SmallStory
-            image={image}
+            image={previewPhoto}
             readingTime={readingTime}
-            storyTitle={storyTitle}
-            storyPreview={storyPreview}
+            storyTitle={title}
+            storyPreview={outsideText}
+            _id={_id}
           />
         </S.ZindexTop>
       );
-    });
+    },
+  );
+
+  const [randomStories, setRandomStories] = useState([]);
+  useEffect(() => {
+    getRandomStories().then((res) => setRandomStories(res.data.randomArray));
+  }, []);
+
+  const dummy = randomStories.map(({ readingTime, outsideText, _id }) => {
+    return { readingTime, storyPreview: outsideText, _id };
+  });
+
+  console.log('dummy', dummy);
 
   return (
     <S.Wrapper>
@@ -130,12 +155,13 @@ const BlogsPage = () => {
             direction="horizontal"
             autoplay={{ delay: 3500 }}
           >
-            {dummy.map(({ readingTime, storyPreview }, index) => {
+            {dummy.map(({ readingTime, storyPreview, _id }, index) => {
               return (
                 <SwiperSlide key={`caroussel${index}`}>
                   <CarousselStory
                     readingTime={readingTime}
                     storyPreview={storyPreview}
+                    _id={_id}
                   />
                 </SwiperSlide>
               );
@@ -180,7 +206,7 @@ const BlogsPage = () => {
             <ReactPaginate
               previousLabel={<PreviousButton />}
               nextLabel={<NextButton />}
-              pageCount={Math.ceil(smallStoriesData.length / storiesPerPage)}
+              pageCount={Math.ceil(otherStoriesCount / storiesPerPage)}
               pageRangeDisplayed={2}
               marginPagesDisplayed={0}
               breakLabel={<EllipsisButton />}

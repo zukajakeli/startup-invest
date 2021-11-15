@@ -116,6 +116,7 @@ export const ZindexTop = styled.div`
 
 export const AllStoriesWrapper = styled.div`
   padding-bottom: 8rem;
+  /* height: 94rem; */
 
   ${({ theme }) => theme.mobile`
      padding-bottom: 0rem;

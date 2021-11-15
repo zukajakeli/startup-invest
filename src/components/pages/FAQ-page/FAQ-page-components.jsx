@@ -112,7 +112,8 @@ export const GetInfoHeading = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  /* justify-content: flex-start; */
+  /* gap: 1.6rem; */
   margin-top: 1.5rem;
 
   ${({ theme }) => theme.mobile`
@@ -162,7 +163,7 @@ export const FaqBoxWrapper = styled.div`
 
   ${({ theme }) => theme.mobile`
       width: 100%;
-      margin-bottom: 9.7rem;
+      margin-bottom: 3.7rem;
       padding: 0rem;
     `}
 `;

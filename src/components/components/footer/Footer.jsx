@@ -9,6 +9,9 @@ import { ReactComponent as InstagramIcon } from '../../../assets/icons/instagram
 import { ReactComponent as FacebookIcon } from '../../../assets/icons/facebook-icon.svg';
 
 import * as S from './footer-components';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { getAllSocials } from 'config/API';
 
 const Footer = () => {
   const location = useLocation();
@@ -20,6 +23,14 @@ const Footer = () => {
   const goToMain = () => {
     history.push('/');
   };
+
+  const [socialLinks, setSocialLinks] = useState({});
+  useEffect(() => {
+    getAllSocials().then((res) => {
+      console.log(res.data.social);
+      setSocialLinks(res.data.social);
+    });
+  }, []);
 
   return (
     <S.Wrapper>
@@ -43,15 +54,22 @@ const Footer = () => {
           <S.SinglePage>FAQ</S.SinglePage>
         </Link>
       </S.Pages>
-
-      <S.SocialWrapper>
-        <S.Title>გამოგვყევი</S.Title>
-        <S.SocialButtonsWrapper>
-          <InstagramIcon />
-          <FacebookIcon />
-          <LinkedinIcon />
-        </S.SocialButtonsWrapper>
-      </S.SocialWrapper>
+      {socialLinks && (
+        <S.SocialWrapper>
+          <S.Title>გამოგვყევი</S.Title>
+          <S.SocialButtonsWrapper>
+            <a href={`${socialLinks.igLink}`} target="_blank">
+              <InstagramIcon />
+            </a>
+            <a href={`${socialLinks.fbLink}`} target="_blank">
+              <FacebookIcon />
+            </a>
+            <a href={`${socialLinks.linkedinLink}`} target="blank">
+              <LinkedinIcon />
+            </a>
+          </S.SocialButtonsWrapper>
+        </S.SocialWrapper>
+      )}
 
       {isMainPage && !isMobile && (
         <S.Subscription>

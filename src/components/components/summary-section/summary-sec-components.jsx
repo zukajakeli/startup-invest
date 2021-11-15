@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
+  ${({ theme }) => theme.mobile`
+  height: 33rem;
+ `};
 `;
 
 export const BackgroundImage = styled.img`
@@ -55,12 +59,14 @@ export const BackgroundWrapper = styled.div`
   margin-top: 5rem;
 
   ${({ theme }) => theme.mobile`
+    height: 40.7rem;
     position: unset;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     width: 100%; 
+    padding-top: 10rem;
   `}
 `;
 
@@ -88,12 +94,12 @@ export const GreenButton = styled.button`
   }
 
   ${({ theme }) => theme.mobile`
-    width: 19.2rem;
+    width: 18.2rem;
     height: 8.4rem;
     position: unset;
     font-size: 1.4rem;
     margin-top: 7.6rem;
-    margin-right: -1rem;
+    // margin-right: -1rem;
   `}
 `;
 
@@ -108,14 +114,18 @@ export const ArrowImage = styled.img`
   }
 
   ${({ theme }) => theme.mobile`
-    display: none;
+    // display: none;
+    width: 17%;
+    right: 44%;
+    bottom: -1rem;
+    transform: translate(180deg)
   `}
 `;
 
 export const HalfCircle = styled.img`
   position: absolute;
-  width: 18.5rem;
-  top: 0rem;
+  width: 18.2rem;
+  top: -1.4rem;
   left: 0rem;
   display: none;
 
@@ -127,5 +137,41 @@ export const HalfCircle = styled.img`
 export const Relative = styled.div`
   ${({ theme }) => theme.mobile`
  position: relative;
+`}
+`;
+
+export const LowerBack = styled.img`
+  position: absolute;
+  display: none;
+  width: 100%;
+  bottom: 0rem;
+  height: 13.3rem;
+  object-fit: cover;
+
+  ${({ theme }) => theme.mobile`
+ display: block;
+`}
+`;
+
+export const BlueHorizontal = styled.img`
+  display: none;
+  position: absolute;
+  /* height: 13rem; */
+  width: 95%;
+
+  ${({ theme }) => theme.mobile`
+ display: block;
+`}
+`;
+
+export const RedHorizontal = styled.img`
+  display: none;
+  position: absolute;
+  bottom: -4.5rem;
+  /* height: 13rem; */
+  width: 95%;
+
+  ${({ theme }) => theme.mobile`
+ display: block;
 `}
 `;

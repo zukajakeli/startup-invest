@@ -99,6 +99,10 @@ export const StartupInfo = styled.p`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+
+  ${({ theme }) => theme.mobile`
+    // height: 5rem
+  `}
 `;
 
 export const AboutButton = styled.button`

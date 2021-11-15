@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import backgroundImage from 'assets/images/contact-page-background.svg';
 import mobileBackground from 'assets/icons/contact-background-mobile.svg';
 
 export const Wrapper = styled.div`
@@ -61,6 +61,9 @@ export const RightWrapper = styled.div`
     justify-content: center;
     background-image: url(${mobileBackground});
     background-repeat: no-repeat;
+    // background-size: 100% 150%;
+    box-sizing: content-box;
+    padding-bottom: 6rem;
     `};
 `;
 

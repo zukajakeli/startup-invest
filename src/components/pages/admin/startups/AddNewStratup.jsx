@@ -58,7 +58,10 @@ const AddNewStartup = ({ setAddResponse }) => {
       setSharePrice('');
       setCategory('');
       setOutsideText('');
-      document.getElementById('startup-form').reset();
+      setVideo('');
+      setVideoDescription('');
+      setIsVisible(false);
+      setIsMainPage(false);
     });
   };
 

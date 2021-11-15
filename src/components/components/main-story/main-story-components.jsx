@@ -24,9 +24,11 @@ export const MainImage = styled.img`
   cursor: pointer;
 
   ${({ theme }) => theme.mobile`
-    width: 100%;
+    width: 98%;
     height: 25.2rem;
     margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
   `}
 `;
 

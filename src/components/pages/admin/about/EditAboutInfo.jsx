@@ -34,7 +34,7 @@ const EditAboutInfo = ({ setResponse }) => {
 
   useEffect(() => {
     getAllAbouts().then((res) => {
-      const { text, photoOne, photoTwo, _id } = res.data[0];
+      const { text, photoOne, photoTwo, _id } = res?.data[0];
       setPhotoOne(photoOne);
       setPhotoTwo(photoTwo);
       setText(text);

@@ -23,7 +23,7 @@ import linkedinIcon from 'assets/icons/linkedin-icon.svg';
 
 import * as S from './single-blog-components';
 import { useEffect } from 'react';
-import { getSingleStory } from 'config/API';
+import { getPaginatedStories, getSingleStory } from 'config/API';
 import { useParams, useRouteMatch } from 'react-router';
 import BASE_URL from 'config/BaseUrl';
 
@@ -48,20 +48,29 @@ const SingleBlog = () => {
     setPageNumber(selected);
   };
 
-  const displayStories = smallStoriesData
-    .slice(storiesSeen, storiesSeen + storiesPerPage)
-    .map(({ image, readingTime, storyTitle, storyPreview }) => {
+  const [otherStoriesCount, setOtherStoriesCount] = useState([]);
+  const [otherStories, setOtherStories] = useState([]);
+  useEffect(() => {
+    getPaginatedStories({ pageNumber, storiesPerPage }).then((res) => {
+      setOtherStories(res.data.data);
+      setOtherStoriesCount(res.data.totalCount);
+      console.log(res.data.data);
+    });
+  }, [pageNumber]);
+
+  const displayStories = otherStories.map(
+    ({ previewPhoto, readingTime, title, outsideText, _id }) => {
       return (
         <SmallStory
-          image={image}
+          image={previewPhoto}
           readingTime={readingTime}
-          storyTitle={storyTitle}
-          storyPreview={storyPreview}
+          storyTitle={title}
+          storyPreview={outsideText}
+          _id={_id}
         />
       );
-    });
-
-  console.log(match);
+    },
+  );
 
   return (
     <>
@@ -140,7 +149,7 @@ const SingleBlog = () => {
               <ReactPaginate
                 previousLabel={<PreviousButton />}
                 nextLabel={<NextButton />}
-                pageCount={Math.ceil(smallStoriesData.length / storiesPerPage)}
+                pageCount={Math.ceil(otherStoriesCount / storiesPerPage)}
                 pageRangeDisplayed={2}
                 marginPagesDisplayed={0}
                 breakLabel={<EllipsisButton />}

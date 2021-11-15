@@ -21,13 +21,6 @@ const useColumns = () => {
     },
 
     {
-      title: 'Main Page Story',
-      dataIndex: 'isMainPage',
-      key: 'isMainPage',
-      render: (text, record) => <Checkbox checked={record.isMainPage} />,
-    },
-
-    {
       title: 'Main Story (Large)',
       dataIndex: 'isMainStory',
       key: 'isMainStory',
