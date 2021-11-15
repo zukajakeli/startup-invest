@@ -74,7 +74,10 @@ const SingleBlog = () => {
             <meta property="og:type" content="article" />
             <meta property="og:title" content={storyData.title} />
             <meta property="og:description" content={storyData.outsideText} />
-            <meta property="og:image" content={storyData.mainPhoto} />
+            <meta
+              property="og:image"
+              content={`${BASE_URL}/${storyData.mainPhoto}`}
+            />
           </Helmet>
           <S.HeaderWrapper>
             <Header />
