@@ -87,10 +87,17 @@ const SingleBlog = () => {
               <S.ShareText>გამოგვყევი:</S.ShareText>
               <S.IconsWrapper>
                 <S.ShareIcon src={shareIcon} alt="icon" />
-                <S.ShareIcon src={linkIcon} alt="icon" />
+
+                <a
+                  href={`https://www.linkedin.com/cws/share?url=${BASE_URL}/${match.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <S.ShareIcon src={linkIcon} alt="icon" />
+                </a>
                 <a
                   className="share-event"
-                  href="https://www.facebook.com/sharer/sharer.php?u=https://startupinvest.ge/single-blog"
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${BASE_URL}/${match.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
