@@ -13,7 +13,7 @@ const MainPage = () => {
   const [isHeaderTransparent, setIsHeaderTransparent] = useState(false);
 
   window.onscroll = () => {
-    setIsHeaderTransparent(window.scrollY >= window.innerHeight);
+    setIsHeaderTransparent(window.scrollY >= 87);
   };
 
   return (

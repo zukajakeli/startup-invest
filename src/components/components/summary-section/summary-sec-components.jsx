@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   align-items: flex-end;
 
   ${({ theme }) => theme.mobile`
-  height: 33rem;
+  height: 30rem;
  `};
 `;
 
@@ -46,8 +46,8 @@ export const PinkButton = styled.button`
   }
 
   ${({ theme }) => theme.mobile`
-    width: 20.7rem;
-    height: 20.7rem;
+    width: 18.7rem;
+    height: 19.7rem;
      position: unset;
      font-size: 1.4rem;
   `}

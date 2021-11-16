@@ -106,7 +106,7 @@ const SingleBlog = () => {
                 </a>
                 <a
                   className="share-event"
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${BASE_URL}/${match.url}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://startupinvest.ge/${match.url}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
