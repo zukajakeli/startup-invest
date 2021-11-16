@@ -4,7 +4,7 @@ import background from 'assets/images/auth-background.svg';
 
 export const Wrapper = styled.form`
   width: 53.6rem;
-  height: 41.8rem;
+  height: 50.8rem;
   border-radius: 4rem;
   display: flex;
   flex-direction: column;
@@ -33,11 +33,12 @@ export const Heading = styled.h6`
   font-size: 3.2rem;
   font-weight: 600;
   margin-bottom: 5.2rem;
+  text-align: center;
 
   ${({ theme }) => theme.mobile`
     text-align: center;
     font-size: 2.2rem;
-  `}
+  `};
 `;
 
 export const Button = styled.button`

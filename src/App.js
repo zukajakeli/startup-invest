@@ -16,6 +16,7 @@ import { MeContext } from 'contexts/MeContext';
 import Temporary from 'temporary';
 import { whoAmI } from 'config/API';
 import MobileAuth from 'components/pages/mobile-auth/MobileAuth';
+import ResetPasswordPage from 'components/components/reset-pass-page/ResetPasswordPage';
 
 function App() {
   const location = useLocation();
@@ -47,6 +48,7 @@ function App() {
         <Route path="/blog/:id" component={SingleBlog} />
         <Route path="/single-startup/:id" component={SingleStartup} />
         <Route path="/auth/:authType" component={MobileAuth} />
+        <Route path="/reset-password/:id" component={ResetPasswordPage} />
 
         <Route path="/admin" component={Admin} />
       </Switch>

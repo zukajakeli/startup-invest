@@ -81,7 +81,7 @@ const SingleBlog = () => {
             <title>{storyData.title}</title>
             <link rel="canonical" href={`${BASE_URL}/${match.url}`} />
             <meta property="og:type" content="article" />
-            <meta property="og:title" content={storyData.title} />
+            <meta property="og:title" content="startupinvest" />
             <meta property="og:description" content={storyData.outsideText} />
             <meta
               property="og:image"

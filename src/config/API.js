@@ -208,3 +208,8 @@ export const resetPassword = async (data) => {
   const response = await axios.post(`${BASE_URL}/reset-password`, data);
   return response;
 };
+
+export const newPassword = async (id, data) => {
+  const response = await axios.post(`${BASE_URL}/new-password/${id}`, data);
+  return response;
+};
