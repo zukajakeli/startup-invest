@@ -206,6 +206,11 @@ export const Text = styled.p`
   color: #13182b;
   margin-bottom: 2.7rem;
 
+  & * {
+    font-family: firago !important;
+    line-height: 2.2rem;
+  }
+
   ${({ theme }) => theme.mobile`
    font-size: 1.4rem;
    line-height: 2.2rem;

@@ -35,15 +35,9 @@ const StartupPage = () => {
   const [startupsData, setStartupsData] = useState([]);
 
   useEffect(() => {
-    getStartupsCount().then((res) => {
-      setIsBlurVisible(res.data.data[0].isBlurVisible);
-      setStartupsNumber(res.data.data[0].startupsNumber);
-      getDisplayStartups({
-        startupsNumber: res.data.data[0].startupsNumber,
-      }).then((res) => {
-        console.log(res.data);
-        setStartupsData(res.data);
-      });
+    getDisplayStartups().then((res) => {
+      console.log(res.data);
+      setStartupsData(res.data.startups);
     });
   }, []);
 

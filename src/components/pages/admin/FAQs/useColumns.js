@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { EyeTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { DeleteTwoTone } from '@ant-design/icons';
+import { Popconfirm, message } from 'antd';
 import { deleteFaq, updateFaq } from 'config/API';
 import CustomModal from 'components/modal/CustomModal';
 import EditFaq from './EditFaq';
@@ -12,6 +13,7 @@ const useColumns = () => {
   const deleteFaqFunc = (id) => {
     deleteFaq(id).then((res) => {
       setDeleteResponse(res);
+      message.success('FAQ Deleted');
     });
   };
 
@@ -39,13 +41,17 @@ const useColumns = () => {
               body={<EditFaq id={record._id} setResponse={setDeleteResponse} />}
             />
           </div>
-          <div
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              deleteFaqFunc(record._id);
-            }}
-          >
-            <DeleteTwoTone />
+          <div style={{ cursor: 'pointer' }}>
+            <Popconfirm
+              title="Delete this FAQ?"
+              onConfirm={() => {
+                deleteFaqFunc(record._id);
+              }}
+              okText="Yes"
+              cancelText="No"
+            >
+              <DeleteTwoTone />
+            </Popconfirm>
           </div>
         </div>
       ),

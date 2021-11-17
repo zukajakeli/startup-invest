@@ -2,7 +2,7 @@ import * as S from './components';
 import { addNewStory } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button, Checkbox } from 'antd';
+import { Input, Upload, Button, Checkbox, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import WYSIWYGEditor from 'components/editor/editor';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -20,31 +20,33 @@ const AddNewBlog = ({ setAddResponse }) => {
   const [outsideText, setOutsideText] = useState('');
   const [category, setCategory] = useState('');
   const [readingTime, setReadingTime] = useState('');
-  const [isMainPage, setIsMainPage] = useState(false);
   const [isMainStory, setIsMainStory] = useState(false);
   const [isSecondaryStory, setIsSecondaryStory] = useState(false);
 
   const send = (e) => {
+    const key = 'updatable';
+
     const formData = new FormData();
     formData.append('mainPhoto', mainPhoto);
     formData.append('secondaryPhoto', secondaryPhoto);
     formData.append('previewPhoto', previewPhoto);
     formData.append('title', title);
-    formData.append('previewText', previewText);
     formData.append('mainText', mainText);
     formData.append('outsideText', outsideText);
     formData.append('category', category);
     formData.append('readingTime', readingTime);
-    formData.append('isMainPage', isMainPage);
     formData.append('isMainStory', isMainStory);
     formData.append('isSecondaryStory', isSecondaryStory);
     e.preventDefault();
+    message.loading({ content: 'Loading...', key });
     console.log(formData);
-    addNewStory(formData).then((res) => console.log(res));
-  };
-
-  const mainCheckboxChange = (e) => {
-    setIsMainPage(e.target.checked);
+    addNewStory(formData).then((res) => {
+      console.log(res);
+      message.success({ content: 'Blog Added!', key, duration: 2 });
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 1500);
+    });
   };
 
   const mainStoryCheckboxChange = (e) => {
@@ -98,8 +100,6 @@ const AddNewBlog = ({ setAddResponse }) => {
           Secondary story{' '}
         </Checkbox>
       </div>
-      Preview Text
-      <WYSIWYGEditor onChange={setPreviewText} value={previewText} />
       Main Text
       <WYSIWYGEditor onChange={setMainText} value={mainText} />
       <Upload

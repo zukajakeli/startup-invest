@@ -1,4 +1,4 @@
-import { Input, Upload, Button } from 'antd';
+import { Input, Upload, Button, message } from 'antd';
 import { editAbout, getAllAbouts } from 'config/API';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -14,6 +14,7 @@ const EditAboutInfo = ({ setResponse }) => {
   const [photoTwo, setPhotoTwo] = useState(null);
   const [id, setId] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const key = 'updatable';
 
   const send = (e) => {
     const formData = new FormData();
@@ -22,13 +23,14 @@ const EditAboutInfo = ({ setResponse }) => {
     formData.append('photoTwo', photoTwo);
 
     e.preventDefault();
+    message.loading({ content: 'Loading...', key });
     console.log('formData', formData);
     editAbout(id, formData).then((res) => {
       console.log(res);
-      // setResponse(res);
-      setText('');
-      setPhotoOne(null);
-      setPhotoTwo(null);
+      message.success({ content: 'Info Updated!', key, duration: 2 });
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 1000);
     });
   };
 

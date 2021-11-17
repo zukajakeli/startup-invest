@@ -166,6 +166,14 @@ export const PreviewText = styled.p`
     list-style-image: url(${greenBullet}) !important;
   }
 
+  & li {
+    margin-bottom: 1.6rem;
+  }
+
+  & * {
+    font-family: firago !important;
+  }
+
   ${({ theme }) => theme.mobile`
      font-size: 1.4rem;
      max-height: 16.1rem;
@@ -230,6 +238,11 @@ export const Text = styled.p`
   font-weight: ${({ large }) => (large ? '500' : '400')};
   margin-top: 2.5rem;
   line-height: 2.2rem;
+
+  & * {
+    font-family: firago !important;
+    line-height: 2.2rem;
+  }
 
   ${({ theme }) => theme.mobile`
     font-size: 1.4rem;

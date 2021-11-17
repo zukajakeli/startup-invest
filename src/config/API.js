@@ -122,8 +122,8 @@ export const updateStartupsCount = async (data) => {
   return response;
 };
 
-export const getDisplayStartups = async (data) => {
-  const response = await axios.post(`${BASE_URL}/get-display-startups`, data);
+export const getDisplayStartups = async () => {
+  const response = await axios.get(`${BASE_URL}/get-display-startups`);
   return response;
 };
 

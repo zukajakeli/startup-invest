@@ -17,6 +17,7 @@ import { useState } from 'react';
 import Registration from '../registration/Registration';
 import ResetPassword from '../reset-password/ResetPassword';
 import MuiModal from 'components/modal/MuiModal';
+import { AuthProblemContext } from 'contexts/AuthorizationProblemContext';
 
 const Header = () => {
   const [isAuthDropdownOpen, setIsAuthDropdownOpen] =
@@ -39,7 +40,8 @@ const Header = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
 
-  const [isAuthorizationOpen, setIsAuthorizationOpen] = useState(true);
+  const [isAuthorizationOpen, setIsAuthorizationOpen] =
+    useContext(AuthProblemContext);
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
 
@@ -55,6 +57,10 @@ const Header = () => {
 
   const [meInfo, setMeInfo] = useContext(MeContext);
   console.log('meINfo', meInfo);
+
+  console.log('isauth', isAuthorizationOpen);
+  console.log('registration', isRegistrationOpen);
+  console.log('resetpass', isResetPasswordOpen);
 
   return (
     <>
@@ -123,6 +129,8 @@ const Header = () => {
       </S.Wrapper>
       {isAuthDropdownOpen && (
         <MuiModal
+          isAuthDropdownOpen={isAuthDropdownOpen}
+          setIsAuthDropdownOpen={setIsAuthDropdownOpen}
           body={
             <S.AuthWrapper>
               {isAuthorizationOpen && (

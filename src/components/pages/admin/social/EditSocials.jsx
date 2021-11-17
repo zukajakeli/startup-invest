@@ -7,7 +7,7 @@ import {
 } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button } from 'antd';
+import { Input, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect } from 'react';
 
@@ -17,6 +17,7 @@ const EditSocials = ({ setResponse, id }) => {
   const [fb, setFb] = useState(null);
   const [insta, setInsta] = useState(null);
   const [linked, setLinked] = useState(null);
+  const key = 'updatable';
 
   useEffect(() => {
     getAllSocials(id).then((res) => {
@@ -33,6 +34,14 @@ const EditSocials = ({ setResponse, id }) => {
       (res) => {
         console.log(res);
         setResponse(res);
+        message.success({
+          content: 'Contact details Updated!',
+          key,
+          duration: 2,
+        });
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 1000);
       },
     );
   };
@@ -62,7 +71,7 @@ const EditSocials = ({ setResponse, id }) => {
       />
 
       <Button type="primary" onClick={send}>
-        Edit Socials
+        Save
       </Button>
     </S.Form>
   );

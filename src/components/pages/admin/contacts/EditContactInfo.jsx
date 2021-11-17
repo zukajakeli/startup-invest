@@ -2,7 +2,7 @@ import * as S from './components';
 import { getAllContacts, updateContact } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button } from 'antd';
+import { Input, Upload, Button, message } from 'antd';
 import { useEffect } from 'react';
 
 const EditContactInfo = ({ setAddResponse }) => {
@@ -21,6 +21,7 @@ const EditContactInfo = ({ setAddResponse }) => {
       setId(_id);
     });
   }, []);
+  const key = 'updatable';
 
   const send = (e) => {
     const formData = {
@@ -34,9 +35,14 @@ const EditContactInfo = ({ setAddResponse }) => {
     updateContact(formData).then((res) => {
       console.log(res);
       setAddResponse(res);
-      setEmail(null);
-      setPhoneNumber(null);
-      setAddress(null);
+      message.success({
+        content: 'Contact details Updated!',
+        key,
+        duration: 2,
+      });
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 1000);
     });
   };
 
@@ -69,7 +75,7 @@ const EditContactInfo = ({ setAddResponse }) => {
       />
 
       <Button type="primary" onClick={send}>
-        Edit Contact Info
+        Save Contact Info
       </Button>
     </S.Form>
   );

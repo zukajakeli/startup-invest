@@ -42,7 +42,7 @@ const ResetPassword = ({
           'template_6g0qy23',
           {
             email: res.data.email,
-            message: `https://startupinvest.ge/reset-password/?id=${res.data.id}`,
+            message: `https://startupinvest.ge/reset-password/{res.data.id}`,
           },
           keys.emailJsId,
         )
@@ -90,13 +90,9 @@ const ResetPassword = ({
       <S.BackButton
         src={backIcon}
         alt="back"
-        onClick={
-          isMobile
-            ? () => {
-                history.goBack();
-              }
-            : goToAuthorization
-        }
+        onClick={() => {
+          isMobile ? history.goBack() : goToAuthorization();
+        }}
       />
 
       <S.Heading>პაროლის აღდგენა</S.Heading>

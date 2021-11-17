@@ -4,13 +4,16 @@ import CustomModal from 'components/modal/CustomModal';
 import { deleteStartup } from 'config/API';
 import { useState } from 'react';
 import EditStartup from './EditStartup';
-import { Checkbox } from 'antd';
+import { Checkbox, Popconfirm, message } from 'antd';
 
 const useColumns = () => {
   const [deleteResponse, setDeleteResponse] = useState(null);
 
   const deleteStartupFunc = (id) => {
-    deleteStartup(id).then((res) => setDeleteResponse(res.data));
+    deleteStartup(id).then((res) => {
+      setDeleteResponse(res.data);
+      message.success('Startup Deleted');
+    });
   };
 
   const columns = [
@@ -58,13 +61,17 @@ const useColumns = () => {
               }
             />
           </div>
-          <div
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              deleteStartupFunc(record._id);
-            }}
-          >
-            <DeleteTwoTone />
+          <div style={{ cursor: 'pointer' }}>
+            <Popconfirm
+              title="Delete this Blog?"
+              onConfirm={() => {
+                deleteStartupFunc(record._id);
+              }}
+              okText="Yes"
+              cancelText="No"
+            >
+              <DeleteTwoTone />
+            </Popconfirm>
           </div>
         </div>
       ),

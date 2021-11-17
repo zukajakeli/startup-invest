@@ -33,18 +33,17 @@ const style = {
   pb: 3,
 };
 
-const MuiModal = ({ body }) => {
-  const [open, setOpen] = React.useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const MuiModal = ({ body, isAuthDropdownOpen, setIsAuthDropdownOpen }) => {
+  const handleClose = () => setIsAuthDropdownOpen(false);
   return (
     <div>
       <StyledModal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"
-        open={open}
+        open={isAuthDropdownOpen}
         onClose={handleClose}
         BackdropComponent={Backdrop}
+        onBackdropClick={handleClose}
       >
         {body}
       </StyledModal>

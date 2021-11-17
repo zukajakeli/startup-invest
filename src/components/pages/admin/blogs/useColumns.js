@@ -3,14 +3,17 @@ import { DeleteTwoTone } from '@ant-design/icons';
 import CustomModal from 'components/modal/CustomModal';
 import { deleteStory } from 'config/API';
 import { useState } from 'react';
-import { Checkbox } from 'antd';
+import { Checkbox, Popconfirm, message } from 'antd';
 // import EditStartup from './EditStartup';
 
 const useColumns = () => {
   const [deleteResponse, setDeleteResponse] = useState(null);
 
   const deleteStoryFunc = (id) => {
-    deleteStory(id).then((res) => setDeleteResponse(res.data));
+    deleteStory(id).then((res) => {
+      setDeleteResponse(res.data);
+      message.success('Blog Deleted');
+    });
   };
 
   const columns = [
@@ -48,13 +51,17 @@ const useColumns = () => {
               // }
             />
           </div>
-          <div
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              deleteStoryFunc(record._id);
-            }}
-          >
-            <DeleteTwoTone />
+          <div style={{ cursor: 'pointer' }}>
+            <Popconfirm
+              title="Delete this Blog?"
+              onConfirm={() => {
+                deleteStoryFunc(record._id);
+              }}
+              okText="Yes"
+              cancelText="No"
+            >
+              <DeleteTwoTone />
+            </Popconfirm>
           </div>
         </div>
       ),

@@ -2,7 +2,7 @@ import * as S from './components';
 import { addNewStartup } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button, Checkbox } from 'antd';
+import { Input, Upload, Button, Checkbox, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import WYSIWYGEditor from 'components/editor/editor';
@@ -25,6 +25,7 @@ const AddNewStartup = ({ setAddResponse }) => {
   const [isMainPage, setIsMainPage] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [outsideText, setOutsideText] = useState('');
+  const key = 'updatable';
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,21 +48,10 @@ const AddNewStartup = ({ setAddResponse }) => {
     e.preventDefault();
     console.log(formData);
     addNewStartup(formData).then((res) => {
-      // setAddResponse(res);
-      setMainPhoto(null);
-      setLogoPhoto(null);
-      setPreviewPhoto(null);
-      setTitle('');
-      setPreviewText('');
-      setMainText('');
-      setShare('');
-      setSharePrice('');
-      setCategory('');
-      setOutsideText('');
-      setVideo('');
-      setVideoDescription('');
-      setIsVisible(false);
-      setIsMainPage(false);
+      message.success({ content: 'Blog Added!', key, duration: 2 });
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 1500);
     });
   };
 
@@ -103,6 +93,7 @@ const AddNewStartup = ({ setAddResponse }) => {
 
   return (
     <S.Form enctype="multipart/form-data" id="startup-form">
+      <p style={{ fontSize: 24, marginBottom: 20 }}>Add Startup</p>
       <Input
         prefix="Title:"
         value={title}

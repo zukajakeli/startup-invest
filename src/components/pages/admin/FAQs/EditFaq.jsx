@@ -2,7 +2,7 @@ import * as S from './components';
 import { getSingleFaq, updateFaq } from 'config/API';
 import { useState } from 'react';
 
-import { Input, Upload, Button } from 'antd';
+import { Input, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect } from 'react';
 
@@ -11,6 +11,7 @@ const { TextArea } = Input;
 const EditFaq = ({ setResponse, id }) => {
   const [question, setQuestion] = useState(null);
   const [answer, setAnswer] = useState(null);
+  const key = 'updatable';
 
   useEffect(() => {
     getSingleFaq(id).then((res) => {
@@ -25,8 +26,14 @@ const EditFaq = ({ setResponse, id }) => {
     updateFaq({ question, answer }, id).then((res) => {
       console.log(res);
       setResponse(res);
-      setQuestion('');
-      setAnswer('');
+      message.success({
+        content: 'FAQ Updated!',
+        key,
+        duration: 2,
+      });
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 1000);
     });
   };
 

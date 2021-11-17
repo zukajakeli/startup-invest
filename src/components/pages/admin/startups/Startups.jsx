@@ -37,7 +37,7 @@ const Startups = () => {
   };
 
   useEffect(() => {
-    updateStartupsCount({ isBlurVisible, startupsNumber, id }).then((res) =>
+    updateStartupsCount({ isBlurVisible, startupsNumber }).then((res) =>
       console.log(res.data),
     );
   }, [isBlurVisible, startupsNumber]);

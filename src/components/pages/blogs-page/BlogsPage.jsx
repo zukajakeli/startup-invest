@@ -171,18 +171,23 @@ const BlogsPage = () => {
           {secondaryStories && (
             <S.LargeStoriesWrapper>
               {secondaryStories.map(
-                ({ _id, previewPhoto, outsideText, readingTime, title }) => {
-                  return (
-                    <S.ZindexTop>
-                      <LargeStory
-                        _id={_id}
-                        backgroundImage={previewPhoto}
-                        readingTime={readingTime}
-                        storyTitle={title}
-                        storyPreview={outsideText}
-                      />
-                    </S.ZindexTop>
-                  );
+                (
+                  { _id, previewPhoto, outsideText, readingTime, title },
+                  index,
+                ) => {
+                  if (index < 2) {
+                    return (
+                      <S.ZindexTop>
+                        <LargeStory
+                          _id={_id}
+                          backgroundImage={previewPhoto}
+                          readingTime={readingTime}
+                          storyTitle={title}
+                          storyPreview={outsideText}
+                        />
+                      </S.ZindexTop>
+                    );
+                  }
                 },
               )}
 

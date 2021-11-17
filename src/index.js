@@ -9,17 +9,20 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 import { AuthDropdownProvider } from 'contexts/AuthDropdownContext';
 import { MeContextProvider } from 'contexts/MeContext';
+import { AuthProblemProvider } from 'contexts/AuthorizationProblemContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthDropdownProvider>
       <MeContextProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Router>
-            <App />
-          </Router>
-        </ThemeProvider>
+        <AuthProblemProvider>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <Router>
+              <App />
+            </Router>
+          </ThemeProvider>
+        </AuthProblemProvider>
       </MeContextProvider>
     </AuthDropdownProvider>
   </React.StrictMode>,
