@@ -42,25 +42,16 @@ const AboutUsPage = () => {
               </S.Text>
 
               {isMobile && (
-                <S.Image
-                  src={`${BASE_URL}/${aboutData.photoOne}`}
-                  alt="about-us"
-                />
+                <S.Image src={`${aboutData.photoOne}`} alt="about-us" />
               )}
             </S.TextsWrapper>
             <S.ImagesWrapper>
               {!isMobile && (
-                <S.Image
-                  src={`${BASE_URL}/${aboutData.photoOne}`}
-                  alt="about-us"
-                />
+                <S.Image src={`${aboutData.photoOne}`} alt="about-us" />
               )}
 
               {aboutData.photoTwo && (
-                <S.Image
-                  src={`${BASE_URL}/${aboutData.photoTwo}`}
-                  alt="about-us"
-                />
+                <S.Image src={`${aboutData.photoTwo}`} alt="about-us" />
               )}
 
               <S.FollowWrapper>

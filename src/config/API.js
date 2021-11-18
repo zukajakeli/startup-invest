@@ -52,6 +52,11 @@ export const addNewStory = async (data) => {
   return response;
 };
 
+export const updateStory = async (id, data) => {
+  const response = await axios.post(`${BASE_URL}/update-story/${id}`, data);
+  return response;
+};
+
 export const getAllStories = async () => {
   const response = await axios.get(`${BASE_URL}/getAllStories`);
   return response;
@@ -69,6 +74,11 @@ export const getSingleStory = async (id) => {
 
 export const getPaginatedStories = async (data) => {
   const response = await axios.post(`${BASE_URL}/get-paginated-stories`, data);
+  return response;
+};
+
+export const uploadImage = async (file) => {
+  const response = await axios.post(`${BASE_URL}/upload-image`, file);
   return response;
 };
 

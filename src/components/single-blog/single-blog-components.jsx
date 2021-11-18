@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   background-color: rgb(242, 241, 241);
   font-family: firago;
 
+  & img {
+    border-radius: 2rem !important;
+  }
+
   & ul {
     list-style-image: url(${greenBullet}) !important;
     list-style-position: inside;
@@ -16,7 +20,7 @@ export const Wrapper = styled.div`
     list-style-position: inside;
   }
 
-  & code {
+  & h1 {
     font-family: firago;
     font-style: italic;
     font-size: 3.2rem;

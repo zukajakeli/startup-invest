@@ -1,33 +1,58 @@
 import { Input, Upload, Button, message } from 'antd';
-import { editAbout, getAllAbouts } from 'config/API';
+import { editAbout, getAllAbouts, uploadImage } from 'config/API';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { VideoCameraTwoTone, CameraTwoTone } from '@ant-design/icons';
 import WYSIWYGEditor from 'components/editor/editor';
 import { UploadOutlined } from '@ant-design/icons';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import * as S from './components';
 import BASE_URL from 'config/BaseUrl';
+import TinyEditor from 'components/editor/TinyEditor';
 
 const EditAboutInfo = ({ setResponse }) => {
+  const [responseText, setResponseText] = useState('');
   const [text, setText] = useState('');
-  const [photoOne, setPhotoOne] = useState(null);
-  const [photoTwo, setPhotoTwo] = useState(null);
+  const [photoOne, setPhotoOne] = useState('');
+  const [photoTwo, setPhotoTwo] = useState('');
+  const [image, setImage] = useState(null);
   const [id, setId] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [imageArray, setImageArray] = useState([]);
   const key = 'updatable';
 
-  const send = (e) => {
+  useEffect(() => {
+    getAllAbouts().then((res) => {
+      const { text, photoOne, photoTwo, _id } = res?.data[0];
+      setResponseText(text);
+      setPhotoOne(photoOne);
+      setPhotoTwo(photoTwo);
+      setId(_id);
+      setIsLoading(false);
+    });
+  }, []);
+
+  console.log('teeeeext', text);
+  const upload = () => {
     const formData = new FormData();
-    formData.append('text', text);
-    formData.append('photoOne', photoOne);
-    formData.append('photoTwo', photoTwo);
+    formData.append('image', image);
+    uploadImage(formData).then((res) => {
+      console.log(res.data.url);
+      setImageArray((prev) => {
+        return [res.data.url, ...prev];
+      });
+      setImage(null);
+    });
+  };
+
+  const send = (e) => {
+    const formData = { text, photoOne, photoTwo };
 
     e.preventDefault();
-    if (text === '' || photoOne === 'undefined') {
+    if (text === '' || photoOne === '') {
       alert('Complete all fields');
     } else {
       message.loading({ content: 'Loading...', key });
-      console.log('formData', formData);
       editAbout(id, formData).then((res) => {
         console.log(res);
         message.success({ content: 'Info Updated!', key, duration: 2 });
@@ -39,80 +64,79 @@ const EditAboutInfo = ({ setResponse }) => {
   };
 
   useEffect(() => {
-    getAllAbouts().then((res) => {
-      const { text, photoOne, photoTwo, _id } = res?.data[0];
-      setPhotoOne(photoOne);
-      setPhotoTwo(photoTwo);
-      setText(text);
-      setId(_id);
-      setIsLoading(false);
-    });
-  }, []);
-
-  console.log('text', text);
-  console.log('photoONe', photoOne);
-  console.log('photoTwo', photoTwo);
-
-  const photoOnePreview = [
-    {
-      uid: '-1',
-      status: 'done',
-      url: `${BASE_URL}/${photoOne}`,
-      thumbUrl: `${BASE_URL}/${photoOne}`,
-    },
-  ];
-
-  const photoTwoPreview = [
-    {
-      uid: '-1',
-      status: 'done',
-      url: `${BASE_URL}/${photoTwo}`,
-      thumbUrl: `${BASE_URL}/${photoTwo}`,
-    },
-  ];
+    setText(responseText);
+  }, [responseText]);
 
   return (
     <>
       <S.Header>
         <S.UserTitle>About Info</S.UserTitle>
-        <p>
-          use <i>Shift + Enter </i> <br /> for line break{' '}
-        </p>
       </S.Header>
       {!isLoading && (
         <S.Form enctype="multipart/form-data">
-          <WYSIWYGEditor onChange={setText} value={text} />
-          <Upload
-            name="photoOne"
-            beforeUpload={false}
-            defaultFileList={[...photoOnePreview]}
-            listType="picture"
-            multiple={false}
-            onRemove={() => {
-              setPhotoOne(null);
-            }}
+          <Input
+            prefix="First Side Photo URL :"
+            suffix={<CameraTwoTone />}
+            value={photoOne}
             onChange={(e) => {
-              setPhotoOne(e.file.originFileObj);
-              console.log(e.file.originFileObj);
+              setPhotoOne(e.target.value);
+            }}
+          />
+          <Input
+            prefix="Second Side Photo URL:"
+            suffix={<CameraTwoTone />}
+            value={photoTwo}
+            onChange={(e) => {
+              setPhotoTwo(e.target.value);
+            }}
+          />
+
+          <TinyEditor contentEditor={text} setContentEditor={setText} />
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              gap: 16,
+              borderRadius: 8,
+              border: '1px solid black',
+              padding: 10,
             }}
           >
-            <Button icon={<UploadOutlined />}>Upload Photo 1</Button>
-          </Upload>
-          <Upload
-            name="photoTwo"
-            defaultFileList={[...photoTwoPreview]}
-            listType="picture"
-            onRemove={() => {
-              setPhotoTwo(null);
-            }}
-            beforeUpload={false}
-            multiple={false}
-            onChange={(e) => {
-              setPhotoTwo(e.file.originFileObj);
-            }}
-          >
-            <Button icon={<UploadOutlined />}>Upload Photo 2</Button>
-          </Upload>
+            <input
+              type="file"
+              // value={image}
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+            />
+            <Button type="primary" onClick={upload}>
+              Upload Image
+            </Button>
+          </div>
+          {imageArray &&
+            imageArray.map((url) => {
+              return (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 16,
+                    borderRadius: 8,
+                    border: '1px solid black',
+                    padding: 10,
+                  }}
+                >
+                  <img
+                    style={{ width: 120, height: 80, borderRadius: 8 }}
+                    src={`${BASE_URL}/${url}`}
+                    alt="server image"
+                  />
+                  <Input value={`${BASE_URL}/${url}`} />
+                </div>
+              );
+            })}
 
           <Button type="primary" onClick={send}>
             Update About Info

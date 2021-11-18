@@ -1,21 +1,28 @@
 import * as S from './components';
-import { addNewStory, getSingleStory } from 'config/API';
+import {
+  addNewStory,
+  getSingleStory,
+  updateStory,
+  uploadImage,
+} from 'config/API';
 import { useState } from 'react';
+import { VideoCameraTwoTone, CameraTwoTone } from '@ant-design/icons';
 
 import { Input, Upload, Button, Checkbox, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import WYSIWYGEditor from 'components/editor/editor';
+import TinyEditor from 'components/editor/TinyEditor';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './border.css';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
+import BASE_URL from 'config/BaseUrl';
 
 const { TextArea } = Input;
 
 const AddNewBlog = ({ setAddResponse }) => {
-  const [mainPhoto, setMainPhoto] = useState(null);
-  const [secondaryPhoto, setSecondaryPhoto] = useState(null);
-  const [previewPhoto, setPreviewPhoto] = useState(null);
+  const [mainPhoto, setMainPhoto] = useState('');
+  const [image, setImage] = useState(null);
+  const [previewPhoto, setPreviewPhoto] = useState('');
   const [title, setTitle] = useState('');
   const [mainText, setMainText] = useState('');
   const [outsideText, setOutsideText] = useState('');
@@ -23,6 +30,7 @@ const AddNewBlog = ({ setAddResponse }) => {
   const [readingTime, setReadingTime] = useState('');
   const [isMainStory, setIsMainStory] = useState(false);
   const [isSecondaryStory, setIsSecondaryStory] = useState(false);
+  const [imageArray, setImageArray] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -38,12 +46,10 @@ const AddNewBlog = ({ setAddResponse }) => {
           outsideText,
           previewPhoto,
           readingTime,
-          secondaryPhoto,
           title,
           _id,
         } = res.data.story;
         setMainPhoto(mainPhoto);
-        setSecondaryPhoto(secondaryPhoto);
         setPreviewPhoto(previewPhoto);
         setTitle(title);
         setMainText(mainText);
@@ -56,25 +62,37 @@ const AddNewBlog = ({ setAddResponse }) => {
     }
   }, []);
 
+  const upload = () => {
+    const formData = new FormData();
+    formData.append('image', image);
+    // e.preventDefault();
+    uploadImage(formData).then((res) => {
+      console.log(res.data.url);
+      setImageArray((prev) => {
+        return [res.data.url, ...prev];
+      });
+      setImage(null);
+    });
+  };
+
   const send = (e) => {
     const key = 'updatable';
 
-    const formData = new FormData();
-    formData.append('mainPhoto', mainPhoto);
-    formData.append('secondaryPhoto', secondaryPhoto);
-    formData.append('previewPhoto', previewPhoto);
-    formData.append('title', title);
-    formData.append('mainText', mainText);
-    formData.append('outsideText', outsideText);
-    formData.append('category', category);
-    formData.append('readingTime', readingTime);
-    formData.append('isMainStory', isMainStory);
-    formData.append('isSecondaryStory', isSecondaryStory);
+    const formData = {
+      title,
+      mainText,
+      mainPhoto,
+      previewPhoto,
+      readingTime,
+      outsideText,
+      category,
+      isMainStory,
+      isSecondaryStory,
+    };
     e.preventDefault();
     if (
-      mainPhoto === null ||
-      previewPhoto === null ||
-      secondaryPhoto === null ||
+      mainPhoto === '' ||
+      previewPhoto === '' ||
       title === '' ||
       mainText === '' ||
       outsideText === '' ||
@@ -85,6 +103,13 @@ const AddNewBlog = ({ setAddResponse }) => {
     } else {
       message.loading({ content: 'Loading...', key });
       if (id) {
+        updateStory(id, formData).then((res) => {
+          console.log(res);
+          message.success({ content: 'Blog Updated!', key, duration: 2 });
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1500);
+        });
       } else {
         addNewStory(formData).then((res) => {
           console.log(res);
@@ -138,6 +163,22 @@ const AddNewBlog = ({ setAddResponse }) => {
           setCategory(e.target.value);
         }}
       />
+      <Input
+        prefix="Main Photo URL:"
+        suffix={<CameraTwoTone />}
+        value={mainPhoto}
+        onChange={(e) => {
+          setMainPhoto(e.target.value);
+        }}
+      />
+      <Input
+        prefix="Preview Photo URL:"
+        suffix={<CameraTwoTone />}
+        value={previewPhoto}
+        onChange={(e) => {
+          setPreviewPhoto(e.target.value);
+        }}
+      />
       <div style={{ display: 'flex', gap: '2rem', marginBottom: '3rem' }}>
         <Checkbox checked={isMainStory} onChange={mainStoryCheckboxChange}>
           {' '}
@@ -152,40 +193,53 @@ const AddNewBlog = ({ setAddResponse }) => {
         </Checkbox>
       </div>
       Main Text
-      <WYSIWYGEditor onChange={setMainText} value={mainText} />
-      <Upload
-        name="mainPhoto"
-        beforeUpload={false}
-        multiple={false}
-        onChange={(e) => {
-          setMainPhoto(e.file.originFileObj);
+      <TinyEditor contentEditor={mainText} setContentEditor={setMainText} />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          gap: 16,
+          borderRadius: 8,
+          border: '1px solid black',
+          padding: 10,
         }}
       >
-        <Button icon={<UploadOutlined />}>Upload Main Photo</Button>
-      </Upload>
-      <Upload
-        name="secondaryPhoto"
-        beforeUpload={false}
-        multiple={false}
-        onChange={(e) => {
-          setSecondaryPhoto(e.file.originFileObj);
-        }}
-      >
-        <Button icon={<UploadOutlined />}>Upload Secondary Photo</Button>
-      </Upload>
-      <Upload
-        name="previewPhoto"
-        beforeUpload={false}
-        multiple={false}
-        onChange={(e) => {
-          console.log(e.file.originFileObj);
-          setPreviewPhoto(e.file.originFileObj);
-        }}
-      >
-        <Button icon={<UploadOutlined />}>Upload Preview Photo</Button>
-      </Upload>
+        <input
+          type="file"
+          // value={image}
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+          }}
+        />
+        <Button type="primary" onClick={upload}>
+          Upload Image
+        </Button>
+      </div>
+      {imageArray &&
+        imageArray.map((url) => {
+          return (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 16,
+                borderRadius: 8,
+                border: '1px solid black',
+                padding: 10,
+              }}
+            >
+              <img
+                style={{ width: 120, height: 80, borderRadius: 8 }}
+                src={`${BASE_URL}/${url}`}
+                alt="server image"
+              />
+              <Input value={`${BASE_URL}/${url}`} />
+            </div>
+          );
+        })}
       <Button type="primary" onClick={send}>
-        Add Blog
+        {id ? 'Update Blog' : 'Add Blog'}
       </Button>
     </S.Form>
   );

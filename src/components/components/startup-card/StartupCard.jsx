@@ -22,8 +22,8 @@ const StartupCard = ({
 
   return (
     <S.Wrapper isBlurred={isBlurred}>
-      <S.Logo src={`${BASE_URL}/${logoPhoto}`} />
-      <S.Image src={`${BASE_URL}/${previewPhoto}`} alt="startup photo" />
+      <S.Logo src={`${logoPhoto}`} />
+      <S.Image src={`${previewPhoto}`} alt="startup photo" />
 
       <S.ContentWrapper>
         <S.ContentHeader>

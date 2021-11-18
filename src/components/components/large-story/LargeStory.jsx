@@ -17,7 +17,7 @@ const LargeStory = ({
 
   return (
     <S.LargeStory onClick={openBolg} forMainPage={forMainPage}>
-      <S.LargeStoryBackground src={`${BASE_URL}/${backgroundImage}`} />
+      <S.LargeStoryBackground src={`${backgroundImage}`} />
       <S.StoryTextsWrapper>
         <S.ReadingTime white>
           წასაკითხი დრო: <strong>{readingTime} </strong>

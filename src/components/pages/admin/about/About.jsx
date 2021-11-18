@@ -20,10 +20,6 @@ const Contacts = () => {
     <S.Wrapper>
       <S.Header>
         <S.UserTitle>About Info</S.UserTitle>
-        <CustomModal
-          text={'Add About Info'}
-          // body={<AddNewAbout setAddResponse={setAddResponse} />}
-        />
       </S.Header>
 
       <Table dataSource={allData} columns={columns} />

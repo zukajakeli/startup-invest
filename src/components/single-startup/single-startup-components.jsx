@@ -8,6 +8,10 @@ import getInfoBackground from 'assets/images/get-info-background.svg';
 export const Wrapper = styled.div`
   width: 100%;
 
+  & img {
+    border-radius: 2rem !important;
+  }
+
   & ul {
     list-style-image: url(${greenBullet}) !important;
     list-style-position: inside;
@@ -18,7 +22,7 @@ export const Wrapper = styled.div`
     list-style-position: inside;
   }
 
-  & code {
+  & h1 {
     font-family: firago;
     font-style: italic;
     font-size: 3.2rem;

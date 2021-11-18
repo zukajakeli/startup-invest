@@ -152,8 +152,8 @@ const SingleStartup = () => {
 
       <S.Body>
         <S.LogoAndImage>
-          <S.MainImage src={`${BASE_URL}/${mainPhoto}`} alt="main" />
-          <S.Logo src={`${BASE_URL}/${logoPhoto}`} alt="logo" />
+          <S.MainImage src={`${mainPhoto}`} alt="main" />
+          <S.Logo src={`${logoPhoto}`} alt="logo" />
         </S.LogoAndImage>
         <S.Content>
           <S.Heading>{title} </S.Heading>
@@ -194,7 +194,7 @@ const SingleStartup = () => {
               height="250"
               frameborder="0"
               allowfullscreen
-              src={startupData.video}
+              src={`https://www.youtube.com/embed/${startupData.video}`}
             ></iframe>
             <S.VideoText>{startupData.videoDescription}</S.VideoText>
             <S.Line />

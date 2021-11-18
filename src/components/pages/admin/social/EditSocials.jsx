@@ -30,13 +30,9 @@ const EditSocials = ({ setResponse, id }) => {
 
   const send = (e) => {
     e.preventDefault();
-    if (fb === '' || insta === '' || linked === '') {
-      alert('Complete all fields');
-    } else {
-      updateSocials(
-        { fbLink: fb, igLink: insta, linkedinLink: linked },
-        id,
-      ).then((res) => {
+
+    updateSocials({ fbLink: fb, igLink: insta, linkedinLink: linked }, id).then(
+      (res) => {
         console.log(res);
         setResponse(res);
         message.success({
@@ -47,8 +43,8 @@ const EditSocials = ({ setResponse, id }) => {
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);
-      });
-    }
+      },
+    );
   };
 
   return (

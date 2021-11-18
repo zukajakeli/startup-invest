@@ -58,15 +58,21 @@ const Footer = () => {
         <S.SocialWrapper>
           <S.Title>გამოგვყევი</S.Title>
           <S.SocialButtonsWrapper>
-            <a href={`${socialLinks.igLink}`} target="_blank">
-              <InstagramIcon />
-            </a>
-            <a href={`${socialLinks.fbLink}`} target="_blank">
-              <FacebookIcon />
-            </a>
-            <a href={`${socialLinks.linkedinLink}`} target="blank">
-              <LinkedinIcon />
-            </a>
+            {socialLinks.igLink && (
+              <a href={`${socialLinks.igLink}`} target="_blank">
+                <InstagramIcon />
+              </a>
+            )}
+            {socialLinks.fbLink && (
+              <a href={`${socialLinks.fbLink}`} target="_blank">
+                <FacebookIcon />
+              </a>
+            )}
+            {socialLinks.linkedinLink && (
+              <a href={`${socialLinks.linkedinLink}`} target="blank">
+                <LinkedinIcon />
+              </a>
+            )}
           </S.SocialButtonsWrapper>
         </S.SocialWrapper>
       )}

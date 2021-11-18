@@ -83,10 +83,7 @@ const SingleBlog = () => {
             <meta property="og:type" content="article" />
             <meta property="og:title" content="startupinvest" />
             <meta property="og:description" content={storyData.outsideText} />
-            <meta
-              property="og:image"
-              content={`${BASE_URL}/${storyData.mainPhoto}`}
-            />
+            <meta property="og:image" content={`${storyData.mainPhoto}`} />
           </Helmet>
           <S.HeaderWrapper>
             <Header />
@@ -117,10 +114,7 @@ const SingleBlog = () => {
               </S.IconsWrapper>
             </S.ShareWrapper>
 
-            <S.MainImage
-              src={`${BASE_URL}/${storyData.mainPhoto}`}
-              alt="mainImage"
-            />
+            <S.MainImage src={`${storyData.mainPhoto}`} alt="mainImage" />
             <S.Content>
               <S.Heading>{storyData.title}</S.Heading>
               {/* <S.SubHeading>
@@ -130,10 +124,10 @@ const SingleBlog = () => {
                 ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
               </S.SubHeading> */}
 
-              <S.SmallImage
+              {/* <S.SmallImage
                 src={`${BASE_URL}/${storyData.secondaryPhoto}`}
                 alt="smallImage"
-              />
+              /> */}
 
               <S.Text>
                 <div dangerouslySetInnerHTML={{ __html: storyData.mainText }} />

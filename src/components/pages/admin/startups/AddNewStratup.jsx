@@ -1,21 +1,28 @@
 import * as S from './components';
-import { addNewStartup, getSingleStartup } from 'config/API';
+import {
+  addNewStartup,
+  getSingleStartup,
+  updateStartup,
+  uploadImage,
+} from 'config/API';
 import { useState } from 'react';
 
 import { Input, Upload, Button, Checkbox, message } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { VideoCameraTwoTone, CameraTwoTone } from '@ant-design/icons';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import WYSIWYGEditor from 'components/editor/editor';
 import BASE_URL from 'config/BaseUrl';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
+import TinyEditor from 'components/editor/TinyEditor';
+import EditStartup from './EditStartup';
 
 const { TextArea } = Input;
 
 const AddNewStartup = ({ setAddResponse }) => {
-  const [mainPhoto, setMainPhoto] = useState(null);
-  const [logoPhoto, setLogoPhoto] = useState(null);
-  const [previewPhoto, setPreviewPhoto] = useState(null);
+  const [mainPhoto, setMainPhoto] = useState('');
+  const [logoPhoto, setLogoPhoto] = useState('');
+  const [previewPhoto, setPreviewPhoto] = useState('');
   const [title, setTitle] = useState('');
   const [previewText, setPreviewText] = useState('');
   const [mainText, setMainText] = useState('');
@@ -27,8 +34,12 @@ const AddNewStartup = ({ setAddResponse }) => {
   const [isMainPage, setIsMainPage] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [outsideText, setOutsideText] = useState('');
+  const [image, setImage] = useState(null);
+  const [imageArray, setImageArray] = useState([]);
   const key = 'updatable';
   const { id } = useParams();
+
+  const formData = new FormData();
 
   useEffect(() => {
     if (id) {
@@ -68,28 +79,42 @@ const AddNewStartup = ({ setAddResponse }) => {
     }
   }, []);
 
-  const send = (e) => {
+  const upload = () => {
     const formData = new FormData();
-    formData.append('mainPhoto', mainPhoto);
-    formData.append('logoPhoto', logoPhoto);
-    formData.append('previewPhoto', previewPhoto);
-    formData.append('title', title);
-    formData.append('outsideText', outsideText);
-    formData.append('video', video);
-    formData.append('videoDescription', videoDescription);
-    formData.append('previewText', previewText);
-    formData.append('mainText', mainText);
-    formData.append('category', category);
-    formData.append('share', share);
-    formData.append('sharePrice', sharePrice);
-    formData.append('isMainPage', isMainPage);
-    formData.append('isVisible', isVisible);
+    formData.append('image', image);
+    // e.preventDefault();
+    uploadImage(formData).then((res) => {
+      console.log(res.data.url);
+      setImageArray((prev) => {
+        return [res.data.url, ...prev];
+      });
+      setImage(null);
+    });
+  };
+
+  const send = (e) => {
+    const formData = {
+      title,
+      previewText,
+      mainText,
+      share,
+      video,
+      videoDescription,
+      sharePrice,
+      isMainPage,
+      isVisible,
+      outsideText,
+      category,
+      mainPhoto,
+      logoPhoto,
+      previewPhoto,
+    };
     e.preventDefault();
     console.log('formdata', formData);
     if (
-      mainPhoto === null ||
-      logoPhoto === null ||
-      previewPhoto === null ||
+      mainPhoto === '' ||
+      logoPhoto === '' ||
+      previewPhoto === '' ||
       title === '' ||
       outsideText === '' ||
       previewText === '' ||
@@ -102,41 +127,21 @@ const AddNewStartup = ({ setAddResponse }) => {
     ) {
       alert('Complete all fields');
     } else {
-      addNewStartup(formData).then((res) => {
-        message.success({ content: 'Blog Added!', key, duration: 2 });
-        setTimeout(() => {
-          window.location.reload(false);
-        }, 1500);
-      });
+      id
+        ? updateStartup(id, formData).then((res) => {
+            message.success({ content: 'Blog Updated!', key, duration: 2 });
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 1500);
+          })
+        : addNewStartup(formData).then((res) => {
+            message.success({ content: 'Blog Added!', key, duration: 2 });
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 1500);
+          });
     }
   };
-
-  const mainPhotoPreview = [
-    {
-      uid: '-1',
-      status: 'done',
-      url: `${BASE_URL}/${mainPhoto}`,
-      thumbUrl: `${BASE_URL}/${mainPhoto}`,
-    },
-  ];
-
-  const logoPhotoPreview = [
-    {
-      uid: '-1',
-      status: 'done',
-      url: `${BASE_URL}/${logoPhoto}`,
-      thumbUrl: `${BASE_URL}/${logoPhoto}`,
-    },
-  ];
-
-  const previewPhotoPreview = [
-    {
-      uid: '-1',
-      status: 'done',
-      url: `${BASE_URL}/${previewPhoto}`,
-      thumbUrl: `${BASE_URL}/${previewPhoto}`,
-    },
-  ];
 
   const mainCheckboxChange = (e) => {
     setIsMainPage(e.target.checked);
@@ -183,6 +188,7 @@ const AddNewStartup = ({ setAddResponse }) => {
       />
       <Input
         prefix="Video URL:"
+        suffix={<VideoCameraTwoTone />}
         value={video}
         onChange={(e) => {
           setVideo(e.target.value);
@@ -193,6 +199,30 @@ const AddNewStartup = ({ setAddResponse }) => {
         value={videoDescription}
         onChange={(e) => {
           setVideoDescription(e.target.value);
+        }}
+      />
+      <Input
+        prefix="Main Photo URL:"
+        suffix={<CameraTwoTone />}
+        value={mainPhoto}
+        onChange={(e) => {
+          setMainPhoto(e.target.value);
+        }}
+      />
+      <Input
+        prefix="Preview Photo URL:"
+        suffix={<CameraTwoTone />}
+        value={previewPhoto}
+        onChange={(e) => {
+          setPreviewPhoto(e.target.value);
+        }}
+      />
+      <Input
+        prefix="Logo Photo URL:"
+        suffix={<CameraTwoTone />}
+        value={logoPhoto}
+        onChange={(e) => {
+          setLogoPhoto(e.target.value);
         }}
       />
       <Input
@@ -213,45 +243,58 @@ const AddNewStartup = ({ setAddResponse }) => {
         </Checkbox>
       </div>
       Preview Text
-      <WYSIWYGEditor onChange={setPreviewText} value={previewText} />
+      <TinyEditor
+        contentEditor={previewText}
+        setContentEditor={setPreviewText}
+      />
       Main Text
-      <WYSIWYGEditor onChange={setMainText} value={mainText} />
-      <Upload
-        name="mainPhoto"
-        beforeUpload={false}
-        listType="picture"
-        multiple={false}
-        onChange={(e) => {
-          setMainPhoto(e.file.originFileObj);
+      <TinyEditor contentEditor={mainText} setContentEditor={setMainText} />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          gap: 16,
+          borderRadius: 8,
+          border: '1px solid black',
+          padding: 10,
         }}
       >
-        <Button icon={<UploadOutlined />}>Upload Main Photo</Button>
-      </Upload>
-      <Upload
-        name="logoPhoto"
-        beforeUpload={false}
-        listType="picture"
-        multiple={false}
-        onChange={(e) => {
-          setLogoPhoto(e.file.originFileObj);
-        }}
-      >
-        <Button icon={<UploadOutlined />}>Upload Logo Photo</Button>
-      </Upload>
-      <Upload
-        name="previewPhoto"
-        beforeUpload={false}
-        listType="picture"
-        multiple={false}
-        onChange={(e) => {
-          console.log(e.file.originFileObj);
-          setPreviewPhoto(e.file.originFileObj);
-        }}
-      >
-        <Button icon={<UploadOutlined />}>Upload Preview Photo</Button>
-      </Upload>
+        <input
+          type="file"
+          // value={image}
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+          }}
+        />
+        <Button type="primary" onClick={upload}>
+          Upload Image
+        </Button>
+      </div>
+      {imageArray &&
+        imageArray.map((url) => {
+          return (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 16,
+                borderRadius: 8,
+                border: '1px solid black',
+                padding: 10,
+              }}
+            >
+              <img
+                style={{ width: 120, height: 80, borderRadius: 8 }}
+                src={`${BASE_URL}/${url}`}
+                alt="server image"
+              />
+              <Input value={`${BASE_URL}/${url}`} />
+            </div>
+          );
+        })}
       <Button type="primary" onClick={send}>
-        Add Startup
+        {id ? 'Update Startup' : 'Add Startup'}
       </Button>
     </S.Form>
   );

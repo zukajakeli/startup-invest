@@ -10,7 +10,7 @@ const SmallStory = ({ image, readingTime, storyTitle, storyPreview, _id }) => {
 
   return (
     <S.SmallStory onClick={openBolg}>
-      <S.SmallStoryImage src={`${BASE_URL}/${image}`} />
+      <S.SmallStoryImage src={`${image}`} />
       <S.StoryTextsWrapper>
         <S.ReadingTime>
           წასაკითხი დრო: <strong>{readingTime}</strong>

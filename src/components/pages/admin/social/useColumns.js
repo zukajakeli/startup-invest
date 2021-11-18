@@ -21,17 +21,23 @@ const useColumns = () => {
       title: 'Facebook Link',
       dataIndex: 'fbLink',
       key: 'fbLink',
+      width: 200,
+      ellipsis: true,
     },
     {
       title: 'Instagram Link',
       dataIndex: 'igLink',
       key: 'igLink',
+      width: 200,
+      ellipsis: true,
     },
 
     {
       title: 'Linkedin Link',
       dataIndex: 'linkedinLink',
       key: 'linkedinLink',
+      width: 200,
+      ellipsis: true,
     },
 
     {
