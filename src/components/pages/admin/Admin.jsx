@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Route, useParams } from 'react-router-dom';
 import * as S from './admin-components';
 import Blogs from './blogs/Blogs';
 import Contacts from './contacts/Contacts';
@@ -13,6 +13,8 @@ import Social from './social/Social';
 import logo from '../../../assets/icons/main-logo.svg';
 const Admin = () => {
   const { pathname } = useLocation();
+  const { id } = useParams();
+  console.log(useLocation());
 
   return (
     <S.Wrapper>
@@ -26,11 +28,15 @@ const Admin = () => {
           <S.StyledNavLink to="/admin/users">Users </S.StyledNavLink>
           <S.StyledNavLink to="/admin/blogs">Blogs </S.StyledNavLink>
           <S.StyledNavLink to="/admin/add-new-blog">
-            + Add New Blog{' '}
+            {pathname.includes('/admin/add-new-blog/')
+              ? 'Edit Blog'
+              : '+ Add New Blog'}
           </S.StyledNavLink>
           <S.StyledNavLink to="/admin/startups">Startups </S.StyledNavLink>
           <S.StyledNavLink to="/admin/add-new-startup">
-            + Add New Startup{' '}
+            {pathname.includes('/admin/add-new-startup/')
+              ? 'Edit Startup'
+              : '+ Add New Startup'}
           </S.StyledNavLink>
           <S.StyledNavLink to="/admin/contact">Contact </S.StyledNavLink>
           <S.StyledNavLink to="/admin/about">About </S.StyledNavLink>
@@ -42,8 +48,10 @@ const Admin = () => {
       <S.Content>
         {pathname === '/admin/users' && <Users />}
         {pathname === '/admin/blogs' && <Blogs />}
-        {pathname === '/admin/add-new-blog' && <AddNewBlog />}
-        {pathname === '/admin/add-new-startup' && <AddNewStartup />}
+        {/* {pathname === '/admin/add-new-blog' && <AddNewBlog />} */}
+        <Route path="/admin/add-new-blog/:id?" component={AddNewBlog} />
+        <Route path="/admin/add-new-startup/:id?" component={AddNewStartup} />
+        {/* {pathname === '/admin/add-new-startup/:id?' && <AddNewStartup />} */}
         {pathname === '/admin/startups' && <Startups />}
         {pathname === '/admin/contact' && <Contacts />}
         {pathname === '/admin/about' && <EditAboutInfo />}

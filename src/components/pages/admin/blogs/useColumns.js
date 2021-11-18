@@ -3,10 +3,12 @@ import { DeleteTwoTone } from '@ant-design/icons';
 import CustomModal from 'components/modal/CustomModal';
 import { deleteStory } from 'config/API';
 import { useState } from 'react';
-import { Checkbox, Popconfirm, message } from 'antd';
+import { Checkbox, Popconfirm, message, Button } from 'antd';
+import { useHistory } from 'react-router';
 // import EditStartup from './EditStartup';
 
 const useColumns = () => {
+  const history = useHistory();
   const [deleteResponse, setDeleteResponse] = useState(null);
 
   const deleteStoryFunc = (id) => {
@@ -14,6 +16,10 @@ const useColumns = () => {
       setDeleteResponse(res.data);
       message.success('Blog Deleted');
     });
+  };
+
+  const openEdit = (id) => {
+    history.push(`/admin/add-new-blog/${id}`);
   };
 
   const columns = [
@@ -44,12 +50,15 @@ const useColumns = () => {
       render: (text, record) => (
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <div style={{ cursor: 'pointer' }}>
-            <CustomModal
-              text={'Edit Blog'}
-              // body={
-              //   <EditStartup id={record._id} setResponse={setDeleteResponse} />
-              // }
-            />
+            <Button
+              type="primary"
+              onClick={() => {
+                openEdit(record._id);
+              }}
+            >
+              {' '}
+              Edit Blog{' '}
+            </Button>
           </div>
           <div style={{ cursor: 'pointer' }}>
             <Popconfirm

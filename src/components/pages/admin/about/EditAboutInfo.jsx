@@ -23,15 +23,19 @@ const EditAboutInfo = ({ setResponse }) => {
     formData.append('photoTwo', photoTwo);
 
     e.preventDefault();
-    message.loading({ content: 'Loading...', key });
-    console.log('formData', formData);
-    editAbout(id, formData).then((res) => {
-      console.log(res);
-      message.success({ content: 'Info Updated!', key, duration: 2 });
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 1000);
-    });
+    if (text === '' || photoOne === 'undefined') {
+      alert('Complete all fields');
+    } else {
+      message.loading({ content: 'Loading...', key });
+      console.log('formData', formData);
+      editAbout(id, formData).then((res) => {
+        console.log(res);
+        message.success({ content: 'Info Updated!', key, duration: 2 });
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 1000);
+      });
+    }
   };
 
   useEffect(() => {

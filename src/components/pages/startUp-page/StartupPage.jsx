@@ -41,12 +41,12 @@ const StartupPage = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   getDisplayStartups({ startupsNumber }).then((res) => {
-  //     console.log(res.data);
-  //     setStartupsData(res.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getStartupsCount().then((res) => {
+      console.log('is visibl;weeee', res.data.data[0].isBlurVisible);
+      setIsBlurVisible(res.data.data[0].isBlurVisible);
+    });
+  }, []);
 
   return (
     <S.Wrapper>

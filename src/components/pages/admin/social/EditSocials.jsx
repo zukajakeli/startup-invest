@@ -14,9 +14,9 @@ import { useEffect } from 'react';
 const { TextArea } = Input;
 
 const EditSocials = ({ setResponse, id }) => {
-  const [fb, setFb] = useState(null);
-  const [insta, setInsta] = useState(null);
-  const [linked, setLinked] = useState(null);
+  const [fb, setFb] = useState('');
+  const [insta, setInsta] = useState('');
+  const [linked, setLinked] = useState('');
   const key = 'updatable';
 
   useEffect(() => {
@@ -30,8 +30,13 @@ const EditSocials = ({ setResponse, id }) => {
 
   const send = (e) => {
     e.preventDefault();
-    updateSocials({ fbLink: fb, igLink: insta, linkedinLink: linked }, id).then(
-      (res) => {
+    if (fb === '' || insta === '' || linked === '') {
+      alert('Complete all fields');
+    } else {
+      updateSocials(
+        { fbLink: fb, igLink: insta, linkedinLink: linked },
+        id,
+      ).then((res) => {
         console.log(res);
         setResponse(res);
         message.success({
@@ -42,8 +47,8 @@ const EditSocials = ({ setResponse, id }) => {
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);
-      },
-    );
+      });
+    }
   };
 
   return (

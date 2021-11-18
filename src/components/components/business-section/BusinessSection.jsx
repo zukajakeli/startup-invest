@@ -87,7 +87,7 @@ const BusinessSection = () => {
                           previewPhoto={previewPhoto}
                           logoPhoto={logoPhoto}
                           category={category}
-                          id={_id}
+                          _id={_id}
                         />
                       )
                     );

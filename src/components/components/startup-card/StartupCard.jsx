@@ -18,7 +18,7 @@ const StartupCard = ({
     history.push(`/single-startup/${_id}`);
   };
 
-  console.log(_id);
+  console.log('idddddd', _id);
 
   return (
     <S.Wrapper isBlurred={isBlurred}>

@@ -9,8 +9,8 @@ import { useEffect } from 'react';
 const { TextArea } = Input;
 
 const EditFaq = ({ setResponse, id }) => {
-  const [question, setQuestion] = useState(null);
-  const [answer, setAnswer] = useState(null);
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
   const key = 'updatable';
 
   useEffect(() => {
@@ -23,18 +23,22 @@ const EditFaq = ({ setResponse, id }) => {
 
   const send = (e) => {
     e.preventDefault();
-    updateFaq({ question, answer }, id).then((res) => {
-      console.log(res);
-      setResponse(res);
-      message.success({
-        content: 'FAQ Updated!',
-        key,
-        duration: 2,
+    if (question === '' || answer === '') {
+      alert('Complete all fields');
+    } else {
+      updateFaq({ question, answer }, id).then((res) => {
+        console.log(res);
+        setResponse(res);
+        message.success({
+          content: 'FAQ Updated!',
+          key,
+          duration: 2,
+        });
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 1000);
       });
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 1000);
-    });
+    }
   };
 
   return (

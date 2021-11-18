@@ -1,5 +1,5 @@
 import * as S from './components';
-import { addNewStory } from 'config/API';
+import { addNewStory, getSingleStory } from 'config/API';
 import { useState } from 'react';
 
 import { Input, Upload, Button, Checkbox, message } from 'antd';
@@ -7,6 +7,8 @@ import { UploadOutlined } from '@ant-design/icons';
 import WYSIWYGEditor from 'components/editor/editor';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './border.css';
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
 
 const { TextArea } = Input;
 
@@ -15,13 +17,44 @@ const AddNewBlog = ({ setAddResponse }) => {
   const [secondaryPhoto, setSecondaryPhoto] = useState(null);
   const [previewPhoto, setPreviewPhoto] = useState(null);
   const [title, setTitle] = useState('');
-  const [previewText, setPreviewText] = useState('');
   const [mainText, setMainText] = useState('');
   const [outsideText, setOutsideText] = useState('');
   const [category, setCategory] = useState('');
   const [readingTime, setReadingTime] = useState('');
   const [isMainStory, setIsMainStory] = useState(false);
   const [isSecondaryStory, setIsSecondaryStory] = useState(false);
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      getSingleStory(id).then((res) => {
+        console.log(res.data.story);
+        const {
+          category,
+          isMainStory,
+          isSecondaryStory,
+          mainPhoto,
+          mainText,
+          outsideText,
+          previewPhoto,
+          readingTime,
+          secondaryPhoto,
+          title,
+          _id,
+        } = res.data.story;
+        setMainPhoto(mainPhoto);
+        setSecondaryPhoto(secondaryPhoto);
+        setPreviewPhoto(previewPhoto);
+        setTitle(title);
+        setMainText(mainText);
+        setOutsideText(outsideText);
+        setCategory(category);
+        setReadingTime(readingTime);
+        setIsMainStory(isMainStory);
+        setIsSecondaryStory(isSecondaryStory);
+      });
+    }
+  }, []);
 
   const send = (e) => {
     const key = 'updatable';
@@ -38,15 +71,30 @@ const AddNewBlog = ({ setAddResponse }) => {
     formData.append('isMainStory', isMainStory);
     formData.append('isSecondaryStory', isSecondaryStory);
     e.preventDefault();
-    message.loading({ content: 'Loading...', key });
-    console.log(formData);
-    addNewStory(formData).then((res) => {
-      console.log(res);
-      message.success({ content: 'Blog Added!', key, duration: 2 });
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 1500);
-    });
+    if (
+      mainPhoto === null ||
+      previewPhoto === null ||
+      secondaryPhoto === null ||
+      title === '' ||
+      mainText === '' ||
+      outsideText === '' ||
+      category === '' ||
+      readingTime === ''
+    ) {
+      alert('Complete all fields');
+    } else {
+      message.loading({ content: 'Loading...', key });
+      if (id) {
+      } else {
+        addNewStory(formData).then((res) => {
+          console.log(res);
+          message.success({ content: 'Blog Added!', key, duration: 2 });
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1500);
+        });
+      }
+    }
   };
 
   const mainStoryCheckboxChange = (e) => {
@@ -59,6 +107,9 @@ const AddNewBlog = ({ setAddResponse }) => {
 
   return (
     <S.Form enctype="multipart/form-data">
+      <p style={{ fontSize: 24, marginBottom: 20 }}>
+        {id ? 'Edit Blog' : 'Add Blog'}{' '}
+      </p>
       <Input
         prefix="Title:"
         value={title}

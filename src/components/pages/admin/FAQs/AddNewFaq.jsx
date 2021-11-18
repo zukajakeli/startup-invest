@@ -8,17 +8,21 @@ import { UploadOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 
 const AddNewStartup = ({ setAddResponse }) => {
-  const [question, setQuestion] = useState(null);
-  const [answer, setAnswer] = useState(null);
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
 
   const send = (e) => {
     e.preventDefault();
-    addNewFaq({ question, answer }).then((res) => {
-      console.log(res);
-      setAddResponse(res);
-      setQuestion('');
-      setAnswer('');
-    });
+    if (question === '' || answer === '') {
+      alert('Complete all fields');
+    } else {
+      addNewFaq({ question, answer }).then((res) => {
+        console.log(res);
+        setAddResponse(res);
+        setQuestion('');
+        setAnswer('');
+      });
+    }
   };
 
   return (

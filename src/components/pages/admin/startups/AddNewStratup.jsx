@@ -1,5 +1,5 @@
 import * as S from './components';
-import { addNewStartup } from 'config/API';
+import { addNewStartup, getSingleStartup } from 'config/API';
 import { useState } from 'react';
 
 import { Input, Upload, Button, Checkbox, message } from 'antd';
@@ -7,6 +7,8 @@ import { UploadOutlined } from '@ant-design/icons';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import WYSIWYGEditor from 'components/editor/editor';
 import BASE_URL from 'config/BaseUrl';
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
 
 const { TextArea } = Input;
 
@@ -26,8 +28,45 @@ const AddNewStartup = ({ setAddResponse }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [outsideText, setOutsideText] = useState('');
   const key = 'updatable';
+  const { id } = useParams();
 
-  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    if (id) {
+      getSingleStartup(id).then((res) => {
+        const {
+          title,
+          mainText,
+          previewText,
+          share,
+          sharePrice,
+          mainPhoto,
+          logoPhoto,
+          previewPhoto,
+          isMainPage,
+          isVisible,
+          video,
+          videoDescription,
+          outsideText,
+          category,
+        } = res.data.startup;
+
+        setTitle(title);
+        setMainText(mainText);
+        setPreviewText(previewText);
+        setShare(share);
+        setSharePrice(sharePrice);
+        setMainPhoto(mainPhoto);
+        setLogoPhoto(logoPhoto);
+        setPreviewPhoto(previewPhoto);
+        setIsMainPage(isMainPage);
+        setIsVisible(isVisible);
+        setVideo(video);
+        setVideoDescription(videoDescription);
+        setOutsideText(outsideText);
+        setCategory(category);
+      });
+    }
+  }, []);
 
   const send = (e) => {
     const formData = new FormData();
@@ -46,13 +85,30 @@ const AddNewStartup = ({ setAddResponse }) => {
     formData.append('isMainPage', isMainPage);
     formData.append('isVisible', isVisible);
     e.preventDefault();
-    console.log(formData);
-    addNewStartup(formData).then((res) => {
-      message.success({ content: 'Blog Added!', key, duration: 2 });
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 1500);
-    });
+    console.log('formdata', formData);
+    if (
+      mainPhoto === null ||
+      logoPhoto === null ||
+      previewPhoto === null ||
+      title === '' ||
+      outsideText === '' ||
+      previewText === '' ||
+      mainText === '' ||
+      share === '' ||
+      video === '' ||
+      videoDescription === '' ||
+      category === '' ||
+      sharePrice === ''
+    ) {
+      alert('Complete all fields');
+    } else {
+      addNewStartup(formData).then((res) => {
+        message.success({ content: 'Blog Added!', key, duration: 2 });
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 1500);
+      });
+    }
   };
 
   const mainPhotoPreview = [
@@ -93,7 +149,9 @@ const AddNewStartup = ({ setAddResponse }) => {
 
   return (
     <S.Form enctype="multipart/form-data" id="startup-form">
-      <p style={{ fontSize: 24, marginBottom: 20 }}>Add Startup</p>
+      <p style={{ fontSize: 24, marginBottom: 20 }}>
+        {id ? 'Edit Startup' : 'Add Startup'}{' '}
+      </p>
       <Input
         prefix="Title:"
         value={title}
@@ -109,6 +167,7 @@ const AddNewStartup = ({ setAddResponse }) => {
         }}
       />
       <Input
+        required
         prefix="SharePrice:"
         value={sharePrice}
         onChange={(e) => {
