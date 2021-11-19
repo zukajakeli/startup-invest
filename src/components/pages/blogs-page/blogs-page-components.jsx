@@ -59,7 +59,7 @@ export const BlogsContent = styled.div`
   padding-top: 10rem;
 
   ${({ theme }) => theme.mobile`
-      padding: 3.4rem 3.6rem;
+      padding: 3.4rem 1.2rem;
   `}
 `;
 

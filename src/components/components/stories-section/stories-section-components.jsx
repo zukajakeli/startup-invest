@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
   ${({ theme }) => theme.mobile`
     min-height: 90rem;
-    padding: 0rem 7%;
+    padding: 0rem 3%;
     padding-bottom: 2rem;
   `}
 `;
@@ -120,7 +120,6 @@ export const Body = styled.div`
 
   ${({ theme }) => theme.mobile`
     flex-direction: column;
-    align-items: stretch;
     & > * {
       margin-bottom: 1.6rem;
     }

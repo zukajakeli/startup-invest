@@ -45,6 +45,8 @@ export const LeftWrapper = styled.div`
 
   ${({ theme }) => theme.mobile`
     align-items: center;
+    height: unset;
+    padding: 2rem;
   `};
 `;
 

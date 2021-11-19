@@ -11,7 +11,7 @@ export const InputText = styled.input`
   border-radius: 2.4rem;
   height: 4.6rem;
   padding: 0rem 2.4rem;
-  color: #767c8b;
+  color: ${({ isUploadInput }) => (isUploadInput ? 'white' : '#767c8b')};
   font-size: 1.6rem;
   font-weight: 400;
   position: relative;
