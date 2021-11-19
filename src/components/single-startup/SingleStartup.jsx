@@ -149,7 +149,6 @@ const SingleStartup = () => {
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>
-
       <S.Body>
         <S.LogoAndImage>
           <S.MainImage src={`${mainPhoto}`} alt="main" />
@@ -225,7 +224,6 @@ const SingleStartup = () => {
           </S.VideoAndInfoWrapper>
         </S.SubContent>
       </S.Body>
-
       {isMobile && (
         <S.GetInfoWrapper>
           <S.GetInfoBox onSubmit={sendEmail} ref={form}>
@@ -241,8 +239,7 @@ const SingleStartup = () => {
           </S.GetInfoBox>
         </S.GetInfoWrapper>
       )}
-
-      {!isMobile ? (
+      {similarStartups.length > 0 && !isMobile ? (
         <S.OtherOffersWrapper>
           <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
           <S.Flex>
@@ -283,25 +280,27 @@ const SingleStartup = () => {
           </S.OvalWrapper>
         </S.OtherOffersWrapper>
       ) : (
-        <S.OtherOffersWrapper>
-          <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
-          {displayStartups}
-          <ReactPaginate
-            previousLabel={<PreviousButton />}
-            nextLabel={<NextButton />}
-            pageCount={Math.ceil(startupData.length / startupsPerPage)}
-            pageRangeDisplayed={2}
-            marginPagesDisplayed={0}
-            breakLabel={<EllipsisButton />}
-            onPageChange={changePage}
-            containerClassName={
-              isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
-            }
-            disabledClassName={'paginationDisabled'}
-            activeClassName={'paginationActive'}
-            pageLinkClassName={'paginationPage'}
-          />
-        </S.OtherOffersWrapper>
+        similarStartups.length > 0 && (
+          <S.OtherOffersWrapper>
+            <S.OtherHeading>სხვა შეთავაზებები</S.OtherHeading>
+            {displayStartups}
+            <ReactPaginate
+              previousLabel={<PreviousButton />}
+              nextLabel={<NextButton />}
+              pageCount={Math.ceil(startupData.length / startupsPerPage)}
+              pageRangeDisplayed={2}
+              marginPagesDisplayed={0}
+              breakLabel={<EllipsisButton />}
+              onPageChange={changePage}
+              containerClassName={
+                isMobile ? 'paginationWrapperMobile' : 'paginationWrapper'
+              }
+              disabledClassName={'paginationDisabled'}
+              activeClassName={'paginationActive'}
+              pageLinkClassName={'paginationPage'}
+            />
+          </S.OtherOffersWrapper>
+        )
       )}
 
       <S.SubscribeWrapper>

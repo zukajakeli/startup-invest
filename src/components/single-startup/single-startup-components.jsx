@@ -8,10 +8,6 @@ import getInfoBackground from 'assets/images/get-info-background.svg';
 export const Wrapper = styled.div`
   width: 100%;
 
-  & img {
-    border-radius: 2rem !important;
-  }
-
   & ul {
     list-style-image: url(${greenBullet}) !important;
     list-style-position: inside;
@@ -83,7 +79,7 @@ export const MainImage = styled.img`
 
 export const Logo = styled.img`
   position: absolute;
-  border-radius: 50%;
+  border-radius: 50% !important;
   object-fit: cover;
   width: 8.8rem;
   height: 8.8rem;
@@ -246,6 +242,10 @@ export const Text = styled.p`
   & * {
     font-family: firago !important;
     line-height: 2.2rem;
+  }
+
+  & img {
+    border-radius: 2rem !important;
   }
 
   ${({ theme }) => theme.mobile`

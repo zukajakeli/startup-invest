@@ -142,31 +142,32 @@ const BlogsPage = () => {
 
         <S.BlogsContent>
           <S.Heading>ახალი ისტორიები</S.Heading>
-
-          <Swiper
-            spaceBetween={5}
-            slidesPerView={
-              isMobile
-                ? 1.1
-                : Math.floor(window.innerWidth / 260) - 0.5 > 4
-                ? 4
-                : 3.3
-            }
-            direction="horizontal"
-            autoplay={{ delay: 3500 }}
-          >
-            {dummy.map(({ readingTime, storyPreview, _id }, index) => {
-              return (
-                <SwiperSlide key={`caroussel${index}`}>
-                  <CarousselStory
-                    readingTime={readingTime}
-                    storyPreview={storyPreview}
-                    _id={_id}
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          {randomStories.length > 0 && (
+            <Swiper
+              spaceBetween={5}
+              slidesPerView={
+                isMobile
+                  ? 1.1
+                  : Math.floor(window.innerWidth / 260) - 0.5 > 4
+                  ? 4
+                  : 3.3
+              }
+              direction="horizontal"
+              autoplay={{ delay: 3500 }}
+            >
+              {dummy.map(({ readingTime, storyPreview, _id }, index) => {
+                return (
+                  <SwiperSlide key={`caroussel${index}`}>
+                    <CarousselStory
+                      readingTime={readingTime}
+                      storyPreview={storyPreview}
+                      _id={_id}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          )}
 
           {secondaryStories && (
             <S.LargeStoriesWrapper>
