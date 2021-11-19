@@ -42,7 +42,7 @@ const ResetPassword = ({
           'template_6g0qy23',
           {
             email: res.data.email,
-            message: `https://startupinvest.ge/reset-password/{res.data.id}`,
+            message: `https://startupinvest.ge/reset-password/${res.data.id}`,
           },
           keys.emailJsId,
         )

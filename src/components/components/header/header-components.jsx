@@ -220,7 +220,40 @@ export const LogOutButton = styled.button`
   }
 
   ${({ theme }) => theme.mobile`
-    width: 15.1rem;
+    width: 13.7rem;
+    height: 5.2rem;
+  outline: none;
+  border-radius: 5.2rem;
+  border: 0.4rem solid #ffca10;
+  color: #ffca10;
+
+  background: linear-gradient(to right, #ffca10 50%, #13182b 50%);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.4s ease-out;
+  background-color: #13182b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  & svg {
+    fill: #ffca10;
+    stroke: #ffca10;
+  }
+
+  &:hover {
+    background-position: left top;
+    color: #13182b;
+    svg {
+      fill: #13182b;
+      stroke: #13182b;
+    }
+  }
   `}
 `;
 

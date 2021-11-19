@@ -119,10 +119,21 @@ const Header = () => {
               <Link to="/blogs">
                 <S.BlogsButton>ბლოგი</S.BlogsButton>
               </Link>
-              <S.LoginButton onClick={goToAuth}>
-                <UserIcon />
-                შესვლა
-              </S.LoginButton>
+              {!meInfo ? (
+                <S.LoginButton onClick={goToAuth}>
+                  <UserIcon />
+                  შესვლა
+                </S.LoginButton>
+              ) : (
+                <S.LogOutButton
+                  onClick={() => {
+                    setMeInfo(null);
+                    localStorage.clear();
+                  }}
+                >
+                  გამოსვლა
+                </S.LogOutButton>
+              )}
             </S.ButtonsWrapper>
           </S.SideMenu>
         )}
