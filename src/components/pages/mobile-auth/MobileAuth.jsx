@@ -26,7 +26,6 @@ const MobileAuth = () => {
 
   return (
     <S.Wrapper>
-      yeyee
       <S.HeaderWrapper>
         <Header />
       </S.HeaderWrapper>

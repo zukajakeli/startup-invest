@@ -75,7 +75,7 @@ const Registration = ({
           'reg_verify',
           {
             email: values.email,
-            link: `https://startupinvest.ge/api/verifyUser?id=${res.data.userID}`,
+            link: `https://startupinvest.ge/api/reset-password?id=${res.data.userID}`,
           },
           keys.emailJsId,
         );
