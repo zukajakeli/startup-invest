@@ -56,14 +56,16 @@ const FAQPage = () => {
               ვერ მიიღე შენთვის <br /> საინტერესო ინფორმაცია?
             </S.GetInfoHeading>
             <S.Form onSubmit={formik.handleSubmit}>
-              <TextInput
-                fullWidth
-                required
-                placeholder="ელ-ფოსტა"
-                inputName="email"
-                handleChange={formik.handleChange}
-                value={formik.values.email}
-              />
+              <div style={{ marginBottom: '1.2rem' }}>
+                <TextInput
+                  fullWidth
+                  required
+                  placeholder="ელ-ფოსტა"
+                  inputName="email"
+                  handleChange={formik.handleChange}
+                  value={formik.values.email}
+                />
+              </div>
               <TextareaInput
                 placeholder="მოგვწერე შეკითხვა"
                 inputName="question"

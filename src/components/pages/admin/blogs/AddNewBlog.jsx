@@ -13,7 +13,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import TinyEditor from 'components/editor/TinyEditor';
 import '../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './border.css';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { useEffect } from 'react';
 import BASE_URL from 'config/BaseUrl';
 
@@ -32,6 +32,7 @@ const AddNewBlog = ({ setAddResponse }) => {
   const [isSecondaryStory, setIsSecondaryStory] = useState(false);
   const [imageArray, setImageArray] = useState([]);
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     if (id) {
@@ -107,7 +108,7 @@ const AddNewBlog = ({ setAddResponse }) => {
           console.log(res);
           message.success({ content: 'Blog Updated!', key, duration: 2 });
           setTimeout(() => {
-            window.location.reload(false);
+            history.replace('/admin/blogs');
           }, 1500);
         });
       } else {
@@ -115,7 +116,7 @@ const AddNewBlog = ({ setAddResponse }) => {
           console.log(res);
           message.success({ content: 'Blog Added!', key, duration: 2 });
           setTimeout(() => {
-            window.location.reload(false);
+            history.replace('/admin/blogs');
           }, 1500);
         });
       }

@@ -39,7 +39,7 @@ export const LeftWrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  height: 66rem;
+  height: 60rem;
   width: 100%;
   padding-left: 2rem;
 
@@ -70,7 +70,7 @@ export const RightWrapper = styled.div`
 export const BackgroundImage = styled.img`
   position: absolute;
   z-index: 0;
-  top: 13rem;
+  top: 11rem;
   left: 1%;
 
   ${({ theme }) => theme.mobile`

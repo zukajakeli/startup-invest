@@ -9,11 +9,7 @@ const MainStory = ({ image, readingTime, storyTitle, storyPreview, _id }) => {
   };
   return (
     <S.MainStory>
-      <S.MainImage
-        src={`${BASE_URL}/${image}`}
-        alt="blogImage"
-        onClick={openBolg}
-      />
+      <S.MainImage src={`${image}`} alt="blogImage" onClick={openBolg} />
       <S.TextsWrapper>
         <S.ReadingTime>
           წასაკითხი დრო: <strong>{readingTime}</strong>

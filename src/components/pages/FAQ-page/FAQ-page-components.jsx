@@ -43,7 +43,7 @@ export const Body = styled.div`
   padding-left: 9%;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
-  background-position: 55% 80%;
+  background-position: 20% 80%;
 
   ${({ theme }) => theme.mobile`
     height: unset;

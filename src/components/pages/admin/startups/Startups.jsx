@@ -17,7 +17,7 @@ import AddNewStartup from './AddNewStratup';
 const { Option } = Select;
 
 const Startups = () => {
-  const { columns, deleteResponse } = useColumns();
+  const { columns, deleteResponse, updateResponse } = useColumns();
   const [addResponse, setAddResponse] = useState(null);
 
   const [startupsNumber, setStartupsNumber] = useState(1000);
@@ -29,18 +29,29 @@ const Startups = () => {
   const [allData, setAllData] = useState([]);
   useEffect(() => {
     getAllStartups().then((res) => setAllData(res.data));
-  }, [addResponse, deleteResponse]);
+  }, [addResponse, deleteResponse, updateResponse]);
 
   console.log(allData);
   const onBlurredChange = (e) => {
     setIsBlurVisible(e.target.checked);
+    updateStartupsCount({
+      isBlurVisible: e.target.checked,
+      startupsNumber,
+    }).then((res) => console.log(res.data));
   };
 
-  useEffect(() => {
-    updateStartupsCount({ isBlurVisible, startupsNumber }).then((res) =>
+  const onNumberChange = (value) => {
+    setStartupsNumber(value);
+    updateStartupsCount({ isBlurVisible, startupsNumber: value }).then((res) =>
       console.log(res.data),
     );
-  }, [isBlurVisible, startupsNumber]);
+  };
+
+  // useEffect(() => {
+  //   updateStartupsCount({ isBlurVisible, startupsNumber }).then((res) =>
+  //     console.log(res.data),
+  //   );
+  // }, [isBlurVisible, startupsNumber]);
 
   useEffect(() => {
     getStartupsCount().then((res) => {
@@ -71,8 +82,9 @@ const Startups = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <p>Number of startups for Display</p>
             <Select
-              onChange={(value) => setStartupsNumber(value)}
+              onChange={onNumberChange}
               value={startupsNumber}
+              placeholder={startupsNumber}
             >
               <Option value={1000}>All</Option>
               <Option value={3}>3</Option>

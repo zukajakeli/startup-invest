@@ -24,13 +24,17 @@ import linkedinIcon from 'assets/icons/linkedin-icon.svg';
 import * as S from './single-blog-components';
 import { useEffect } from 'react';
 import { getPaginatedStories, getSingleStory } from 'config/API';
-import { useParams, useRouteMatch } from 'react-router';
+import { useLocation, useParams, useRouteMatch } from 'react-router';
 import BASE_URL from 'config/BaseUrl';
 
 const SingleBlog = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   const match = useRouteMatch();
   const { id } = useParams();
+  const location = useLocation();
+  console.log(location.pathname);
+
+  const copyLink = () => {};
 
   const [storyData, setStoryData] = useState([]);
   useEffect(() => {
@@ -92,15 +96,13 @@ const SingleBlog = () => {
             <S.ShareWrapper>
               <S.ShareText>გამოგვყევი:</S.ShareText>
               <S.IconsWrapper>
-                <S.ShareIcon src={shareIcon} alt="icon" />
+                {isMobile && (
+                  <S.ShareIcon onClick={copyLink} src={shareIcon} alt="icon" />
+                )}
 
-                <a
-                  href={`https://www.linkedin.com/cws/share?url=${BASE_URL}/${match.url}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <S.Pointer>
                   <S.ShareIcon src={linkIcon} alt="icon" />
-                </a>
+                </S.Pointer>
                 <a
                   className="share-event"
                   href={`https://www.facebook.com/sharer/sharer.php?u=https://startupinvest.ge/${match.url}`}
@@ -110,7 +112,13 @@ const SingleBlog = () => {
                   <S.ShareIcon src={fbGreen} alt="icon" />
                 </a>
 
-                <S.ShareIcon src={linkedinIcon} alt="icon" />
+                <a
+                  href={`https://www.linkedin.com/cws/share?url=${BASE_URL}/${match.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <S.ShareIcon src={linkedinIcon} alt="icon" />
+                </a>
               </S.IconsWrapper>
             </S.ShareWrapper>
 

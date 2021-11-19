@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
     list-style-position: inside;
   }
 
-  & h1 {
+  & h1 span {
     font-family: firago;
     font-style: italic;
     font-size: 3.2rem;
@@ -132,9 +132,11 @@ export const SmallStoriesWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
+  min-height: 43.6rem;
 
   ${({ theme }) => theme.mobile`
    grid-template-columns: 1fr ;
+   min-height: unset;
   `}
 `;
 
@@ -318,6 +320,10 @@ export const IconsWrapper = styled.div`
   ${({ theme }) => theme.mobile`
     flex-direction: column;
   `}
+`;
+
+export const Pointer = styled.div`
+  cursor: pointer;
 `;
 
 export const IconsMobileWrapper = styled.div``;

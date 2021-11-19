@@ -91,6 +91,7 @@ export const StartupInfo = styled.p`
   color: #767c8b;
   font-size: 1.6rem;
   font-weight: 400;
+  min-height: 5.5rem;
   padding: 0rem 2rem;
   margin-top: 2rem;
   overflow-y: hidden;

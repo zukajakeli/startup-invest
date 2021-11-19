@@ -199,6 +199,28 @@ export const register = async (data) => {
   return response;
 };
 
+export const updateVisibility = async (data) => {
+  const response = await axios.post(`${BASE_URL}/update-startup-visible`, data);
+  return response;
+};
+
+export const updateIsMainStory = async (data) => {
+  const response = await axios.post(`${BASE_URL}/update-blog-ismain`, data);
+  return response;
+};
+
+export const updateIsSecondaryStory = async (data) => {
+  const response = await axios.post(
+    `${BASE_URL}/update-blog-issecondary`,
+    data,
+  );
+  return response;
+};
+export const updateIsMain = async (data) => {
+  const response = await axios.post(`${BASE_URL}/update-startup-ismain`, data);
+  return response;
+};
+
 export const sendGoogleToken = async (data) => {
   const response = await axios.post(`${BASE_URL}/sendGoogleToken`, data);
   return response;

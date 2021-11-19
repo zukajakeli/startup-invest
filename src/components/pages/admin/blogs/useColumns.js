@@ -1,7 +1,11 @@
 import React from 'react';
 import { DeleteTwoTone } from '@ant-design/icons';
 import CustomModal from 'components/modal/CustomModal';
-import { deleteStory } from 'config/API';
+import {
+  deleteStory,
+  updateIsMainStory,
+  updateIsSecondaryStory,
+} from 'config/API';
 import { useState } from 'react';
 import { Checkbox, Popconfirm, message, Button } from 'antd';
 import { useHistory } from 'react-router';
@@ -22,6 +26,24 @@ const useColumns = () => {
     history.push(`/admin/add-new-blog/${id}`);
   };
 
+  const sendIsMain = (e, record) => {
+    updateIsMainStory({
+      isMainStory: e.target.checked,
+      id: record._id,
+    }).then((res) => {
+      setDeleteResponse(res.data);
+    });
+  };
+
+  const sendIsSecondary = (e, record) => {
+    updateIsSecondaryStory({
+      isSecondaryStory: e.target.checked,
+      id: record._id,
+    }).then((res) => {
+      setDeleteResponse(res.data);
+    });
+  };
+
   const columns = [
     {
       title: 'Title',
@@ -33,14 +55,30 @@ const useColumns = () => {
       title: 'Main Story (Large)',
       dataIndex: 'isMainStory',
       key: 'isMainStory',
-      render: (text, record) => <Checkbox checked={record.isMainStory} />,
+      sorter: (a, b) => a.isMainStory - b.isMainStory,
+      render: (text, record) => (
+        <Checkbox
+          checked={record.isMainStory}
+          onChange={(e) => {
+            sendIsMain(e, record);
+          }}
+        />
+      ),
     },
 
     {
       title: 'Secondary Story (Small)',
       dataIndex: 'isSecondaryStory',
       key: 'isSecondaryStory',
-      render: (text, record) => <Checkbox checked={record.isMainStory} />,
+      sorter: (a, b) => a.isSecondaryStory - b.isSecondaryStory,
+      render: (text, record) => (
+        <Checkbox
+          checked={record.isSecondaryStory}
+          onChange={(e) => {
+            sendIsSecondary(e, record);
+          }}
+        />
+      ),
     },
 
     {

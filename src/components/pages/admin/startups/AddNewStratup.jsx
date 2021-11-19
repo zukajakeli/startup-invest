@@ -15,7 +15,6 @@ import BASE_URL from 'config/BaseUrl';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import TinyEditor from 'components/editor/TinyEditor';
-import EditStartup from './EditStartup';
 
 const { TextArea } = Input;
 
@@ -71,7 +70,7 @@ const AddNewStartup = ({ setAddResponse }) => {
         setPreviewPhoto(previewPhoto);
         setIsMainPage(isMainPage);
         setIsVisible(isVisible);
-        setVideo(video);
+        setVideo(`https://www.youtube.com/embed/${video}`);
         setVideoDescription(videoDescription);
         setOutsideText(outsideText);
         setCategory(category);
@@ -129,15 +128,15 @@ const AddNewStartup = ({ setAddResponse }) => {
     } else {
       id
         ? updateStartup(id, formData).then((res) => {
-            message.success({ content: 'Blog Updated!', key, duration: 2 });
+            message.success({ content: 'Startup Updated!', key, duration: 2 });
             setTimeout(() => {
-              window.location.reload(false);
+              window.location.replace('/admin/startups');
             }, 1500);
           })
         : addNewStartup(formData).then((res) => {
             message.success({ content: 'Blog Added!', key, duration: 2 });
             setTimeout(() => {
-              window.location.reload(false);
+              window.location.replace('/admin/startups');
             }, 1500);
           });
     }
@@ -242,7 +241,7 @@ const AddNewStartup = ({ setAddResponse }) => {
           Visible for Everyone{' '}
         </Checkbox>
       </div>
-      Preview Text
+      Highlight Text
       <TinyEditor
         contentEditor={previewText}
         setContentEditor={setPreviewText}

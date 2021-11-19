@@ -92,7 +92,7 @@ const EditStartup = ({ setResponse, id }) => {
       setPreviewPhoto(previewPhoto);
       setIsMainPage(isMainPage);
       setIsVisible(isVisible);
-      setVideo(video);
+      setVideo(`https://www.youtube.com/embed/${video}`);
       setVideoDescription(videoDescription);
       setIsLoading(false);
       setOutsideText(outsideText);

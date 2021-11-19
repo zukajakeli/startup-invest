@@ -15,9 +15,9 @@ export const dummy = [
     previewText: `ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
                    მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე მოყვა, ერთ ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე`,
     previewPhoto:
-      'https://media.architecturaldigest.com/photos/5b9691509cd13621bf9b559b/16:9/w_2991,h_1682,c_limit/JPrice_Lamborghini_MCW18-1755.jpg',
+      'https://startupinvest.ge/api/images/1637334942054--20-113_image1.jpg',
     logoPhoto:
-      'https://blh.com.ge/wp-content/uploads/2016/10/Apple-Logo-black.png',
+      'https://startupinvest.ge/api/images/1637334977818-Logomark%20-%20Black.png',
   },
   {
     title: 'სტარტაპ ინვესტ',
@@ -28,7 +28,7 @@ export const dummy = [
     previewPhoto:
       'https://webunwto.s3.eu-west-1.amazonaws.com/styles/article_main_image/s3/2020-02/unwto-startup-competition.jpg?itok=AGrZIraS',
     logoPhoto:
-      'https://blh.com.ge/wp-content/uploads/2016/10/Apple-Logo-black.png',
+      'https://startupinvest.ge/api/images/1637334977818-Logomark%20-%20Black.png',
   },
   {
     title: 'სტარტაპ ინვესტ',
@@ -39,7 +39,7 @@ export const dummy = [
     previewPhoto:
       'https://www.zambianguardian.com/wp-content/uploads/2021/09/Difference-between-public-administration-and-business-administration.jpg',
     logoPhoto:
-      'https://blh.com.ge/wp-content/uploads/2016/10/Apple-Logo-black.png',
+      'https://startupinvest.ge/api/images/1637334977818-Logomark%20-%20Black.png',
   },
 ];
 

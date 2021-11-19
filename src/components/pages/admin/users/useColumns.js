@@ -5,6 +5,7 @@ import { DeleteTwoTone } from '@ant-design/icons';
 import { deleteUser } from 'config/API';
 import CustomModal from 'components/modal/CustomModal';
 import EditUser from './EditUser';
+import { Popconfirm, message } from 'antd';
 
 const useColumns = () => {
   const [deleteResponse, setDeleteResponse] = useState(null);
@@ -12,6 +13,7 @@ const useColumns = () => {
   const deleteUserFunc = (id) => {
     deleteUser(id).then((res) => {
       setDeleteResponse(res);
+      message.success('User Deleted');
     });
   };
 
@@ -66,13 +68,18 @@ const useColumns = () => {
               }
             />
           </div>
-          <div
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              deleteUserFunc(record._id);
-            }}
-          >
-            <DeleteTwoTone />
+
+          <div style={{ cursor: 'pointer' }}>
+            <Popconfirm
+              title="Delete this Blog?"
+              onConfirm={() => {
+                deleteUserFunc(record._id);
+              }}
+              okText="Yes"
+              cancelText="No"
+            >
+              <DeleteTwoTone />
+            </Popconfirm>
           </div>
         </div>
       ),

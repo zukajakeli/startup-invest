@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import SubscribeOffer from 'components/common-components/subscribe-offer/SubscribeOffer';
 import Footer from 'components/components/footer/Footer';
 import Header from 'components/components/header/Header';
-import { getAllAbouts } from 'config/API';
+import { getAllAbouts, getAllSocials } from 'config/API';
 
 import { ReactComponent as LinkedinIcon } from '../../../assets/icons/linkedin-icon.svg';
 import { ReactComponent as InstagramIcon } from '../../../assets/icons/instagram-icon.svg';
@@ -22,6 +22,14 @@ const AboutUsPage = () => {
     getAllAbouts().then((res) => {
       console.log(res.data[0]);
       setAboutData(res.data[0]);
+    });
+  }, []);
+
+  const [socialLinks, setSocialLinks] = useState({});
+  useEffect(() => {
+    getAllSocials().then((res) => {
+      console.log(res.data.social);
+      setSocialLinks(res.data.social);
     });
   }, []);
 
@@ -57,9 +65,21 @@ const AboutUsPage = () => {
               <S.FollowWrapper>
                 <S.FollowText>გამოგვყევი:</S.FollowText>
                 <S.FollowIcons>
-                  <InstagramIcon />
-                  <FacebookIcon />
-                  <LinkedinIcon />
+                  {socialLinks.igLink && (
+                    <a href={`${socialLinks.igLink}`} target="_blank">
+                      <InstagramIcon />
+                    </a>
+                  )}
+                  {socialLinks.fbLink && (
+                    <a href={`${socialLinks.fbLink}`} target="_blank">
+                      <FacebookIcon />
+                    </a>
+                  )}
+                  {socialLinks.linkedinLink && (
+                    <a href={`${socialLinks.linkedinLink}`} target="blank">
+                      <LinkedinIcon />
+                    </a>
+                  )}
                 </S.FollowIcons>
               </S.FollowWrapper>
             </S.ImagesWrapper>
