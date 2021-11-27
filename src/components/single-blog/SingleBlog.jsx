@@ -76,6 +76,22 @@ const SingleBlog = () => {
     },
   );
 
+  useEffect(() => {
+    console.log('titleeee', storyData.title);
+    document
+      .querySelector('meta[property="og:title"]')
+      .setAttribute('content', storyData.title);
+    document
+      .querySelector('meta[property="og:description"]')
+      .setAttribute('content', storyData.outsideText);
+    document
+      .querySelector('meta[property="og:image"]')
+      .setAttribute('content', storyData.mainPhoto);
+    document
+      .querySelector('meta[property="og:url"]')
+      .setAttribute('content', BASE_URL + location.pathname);
+  }, []);
+
   return (
     <>
       <Helmet>
