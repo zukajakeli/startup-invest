@@ -78,17 +78,15 @@ const SingleBlog = () => {
 
   return (
     <>
+      <Helmet>
+        <title>single blog </title>
+        <meta property="og:title" content={storyData.title} />
+        <meta property="og:description" content={storyData.outsideText} />
+        <meta property="og:image" content={storyData.mainPhoto} />
+        <meta property="og:url" content={BASE_URL + location.pathname} />
+      </Helmet>
       {storyData && (
         <S.Wrapper>
-          <Helmet>
-            <meta charSet="utf-8" />
-            <title>{storyData.title}</title>
-            <link rel="canonical" href={`${BASE_URL}/${match.url}`} />
-            <meta property="og:type" content="article" />
-            <meta property="og:title" content="startupinvest" />
-            <meta property="og:description" content={storyData.outsideText} />
-            <meta property="og:image" content={`${storyData.mainPhoto}`} />
-          </Helmet>
           <S.HeaderWrapper>
             <Header />
           </S.HeaderWrapper>
@@ -125,17 +123,6 @@ const SingleBlog = () => {
             <S.MainImage src={`${storyData.mainPhoto}`} alt="mainImage" />
             <S.Content>
               <S.Heading>{storyData.title}</S.Heading>
-              {/* <S.SubHeading>
-                ინოვაციებისა და მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე
-                მოყვა, ერთ ღონისძიებას მეორე, აქსელერატორს მეორეინოვაციებისა და
-                მეწარმეობის მიმართულებით, ერთ ორგანიზაციას მეორე მოყვა, ერთ
-                ღონისძიებას მეორე, ერთ ბიზნეს აქსელერატორს მეორე
-              </S.SubHeading> */}
-
-              {/* <S.SmallImage
-                src={`${BASE_URL}/${storyData.secondaryPhoto}`}
-                alt="smallImage"
-              /> */}
 
               <S.Text>
                 <div dangerouslySetInnerHTML={{ __html: storyData.mainText }} />

@@ -17,6 +17,7 @@ import Temporary from 'temporary';
 import { whoAmI } from 'config/API';
 import MobileAuth from 'components/pages/mobile-auth/MobileAuth';
 import ResetPasswordPage from 'components/components/reset-pass-page/ResetPasswordPage';
+import { Helmet } from 'react-helmet';
 
 function App() {
   const location = useLocation();
@@ -37,8 +38,14 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>StartupInvest </title>
+        <meta property="og:title" content="test titlke" />
+        <meta property="og:description" content="desc desc desc desc" />
+        <meta property="og:image" content="iamgee" />
+        <meta property="og:url" content="urlllllllll" />
+      </Helmet>
       <Switch>
-        {/* <Route exact path="/" component={Temporary} /> */}
         <Route exact path="/" component={MainPage} />
         <Route exact path="/startups" component={StartupPage} />
         <Route exact path="/blogs" component={BlogsPage} />
