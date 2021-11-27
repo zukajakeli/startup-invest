@@ -39,11 +39,17 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>StartupInvest </title>
-        <meta property="og:title" content="test titlke" />
-        <meta property="og:description" content="desc desc desc desc" />
-        <meta property="og:image" content="iamgee" />
-        <meta property="og:url" content="urlllllllll" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://startupinvest.ge/" />
+        <meta property="og:title" content="Startup Invest" />
+        <meta
+          property="og:description"
+          content="Learn design and code by building real apps with React and Swift. Complete courses about UI design, web and iOS development using Figma, CSS, React Hooks and SwiftUI."
+        />
+        <meta
+          property="og:image"
+          content="https://startupinvest.ge/static/media/main-logo.44a88d7b.svg"
+        />
       </Helmet>
       <Switch>
         <Route exact path="/" component={MainPage} />
