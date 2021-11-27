@@ -79,7 +79,7 @@ const SingleBlog = () => {
   return (
     <>
       <Helmet>
-        <title>single blog </title>
+        <title>{storyData.title}</title>
         <meta property="og:title" content={storyData.title} />
         <meta property="og:description" content={storyData.outsideText} />
         <meta property="og:image" content={storyData.mainPhoto} />
