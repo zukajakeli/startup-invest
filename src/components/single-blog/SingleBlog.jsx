@@ -98,10 +98,10 @@ const SingleBlog = () => {
     <>
       <Helmet>
         <title>{storyData.title}</title>
-        <meta property="og:title" content={storyData.title} />
-        <meta property="og:description" content={storyData.outsideText} />
-        <meta property="og:image" content={storyData.mainPhoto} />
-        <meta property="og:url" content={BASE_URL + location.pathname} />
+        <meta property="og:title" content="likopiko" />
+        <meta property="og:description" content="likopiko" />
+        <meta property="og:image" content="likopiko" />
+        <meta property="og:url" content="likopiko" />
       </Helmet>
       {storyData && (
         <S.Wrapper>
