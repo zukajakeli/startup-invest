@@ -76,33 +76,15 @@ const SingleBlog = () => {
     },
   );
 
-  useEffect(() => {
-    if (storyData) {
-      document
-        .querySelector('meta[property="og:title"]')
-        .setAttribute('content', storyData.title);
-      document
-        .querySelector('meta[property="og:description"]')
-        .setAttribute('content', storyData.outsideText);
-      document
-        .querySelector('meta[property="og:image"]')
-        .setAttribute('content', storyData.mainPhoto);
-      document
-        .querySelector('meta[property="og:url"]')
-        .setAttribute('content', BASE_URL + location.pathname);
-      console.log('titleeee', storyData.title);
-    }
-  }, [storyData]);
-
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>{storyData.title}</title>
         <meta property="og:title" content="likopiko" />
         <meta property="og:description" content="likopiko" />
         <meta property="og:image" content="likopiko" />
         <meta property="og:url" content="likopiko" />
-      </Helmet>
+      </Helmet> */}
       {storyData && (
         <S.Wrapper>
           <S.HeaderWrapper>
