@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ReactPaginate from 'react-paginate';
-import { Helmet } from 'react-helmet';
+import { message } from 'antd';
 
 import SubscribeOffer from 'components/common-components/subscribe-offer/SubscribeOffer';
 import Footer from 'components/components/footer/Footer';
@@ -38,6 +38,7 @@ const SingleBlog = () => {
     navigator.clipboard.writeText(
       `https://startupinvest.ge/api/get-index/${id}`,
     );
+    message.info('ლინკი დაკოპირდა');
   };
 
   const [storyData, setStoryData] = useState([]);
@@ -91,12 +92,10 @@ const SingleBlog = () => {
             <S.ShareWrapper>
               <S.ShareText>გამოგვყევი:</S.ShareText>
               <S.IconsWrapper>
-                {isMobile && (
-                  <S.ShareIcon onClick={copyLink} src={shareIcon} alt="icon" />
-                )}
+                {isMobile && <S.ShareIcon src={shareIcon} alt="icon" />}
 
                 <S.Pointer>
-                  <S.ShareIcon src={linkIcon} alt="icon" />
+                  <S.ShareIcon onClick={copyLink} src={linkIcon} alt="icon" />
                 </S.Pointer>
                 <a
                   className="share-event"
