@@ -34,7 +34,11 @@ const SingleBlog = () => {
   const location = useLocation();
   console.log(location.pathname);
 
-  const copyLink = () => {};
+  const copyLink = () => {
+    navigator.clipboard.writeText(
+      `https://startupinvest.ge/api/get-index/${id}`,
+    );
+  };
 
   const [storyData, setStoryData] = useState([]);
   useEffect(() => {
@@ -78,13 +82,6 @@ const SingleBlog = () => {
 
   return (
     <>
-      {/* <Helmet>
-        <title>{storyData.title}</title>
-        <meta property="og:title" content="likopiko" />
-        <meta property="og:description" content="likopiko" />
-        <meta property="og:image" content="likopiko" />
-        <meta property="og:url" content="likopiko" />
-      </Helmet> */}
       {storyData && (
         <S.Wrapper>
           <S.HeaderWrapper>
@@ -103,7 +100,7 @@ const SingleBlog = () => {
                 </S.Pointer>
                 <a
                   className="share-event"
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://startupinvest.ge/${match.url}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://startupinvest.ge/api/get-index/${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
